@@ -16,7 +16,7 @@
     Given a variety \(X= \mathrm{Spec}(A)\), we consider when there exists a deformation quantisation of \(A\), given by \(\mathcal{A}_{\hslash}\). Inside \(X\), consider a subvariety \( \mathbb{L} \subset X\), corresponding to the quotient \(E=A/I\). The quantisation of \( \mathbb{L}\) is represented by a \(\mathcal{A}_{\hslash}\)-module, \(E_\hslash\) which under a quotient map by \(\hslash\) recovers \(E=A/I\). The algebra \( E_{\hslash}\) is isomorphic with operators on \( \mathbb{L}\).
     Correspondingly a wavefunction is an element of the dual module \(E_\hslash^*\), which is the space of maps from \(E_\hslash\) to  \(\mathcal{A}_{\hslash} \). Intuitively, the dual of an operator is something like a function, they pair with a function to produce another function. Later \(X\) will be Poisson and \( \mathbb{L}\) will be required to be coisotropic.
     
-    Deformation quantisation is commonly achieved by taking the equations of the defining ideal \(I\), and then looking at the the quantisation \(I_{\hslash}\), which is represented by differential operators on \(X\). A wavefunction is also seen as a solution, or an annihilator, to these differential equations.
+    Deformation quantisation is commonly achieved by taking the equations of the defining ideal \(I\), and then looking at the quantisation \(I_{\hslash}\), which is represented by differential operators on \(X\). A wavefunction is also seen as a solution, or an annihilator, to these differential equations.
     
     %However it is not clear where they are defined, and appear in the literature to be constructed heuristically with a quantisation rule.
     
@@ -269,7 +269,7 @@
     %\[ ( \starp \cdot ) \cdot \starp  = ( \cdot \starp ) \cdot ( \cdot ) \cdot \starp  \]
     
     \begin{rem}[Notation in definition (\ref{defn:star_prod_pois})]
-    Note in this definition.  \( \exp \) is the formal sum \( \exp(s) = \id + s + \frac{1}{2} s^2 + \dots\). Here \(  \id \) is the identity map \( \id (f \otimes g) = f \otimes g\). \( \mathrm{prod}\) is pointwise function multiplication, \( \mathrm{prod}(f \otimes g ) = f g\). Also \( \cdot\) is function composition. 
+    Note in this definition, \( \exp \) is the formal sum \( \exp(s) = \id + s + \frac{1}{2} s^2 + \dots\). Here \(  \id \) is the identity map \( \id (f \otimes g) = f \otimes g\). \( \mathrm{prod}\) is pointwise function multiplication, \( \mathrm{prod}(f \otimes g ) = f g\). Also \( \cdot\) is function composition. 
     
     Powers of \( \pi \) refer to iterated application \[ \pi^k ( f \otimes g ) = \pi^{k-1} ( \pi(f \otimes g ) ). \]  
     The endomorphism \( \pi \) is needed because there is no natural way to compose bi-vectors \( \Pi\).
@@ -338,7 +338,7 @@
 
     \begin{defn}[Deformation quantisation of structure sheaf] 
     \label{defn:def_quant}
-    Let \( (X,\mathcal{O}_X)\) be Poisson with a bi-vector \( \Pi\). A \emph{deformation quantisation} of \( \mathcal{O}_X\) is given by the sheaf \( \mathcal{A}_{\hslash} = \mathcal{O}_X \lBrack \hslash \rBrack \), equipped with a star product \( \starp_{\pi} \).
+    Let \( (X,\mathcal{O}_X)\) be a Poisson variety with a bi-vector \( \Pi\). A \emph{deformation quantisation} of \( \mathcal{O}_X\) is given by the sheaf \( \mathcal{A}_{\hslash} = \mathcal{O}_X \lBrack \hslash \rBrack \), equipped with a star product \( \starp_{\pi} \).
     \end{defn}
     
     This result can be found in \cite{yekutieli}. Note that this does not necessarily correspond to quantisation from physics. Deformation quantisation has simply produced a non-commutative space of operators. In physics, quantisation also seeks to construct a Hilbert space of functions. Correspondingly we need to look for duals of \( \mathcal{A}_{\hslash}\)-modules, which is analogous to a Hilbert space. We give an example of the entire process in example (\ref{ex:the_conic}). The conditions on the existence of these extra modules is also an interesting question \cite[section 2.4, page 15]{abpolyquant}. 
