@@ -1,0 +1,25 @@
+\chapter{Gaussian integrals}
+\section{Real Gaussian integrals in one dimension}
+Recall the real Gaussian integral
+\[ \frac{1}{\sqrt{\pi \lambda}}\, \int_{\mathbb{R}} dx\, \exp(-\lambda x^2) = \frac{1}{\lambda}. \] 
+Now consider assigning a value to the (possibly formal) integral 
+\[ I = \frac{1}{\sqrt{\pi \lambda}}\, \int_{\mathbb{R}} dx\, \psi(x) \exp(-\lambda x^2),\]
+for some power series \( \psi(x)=\sum_{k \geq 0} a_k x^k\). Contributions to \(I\) from \( x^{2k+1}\) will vanish via anti-symmetry. This leaves
+\begin{align*}
+    I = \frac{1}{\sqrt{\pi \lambda}} \int_{\mathbb{R}} dx \sum_{k \geq 0} a_{2k} x^{2k} \exp( - \lambda x^2).
+\end{align*}
+In general, this integral may not exist, but it can be evaluated as a formal power series in \( \lambda\) (although it might indeed be analytic in \( \lambda\)). We write a formal sum that at least encodes the asymptotic expansion in powers of \( \lambda\). For a single coefficient
+\begin{align*}
+    \frac{a_{2k} }{\sqrt{\pi \lambda}} \int_{\mathbb{R}} dx \, x^{2k} \exp(- \lambda x^2) =  \frac{a_{2k} }{\sqrt{\pi \lambda}} \frac{\Gamma\left(k + \frac{1}{2}\right)}{2 \lambda^{k+\frac{1}{2}}} = \frac{a_{2k}}{\lambda^{k+1} } \frac{\Gamma\left(k+\frac{1}{2}\right)}{\Gamma\left(\frac{1}{2}\right) }.
+\end{align*}
+Where the quotient of \(\Gamma\) functions gives \( 1, 1/2, 3/4, 15/8, \dots \). 
+Therefore
+\begin{align*}
+    I(\lambda) \simeq \sum_{k \geq 0} \frac{b_k}{\lambda^{k+1}}.
+\end{align*}
+
+\section{Real Gaussian integrals in higher dimensions}
+
+More generally, 
+\[ \left. \int dx^{\sbt} f(x^{\sbt}) \exp\left( -\frac{1}{2} x^i Q_{ij} x^j \right) = \sqrt{\frac{(2 \pi)^n}{\det Q}} \exp\left( \frac{1}{2} (Q^{-1})_{ij} \frac{\partial}{\partial x_i} \frac{\partial}{\partial x_j} \right) f(x^{\sbt})  \right|_{x^{\sbt} \rightarrow 0}. \]
+

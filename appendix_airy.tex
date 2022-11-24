@@ -1,0 +1,112 @@
+\chapter{Constraints}
+\section{Airy structure constraints}
+\label{appendix:airy}
+    Let
+    \[ H_i = -y_i + a_{ijk} x^i x^j + 2 b_{ij}^k x^j y_k + c_i^{jk} y^j y^k, \]
+    where the tensors \( a\) and \(c\) are symmetric under permutations of \(j,k\). Recall \( \{ y_i , x^j \} = \delta_i^j \) is the only non vanishing Poisson bracket. So in \( \{ H_i, H_j \} \), there are possibly the following six nonzero terms, plus \((-1)\) times a permutation \( i \leftrightarrow j \):
+    \begin{itemize}
+        \item \( -\{  y_i, a_{jrs} x^r x^s \}\) 
+        \item \( -2\,\{  y_i , b_{jr}^s x^r y_s \} \)
+        \item \( 2 \, \{ a_{irs} x^r x^s, b_{jt}^{u} x^t y_u \} \)
+        \item \(  \{ a_{irs} x^r x^s, c_{j}^{t u} y_t y_u \} \)
+        \item \(2 \{ b_{ir}^s x^r y_s , c_{j}^{t u} y_t y_u \} \)
+        \item \(4 \{ b_{ir}^s x^r y_s ,b_{jt}^u x^t y_u\} \)
+    \end{itemize}
+
+    The Poisson bracket satisfies Leibniz rule: 
+    \[ \{ f g  , h \}  = \{ f, h \} g + f \{g,h\}, \] 
+    or alternatively  
+    \[ \{ f , g h \} = \{ f,g\} h + g \{ f , h\}, \]
+    so we use this to find find the Poisson bracket of higher degree terms.
+    
+    The first term:
+    \begin{align*}
+      -\{  y_i, a_{jrs} x^r x^s \}   & = -a_{jrs} \{ y_i, x^r x^s  \} ,\\
+                                     &= -a_{jrs} \left( \{ y_i, x^r\} x^s + x^r \{ y_i, x^s \} \right) ,\\ 
+                                     &= - a_{jrs} \left( \delta_i^r x^s + x^r \delta^s_i \right) ,\\
+                                     &= - 2 \, a_{jis} \, x^s,
+    \end{align*}
+    by symmetry of \(a\). So this will also vanish in \( \{ H_i, H_j \} \).
+    
+    The second term
+    \begin{align*}
+        -2\,\{  y_i , b_{jr}^s x^r y_s \} &= -2 \, b_{jr}^s \{y_i, x^r y_s\}, \\
+                                          &= -2 \, b_{jr}^s \left( \{y_i, x^r\}  y_s + x^r \{ y_i ,y_i\} \right), \\
+                                          & = -2 \, b_{ji}^s \, y_s.
+    \end{align*}
+    The other term gives \(  2 b_{ij}^s y_s \).  Since \( \{ H_i , H_j \} = g_{ij}^k H_k \), this gives
+    \( g_{ij}^k = 2 \left( b_{ji}^k - b_{i j}^k\right) \) which matches Kontsevich and Soibelman's calculation. 
+    
+    For the third term:
+    \begin{align*}
+        2 \, \{ a_{irs} x^r x^s, b_{jt}^{u} x^t y_u \} &= 2 \,a_{irs}\,  b_{jt}^u \{ x^r x^s, x^t y_u \} ,\\
+                                                       &= 2 \,a_{irs}\,  b_{jt}^u  \left( \{  x^r x^s, x^t \} y_u +  x^t \{ x^r x^s , y_u \} \right),\\
+                                                       &= 2\, a_{irs} \, b_{jt}^u \, x^t \left( \{ x^r  , y_u \} x^s + x^r \{ x^s, y_u \}  \right),\\
+                                                       &= -2\, a_{irs} \, b_{jt}^u \, x^t \left( \delta^{r}_u x^s + x^r \delta^s_u \right),\\
+                                                       &= -2 \, a_{irs} \, b_{jt}^r x^t x^s - 2 \, a_{irs} \, b_{jt}^s x^t x^r,\\
+                                                       &= -2 \left( a_{ikt} \, b_{js}^k  + \, a_{itk} \, b_{js}^k \right) x^s x^t,\\
+                                                       &= -4 \, a_{ikt} \, b_{js}^k  \, x^s x^t.
+    \end{align*}
+    So there is also a \( 4 \,a_{jks}\,  b_{it}^k \, x^s \, x^t\) term.
+
+    The fourth term:
+    \begin{align*}
+        \{ a_{irs} x^r x^s, c_{j}^{t u} y_t y_u \} & = a_{irs} \,c_j^{tu} \{ x^r x^s, y_t y_u \},\\
+                                                   &= a_{irs}\, c_j^{tu} \left( \{x^r , y_t y_u \} x^s + x^r \{ x^s , y_t y_u \} \right) ,\\
+                                                   &= a_{irs}\, c_j^{tu} \left( \left( \{x^r , y_t  \} y_u + y_t \{ x^r, y_u \} \right) x^s + x^r \left( \{ x^s , y_t  \} y_u + y_t \{ x^s , y_u \} \right) \right) ,\\ 
+                                                   &= -a_{irs} \, c_j^{tu} \left(    y_u x^s \delta^r_t + y_t x^s \delta^r_u  + x^r y_u \delta^s_t  + x^r y_t \delta^s_u  \right) ,\\ 
+                                                   &= - \left( a_{irs} \, c_j^{ru} x^s y_u  +  a_{irs} \, c_j^{tr} x^s y_t +  a_{irt} \, c_j^{tu} x^r y_u   +  a_{irs} \, c_j^{ts} x^r y_t   \right) ,\\
+                                                    &= - \left( a_{iks} \, c_j^{kt} x^s y_t  +  a_{iks} \, c_j^{tk}  x^s  y_t  +  a_{isk} \, c_j^{kt} x^s y_t  +  a_{isk} \, c_j^{tk} x^s y_t   \right) ,\\
+                                                    &= - 4\, a_{jks}\, c_i^{k t} \,x^s\, y_t.
+    \end{align*}
+    Likewise there is a \( 4\, a_{jrs}\, c_i^{r t} \,x^s\, y_t\).
+    
+    The fifth term should give \(y_r\, y_t\) like terms:
+    \begin{align*}
+        2 \{ b_{ir}^s x^r y_s , c_{j}^{t u} y_t y_u \} &= 2 \,b_{ir}^s \,c_j^{tu} \{ x^r y_s , y_t \,y_u\} ,\\
+                                                       &= 2 \,b_{ir}^s \,c_j^{tu} \left( \{ x^r, y_t y_u \} y_s \right) ,\\
+                                                       &= 2 \,b_{ir}^s \,c_j^{tu} \, y_s \left( \{ x^r, y_t \} y_u + y_t \{ x^r , y_u \} \right) ,\\
+                                                       &= -2 \,b_{ir}^s \,c_j^{tu} \, y_s \left( \delta^r_t y_u + y_t \delta^r_u \right) ,\\
+                                                       &= -4 b_{ik}^s c_j^{kt} y_s y_t,
+    \end{align*}
+    by symmetry of \(c\). This also gives a \(4 b_{jr}^s c_i^{rt} y_s y_t\) term.
+    
+    Finally:
+    \begin{align*}
+        4 \{ b_{ir}^s x^r y_s ,b_{jt}^u x^t y_u\}& = 4 b_{ir}^t b_{jt}^s x^r y_s - 4 b_{ir}^s b_{jt}^r x^t y_s, \\
+                                                 &= 4 \left(   b_{is}^k b_{jk}^t  - b_{ik}^t b_{js}^k \right) x^s y_t. \\
+    \end{align*}
+    Assembling the results:
+    \begin{align*} \{H_i, H_j\} =& - 2\left(  b_{ji}^k - b_{ij}^k \right) y_k  +  4 \left(  a_{jrs} b_{it}^r -  a_{irs} b_{jt}^r  \right)x^s x^t \\
+                                &+ 4\left( a_{jrs} c_i^{r t} -  a_{irs} c_j^{r t} +   b_{is}^k b_{jk}^t  -  b_{ik}^t b_{js}^k \right) x^s y_t + 4 \left(  b_{jr}^s c_i^{rt}  - b_{ir}^s c_j^{rt} \right) y_s y_t,  
+    \end{align*}
+    which is meant to match: 
+    \[ g_{ij}^k H_k = - \left( g_{ij}^k  \right) y_k + \left( g_{ij}^k  a_{kst} \right) x^s x^t + \left( 2 g_{ij}^k b_{k s }^t \right) x^s y_t + \left( g_{ij}^k c_k^{st}\right) y^s y^t. \]
+    
+    So reading off each term we find the constraints as listed:
+    \begin{align*}
+       2 \left(  b_{ji}^k - b_{ij}^k \right) &= g_{ij}^k,\\
+       4\left( a_{jks} b_{it}^k -  a_{iks} b_{jt}^k \right) &=  g_{ij}^k  a_{kst}, \\
+       4\left(  a_{jks} c_i^{k t} -  a_{ik s} c_j^{k t} +  b_{is}^k b_{jk}^t  -  b_{ik}^t b_{js}^k \right) & = 2 g_{ij}^k b_{ k s}^k, \\ 
+       4 \left( b_{jk}^s c_i^{kt}  - b_{ik}^s c_j^{kt}\right) &= g_{ij}^k c_k^{st}.
+    \end{align*}
+    
+ \section{Quantum Airy structure constraints}
+ \label{appendix:quantum_airy}
+    We use the Weyl-algebra representation \(x^i \rightarrow x^i \) and \( y_i \rightarrow \hbar \partial_i \). In the Weyl-algebra picture there is a Lie bracket of operators \( [f,g] = \frac{1}{\hbar} \left( f g - g f \right) \). Then \( [ \hbar \partial_i , x^j ] = \delta_i^j \) and \( [ x^j, \hbar \partial_i ] = - \delta_i^j \).
+    
+    Consider the quantised Hamiltonians:
+    \[ \widehat{H}_i = -\hbar \partial_i + a_{ijk} x^i x^j + 2 \hbar b_{ij}^k x^j \partial_k + \hbar^2 c_i^{jk} \partial_j \partial_k + \hbar \varepsilon_i. \]
+    The calculation of \( [\widehat{H}_i,\widehat{H}_j]= g_{ij}^k \widehat{H}_k\) is very similar to the classical case, the only difference is from terms involving an \( \varepsilon \). \( \varepsilon \) is determined by terms that give a non-symmetric constant (so all the \(x^i\) and \( \partial_j\) vanish) in the Lie bracket. This only happens with equal numbers of \( \partial \) and \( x\) terms, so there is only one expression to check:
+    \[  [ a_{irs} x^r x^s ,   \hbar^2 c_j^{tu} \partial_t \partial_u ]. \]
+    Therefore
+    \begin{align*}
+          [ a_{irs} x^r x^s ,   \hbar^2 c_j^{tu} \partial_t \partial_u ] (f) &=  \hbar a_{irs} c_j^{tu} \left( x^r x^s \partial_t \partial_u - \partial_t \partial_u x^r x^s \right)(f), \\
+                                                                             &= \hbar a_{irs} c_j^{tu} \left( x^r x^s \partial_t \partial_u (f) - \partial_t ( \delta_u^r x^s f + x^r \delta_u^s f + x^r x^s \partial_u (f)  ) \right),\\
+                                                                            &= \hbar a_{irs} c_j^{tu} \big( x^r x^s \partial_t \partial_u (f) - \delta_u^r \delta_t^s f - \delta_u^r x^s \partial_t (f)  - \delta^r_t \delta_u^s f - x^r \delta_u^s \partial_t(f), \\
+                                                                            &- \delta_t^r x^s \partial_u (f)  - x^r \delta^s_t \partial_u (f) - x^r x^s \partial_t \partial_u (f) \big).
+    \end{align*}
+    Focusing on the terms which can give a constant 
+    \[ -\hbar  a_{irs} c_j^{tu} \left( \delta_u^r \delta_t^s  + \delta^r_t \delta_u^s \right) = -2 \, \hbar \,  a_{ist} \, c_j^{st}. \]
+    So the other term will be \( 2 \, \hbar \,  a_{jst} \, c_i^{st} \). This gives an expression relating \( \varepsilon\) to the other tensors
+    \[ 2 \left( a_{jst} \, c_i^{st} - a_{ist} \, c_j^{st} \right) = g_{ij}^k \varepsilon_k. \]

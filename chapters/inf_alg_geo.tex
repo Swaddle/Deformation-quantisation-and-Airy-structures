@@ -1,0 +1,374 @@
+    \chapter{Infinite dimensional algebraic geometry} 
+    
+    \label{chapter:infalg} 
+    
+    To talk about subvarieties, schemes, deformation quantisation and corresponding modules, we want to model an infinite dimensional affine space \(\mathbb{W}\), on the infinite dimensional vector space \( W \cong \mathbf{k}^{\otimes \mathbb{N}} \oplus \mathbf{k}^{\times \mathbb{N}} \). To do this we consider \emph{colimits} and \emph{limits} of rings. This naturally leads to limits of schemes, which appear in other areas of maths such as geometric Langlands. Like in finite dimensions where we make the identification  \( \mathbf{k}^n \cong \mathbb{A}^n\), via a choice of coordinates, similarly we would like to think that \(W \cong \mathbb{W}\). However, we will just consider this at the algebraic level. The rings constructed in this chapter are an algebraic version of \( \rS(W^*)\). The important part is that \(W\) will have coordinates \(\{x^i, y_i\}\), where there are strong finiteness constraints. Instead of using topological language, in this chapter, we construct the coordinates using the notion of limits and colimits.
+    
+    First we review the categorical generalisation of inverse limits and direct limits. Note the objects constructed here are not necessarily mathematically novel, instead we explain why they are relevant in the context of Airy structures.
+    
+    %Taking a different approach, we examine an infinite dimensional schemes \( \mathbb{A}^{\mathbb{N}} \), \( \mathbb{A}^{\mathbb{R}}\), as the spectrum of some ring. It is useful to treat a Tate space \(W\) as being embeded in a product of these objects. Or from a different perspective, we examine two interesting rings and ask what sort of geometry can be described by the spectrum.
+    
+    %In the example of Tate space required for topological recursion, the space of normalised meromorphic differentials allows for finite sums of meromorphic terms. The dual of this, holomorphic differentials, allows for  infinite sums. So we need to construct the correct rings which agree with this behaviour for their linear terms.
+    
+    \section{Categorical Limits}
+    
+    
+    A \emph{limit} is a generalisation of an \emph{inverse limit}, and a \emph{colimit} is a generalisation of a \emph{direct limit}. The 
+    
+    Let \( (I, \leq)\) be an ordered set, for example \( \mathbb{N} \) or \( \mathbb{Z}\). Treating \(I\) as a category, elements of the set become objects, and for \( i \leq j\) define a  morphism as an arrow \( \phi_{ij} : i \rightarrow j\).
+    
+    \begin{defn}[directed system]
+    Let  \(\mathcal{C}\) be a category. A \emph{directed system} is a functor \( F : I \rightarrow \mathcal{C}\).
+    \end{defn}
+    
+    This means a directed system is a collection 
+    \( \langle X_i, f_{ij}\rangle\),
+    where \(X_i =F(i)\) is an object, and \(f_{ij} = F \cdot \phi_{ij} \) is a morphism, in \( \mathcal{C}\). 
+    
+    As \(F\) is a functor it preserves identity and composition:
+    \begin{itemize}
+    \item \( f_{ii} = id\)
+    \item \( f_{ik} = f_{jk} \cdot f_{ij},\)
+    so
+    \( X_i \rightarrow X_j \rightarrow X_k, \)
+    is equivalent to
+    \( X_i \rightarrow X_k\).
+    \end{itemize}
+
+    Let \( F : I \rightarrow \mathcal{C}\) be a directed system.
+    
+    \begin{defn}[Cone]
+    A \emph{cone} to \(F\), is a pair \( (C, \varphi_{\sbt})\), where \(C\) is an object in \(\mathcal{C}\), and \( \varphi_{\sbt}\) is an indexed family of morphisms in \( \mathcal{C}\), 
+    \(  \varphi_i : C \rightarrow F(i)\),
+    such that for a morphism 
+    \( \phi_{ij} : i \rightarrow j\) in \(I\), 
+    \( F(\phi_{ij}) \cdot \varphi_i = \varphi_j. \) 
+    \end{defn}
+    A \emph{co-cone} is the categorical dual of a limit. It is given by reversing the arrows in the previous definition.
+    \begin{defn}[Co-cone]
+    A \emph{co-cone} to \(F\), is a pair \((C, \vartheta^{\sbt})\), where \(C \) is an object in \( \mathcal{C}\), and  \(\vartheta^{\sbt}\) is an indexed family of morphisms in \( \mathcal{C}\),  \( \vartheta^{i} : F(i) \rightarrow C\), such that for a morphism \( \varphi_{ij} : i \rightarrow j \) in \(I\), 
+    \( \vartheta^j \cdot  F(\varphi_{ij}) = \vartheta^i. \)
+    \end{defn}
+    Note these definitions generalise to other categories in place of \(I\). Now limits and colimits are describable as a universal property involving cones.
+    
+    \subsection{Limit}
+    Let \(F\) be a directed system, so a functor \(F : I \rightarrow \mathcal{C}\).
+    \begin{defn}[limit]
+    \label{defn:limit}
+    The limit \(L\) of the functor \(F\) is a cone \( (L,f_{\sbt})\) such that for every cone \( (S,g_{\sbt})\) there exists a unique morphism 
+    \( u : S \rightarrow L\) such that \(f_{i} \cdot u = g_{i}\).
+    \end{defn}
+    
+    Limits are the terminal object in the category of cones to \(F\).  Limits are used for completions, so essentially an object that the diagram factors into. When limits exist they are unique up to an isomorphism.
+    
+    So when the limit of \(F\) exists, it is given by an object \(X\in \mathcal{C}\), and there are canonical projection morphisms \(X \rightarrow X_i\).
+
+    \begin{rem}
+    A \emph{limit} is a generalisation of an inverse limit:
+    \[ X = \lim_{\longleftarrow} X_i.\]
+    \end{rem}
+
+    
+    \begin{rem}
+    We will use the notation \( \lim_n X_n\) to denote a limit over objects \(X_n\). Objects are usually indexed by \( n\in \mathbb{N}\), and morphisms will be specified. 
+    \end{rem}
+    
+    \begin{ex}
+    The formal power series ring \(\mathbf{k}\lBrack \hslash \rBrack\) is constructed via a limit.
+    \[ \mathbf{k}\lBrack \hslash \rBrack = \lim_n \mathbf{k}[\hslash] / \hslash^{n}. \]
+    In this case the functor maps objects \(F(n) = \mathbf{k}[\hslash] / \hslash^{n}\), and morphisms \(n \rightarrow n+1\) as an embedding.
+    \end{ex}
+    
+    
+    
+    \subsection{Colimit}
+    
+    A colimit is a categorical dual of a limit, given by reversing all the arrows in definition for limit. A colimit essentially glues together all objects in a diagram. 
+    \begin{defn}[Colimit]
+    \label{defn:colimit}
+    The colimit \(C\) of the functor \(F\) is a co-cone \( (C,f^{\sbt})\) such that for every co-cone \( (S,g^{\sbt})\) there exists a unique morphism 
+    \( u : C \rightarrow S\) such that \( u \cdot f^{i}  = g^{i}\).
+    \end{defn}
+    
+    Colimits are initial objects in the category of cones from \(F\). 
+    
+    So when a colimit of a functor \(F\) exists, it is given by an object \(X \in \mathcal{C}\) with inclusion morphisms \(X_i \rightarrow X\).  
+    \begin{rem} Note a colimit is a generalisation of a \emph{direct limit} \[X = \lim_{\longrightarrow} X_i.\]
+    \end{rem}
+    
+
+    \begin{lem}[Colimit of rings]
+    Consider a functor \(F : \mathbb{N} \rightarrow \mathrm{Ring}\).
+    
+    This gives an indexed family of rings, \(R_i\), with maps \( \varphi_{ij} : R_i \rightarrow R_j\), where \(i \leq j \). Then there exists a ring \(R\), with a family of ring morphism \( \varphi_i : R_i \rightarrow R\), such that \( \varphi_j \cdot \varphi_{ij} = \varphi_i\), for \( i \leq j\), satisfying the following universal property:
+    
+    For any ring \(S\), and morphisms \( \psi_i :  R_i \rightarrow S\), there exists a unique ring morphism \(\Psi : R \rightarrow S \) such that \( \psi_i = \Psi \cdot \varphi_i \). 
+    \end{lem}
+    \begin{rem}
+    We denote this as \(R= \colim_n R_n\), although we must also specify the morphisms.
+    \end{rem}
+
+    \begin{lem}[Spectrum and colimits] As \( \Spec\) is a contravariant functor:
+    \[ \Spec(\colim_n R) = \lim_n \Spec(R_n) \subset \prod_j  \Spec(R_j).\]
+    \end{lem} 
+    
+    \section{Polynomial rings in infinite variables}
+    
+    Let \( \mathbf{k} \) be a field of characteristic zero. 
+    %Consider the polynomial rings \( \mathbf{k}[x^1, \dots, x^n]\) and \( \mathbf{k}[y_1, \dots, y_m]\) in finite variables. 
+    It is possible to generate very different looking polynomial or formal power series rings in infinite variables.
+    
+    \subsection{Ind-infinite rings}
+    
+    Taking a colimit: 
+    
+    \begin{defn}[Polynomial ring in infinite variables]
+    Define the ring: \[ \mathbf{k}[x^{\sbt}] = \colim_n \, \mathbf{k}[x^1, \dots x^{n}], \]
+    where transition maps are given by inclusion of rings.
+    \end{defn}
+    
+    \(\mathbf{k}[x^{\sbt}]\) is a ring in which elements are sums of finitely many variables all bound in degree. Note we can replace the indexing of the variables, labelled here by \( \mathbb{N}\), with any countable index set. 
+    
+    Let \(X\) be a countable set. A slight generalisation of the above is the ring \( \mathbf{k}[X]\), which denotes functions \(X \rightarrow \mathbf{k}\) with finite support.
+    
+    \begin{lem} \( \mathbb{C}[x^{\sbt}]\) has maximal ideals of the form \(\mathfrak{m}_{p_{\sbt}}= \langle x^{\sbt} - p_{\sbt} \rangle =  \langle x^{1} - p_1 , \dots \rangle \).
+    \end{lem}
+    
+    Note while a maximal \( \mathfrak{m}\) is potentially \emph{infinitely} generated, elements still only look like finite combinations of the generators.
+    
+    \begin{proof}
+    Consider an evaluation map \(\phi_{p_{\sbt}} :  \mathbb{C}[x^{\sbt}]  \rightarrow \mathbb{C}\), \( \phi_{p_{\sbt}}(f) = f(p_{\sbt}) \). Evaluation is well defined as \(f(p_{\sbt})\) is a finite sum for any \(f\). The kernel is given by \( \mathfrak{m}_{p_{\sbt}}\). Then \( \mathbb{C}[x^{\sbt}]/\mathfrak{m}_{p_{\sbt}} \cong \mathbb{C}\) is a field and hence \( \mathfrak{m}_{p_{\sbt}}\) is maximal. 
+    \end{proof}
+    
+    Note in the case where \( \mathbf{k} = \mathbb{R}\) there are extra maximal ideals describing conjugate points, \( \mathbf{k}[x^{\sbt}]/\mathfrak{m} \cong  K \), where \(K\) is a finite extension, so there are maximal ideals with degree two elements.
+    
+    \begin{lem} \( \mathbf{k}[x^{\sbt}]\) is not Noetherian.
+    \end{lem}
+
+    \begin{proof}
+    For a contradiction, the ideal \( \langle x^1, \dots \rangle \) is not finitely generated.
+    \end{proof}
+
+    Geometrically, as of writing, there is not much known about \( \mathbf{k}[x^{\sbt}]\). Prime ideals of the ring \( \mathbf{k}[x^1,\dots,x^n]\) are difficult to explicitly calculate \cite{prime_ideal_n}.
+    
+    \begin{lem} The prime ideals of \( \mathbf{k}[x^{\sbt}]\) are \( \langle x^{\sbt} - p_{\sbt} \rangle \), \(0\) and irreducible polynomials bound in degree.
+    \end{lem}
+    
+    %The closed points can depend on the underlying field. In the case of \( \mathbf{k} = \mathbb{C}\), the maximal spectrum can be given the structure of an infinite dimensional \( \mathbb{C}\)-vector space.
+    
+    %\begin{lem}
+    %\(V = \mathrm{Specm}( \mathbb{C}[x^{\sbt}]) \) is a discrete topological space.
+    %\end{lem}
+    
+    %Further \(V\) is a discrete topological \( \mathbb{C}\)-vector space.  Further we can identify \(V \cong \mathbb{C}[z]\).
+    
+    \begin{defn}[Pro-infinite affine space] 
+    The limit \(\mathbb{A}^\omega = \Spec(\mathbf{k}[x^{\sbt}])\), equipped with the Zariski topology, where \(\omega\) is the first ordinal, is called pro-infinite affinie space.
+    \end{defn}
+    
+    Note \( \Spec\) is contravariant, so we have 
+    \[ \Spec( \colim_n \mathbf{k}[x^1\dots x^n]) = \lim_n \Spec( \mathbf{k}[x^1\dots x^n]),\]
+    so this is a \emph{pro-infinite} scheme.
+
+    Recall the completion studies the structure of the space around an arbitrarily small neighbourhood of a point. Completion of the ring \( \mathbf{k}[x^{\sbt}]\) at the maximal ideal \( \mathfrak{m} = \langle x^{\sbt} \rangle \) produces a ring in which elements are formal series, but only contain a finite number of terms for each degree:
+
+
+    \begin{defn}[Completed polynomial ring in infinite variables]
+    \[  \mathbf{k}\{[ x^{\sbt} ]\} = \lim_n \mathbf{k}[x^{\sbt}]/\mathfrak{m}^n.  \]
+    \end{defn}
+
+
+    \begin{lem} 
+    \( \mathbf{k}\{[ x^{\sbt} ]\}\) is not flat as a \( \mathbf{k}[x^{\sbt}]\)-module.
+    \end{lem} 
+    
+    It is possible to identify the coefficients of these polynomials with tensors. For example consider a polynomial: 
+    \[ f = a^0 + a^1_{i}x^i + a^2_{ij} x^i x^j + a^3_{ijk} x^i x^j x^k + \dots \]
+    A term like \(a^2_{ij}x^i x^j\) is equivalent to the symmetric tensor \( a^2_{ij} x^i \otimes x^j \in \Sym^2(V)\), for some vector space \(V\). In particular, in infinite dimensions, this corresponds precisely with a discrete topological vector space. If \(x^i\) is a vector in a discrete topological vector space, vectors are all finite sums \(x^{i_1} + \dots + x^{i_N}\). Taking algebraic tensor products will similarly give tensors with finite combinations of \(x^i\). So naturally
+    \( \rS(V) \cong \mathbf{k}[x^{\sbt}] \). Note \(\rS(V)\) is not the coordinate ring of functions on \(V\). In the case where \(W = V \oplus L \cong V \oplus V^*\), the ring \( \mathbf{k}[x^{\sbt}] \) gives coordinates on \(L\).
+    
+    
+    \subsubsection{Pro-infinite rings}
+    
+    Taking a limit of a polynimial ring, define:
+    \begin{defn}[Bounded formal polynomials]
+    \[ \mathbf{k}\{y_{\sbt}\} =  \lim_n\mathbf{k}[y_{1}, \dots y_n],\]
+    where projection maps \(n+1 \rightarrow n\) are given by truncating \(n+1\) variable terms by evaluating them at \(0\). 
+    \end{defn}
+    We use the curly braces to make a distinction to the ind-infinite case.
+    
+    Now elements of the limit are polynomials in infinitely many variables, but bound in degree, for example \( p = y_1 + y_2 + \dots + y_1^N + y_2^M + \dots \), \( p \in \mathbf{k}\{y_{\sbt}\}\), and \(N, M\) are finite.
+
+    Elements of \( \mathbf{k}\{y_{\sbt} \}\), are also identified with tensors or symmetric products of elements of a vector space, \( \mathbf{k}\{y_{\sbt}\} \cong \rS(L)\). We claim that \(L\) has to be a linearly compact topological vector space. Elements of a linearly compact topological vector space are naturally written as a limit:
+    \[ v= \lim_{n} \sum^{n}_{i} c^i y_i\]
+    Taking algebraic tensor products of these vectors will impose the finiteness in the degree. So naturally tensor or symmetric products look like the bounded formal polynomials. Likewise \( \mathbf{k}\{y_{\sbt}\}\) does not give coordinates on \(L\), but gives coordinates on \(V\). Elements of \(V\) are always a finite sum of vectors. So evaluating some formal bounded polynomial on a finite sum will always produce a finite value, for example, for \(v = \sum_{i=1}^N c_i x^i \in V\), and an arbitrary polynomial:
+    \[ \sum_{i_1, i_2, \dots i_M} y_{i_n} (v) y_{i_2}(v) \dots y_{i_M}(v) \]
+    \(y_{i_n}\) only pairs with finitely many of the \(x^i\), so this is a finite sum.
+
+    Maximal ideals of the ring \( \mathbf{k}\{y_{\sbt} \}\) are more complicated than \( \mathbf{k}[x^{\sbt}]\). The main issue is that evaluation is not necessarily well defined.
+    
+    
+    \begin{defn}[Ind-infinite affine space]
+    The limit \( \mathbb{A}^{\infty} =  \Spec(\mathbf{k} \{ y_{\sbt} \}) \), equipped with the Zariski topology, is called ind-infinite affine space.
+    \end{defn}
+
+    Again as \( \Spec\) is contravariant:
+    \[\Spec( \lim_n \mathbf{k}[y_1 \dots y_n]) = \colim_n \Spec( \mathbf{k}[y_1 \dots y_n]),\]
+    so this is a \emph{ind-infinite} scheme.
+
+    
+
+    
+    
+    %topological dual is a subset of the algebraic dual, "convergent/conts"
+    
+    Completing \(\mathbf{k}\{y_{\sbt}\}\) at a maximal ideal \( \mathfrak{m} = \langle y_1, \dots \rangle \), which is taking another limit, generates a polynomial ring in infinitely many variables and degree, a formal power series ring in infinite variables.
+    %\begin{rem}[] Note the slight abuse of notation.
+        %\( \mathbf{k}[x^{\bullet},y_{\bullet}]\) is understood as a ring of polynomials in infinite variables but bound in degree, and \(\mathrm{lim}\) is the projective limit. This is to allow formal infinite sums of variables, but the degree is bound. This is different to taking 
+        %\( \colim_n \mathbf{k}[x^{1},\dots x^n,y_{1} \dots y_n]\) which only yields finitely many varaibles.
+    %\end{rem}
+    
+
+    
+    \begin{defn}[Formal series in infinite variables]
+    Denote the completion of \( \mathbf{k} \{ y_{\sbt} \}\) at a maximal ideal as:
+    \[ \mathbf{k}\lBrack y_{\sbt} \rBrack = \lim_n \mathbf{k} \{ y_{\sbt} \}/\mathfrak{m}^n \]
+    \end{defn}
+
+    \section{Tensor products and vector spaces}
+    
+    Let \(R\) be a ring, and \(S,T\) be \(R\)-algebras.
+    \(S\) and \(T\) are both \(R\)-modules. The tensor product of these modules, \( S\otimes_R T\) is also an \(R\)-module. This module is given a ring structure as follows:
+    
+    \begin{defn}[Tensor product of algebras]
+    The algebraic tensor product, \( S \otimes_R T\), is an \(R\)-module and furthermore an \(R\)-algebra
+    with product \[ (s_1\otimes t_1)(s_2 \otimes t_2) = (s_1 s_2 \otimes t_1 t_2 ).\]
+    \end{defn}
+
+    \begin{rem}Note that every element of \(S \otimes T\) is able to be written non-uniquely as a finite sum of the form:
+    \[ \sum_{\text{finite}} s_i \otimes t_j, \]
+    for \(s_i \in S\), \(t_j \in T\).
+    \end{rem}
+
+    \begin{ex} For example consider \( S = \mathbf{k}[x_1,y_1] / \langle -y_1 + a \,x_2 \rangle \) and \( T = \mathbf{k}[x_2, y_2] / \langle -y_2 + b x_2 \rangle \) as schemes over \( R = \mathbf{k}\). The tensor product \(S \otimes_R T  = \mathbf{k}[x_1, x_2, y_1, y_2] / \langle -y_1 + a \, x_1 , -y_2 + b\, x_2 \rangle \) corresponds to a surface \( \cong \mathbb{A}_4\).
+    \end{ex}
+    
+    Note this can also be used to compute an intersection 
+    \begin{ex} Let \(R= \mathbf{k}[x,y]\). Consider the \(R\)-modules \(S = \mathbf{k}[x,y]/\langle f \rangle \) and \(T = \mathbf{k}[x,y]/\langle g\rangle \), for \(f,g \in R\), which representing subschemes in \( \Spec(R)\).  In this case \(S \otimes_R T\) represents the intersection of \(f\) and \(g\).
+    \end{ex}
+    
+    We use the tensor product in the sense of \( \mathbf{k}\)-algebras. 
+    
+    Now consider various algebraic tensor products of pro and in-infinite rings:
+    %Now consider the algebraic tensor product of the two different rings in infinite variables:
+    \[  \mathbf{k}[x^{\sbt}] \otimes_{\mathbf{k}}  \mathbf{k}\{y_{\sbt}\}, \quad \mathbf{k}[x^{\sbt}] \otimes_{\mathbf{k}} \mathbf{k}[ x^{\sbt}] , \quad  \mathbf{k}\{y^{\sbt} \} \otimes_{\mathbf{k}}  \mathbf{k}\{y_{\sbt}\}. \]
+    Recall, we want to consider coordinates on the space \(W \cong \mathbf{k}^{\otimes \mathbb{N}} \oplus \mathbf{k}^{\times \mathbb{N}} \). The natural choice in this case is \( \mathbf{k}[x^{\sbt}] \otimes_{\mathbf{k}}  \mathbf{k}\{y_{\sbt}\}\). 
+    \begin{lem}[Coordinate ring on the Tate space \(W\)]
+    \label{lem:coordring}
+    We identify the symmetric algebra on the Tate space \(W = V \oplus V^{*}\) with the ring \( \mathbf{k}[x^{\sbt}] \otimes_{\mathbf{k}}  \mathbf{k}\{y_{\sbt}\}\). 
+    \end{lem}
+    
+    
+    \begin{rem}[Notation] Note in later chapters we adopt a slight abuse of notation \( \mathrm{k}[x^{\sbt},y_{\sbt} ] \cong \mathbf{k}[x^{\sbt}] \otimes_{\mathbf{k}}  \mathbf{k}\{y_{\sbt}\}  \), to try and account for the finite dimensional case. In infinite dimensions this ring must have the special structure.
+    \end{rem} 
+    
+    \begin{rem} Note that the graded components of \( \rS(W^*) \cong \rS(W) \), \( \rS^n(W)\)  are isomorphic to \( \mathrm{Sym}^{n}(W)\), where \( \mathrm{Sym}\) uses the algebraic tensor product. Completing the coordinate ring at the maximal ideal is equivalent to completing the algebraic tensor product.
+    \end{rem}
+
+    Underlying polynomial rings, and then the rings considered in the previous  section is a the covariant \( \mathbf{k}\)-algebra functor 
+    \[ \mathbf{k}[\, \cdot \,] : \mathbf{Set} \rightarrow \mathbf{CommAlg}(\mathbf{k}).\]
+    For example to get polynomial rings we simply take a set \( \{ x_1, \dots x_n\}\), or \( \{ y_n, \dots , y_n\} \), to get a polynomial ring \( \mathbf{k}[x_1, \dots x_n]\). Then taking various limits or colimits of these sets is preserved by the covariant functor \( \mathbf{k}[ \,\cdot\, ] \).
+    \begin{rem}
+    Note in algebraic geometry, the notation \(\mathbf{k}[X]\) often means functions \emph{on} the affine space \(X = \mathbb{A}^n\). Then there is an isomorphism to a polynomial ring \( \mathbf{k}[x_1, \dots , x_n]\), where the \(x_i\) are coordinates or functions on \(X\). 
+    
+    Also note in finite dimensions, the choice of coordinates gives an isomorphism between \( \mathbb{A}^n\) and then the coordinate space \( \mathbf{k}^n\), which is similar to the situation with vector spaces. In infinite dimensions we must be more careful.
+    
+    If \(X=V\) is now a finite dimensional vector space, writing \( \mathbf{k}[V]\) is perhaps confusing notation, it does not represent what should be the coordinate ring \(\mathcal{O}(V) = \mathbf{k}[ \mathcal{B}^{\vee}] \), which are functions on \(V\).
+    \end{rem}
+    
+    
+    %In particular, example (\ref{ex:hamelandschaud}), we see see the discrete piece has a basis given by a colimit of a set \( \{ x_1, \dots x_n\} \)
+
+    %
+    %
+    
+    %\subsection{Poisson structure}
+    %Further \(W\) has strong symplectic structure, so \(W^* \simeq W\). \(\omega\) gives an isomorphism explicitly by \( w \rightarrow \omega(w, \cdot ) \).
+
+    %Treating \(x^\bullet \) and \(y_\bullet\), as vectors, they form a \emph{Schauder basis} for \(W\) as a Tate space. A symplectic form \( \omega : W \rightarrow W \rightarrow \mathbf{k}\) can be defined on these symbols when they represent this \emph{basis}; \( \omega(x^i , y_j) = \delta^i_j \), \( \omega(y_\bullet, y_\bullet) = \omega(x^\bullet, x^\bullet) = 0\). 
+
+    %A Poisson bracket can be defined on \(\mathbf{k}[x^{\sbt},y_{\sbt} ]\) via the rules \( \{ x^j,y_k \} = \delta_k^j, \{ x^j , x^k \} = 0 \) and \( \{ y_j, y_k \} = 0\). This extends to arbitrary combinations of \(x^{\sbt}\) and \(y_{\sbt}\) via Leibniz. This makes \( \mathbf{k}[x^{\sbt}, y_{\sbt}]\) a Poisson algebra.
+    
+
+    
+    \iffalse    
+    %
+    %
+    Note that we have the weak Nullstellensatz:
+    \begin{lem}
+    \(\mathfrak{m}=\langle x^{\bullet}, y_{\bullet} \rangle\) is a maximal ideal.
+    \end{lem}
+    In the sense of a limit.
+    
+    
+    %Now the formal variables can be identified with vectors in \(W\).
+    
+    %Define coordinates \(x^k \) indexed by \( \mathbb{N}\) on \(V^* := L\), and note that \( x^k \in (V^*)^* \simeq V\). Likewise there are coordinates \(y_k\) on \(V\), and also \(y_k \in  V^* \simeq L\).  Now \(x^\bullet\) and \( y_\bullet\) are coordinates on \(W\). 
+    
+    
+    %\begin{lem}
+    % \( \mathrm{S}(W^*)\): 
+    %\[ \mathrm{S}(W^*) \simeq \mathbf{k}[W] := \mathbf{k}[x^{\bullet}][y_{\bullet}]\]
+    %\end{lem}
+   
+   
+   
+    \subsubsection{Infinite affine spaces}
+    
+    We define the infinite affine spaces:
+    \begin{defn}
+    \( \mathbb{A}^{\mathbb{N}} =  \Spec(\mathbf{k}[x^{\bullet}]) \), \(\mathbb{A}^{\mathbb{R}} = \Spec(\mathbf{k}[y_{\bullet}])\).
+    \end{defn}
+    
+    The maximal spectrum contains a Tate space. 
+    
+    
+    \begin{lem}
+    \(\mathrm{Specm}(\mathbf{k}[x^{\bullet}][ y_{\bullet}])\) is isomorphic to a Tate space. 
+    \end{lem}
+    \begin{proof}
+    \( \mathrm{Specm}(\mathbf{k}[x^{\bullet}, y_{\bullet}]) \cong \mathrm{Specm}(\mathbf{k}[x^{\bullet}]) \times \mathrm{Specm}(\mathbf{k}[ y_{\bullet}]) \)
+    \end{proof}
+    
+    Now taking the completion of \( k[x^{\bullet},y_{\bullet}] \) at the maximal ideal:
+    \[  \mathbf{k}\lBrack x^{\bullet}  y_{\bullet} \rBrack = \lim_n  \frac{k[x^{\bullet}, y_{\bullet}]}{\mathfrak{m}^n},\]
+    gives a ring of formal power series (terms are unbound in degree and number of variables).
+    
+    %It is useful to take a scheme theoretic version of \(W\).  The coordinates are identified with the generators for the formal \emph{coordinate ring} \(  \mathbf{k}\lBrack x^\bullet, y_\bullet \rBrack\), so these are coordinates in the algebraic sense. \(W\) can then be treated as the formal spectrum of this coordinate ring, so \(W\) is a formal scheme, \( W \simeq \mathrm{Spf}( \mathbf{k}\lBrack x^\bullet, y_\bullet \rBrack)\). 
+
+    \begin{lem}
+    \[  \Spf({\mathbf{k}\lBrack x^\bullet, y_\bullet \rBrack }) = \colim_n \Spec\left(\frac{k[x^{\bullet}, y_{\bullet}]}{\mathfrak{m}^n} \right)  \]
+    \end{lem}
+    
+    %There is a natural isomorphism between completed tensor products, and a ring of formal power series in infinite variables:
+    %\begin{lem}
+    %\[\widehat{\mathrm{Sym}}(W^*) \simeq \mathbf{k}\lBrack x^{\bullet} \rBrack \lBrack y_{\bullet} \rBrack := \mathbf{k}\lBrack W \rBrack.  \]
+    %Recalling that \( \mathbf{k}\lBrack W \rBrack \) is given by completion at the maximal ideal \( \mathfrak{m} = \langle x^{\bullet}, y_{\bullet} \rangle \). 
+    %\end{lem}
+
+    
+    %If multiplication in the coordinate ring is identified with the topological tensor product, coefficients of functions in the coordinate ring are tensors, so 
+    %\( \mathbf{k}\lBrack x^\bullet,y_\bullet \rBrack \rightarrow T(W) \), where \( T(W)\) is the \emph{free associative algebra} on \(W\):
+    %\[ T(W) = \oplus_{n=1}^\infty V^{\otimes n}, \]
+
+    %Denote \( \mathrm{Sym}(W) \subset T(V) \) to be symmetric tensors on \(W\). This can be identified with a subset of \( \mathbf{k} \lBrack W \rBrack \) (understood as \( \mathbf{k}\lBrack x^\bullet , y_\bullet \rBrack\). 
+    %
+    %
+    \fi 
+    %
+
+    %\begin{ex}
+    %Suppose \(W = \mathbf{k}\lParen z \rParen dz \), \(W\) as a ring has the \(I\)-adic topology. ... {\color{red}(explain why \(x^k \rightarrow z^k\) and \( y_k \rightarrow \frac{1}{k}z^{-k}\) make sense)}.
+    %\end{ex}
+    
+    %It will be important to keep in mind the duality between the algebraic meaning, and the tensor meaning of the variables \(x^{\bullet}\) and \( y_{\bullet}\). For clarity it is expedient to define new symbols to represent the variables as tensors: \( x^\bullet \rightarrow e^\bullet\) and \( y_i \rightarrow e_\bullet\).

@@ -1,0 +1,546 @@
+\chapter{Preliminaries}
+    \label{chapter:prelim}
+
+
+    \section{Introduction and overview}
+    
+
+    Chapter (\ref{chapter:deformation}) starts with a review of deformation quantisation. We make the observation that what is termed a generator for a cyclic DQ module, or a \emph{wavefunction} in other literature, for example in \cite{ks_airy}, should be viewed from a sheaf theoretic perspective, as modules over a deformed sheaf of algebras. We also reprove an obstruction result for the existence of quantisation with greater clarity. This chapter is reproduced mostly from our own paper \cite{swaddledef}.
+    
+    Chapter (\ref{chapter:tate}) is a description of the topology required by Kontsevich and Soibelman to define Airy structures in infinite dimensions. In particular we describe the Tate space of differentials. Apart from an attempt at a clear exposition, we also incorporate details from our joint paper \cite{chaimanowong2020airy} proving some geometrical details. Chapter (\ref{chapter:infalg}) is an algebraic analog for the coordinate rings on Tate spaces. 
+    
+    Chapter (\ref{chapter:airy}) gives the definition of an Airy structure. Airy structures were originally defined by Kontsevich and Soibelman,  \cite{ks_airy}. Our contribution is an attempt at describing them from a more algebraic geometric perspective, and a graphical algorithm to compute terms in some resulting power series.
+    
+    Chapter (\ref{chapter:symplecticreduction}) explains a process known as symplectic reduction. In particular, we investigate the symplectic reduction of wavefunctions, which are defined in chapter (\ref{chapter:deformation}).
+    
+    Chapter (\ref{chapter:Atensor}) is based on our paper with Paul Norbury, Mehdki Tavakol and Wee Chaimanowong \cite{chaimanowong2020airy}. We mostly reproduce the contents of the paper, but it is appropriate here as it represents a coalescence of the previous chapters into an interesting result. 
+    
+    Previous work, \cite{chaimanowong2020airy, abcd, higherairy, eynard_orantin} studied various additional aspects of Airy structures. \cite{chaimanowong2020airy} was primarily concerned with aspects of symplectic reduction, while \cite{abcd} studies classifications of Airy structures. Following ideas from Kontsevich and Soibelman, the overall goal of this thesis is to fill in a missing link, and relate aspects of \emph{Airy structures} and \emph{topological recursion} using \emph{deformation quantisation}. The deformation quantisation aspect was not present in \cite{chaimanowong2020airy} and \cite{abcd}, and leads to interesting insight into the objects known as wavefunctions.
+
+    
+    
+    \section{Eynard-Orantin Topological recursion}
+
+
+    \emph{\hyperref[defn:tr]{Topological recursion}}, by Eynard and Orantin \cite{eynard_orantin}, is a recursive algorithm in two non-negative integers \((g,n)\), which produces a collection of symmetric, poly-differentials, \(\omega_{g,n}\). Many interesting invariants arising from problems in enumerative geometry and string theory can be computed by topological recursion, via different choices of the initial data given by \(\omega_{0,3}\) and \(\omega_{1,1}\). Topological recursion was first studied in the context of free energies of matrix models \cite{CEyHer}. The initial data can be encoded in an object called a \emph{\hyperref[defn:spectral_curve]{spectral curve}}.
+    
+    We give a slightly different definition of spectral curve
+    to bridge the difference between the definition in \cite{eynard_orantin} and \cite{ks_airy}. Let \((X,\mathcal{O}_X) \) be a scheme over a field \( \mathbf{k}\) of characteristic zero, usually \( \mathbb{C}\).
+    \begin{defn}[Weil divisor] A \emph{divisor} \(D\) on \(X\) is a formal \(\mathbb{Z}\)-linear combination 
+    \[ D = \sum_j k_j Z_j,\]
+    where \(Z_j\) is a codimension 1 subscheme, \(k_j \in \mathbb{Z}\).
+    \end{defn}
+    %If \(X\) is a Riemann surface, codimension 1 submanifolds are points.
+    %Recall the space of K\"ahler (holomorphic) differentials is denoted \( \Omega_{\Sigma/\mathbb{C}}\). 
+    %The de-Rahm complex is \( \Omega^n_{\Sigma/\mathbb{C}} = \bigwedge^n \Omega_{\Sigma/\mathbb{C}}\).
+    
+    %\begin{defn}[Symmetric bi-differential]
+    %\end{defn}
+    Now let \( (X,\mathcal{O}_X)\) be a complex algebraic surface. For any Weil divisor \(D\) there is an associated sub-sheaf \( \mathcal{O}_X(D)\), of the sheaf  of rational functions \(\mathcal{K}_X\) on \(X\). \( D\) is called \emph{Cartier} if \( \mathcal{O}_X(D)\) is an invertible sheaf. Let \( \mathcal{M}_X\) be the sheaf of meromorphic functions.
+    
+
+    
+    \begin{defn}[Spectral curve]
+    \label{defn:spectral_curve} 
+    The tuple \( ( \Sigma, x,y,B)\) is called a \emph{spectral curve} where:
+    
+    
+    \begin{itemize} 
+    \item \( \Sigma \) is a Riemann surface.
+
+    \item \(D_\Sigma \) is a Cartier divisor.
+    
+    \item \(x \in  \mathcal{O}_\Sigma(D_\Sigma)\) is a meromorphic function, such that \(dx \in  \Omega_{\Sigma}^1 (D_\Sigma)\) is algebraic, and zeros of \(dx\) are simple. Note \(D_\Sigma\) allows for arbitrary order poles at points.
+    
+    \item  \(y \in  \mathcal{M}_\Sigma\) is a meromorphic function regular at \(D_\Sigma \).
+
+    \item  \( B \in H^0( \Sigma \times \Sigma, (\Omega_\Sigma^1 \boxtimes \Omega_\Sigma^1)(2 \triangle)) \) is a global symmetric bi-differential, \( \triangle = \mathrm{diag}(\Sigma \times \Sigma) \).
+    \end{itemize}
+    
+    
+    \end{defn}
+    Later this data will be specified by a  \emph{foliation} on a symplectic surface \(X\). \( \Sigma\) becomes a curve in \(X\), \( \Sigma \rightarrow X\). The foliation defines a divisor \(D\), and then \(D_\Sigma = D \cap \Sigma\). 
+    
+    \begin{rem}
+    \(x\) and \(y\) give a local and possibly global embedding of \(\Sigma \) into \( \mathbb{C}^2\).
+    In the latter cases, this can be considered a subvariety generated by an ideal \( \langle P(x,y)\rangle\), in \( \mathbf{k}[x,y]\), where \(P(x,y)\) is a polynomial.
+    \end{rem}
+    
+    
+    
+    %gives local (possibly global) embedding into \( \mathbb{C}^2\),
+    
+    % x,y local embedding in C^2
+    %eynard oratin start with curve in C^2
+    
+    %Define the divisor \(R\) as the formal combination of order and zeroes of \(dx\).
+    
+    Consider a spectral curve \( (\Sigma,x,y,B)\).
+    Define the divisor \(R\) as the simple zeros of \(dx\): 
+    \[ R = \{ \alpha : d x(\alpha) = 0 \} \]
+    Consider \( \alpha \in  R\), and \( U_{\alpha} \subset \Sigma\) be an open neighbourhood around \(\alpha\).
+    %\begin{defn}[Galois involution] A \emph{Galois involution} is a locally defined map \(\sigma : U \rightarrow U\), such that \( x = x \cdot \sigma \).
+    %\end{defn}
+    %Recall in complex analysis, the residue of a complex function \(f\) along a closed curve \( \gamma\) is defined as \[\Res(f,\gamma) = \frac{1}{2 \pi i} \oint_\gamma f d z. \] 
+    %\begin{defn}[Residue] The \emph{residue} is a linear functional, pairing a complex differential with a cycle:
+    %\[ \Res : H^1(\Sigma,\mathbf{k}) \rightarrow H_1(\Sigma,\mathbb{Z}) \rightarrow \mathbf{k}.\]
+    %\end{defn} 
+    %The residue defines a symplectic form on the space of meromorphic differentials.
+    %\begin{lem}[Symplectic form from residue]
+    %\[ \omega(\psi,\eta) = \sum_{\alpha \in D_\Sigma } %\mathrm{Res}(f \eta, \alpha), \]
+    %where locally \( d f = \psi\).
+    %\end{lem}
+    \begin{defn}[Local Galois involution]
+    A \emph{local Galois involution} is a map defined locally around \(\alpha \in R\), and must satisfy \( x( \sigma_{\alpha}(p)) = x(p)\) for \( p \in U_{\alpha}\), \( \sigma_{\alpha}(\alpha) = \alpha \), \( \sigma_{\alpha}(p) \neq p\), for \(p \neq \alpha \in U_{\alpha}\).
+    \end{defn}
+    This definition uniquely determines \( \sigma_{\alpha}\).
+    
+    \begin{defn}[Recursion kernel]
+    The \emph{recursion kernel} is a locally defined function \( K : U_{\alpha} \times U_{\alpha} \rightarrow \mathbb{C}\).
+    \[ K(p_1, p)  = -\frac{1}{2} \ddfrac{\int_{\sigma_{\alpha}(p)}^{p} dw \, B(p_1,w)}{(y(p) - y(\sigma(p))) \, dx(p)}. \]
+    \end{defn}
+    Note the cancellation of the differentials.
+    
+    
+    From the initial data of a spectral curve \((\Sigma, x,y,B)\) define two meromorphic differentials, \( \omega_{0,1}(p_1) = y(p_1) dx(p_1)\) and \( \omega_{0,2}(p_1, p_2) = B(p_1,p_2)\), and \(p\) is a local coordinate on \( \Sigma\).
+    
+    \begin{defn}[Topological recursion]\label{defn:tr} \emph{Topological recursion} is the collection of tensor products of meromorphic differentials \( \omega_{g,n} \in  H^0((\Sigma \setminus D_\Sigma)^n,(\Omega^1_\Sigma)^{\boxtimes n})\), which we call polydifferentials, defined by the quadratic recursive formula as follows:
+    \begin{align*} 
+    \omega_{g,n}(p_1, \dots p_n) =& \sum_{\alpha \in R } \Res_{z = \alpha}  K(p_1, p)     \Big( \omega_{g-1, n+1} (p, \sigma_\alpha(p), p_2, \dots, p_n) \\
+        &+ \sum^{'}_{\substack{g_1 + g_2 = g \\ I_1 \sqcup \, I_2 = \{p_2\dots,p_n\} }} \omega_{g_1, \# I_1+1}(p,I_1) \, \omega_{g_2, \#I_2  +1}(\sigma_{\alpha}(p), I_2) \Big),
+    \end{align*}
+    where the \( \sum^{'}\) denotes excluding \((g,n)=(0,1)\) terms, \( \sigma_{\alpha}\) is a local Galois involution around \( \alpha\), and \( \#\) denotes size of a partition.
+    \end{defn}
+    The polydifferentials \(\omega_{g,n}(p_1,..., p_n)\) are tensor products of meromorphic differentials, and are symmetric in \(p_i\) \cite{eynard_orantin}. Furthermore they have zero residue poles at \(p_i=\alpha\) for any zero \( \alpha \in R\) of \(dx\), and are holomorphic outside \(R\). 
+
+    There is a natural choice of symmetric bi-differential \(B\) called the \emph{Bergman kernel} on \( \Sigma\). First recall that associated to \( \Sigma\) is a choice of basis of homology:
+    \begin{defn}[Torelli marked basis]
+    A \emph{Torelli marked basis} \cite{bertola}, is a choice of \(2g\) cycles of homology \[  \{a_1, \dots a_g, b_1, \dots b_g\} \subset H_1(\Sigma, \mathbb{Z}).\]
+    \end{defn}
+
+    %look in paper and fix
+    
+    Now let \( \Sigma\) have a Torelli marked basis, with a choice of \(a\)-cycles, \( \{a_i\}_{i=1,...,g}\subset\Sigma\).
+    \begin{defn}[Bergman kernel]
+    The \emph{Bergman kernel} \(B(p,w)\), is a canonical, normalised, symmetric \(B(w,p)=B(p,w)\), meromorphic, bi-differential on \( \Sigma \times \Sigma\).  It is normalised by 
+    \[ \int_{p \in a_i}B(p,w)=0 \quad i=1,\dots,g. \]
+    In terms of a local coordinate \(u\) on \( \Sigma\), it is given by
+    \[ B(p,w)=\frac{du(p)du(w)}{(u(p)-u(w))^2}+\mathrm{holo}(u(p),u(w)) \]
+    where \( \mathrm{holo}\) means some holomorphic function.
+    \end{defn}
+    With the choice of Bergman kernel in topological recursion, the \( \omega_{g,n}\) inherit from \(B(z,w)\), the property that 
+    \[ \int_{p_1 \in a_k}\omega_{g,n}(p_1,\cdots,p_n) = 0.\]
+    
+    
+    Topological recursion depends only on a neighbourhood of the zeros of \(dx\), hence \(x\), \(y\) and \(B\) need only be defined locally in these neighbourhoods:
+    %check paper
+    \begin{defn}[Local spectral curve]
+    \label{defn:localspectral}
+    When \(x\), \(y\) and \(B\) are only defined locally in a neighbourhoods of zeros of \(dx\), or a point in \(R\), \((\Sigma,x,y,B)\) is  said to be a \emph{local spectral curve}.
+    \end{defn}
+    In chapter (\ref{chapter:Atensor}), \(x\) and \(y\) will be coordinates around points \(\alpha\) in a divisor \(R\), \( \alpha \in R\). In this situation we will use the notation \( x = u_{\alpha}\), \(y= v_{\alpha}\).
+
+    
+    Topological recursion can be represented graphically by figure (\ref{fig:tr}).
+    \begin{figure}[!htb]
+        \centering 
+        \input{tikz/tr.tex}
+        \caption{A diagrammatic overview of topological recursion. In this picture \(g=n=3\), and only one combination for \(g_1\) and \(g_2\) is displayed. Boundaries, drawn as a shaded ellipses represents the number \(n\). Internal holes represent the genus \(g\). }
+        \label{fig:tr}
+    \end{figure}
+    As seen in figure (\ref{fig:tr}), each \( \omega_{g,n}\) can be thought of as having an extra boundary that is capped off. \( K\) is visualised as an object with two free boundaries, no holes (the genus), and a capped boundary, like a pair of pants. \( \omega_{g,n}\) has \(n\) free boundaries, and \(1\) capped boundary. When \( \omega_{\sbt,\sbt}\) is joined with a \(K\) term, that cap is removed exposing a boundary which is glued with a leg of the \(K\) term. For the \( \omega_{g-1,n+1}\) term the uncapped boundary, or a fixed boundary, and a free external boundary join with the free boundaries of \(K\) to increase the genus, for example figure (\ref{fig:trcut}). The \( \omega_{g_1, \sbt}\) and \( \omega_{g_2,\sbt}\) are joined at the uncapped boundary with a \(K\) increasing the free boundaries.
+    \begin{figure}[!htb]
+        \centering 
+        \input{tikz/tr_cut.tex}
+        \caption{An \( \omega_{g,n}\) having a cap removed before being glued to \(K\) to increase the genus.}
+        \label{fig:trcut}
+    \end{figure}
+    
+    Visually, imagine setting the width of the tubes in the picture to zero, to produce graphs of various genus, where a boundary becomes an external vertex in the graph, and the genus of the blob matches the genus of the graph. Also consider the cap as a specially labelled external vertex or a root. Of course, there is a potential ambiguity, there are multiple graphs of genus \(g\). One constraint that will need to be imposed is that all internal vertices will be degree \(3\). Then instead of a single graph, it will then be the case that \(\omega_{g,n}\) is decomposed into a weighted sum of these possible options. For example figure (\ref{fig:trprim}), \( \omega_{2,3}\) will correspond to a sum of these graphs plus permutations. These graphs are distinct from the graphical sums considered usually for topological recursion \cite{eynard_orantin}. Airy structures will describe this procedure. 
+    \begin{figure}[!htb]
+        \centering 
+        \input{tikz/omega_graphs.tex}
+        \caption{Primitives for \( \omega_{2,3}\). In particular the graphs will correspond to coefficients of the function \( S_{2,3}(x)\) in chapter (\ref{chapter:airy}). The vertex connected to the unfilled circle is the root.}
+        \label{fig:trprim}
+    \end{figure}
+
+    
+
+    \begin{lem}[\cite{eynard_orantin}]
+    \( \omega_{g,n}\) are symmetric under permutations of the \(z_i\).
+    \end{lem}
+    This was originally proven by Eynard Orantin, but this will also be provable from the Airy structure perspective.
+    
+    A closely related object to the \( \omega_{g,n}\) are the \emph{symplectic invariants}:
+    
+    \begin{defn}[Symplectic invariants]
+    \[ F_g = \sum_{\alpha \in R} \Res_{z=\alpha}(\varphi(p) \omega_{g,1}(p) ),\]
+    where \( \varphi(p)\) is a locally defined function so \( d \varphi(p) = \omega_{0,1}(p)\).
+    \end{defn}
+
+    These appear in chapter (\ref{chapter:Atensor}). \(F_g\) are called symplectic invariants because they are conjectured to be invariant under a change of the \( (x,y)\) of the form
+    \[ ( x, y ) \rightarrow ( a \,x + b\, y, c\, x + d \,y ). \] 
+    where 
+    \[ \left( \begin{array}{cc}
+         a & b   \\
+         c & d 
+    \end{array} \right) \in \mathrm{SL}(2, \mathbb{R} ). \]
+    Furthermore, they are independent of the foliation.
+    
+    \begin{ex}[An elliptic curve]
+    Let \( \tau \) be a complex number in the upper half plane. Define \(\wp(z)\), \emph{Weierstrass's elliptic function} \cite{whitwhat} by 
+    \[ \wp(z) = \frac{1}{z^2} + \sum_{\overset{m,n \in \mathbb{Z}
+    }{ m^2 + n^2 \neq 0}} \left( \frac{1}{(z+m+n \tau)^2} -\frac{1}{(m+n \tau)^2}    \right).\] 
+    Define \( x(z) = \wp(z) \), \(y(z) = \wp'(z)\). The Bergman kernel is given by
+    \[  B(z_1,z_2) = \wp(z_1-z_2) + c(\tau) \,dz_1 dz_2,\]
+    where \( c(\tau)\) is chosen so \(a\)-periods vanish.
+    \( x\) and \(y\) can be shown to satisfy a polynomial equation of the form 
+    \[ y^2 = 4 x^3 + g_2 x + g_3,\]
+    where \(g_2\) and \(g_3 \in \mathbb{C}\) depend on \( \tau\).
+    This defines a spectral curve \( (\Sigma, x,y,B)\), where \(\Sigma\) is a complex torus \( \mathbb{C}/\Lambda\), where \( \Lambda\) is a lattice in \( \mathbb{C}\), \( \Lambda = \mathbb{Z} + \tau \mathbb{Z} \).
+    \end{ex}
+    
+
+    \section{Poisson schemes}
+    Recall the definition of a Poisson algebra  \cite{jordan}:
+
+    \begin{defn}[Poisson algebra]
+            Let \( \mathbf{k} \) be a field. A \emph{Poisson algebra}, \(P\), is an associative \( \mathbf{k} \)-algebra, equipped with an extra operation called the \emph{Poisson bracket}, \( \{ \cdot  , \cdot  \} : P \otimes_{\mathbf{k}} P \rightarrow P\). The Poisson bracket is bilinear,
+            anti-symmetric, alternating, satisfies the \emph{Jacobi identity}:
+            \[ \{ f, \{g,h\} \} +\{ h, \{f,g\}\} + \{ g ,\{h,f\}\} = 0\] 
+            and the \emph{Leibniz rule}:
+            \[ \{ f, g \cdot h \} = \{f,g\}\cdot h + g \cdot \{ f , h\}.\]
+    \end{defn}
+    
+    \begin{defn}[Poisson scheme]
+        A scheme \((X, \mathcal{O}_X)\) is \emph{Poisson} if \( \mathcal{O}_X\) is a sheaf of Poisson algebras.
+    \end{defn}
+    
+    Consider a Poisson variety \( (X,\mathcal{O}_X)\) and a genus \(g\) curve \(\Sigma\) inside \( X\), so \( \Sigma \rightarrow X\). 
+    
+    
+    Let \( \mathcal{B}\) be the deformation space of \( \Sigma\) inside \(X\).  The cohomology group \[ H^0(\Sigma, \nu_\Sigma) \cong H^0( \Sigma, K_\Sigma) \cong \mathbb{C}^g \]
+    where \( \nu_\Sigma\) is the conormal sheaf, gives first order deformations of \(\Sigma\) in \(X\). For example, Nishinou proves that any first order deformation can be lifted to any higher order deformations, so deformations are unobstructed \cite{nishi_obs}. Then \( \mathcal{B}\) is a smooth deformation space, of dimension \(g\), where the tangent space at a point \(\Sigma\) in \( \mathcal{B}\) can be identified with the cohomology group:
+    \[T_\Sigma \mathcal{B} \cong H^0(\Sigma, \nu_\Sigma).\]
+    Note that obstructions live in the cohomology group \(H^1(\Sigma, \nu_\Sigma)\),
+    \[ H^1( \Sigma ,\nu_\Sigma) \cong H^1(\Sigma, K_\Sigma) \cong \mathbb{C} \neq 0. \]
+    Trivial \(H^1(\Sigma ,\nu_\Sigma)\) would immediately give unobstructed deformations. In this case, deformations however, we can use, for example \cite{nishi_obs}, to show there are extra conditions, which gives unobstructed deformations.
+        %canonical sheaf \( K_X\)
+        
+    Further we have the isomorphism 
+    \[  H^0(\Sigma, \nu_\Sigma) \cong H^{0}(\Sigma, K_\Sigma),\] 
+    by the adjunction formula:
+    \[ K_\Sigma \cong K_{X/\Sigma} \otimes \nu_\Sigma \cong \nu_\Sigma. \]
+    %where we call \(   H^{0}(\Sigma, K_\Sigma)\) the space of holomorphic differentials on \( \Sigma\).
+    %The deformation space \( \mathcal{B}\) is a dimension \(g\) moduli space. 
+    
+    A particular case of interest is when \(\Sigma \rightarrow  X\), where \(X = T^{*}S\) is the cotangent bundle of an algebraic surface \(S\). \(X\) is naturally equipped with a symplectic form, and singular points of the symplectic form define a divisor.
+
+    %Over \( \mathcal{B}\) we are interested in constructing a bundle or sheaf \( \mathcal{H}\) equipped with a connection. In the symplectic case the connection on \( \mathcal{H}\) is the Gauss-Manin connection.
+
+
+    %theorem 
+    
+    %
+    \section{An example Airy structure in finite dimensions}
+    \label{sec:finiteexintro}
+    Let \( \mathbf{k}\) be a field of characteristic zero. Kontsevich and Soibelman formulated topological recursion in terms of an \emph{Airy structure} \cite{ks_airy, abcd, airy_semisimple, eynard_abc}. Consider a \emph{\hyperref[defn:symplectic]{symplectic vector space}} \((W,\omega)\). An \hyperref[defn:airystruct]{Airy structure} characterises a \emph{quadratic Lagrangian} subvariety \(\mathbb{L}\) in \(W\). Quadratic means \( \mathbb{L}\) is defined by a collection of polynomials of degree \(\leq 2\). Note \(W\) has identified with a symplectic affine space.
+    %The definition applies in both finite and infinite dimensions. Associated to the tangent space of \( \mathbb{L}\), \(L= \mathcal{T}_0 \mathbb{L}\), 
+    
+    
+    %identify affine space and W
+    
+    \begin{ex} 
+    \label{ex:introconic}
+    Consider the complex conic \( \mathbb{L}\) in \( \mathbb{A}^2\) defined by the ideal:
+    \[I(\mathbb{L})=\langle-y+a\,x^2+2\,b\,x\,y+c\,y^2\rangle,\]
+    so
+    \[ \mathbb{L}  = \Spec\left( \frac{\mathbb{C}[x,y]}{I(\mathbb{L})} \right).\] 
+    \(\mathbb{L}\) is a quadratic Lagrangian subvariety in the symplectic affine space \(W \cong \mathbb{A}^2 \)
+    \end{ex} 
+    
+    
+    Example (\ref{ex:introconic}) is more fully investigated in chapter (\ref{chapter:deformation}), and provides interesting insight into the more general problem. For generating the topological recursion invariants however, \(W\) must be infinite dimensional. We consider a \(2N\)-dimensional analog first to give an overview of Airy structures.
+    
+    Consider a finite-dimensional symplectic space \((W\cong \mathbf{k}^{2N}, \omega ) \), and a quadratic Lagrangian subvariety \(\mathbb{L} \subset W \cong \mathbb{A}^{2N} = \Spec( \mathbf{k}[x_1, \dots ,x_N, y_1, \dots, y_N])\), with a Zariski tangent space \( L=\mathcal{T}_0\mathbb{L} \subset W \).  Note the identification of points in \(W\) with an affine space.
+    
+    Pick a complement \(V\) to \(L\) in \(W\), so
+    \(W \cong L\oplus V.\)
+    Then observe that the exact sequence 
+    \[0 \rightarrow L\to W\stackrel{\omega(\cdot,\cdot)}{\to} L^{\vee} \rightarrow 0 \] 
+    gives a canonical isomorphism \(V\cong L^{\vee}\), and an isomorphism 
+    \[ W\cong V^{\vee}\oplus V \cong T^{*}(V^{\vee} ),\] 
+    where \( {}^{\vee} \) denotes the \emph{\hyperref[defn:algdual]{algebraic dual}}. 
+    
+    When \(V\subset W\)  is chosen to satisfy \(W = V \oplus V^{\vee}\), the splitting of \(W\) by \(V\) is called a \emph{\hyperref[defn:polarisation]{polarisation}} of \(W\).  The polarisation defines \emph{Darboux coordinates}, which are dual vectors: 
+    \[ \mathcal{B} =  \{x^1, \dots x^N,y_1, \dots, y_N\}   \subset W^{\vee}. \] 
+    These coordinates are chosen so the symplectic form on \(W\) is given by 
+    \[ \omega=dx^i\wedge dy_i,\] where \(x^i \in V\) and \( y_i \in L\).  Naturally this gives coordinates on the base \( V^{\vee}\), and on the fibre \(V\), of the bundle \(T^{\vee}(V^{\vee})\). Tensor products of these dual vectors are also naturally identified with polynomials
+    \[ \mathcal{O}(W) = \mathbf{k}[\mathcal{B}^{\vee}] \cong \mathrm{S}(W),\]
+    where \( \mathrm{S}(W^{\vee}) \cong \mathrm{S}(W)\) is a symmetric algebra.
+
+%after acting by the affine symplectic group, we may assume
+    
+    Finally \(L=\langle y_i \rangle \), and the Lagrangian \(\mathbb{L}\) can be defined by
+    \[\mathbb{L}=\Spec( \mathbf{k}[x^1, \dots x^N, y_1, \dots y_N]/\langle H_i \rangle)\]
+    where \(i \) ranges from \(1\) to \(N\), and
+    \[ H_i=-y_i+a_{ijk}x^jx^k+b_{ij}^kx^jy_k+c_i^{jk}y_jy_k.
+    \]
+    Note repeated indices mean summation over \( 1\) to \(N\). The coefficients of the \(H_i\) form tensors:
+    \begin{alignat*}{3}
+    A &=(a_{ijk})  && \in V\otimes V\otimes V,\nonumber\\
+    B &=(b_{ij}^k) && \in V^{\vee} \otimes V\otimes V,\\   
+    C &=(c_i^{jk}) && \in V^{\vee} \otimes V^{\vee} \otimes V,\nonumber
+    \end{alignat*}
+    where 
+    \begin{align*} 
+    (a_{ijk}) &=a_{ijk}\,x^i\otimes x^j\otimes  x^k,\\ (b_{ij}^k)&=b_{ij}^k \,x^i \otimes x^j \otimes y_k, \\
+    (c_i^{jk}) &=c_i^{jk}\,x^i \otimes y_j\otimes y_k , 
+    \end{align*}
+    after identifying polynomials with tensor products of dual vectors.
+    
+    From the symplectic form \(\omega\), define a Poisson bracket, via \( \{ x^i, y_j\}  = \delta_{ij}\) and \( \{ x^i,x^j\} = \{ y_i,y_j\} = 0\). The defining functions of the Lagrangian \( \mathbb{L}\) must satisfy
+    \begin{equation}  \label{eq:hamlag}
+    \{H_i,H_j\}=g_{ij}^kH_k
+    \end{equation} 
+    where the \(g_{ij}^k\) are scalars, and are determined from the coefficients of the \(H_i\). The \(g_{ij}^k\) are called \emph{structures constants}, and determine a Lie algebra \(\mathfrak{g} \cong L \) with induced Lie bracket from the \(g_{ij}^k\) . 
+
+    The requirement that the \(H_i\) are closed under the Poisson bracket in equation (\ref{eq:hamlag}), gives constraints on the tensors \(A\), \(B\) and \(C\). First, equation (\ref{eq:hamlag}) will give \(A \in \mathrm{S}^3(V) \cong \mathrm{Sym}^3(V)\), where \(\mathrm{S}\) is the symmetric algebra. This means the coefficients \(a_{ijk}\) are symmetric, so:
+    \[ a_{ijk} = a_{\sigma(ijk)}\]
+    for any permutation \(\sigma\) of \(i\), \(j\) and \(k\). Further, the structure constants can be computed explicitly in terms of \(b_{ij}^k\): 
+    \[g_{ij}^k=2b_{ji}^k-2b_{ij}^k.\] 
+    The remaining conditions, corresponding respectively to vanishing of coefficients \( x^i x^j\), \( x^i y^j\) and \(y^i y^j\) in (\ref{eq:hamlag}), are homogeneous of degree two in the tensors and given explicitly in definition (\ref{defn:airystruct}).
+    
+    Kontsevich and Soibelman, \cite{ks_airy, abcd, higherairy} define an \hyperref[defn:airystruct]{Airy structure} to be the collection of tensors, \((A,B,C)\), on a possibly infinite dimensional vector space \(V\)
+    satisfying the appropriate generalisation of the quadratic relationships implied by (\ref{eq:hamlag}). Contractions of the tensors \((A,B,C)\) are used to produce topological recursion.
+    
+    \begin{rem} 
+    In infinite dimensions, contractions of these tensors could possibly be ill-defined, or produce infinite sums. One way to solve this problem is to define some notion of convergence. An underlying theme in this thesis, is that these contractions will end up being finite, with only finitely many non-zero terms. 
+    %In chapter (\ref{chapter:Atensor}), the \(A\)-tensor will be responsible for imposing finiteness.
+    \end{rem}
+    
+    
+    For the case in infinite dimensions, \( N \rightarrow \infty\), will require taking a limit and a colimit over the \(y_{\sbt}\) and \( x^{\sbt}\) variables respectively.  In this case \(W\) becomes a scheme with ind and proinfinite components.
+    
+    
+    The quadratic Lagrangian is described at the algebraic level, as an ideal generated by an infinite collection of quadratic polynomials (although in infinitely many variables) analogous to the \( H_i\) in the example in this section. This is given in Chapter (\ref{chapter:airy}). 
+    
+    \begin{rem} When \(W\) is infinite dimensional, although there are infinitely many variables, terms in \(H_i\) with only \(x^{\sbt}\) variables, for example \( a_{ijk}x^j x^k\), only use finitely many of the \(x^{\sbt}\). So this is still a polynomial in the normal use of the word. The \(x^{\sbt}\) have a strong finiteness constraint. The reason is that the \(x^{\sbt}\) are constructed via a colimit, or depend on the topology of the underlying vector space, see chapter (\ref{chapter:infalg}) or chapter (\ref{chapter:tate}).
+    
+    The \(y_{\sbt}\) on the other hand behave as polynomials, but are more formal. The \(y_{\sbt}\) will allow arbitrary sums, but there is a finite bound on the degree of any expression involving \(y\). We still refer to these as polynomials.
+    \end{rem}
+    
+    
+    Furthermore, taking a formal completion at the point \(0\), represented by completing the coordinate ring at the maximal ideal \( \langle x^{\sbt}, y_{\sbt} \rangle\), and solving for \(y \) as a function of \(x\), produces a formal series which under symplectic reduction, explained in chapter (\ref{chapter:symplecticreduction}), is identified with an analytic function as seen in chapter (\ref{chapter:Atensor}).
+    
+    
+    \begin{rem}
+    Note we have identified a symplectic vector space \(W \cong \mathbf{k}^2\) with the affine \( \mathbb{A}^2\), via a choice of coordinates as usual in algebraic geometry \( \mathbf{k}^2 \cong \mathbb{A}^2\). More generally, from a vector space \(W\), we can look at the symmetric algebra, \( R=\rS(W^*)\) which is a ring of polynomial functions on \(W\). The spectrum of this ring is then some affine space. The affine space and the vector space are potentially distinct objects. In particular the spectrum is the data of ideals, while \(W\) is just a vector space. However, we can think of \(W\) as being \(\mathbf{k}\)-valued points, so there is a way to make an identification.
+    %Looking at \( \mathbf{k}\) points, or maps \( R \rightarrow \mathbf{k}\)
+    
+    To avoid this issue we just think at the algebraic level in terms of the rings. Initially \(W\) will be equipped with a particular topology, the Tate topology, that will enable us to construct a symmetric algebra. From this we can consider ideals, and can take quotient rings. We think of subvarieties, for example \( \mathbb{L}\), at this algebraic level in terms of quotients and ideals. There is not a particular need to be specific about the underlying space. Indeed, in the infinite dimensional case, the notion of points in \( \mathbb{L}\) will be more subtle. It will be the case that formal neighbourhoods of \( \mathbb{L}\) in \(W\) will contain interesting information. But this is expressible at the algebraic level as a completion of a ring.
+    
+    Furthermore, deformation quantisation and the objects like wavefunctions constructed in this thesis also only appear at the algebraic level. Deformation quantisation replaces a commutative ring with a non-commutative ring, and the correct notion of space associated with the non-commutative object is an even more challenging question.
+    \end{rem}
+
+    
+
+    %compare definitions
+    
+    
+    \section{Results}
+    
+    %tr curve in single curve in family
+    %taking cohomology classes of single
+    %def quant at a point
+    %\psi_B is not tr recursion
+    % tr recursion enables us to find psi_B
+    
+    %two notions of deformation quantisations
+
+    
+    %deformation quantisation gives psi_B
+
+    %deformation quantisation aspect of ABCO and our paper
+    
+    
+    % B is formally algebraic in infinite dimensions
+    
+    One key idea of Kontsevich and Soibelman is to study \cite{ks_airy} the deformation space \( \mathcal{B}\) of \(\Sigma\) in \(X\), with the aim to naturally define the recursive relations given in definition (\ref{defn:tr}). Associated to \( \Sigma\) is an infinite dimensional vector space \(V_\Sigma\) of residueless differentials on \(\Sigma\). Consider the quotient vector space, which we denote with \( \overline{\cdot}\), so \( V_\Sigma \rightarrow \overline{V}_\Sigma \subset H^1( \Sigma, \mathbb{C}) \) of corresponding cohomology classes. There is an infinite dimensional analog from the example in section (\ref{sec:finiteexintro}), where \(W\) is now an infinite dimensional symplectic vector space, \(W_\Sigma = V_\Sigma \oplus V_\Sigma^*\), a quadratic Lagrangian, and a collection of tensors \( A_\Sigma\), \(B_\Sigma\), and \(C_\Sigma\) defining an Airy structure. Interestingly one purpose of the Airy structure, or the quadratic lagrangian, is to treat the moduli space \(\mathcal{B}\) algebraically, albeit in infinite dimensions.
+
+    
+    \subsection{Deformation quantisation and Airy structures}
+    
+    The following results explain the connection between \emph{deformation quantisation} and topological recursion as understood from the Airy structure perspective. We argue topological recursion, or more specifically, how it arises from an Airy structure, can be seen as a result of the deformation quantisation of a sheaf supported on a Lagrangian subvariety \( \mathbb{L}\). 
+    Deformation quantisation replaces commutative rings with non-commutative rings.
+    
+    We propose what is usually termed a \emph{wavefunction}, which packages the topological recursion invariants into a single generating function, naturally arises from considering a particular dual module. In particular, a wavefunction on \( \cL \), \( \psi_{\mathbb{L}}\) is an element of a dual module defined from deformation quantisation.
+    
+    Theorem (\ref{thm:ksintd}), shows how these wavefunctions behave under symplectic reduction. In particular we study a wavefunction \( \psi_{\mathcal{B}}\), which is defined on a formal neighbourhood of an intersection between \(\cL\) and another coisotropic space \(G\). Further, conjectured by Kontsevich and Soibelman \cite{ks_airy}, which we verify in a particular case, is an integral formula relating several wavefunctions:
+    \begin{thm}[\cite{ks_airy}]
+    \label{thm:ksintd}
+    \[ \psi_{\mathcal{B}} = \int \psi_{G} \, \psi_{\cL }\]
+    \end{thm}
+    \( \psi_{\mathcal{B}}\) is also a function on formal neighbourhoods of \( \mathcal{B}\).
+    
+    Note that \(G\) needs to be mapped into a bigger space \(X=W \oplus G/G^{\perp}\), where \(G^{\perp}\) is the symplectic complement. This is so the image of \(G\) in the natural map \(W \rightarrow X\) is a Lagrangian, and then this is used to define \( \psi_G\). In the particular example required for topological recursion, \(G\) is not a graph in \(W\), but with the extension from \(W\) to \(X\), it can be written as a graph of a differential.
+    
+    In \(W\), and hence in \(X\), as \(\mathbb{L}\) is a Lagrangian in \(W\), it can locally be written as a generating function \[ y_i(x^{\sbt}) dx^i = d S_{0}(x^{\sbt}), \] which we also write as \[y=\mathrm{graph}(d S_0(x^{\sbt})).\] Similarly the image of \(G\) as a Lagrangian in \(X\), is also written as \[ (y_{\sbt},w_{\sbt}) =\mathrm{graph}( d Q(x^{\sbt},z^{\sbt})),\] where \(w_{\sbt},z^{\sbt}\) terms depend on the extension, and \(Q\) is a quadratic. The corresponding wavefunctions contain a lot of geometric data, in particular they contain the integral of the generating functions. To order \( 1/\hslash\):
+    \[ \psi_{\mathbb{L}}(x^{\sbt}) = \exp\left( \frac{1}{\hslash} S_0 + O(\hslash^0)\right),\]
+    where we write \( O(\hslash^0) \) to mean some additional function expanded in a series of \(\hslash\), starting with order \(\hslash^0\). Also
+    \[ \psi_{G}(x^{\sbt},z^{\sbt}) = \exp\left( \frac{1}{\hslash} Q(x^{\sbt},z^{\sbt}) \right).\]
+    The relationship between \( \psi_{\mathbb{L}}\) and \( \psi_{\mathcal{B}}\), in theorem (\ref{thm:ksintd}), follows from an algebraic expression of \( \mathcal{B}\) in infinite dimensions, \( \widehat{\mathcal{B}} \cong \mathbb{L} \cap G\), where \( \widehat{\mathcal{B}} \rightarrow \mathcal{B}\) is a formal neighbourhood of a point. 
+    
+    \( \mathcal{B}\) embeds as a Lagrangian \(\mathcal{B} \rightarrow \mathcal{H} =G/G^{\perp} = H^1(\Sigma, \mathbb{C})\). \(\mathcal{B}\) is also locally represented by the graph of the \emph{prepotential} \( F_0(z^{\sbt})\), \( \mathrm{graph}(d F_0)\), with respect to the polarisation 
+    \[ \mathcal{H} = T^* H^0( \Sigma, K_\Sigma ). \]
+    So we prove the wavefunction on \( \mathcal{B}\) is of the form:
+    \begin{prop}
+    \begin{equation} 
+    \psi_{\mathcal{B}} = \exp\left( \frac{1}{\hslash} F_0 + O(\hslash^0) \right).
+    \end{equation}
+    \end{prop}
+    This proposition is a new result, and appears later in chapter (\ref{chapter:Atensor}), in proposition (\ref{prop:fourierB}).
+    
+    This behaviour is captured exactly by an integral of the form:
+    \[ \exp\left( \frac{1}{\hslash} F_0(z^{\sbt}) + O(\hslash^0) \right) = \int Dx^{\sbt} \exp\left( \frac{1}{\hslash} \left( \underbrace{Q_1(x^{\sbt},z^{\sbt}) + Q_2(z^{\sbt},z^{\sbt})}_{=Q}\right)\right) \exp\left( \frac{1}{\hslash} S_0(x^{\sbt}) + O(\hslash^0)\right),\]
+    where \( Dx^{\sbt}\) means integration over all the \(x^{\sbt}\) variables. This provides an alternative proof for the next result, which is also a generalisation of work done by Baraglia and Huang \cite{bhuespe}.
+
+    \subsection{Deformation of curves in surfaces}
+
+    
+    A new result, published in joint work of ours \cite{chaimanowong2020airy}, is that the tensor \(A_\Sigma\) can this be used to produce the \emph{Donagi-Markman cubic}. This generalises the result of previous work by Baraglia and Huang \cite{bhuespe}:
+
+    \begin{thm}  \label{main}
+    The image of the tensor \(A_\Sigma\) under the quotient map \(V_\Sigma \rightarrow \overline{V}_\Sigma\) is the tensor \(\bar{A}_\Sigma\), which is the \emph{Donagi-Markman cubic}
+    \begin{align}  \label{tensquot}
+        V_\Sigma\otimes V_\Sigma\otimes V_\Sigma& \longrightarrow\overline{V}_\Sigma\otimes\overline{V}_\Sigma\otimes\overline{V}_\Sigma\\
+    A_\Sigma& \longrightarrow \bar{A}_\Sigma.\nonumber
+    \end{align}
+    \end{thm}
+    Theorem (\ref{main}) appears in chapter (\ref{chapter:Atensor}), theorem (\ref{thm:main}).
+    
+    However, understanding \( \mathcal{B}\) as a reduction, and the associated wavefunction adds additional insight into this theorem. The proof of theorem (\ref{main}) in \cite{bhuespe} is classical. In this thesis, we understand this also as a consequence of quantisation.
+    
+    Consider \(2g\) coordinates \( \{z^1, \dots , z^g, \w_1, \dots \w_g \}\) on \(H^1(\Sigma, \mathbb{C})\), which are respectively given by integrating along \(a_i\) and \(b_i\) periods of some differential \( [\vartheta]\), which is given explicitly in chapter (\ref{chapter:Atensor}).
+
+    The prepotential is a function \(F_0(z^{\sbt},\w_{\sbt})\), satisfying:
+    \[ \w_i=\frac{\partial F_0}{\partial z^i},\quad i=1,\dots,g \]
+    and also 
+    \begin{align*} \frac{\partial^2 F_0}{\partial z^i\partial z^j}&=\tau_{ij} \\ 
+    \frac{\partial^3 F_0}{\partial z^i\partial z^j\partial z^k}&=\overline{{a_\Sigma}}_{ijk}
+    \end{align*}
+    which defines the tensor \[ \bar{A}_\Sigma\in\overline{V}_\Sigma\otimes\overline{V}_\Sigma\otimes\overline{V}_\Sigma,\]
+    so 
+    \[\bar{A}_\Sigma \cong \overline{{a_\Sigma}}_{ijk} z^i z^j z^k. \]
+    Note that \(\w_{\sbt}\) and \(F_0\) can be expanded purely in terms of \(z^{\sbt}\) which is the expression \(F_0(z^{\sbt})\) in the wavefunction \( \psi_{\mathcal{B}}\):
+    \begin{prop}
+    \begin{equation}
+        \psi_{\mathcal{B}}(z^1, \dots,z^g) = \exp \left( \frac{1}{2\, \hslash} \left(  z^j \, \w_j(z^{\sbt}) \right)+ O(\hslash^0) \right) 
+    \end{equation}
+    \end{prop}
+    This appears in chapter (\ref{chapter:deformation}), proposition (\ref{prop:transgen}).
+    
+    In chapter (\ref{chapter:Atensor}) we explicitly compute some terms in \(F_0\).
+    Now we note that the generating function \[S_0(x^{\sbt}) =\frac{1}{3} a_{ijk} x^i x^j x^k + \dots, \] for \( \widehat{\mathbb{L}} \), explicitly contains a degree \(3\) term giving \( A_\Sigma = a_{ijk}x^i x^j x^k\). The wavefunction on \( \mathbb{L}\) is of the form:
+    \[ \psi_{\mathbb{L}}(x^{\sbt}) = \exp\left( \frac{1}{\hslash} S_0(x^{\sbt}) + \dots \right) = \exp \left( \frac{1}{3 \hslash} a_{ijk}x^i x^j x^k + \dots \right). \]
+    It has to precisely be the case that the degree \(3\) term in \(F_0\) matches precisely with the reduction of \(A_\Sigma\), \( \overline{A}_\Sigma = {\overline{a}_\Sigma}_{ijk} z^i z^j z^k\). This is encoded in the wavefunction:
+    \[ \psi_{\mathcal{B}}(z^1, \dots,z^g) = \exp\left( \frac{1}{2\, \hslash} \tau_{ij}  z^i z^j \right) \exp \left(  \frac{1}{3\, \hslash} {\overline{a}_\Sigma}_{ijk} z^i z^j z^k + \dots \right). \]
+    Note the degree \(2\) term is from how \( \mathcal{B}\) is defined as an intersection. 
+    %a tensor
+    
+    %topology of 
+        
+    %cubics
+    
+    %epsilon tensor
+    
+    %poisson reduction via integral formula
+    
+    
+    
+    
+    
+    %% Intro
+    
+    %% What is the thesis about
+    
+    %% three papers KS, ABCO, CNST
+    
+    %% ABCO, CNST missing deformation quantisation
+    
+    %% ABCO missing deformation quantisation
+    
+    %% filling in the issue, created an issue
+    %% deformation quantisation 
+    
+    %% thesis fills the gap with def quant
+    %% shows the relationship with deformation quant
+    
+    %% why is the donagi markman cubic in the integral
+    %% why the donagi markman cubic comes from \psi_B 
+    
+    
+    %% donagi markman cubic takes 3 vector
+    %% 
+    
+    %% more content in the intro
+    
+    %% fibre product of schemes
+    
+    %% more stuff in example
+    
+    
+    
+    %E_h is the only stuff we know how to construct, existence result, not the only one we are interested in
+    %existence proven via construction
+    % the module more than the wavefunction
+    
+    
+    %turn it around
+    
+    %generators of ideal
+    
+    %A. J on the generators,
+    %in commutative case dont need to take generators
+    
+    
+    % 0 -> I -> R ->  R/I ->0
+     %          ^
+    %           |
+    % 0 -> S.I > S -> R/I -> 0 
+    
+    
+    %so only take generators
+    
+    %constructed on the generators
+    % only construct on generators
+    
+    
+    %taking generator set
+    
+    
+    %classical case, generator
+    %the modules we construct are based on choosing the generators
+    
+    %coordinates x^i extend to darboux coordinates
+    
+    % x^i extend to y^i 
+    
+    % polarisation
+    
+    % graph d S_0  = L      dS_0/dx_i = y_i
+    % d S_0 no coordinates more than x 
+    
+    
+    % choose coordinates x^1, ... x^n dS0_i,,,, dS_0,n
+    
+    %canonical coordinate changes for x^i, 
+    
+    
+    % independent of the choice
+    
+    % J is not a subset J_h 
+    
+    % H not subset of I 
+    % has to be on generators
+    

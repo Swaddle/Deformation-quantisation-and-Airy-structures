@@ -1,0 +1,160 @@
+\chapter{Poisson surfaces}
+
+\section{Deformations of Poisson surfaces}
+
+    Consider a Poisson variety \( (X,\mathcal{O}_X)\) with a genus \(g\) curve \(\Sigma \subset X\). The deformation space \( \mathcal{B}\) of \( \Sigma\) inside \(X\) is a moduli space of dimension \(g\). The tangent space to the moduli space at a point \(\Sigma\) can be identified with the cohomology \(T_\Sigma \mathcal{B} \simeq H^0(\Sigma, \nu_\Sigma)\), the space of holomorphic sections of the normal bundle of \( \Sigma\), where \( \nu_\Sigma\) is the conormal sheaf. Further this is isomorphic to to \( H^{0}(\Sigma, K_\Sigma)\) the space of holomorphic differentials on \( \Sigma\) by the adjunction formula:
+    \[ K_\Sigma \simeq K_{X/\Sigma} \otimes \nu_\Sigma \simeq \nu_\Sigma. \]
+    
+    Over \( \mathcal{B}\) we are interested in constructing a scheme \( \mathcal{H}\) equipped with a connection. In the symplectic case this would be the Gauss-Manin connection.
+
+\section{Hypercohomology}
+
+    Following Kontsevich and Soibelman we are interested in computing explicit examples of a \emph{hypercohomology} which corresponds to a fibre of the bundle \( \mathcal{H}\) over \(\mathcal{B}\). Elements of this hypercohomology are a Poisson generalisation of periods for a complex
+
+    Consider a Poisson variety \(X\) with a divisor \(D\), a curve \(\Sigma \subset X\), and a foliation \(\mathcal{F}\). Recall a foliation \( \mathcal{F}\) is a Lie algebriod: a bundle over \(X\), \( \mathcal{F} \rightarrow X \) and an injective map \(  0 \rightarrow \mathcal{F} \rightarrow T X\). 
+
+    \((\Sigma, D, \mathcal{F}) \) can generate the inputs for topological recursion. The foliation is used to produce a deformation space \( \mathcal{B}\) of \( \Sigma \) inside \(X\) which lets us pick two functions \(x\) and \(y\).
+
+
+%A \emph{cone} is an algebraic generalisation of a vector bundle.
+
+%\begin{defn}[cone] A \emph{cone} is the relative spectrum
+%\( \mathrm{Cone}(X,R) = \Spec_X(R) \)
+%\end{defn}
+\subsection{Definitions}
+Let \(C\) and \(D\) be abelian categories. Consider complexes \(\mathcal{C}, \mathcal{C}'\) in \(C\) 
+and a quasi isomorphism \(f : \mathcal{C} \rightarrow \mathcal{C}'\)
+
+\begin{defn}[mapping cone] Define the (mapping) \emph{cone} of \(f\) to be the complex:
+\[ \mathrm{Cone}(f)= \cC[1] \oplus \cC' = \dots \rightarrow \cC^{n} \oplus \cC'^{n-1} \rightarrow \cC^{n+1} \oplus \cC^{n} \rightarrow \dots \]
+\end{defn}
+This is the homological analog of a topological cone.
+
+Hypercohomology (and homology) are generalisations where objects are chain complexes. 
+
+Let \(F : C \rightarrow D\) be a left exact functor.  Let \( \mathcal{I}\) be a complex of injective elements in \(C\).
+
+Consider the quasi-isomorphisms \( \phi : \mathcal{C} \rightarrow \mathcal{I}\).
+
+\begin{defn}[Hypercohomology]
+The hypercohomology \( \mathbb{H}^i(\mathcal{C})\) of \(\mathcal{C}\) is the cohomology \(H^i(F(\mathcal{I}))\) of the complex \(F(\mathcal{I})\).
+\end{defn}
+\texttt{sheaf cohomology}
+
+\subsection{Curves}
+
+Let \( D_\Sigma = D \cap \Sigma\). We want to study a vector bundle \( \mathcal{H}\) over \( \cB\), with a a fibre \( \mathcal{H}_\Sigma\) at a point \( \Sigma \in \cB \). To this end Kontsevich and Soibelman introduce the hypercohomolgy:
+\[  \mathbb{H}^0(\Sigma, \mathrm{Cone}(\text{deRahm}:\mathcal{O}_\Sigma(-D_\Sigma) \rightarrow \Omega^1_\Sigma(D_\Sigma))). \]
+The Cone is understood with the deRahm complex of differentials. For a curve we have the short exact sequence
+\[ 0 \rightarrow \mathcal{O}_\Sigma(-D_\Sigma) \rightarrow \Omega^1_\Sigma( D_\Sigma) \rightarrow 0. \]
+As \(\mathcal{O}\) is an acyclic sheaf, the global section functor is exact, there is only trivial cohomology:
+\[ 0 \rightarrow \Gamma(\Sigma, \mathcal{O}_\Sigma(-D_\Sigma)) \rightarrow \Gamma(\Sigma, \Omega^1_\Sigma( D_\Sigma)) \rightarrow 0  \]
+However, taking a resolution with the constant sheaf and twisting with a divisor \(R\) generates interesting cohomology 
+\[ 0\rightarrow \Gamma(\Sigma,\mathcal{O}_\Sigma(-D_\Sigma+R)) \rightarrow  \Gamma(\Sigma,\Omega^1_{\Sigma}(D_\Sigma+R)) \rightarrow R^1 \Gamma( \dots )  \rightarrow \dots, \]
+Taking \(H^0\) will be the definition of \( \mathcal{H}_\Sigma\):
+\( \mathcal{H}_\Sigma \simeq \{ \eta \in \Gamma(\Sigma,\Omega^1_{\Sigma}(D_\Sigma+R)) , \mathrm{res}\, \eta = 0 \} / d \Gamma(\Sigma,\mathcal{O}_\Sigma(-D_\Sigma+R)). \)
+Now for a curve we also have
+ \( \mathcal{H}_\Sigma \simeq H^1(\Sigma, \mathbf{k})\).
+By Hodge decomposition there is an isomorphism 
+\[ \mathcal{H}_\Sigma \simeq H^0(\Sigma,\Omega_\Sigma^1(D_\Sigma) ) \oplus H^1(\Sigma, \mathcal{O}_\Sigma(-D_\Sigma)).\]
+
+Further \( \dim \mathcal{H}_\Sigma = 2 g + 2 | D_\Sigma| + 2 \).
+
+% global section functor \( \Gamma(\Sigma,*)\)
+
+
+\section{A simple example} 
+
+%To build some intuition consider a single fibre \( \mathcal{H}_\Sigma\).
+
+Consider a family of curves \(\mathcal{B}\), \( \Sigma\) in \( \mathbb{P}^2\) with \(D=1 \cdot 0+2 \cdot \infty\) given locally by \(  x = z + \frac{w}{z}  \), \(y=z\). 
+Then
+\( d x = ( z^2 - w)/z^2 dz\). There are poles at \( 0,\infty\) and zeros at \( \pm\sqrt{w}\). Pick \( y = z\). A basis for \( H^1(\Sigma,\mathbb{C})\) is given by \( \xi_1 = \frac{dz}{z}\) and \( \xi_2 = \frac{1}{2} ( 1/(z-\sqrt{w})^2 - 1/(z+\sqrt{w})^2) dz\). Further \(\xi_1 \in H^0(\Sigma,\Omega^1(D_\Sigma)) \cong H^0(\Sigma, K_\Sigma(D_\Sigma) )\), and \( \xi_2 \in H^1(\Sigma, \mathcal{O}_\Sigma(-D_\Sigma))\). The symplectic pairing is given by the residue \( \langle \sigma_i, \sigma_j \rangle = \Res( \xi_i \xi_j)\). 
+
+
+%A related situation is \( \mathbb{P}^1 \times \mathbb{P}^1\).
+Recall for a Riemann surface, given a basis of \(a_i,b_j\) cycles
+
+
+
+The purpose was to find coordinates \( (z,w)\) on the family \( \mathcal{B}\), a prepotential \( F(w)\) and the Poisson generalisation of a period. This can be done via the regularised integral
+\[ \frac{dF}{dw}= \int_{0+\varepsilon}^{\infty+\varepsilon} w \frac{dz}{z}.\] 
+We can break the integral up into two pieces:
+\[ \int_{0+\varepsilon}^{\infty+\varepsilon} w \frac{dz}{z} = \int_{0+\varepsilon}^1 w \frac{dz}{z} + \int_{1}^{\infty+\varepsilon} w \frac{dz}{z}. \]
+On the curve \( z^2 - x z + w   = 0\), so \( z = \frac{1}{2}\left(x\pm \sqrt{x^2 - 4 w}\right)\).
+
+At \(z=0\), pick local coordinates defined by \( \varepsilon = 1/x\) . Near \(z=0\), expanding in local coordinates \( \varepsilon\), \(z(\varepsilon) = \frac{1}{2 \varepsilon}\left(1 - \sqrt{1 - 4 w \varepsilon^2}\right)\), where \(x=1/\varepsilon\), so \( z(\varepsilon) \rightarrow 0 \) as \( \varepsilon \rightarrow 0\). Then
+\begin{align*}
+ \int_{0+\varepsilon}^{1}w \frac{dz}{z}  &= - w \log(z(\varepsilon)) = - w \left( \log(\varepsilon w) + w \varepsilon^2 + \mathcal{O}(\varepsilon^4) \right).
+\end{align*}
+So there is a contribution of  \( -w \log(w)\).
+
+Near \( z = \infty\), pick \(z(\varepsilon) = \frac{1}{2 \varepsilon }\left(1+ \sqrt{1 - 4 w \varepsilon^2 }\right)\), so \( z(\varepsilon) \rightarrow \infty \) as \( \varepsilon \rightarrow 0\). Then
+\begin{align*}
+    \int^{\infty + \varepsilon}_{1} w \frac{dz}{z} = w \log(z(\varepsilon)) = w \left( \log(1/\varepsilon) - w \varepsilon^2 + \mathcal{O}(\varepsilon^4) \right).
+\end{align*}
+So this piece has vanishing contribution to the regularised integral. 
+
+Overall
+\[ \frac{dF}{dw} = -w \log(w) ,\]
+so this gives 
+\[ F = \mathrm{const} -\frac{1}{2} w^2 \log(w)  + \frac{1}{4} w^2 = \mathrm{const}  - \frac{1}{2} (w - 1)^2 - \frac{1}{6} (w - 1)^3 + \frac{1}{24} (w-1)^4 + \dots. \]
+
+We know that \(F\) should match \(F'\):
+\[ F' = - \sum \frac{w^I}{I!} \oint \omega_{0,|I|} = \sum_n \frac{(-1)^{n-3} (n-3)! }{n!} (w-1)^n \]
+But expansion of \(F\) at \(w=1\) matches the Euler characteristics of the moduli space up to a multiple of \((-1)\), \(F=-F'\):
+\[ \chi(\mathcal{M}_{0,n}) = (-1)^{n-3} (n-3)!\]
+\[ -F = \dots + \frac{1}{n!} \chi(\mathcal{M}_{0,n})  (w-1)^n + \dots \]
+
+
+\section{Quantisation}
+
+The purpose of the calculation was to find a representative \( \vartheta\), which defines a morphism
+\[ [\vartheta] : T_\Sigma \mathcal{B} \rightarrow H^1(\Sigma,\mathbb{C}).\]
+
+This is encoding \( \mathcal{B}\) as a Lagrangian in \( \mathcal{H}\). In the symplectic case \cite{} the foliation on \(X\) is giving coordinates encoding \( \Sigma \in \mathcal{B}\), along with topological recursion, is effectively a calculation tool to find \(F\). However deformation quantisation of these objects should exist independently of the choice of foliation, so there is a universal object that encodes \(F\) not using topological recursion.
+
+The question was there a natural morphism in \( T_\Sigma \mathcal{B} \rightarrow H^1(\Sigma)\lBrack \hbar \rBrack \) in the quantum case.
+
+\begin{ex}
+Consider the conic defined by the ideal
+\[ H = -y + x^2 + 2 x y + y^2 \]
+The linearised equation gives \( L_H  = -y \). Quantising gave 
+\[ \psi = \exp\left( \frac{1}{\hslash} \int dx \,  u_0(x) + \hslash u_1(x) + \dots \right).\]
+Application of the linearised operator \(  \hslash \partial \) gives 
+\( ( u_0 + \hslash u_1 + \dots ) \psi \). In the classical case this coincides with the tangent space.
+\end{ex}
+
+
+%\[ [\vartheta]^{\text{DQ}}=\ \left( \frac{1}{\hslash} \int [\vartheta] + \hslash [\omega_{1,1}] + \hslash^2 [ \omega_{2,1}] \dots \right)\] 
+
+
+Given
+\[ [\theta] = \sum_{I} \frac{z^{I}}{\vert I \vert! } \int_{I} \omega_{0,\vert I\vert +2} \]
+
+
+Let \( \mathcal{H} \rightarrow X\) be a rank one coherent sheaf over \( X\), \( \Sigma \rightarrow X\). 
+
+%Given the ideal sheaf 
+%\[ \mathcal{J} \rightarrow \mathcal{O}_{\mathcal{H}} \rightarrow \mathcal{O}_{\mathcal{B}}\]
+
+There is a natural map between tangent sheaves
+\begin{center}
+\begin{tikzcd}
+    {\cO}_{\cH}  \arrow[r] \arrow[d] & {\cO}_{\cB} \arrow[d] \\
+        \cH &  \arrow[l] T \mathcal{B} 
+\end{tikzcd}
+\end{center}
+Quantisation should give a natural map 
+\begin{center}
+\begin{tikzcd}
+    {\cO}_{\cH} \lBrack \hslash \rBrack \arrow[r] \arrow[d] & {\cO}_{\cB} \lBrack \hslash \rBrack \arrow[d] \\ 
+        \cH &  \arrow[l] T \mathcal{B} 
+\end{tikzcd}
+\end{center}
+
+
+
+\newpage 
+
+Consider  \( \mathcal{B}\) and \( \mathcal{H}\) as a scheme. Let \( \iota : \mathcal{B} \rightarrow \mathcal{H} \) be a morphism of schemes. \( \mathcal{B}\) is Lagrangian inside \( \mathcal{H}\).

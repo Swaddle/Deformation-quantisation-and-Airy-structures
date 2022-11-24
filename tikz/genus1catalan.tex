@@ -1,0 +1,44 @@
+   \begin{tabular}{c  c  } 
+    
+    
+    \tikz [ baseline=(a.base), tree layout, significant sep=1em, grow'=up, sibling distance=7mm, level distance=7mm]
+    \graph {
+        [nodes={circle, draw, inner sep=0pt, minimum size=2mm, fill, as=}]{a -- b };
+        // [simple necklace layout, necklace routing, edges={>={Stealth[round,sep,bend]}}, nodes={circle, inner sep=0pt, minimum size=2mm, fill, as=}]{b -- c };
+        // [simple necklace layout, necklace routing, edges={>={Stealth[round,sep,bend]}}, nodes={circle, inner sep=0pt, minimum size=2mm, fill, as=}]{c -- b};
+        // [nodes={circle, fill }]{c-- d};
+    };
+    
+    &
+    \tikz [ baseline=(a.base),  tree layout, significant sep=1em, grow'=up, sibling distance=7mm, level distance=7mm]
+    \graph {
+        [nodes={circle, draw, inner sep=0pt, minimum size=2mm, as=, fill}]{a-- b };
+        // [simple necklace layout, necklace routing, edges={>={Stealth[round,sep,bend]}}, nodes={circle, inner sep=0pt, minimum size=2mm, fill, as=}]{b -- c };
+        // [simple necklace layout, necklace routing, edges={>={Stealth[round,sep,bend]}}, nodes={circle, inner sep=0pt, minimum size=2mm, fill, as=}]{c -- b };
+        // [nodes={circle, inner sep=0pt, minimum size=2mm, fill, as=}]{c -- d };
+        // [nodes={circle, fill }]{d --{e,f}};
+        };
+    \quad 
+    \tikz [ baseline=(a.base), tree layout, significant sep=1em, grow'=up, sibling distance=7mm, level distance=7mm]
+    \graph {
+        %[nodes={circle, draw, inner sep=0pt, minimum size=2mm, as =,}]{ a};
+        [nodes={circle, draw, inner sep=0pt, minimum size=2mm, fill, as=}]{a -- b -- c };
+        // [simple necklace layout, necklace routing, edges={>={Stealth[round,sep,bend]}}, nodes={circle, inner sep=0pt, minimum size=2mm, fill, as=}]{d -- c };
+        // [simple necklace layout, necklace routing, edges={>={Stealth[round,sep,bend]}}, nodes={circle, inner sep=0pt, minimum size=2mm, fill, as=}]{c -- d };
+        // [nodes={circle, fill }]{d --e};
+        // [nodes={circle, fill }]{b --f};
+        };
+    %\tikz [ baseline=(a.base), binary tree layout, significant sep=1em, grow'=up, sibling distance=7mm, level distance=7mm]
+    %\graph {
+    %    [nodes={circle, draw, inner sep=0pt, minimum size=2mm, as =}]{ a};
+    %    // [nodes={circle, inner sep=0pt, minimum size=2mm, fill, as=}]{a -- b -- c -- d};
+    %    // [simple necklace layout, necklace routing, edges={>={Stealth[round,sep,bend]}}, nodes={circle, inner sep=0pt, minimum size=0mm, fill, as=}]{ x -- d };
+    %    // [simple necklace layout, necklace routing, edges={>={Stealth[round,sep,bend]}}, nodes={circle, inner sep=0pt, minimum size=0mm, fill, as=}]{ d -- x };
+    %    // [nodes={circle, fill={pink} }]{b --f};
+    %    // [nodes={circle, fill={pink} }]{c --e};
+    %};
+
+    \\
+    &   \\ 
+    \(2 \,x\) & \( 10 \,x^2\) 
+    \end{tabular}

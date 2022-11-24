@@ -1,0 +1,1179 @@
+\chapter{Deformation quantisation}
+    \label{chapter:deformation}
+    
+    Broadly, \emph{quantisation} is an algorithm that embeds a commutative algebra inside a non-commutative algebra, preserving some structure. One approach to quantisation is \emph{deformation quantisation} \cite{chen_thesis,gunningham, k_defquant, b_defquant, quant_for_phys, k_defofPois}, motivated by quantisation in physics. Let \( \mathbf{k}\) be a field of characteristic zero.
+    Deformation quantisation seeks to replace a commutative \( \mathbf{k}\)-algebra \(A\) with a non commutative \( \mathbf{k}\lBrack \hslash \rBrack\)-algebra \( \mathcal{A}_{\hslash}\), such that under the quotient map \( \mathcal{A}_{\hslash} / ( \hslash \mathcal{A}_{\hslash}) \simeq A\). Note that deformation quantisation is generally not a quantisation rule for sections, \(a \in A \rightarrow a_\hslash \in \mathcal{A}_{\hslash}\), instead it is a global operation replacing an entire algebra or sheaf of algebras. 
+
+    %\( \mathcal{A}_{\hslash} / ( \hslash^2 \mathcal{A}_{\hslash}) \simeq A \otimes_{\mathbf{k}} \mathbf{k}\lBrack\hslash\rBrack/\hslash^2\),   
+    
+    Deformation quantisation can be applied to many different objects, for example the deformation quantisation of functions on a Poisson manifold by Kontsevich \cite{k_defofPois}. More generally for algebraic varieties and schemes one considers the deformation quantisation of sheaves, such as in \cite{yekutieli,k_defquant}. It is even possible to consider fields with positive characteristic \cite{k_holonomic}.  
+    
+    
+    In this chapter we first give a brief overview of deformation quantisation. Next we discuss the sheaf theoretic interpretation of a \emph{wavefunction}. Not to be directly confused with the term as used in physics, wavefunctions are generators of modules over a non-commutative algebra analogous to \( \mathcal{A}_{\hslash}\). These wavefunctions are studied in the context of \emph{topological recursion} and \emph{quantum curves}, where they contain interesting enumerative data \cite{norbury_quant}.
+    
+    In the context of quantum curves, a wavefunction \( \psi(x) \), is a WKB (an initialism for Wentzel Kramers Brillouin) solution to a differential equation of the form \( \widehat{H} \psi(x) = 0\), where \(\widehat{H}\) is an operator. The WKB method means looking for a series of the form \[ \psi(x) = \exp\left( \sum \hslash^g S_g(x) \right),\] where \(\hslash\) is a formal parameter. One commonly asked question, for example in \cite{norbury_quant, tudor,abpolyquant}, is if there is a canonical or natural way to relate an operator \( \widehat{H}'(x , \hslash \partial) \) and a planar curve \(H(x,y) \in \mathbf{k}[x,y]\). In this paper, we try to motivate, with an example, a sheaf theoretic explanation arising from deformation quantisation. From this perspective, the answer is no, there are multiple choices of \( \widehat{H}\) which in the classical limit (a quotient by \(\hslash\)) produces a curve \( H(x,y)\). Deformation quantisation embeds a commutative algebra \(A\) within an algebra of operators \( \mathcal{A}_\hslash \), so there is not a natural isomorphism between \( A\)-modules and \( \mathcal{A}_{\hslash}\)-modules. %However, the issue is not an ordering ambiguity. 
+    
+    Given a variety \(X= \mathrm{Spec}(A)\), we consider when there exists a deformation quantisation of \(A\), given by \(\mathcal{A}_{\hslash}\). Inside \(X\), consider a subvariety \( \mathbb{L} \subset X\), corresponding to the quotient \(E=A/I\). The quantisation of \( \mathbb{L}\) is represented by a \(\mathcal{A}_{\hslash}\)-module, \(E_\hslash\) which under a quotient map by \(\hslash\) recovers \(E=A/I\). The algebra \( E_{\hslash}\) is isomorphic with operators on \( \mathbb{L}\).
+    Correspondingly a wavefunction is an element of the dual module \(E_\hslash^*\), which is the space of maps from \(E_\hslash\) to  \(\mathcal{A}_{\hslash} \). Intuitively, the dual of an operator is something like a function, they pair with a function to produce another function. Later \(X\) will be Poisson and \( \mathbb{L}\) will be required to be coisotropic.
+    
+    Deformation quantisation is commonly achieved by taking the equations of the defining ideal \(I\), and then looking at the the quantisation \(I_{\hslash}\), which is represented by differential operators on \(X\). A wavefunction is also seen as a solution, or an annihilator, to these differential equations.
+    
+    %However it is not clear where they are defined, and appear in the literature to be constructed heuristically with a quantisation rule.
+    
+    So the purpose of this chapter is to highlight that wavefunctions arise from deformation quantisation. As an example we construct a wavefunction for the planar conic in section (\ref{sec:def_of_conic}), which gives rise to the \emph{Airy equation} \cite{airy}. 
+    
+    Note this chapter is mostly based on our own paper \cite{swaddledef}, with some edits and corrections.
+    
+    \section{Non-commutative formal deformations of the structure sheaf}
+    Let \((X,\mathcal{O}_X)\) be a scheme over \( \Spec( \mathbf{k})\), where \( \mathbf{k}\) is a field of characteristic zero.  
+
+    \begin{defn}[Formal deformation]
+    A formal deformation of \((X,\mathcal{O}_X)\) is a sheaf \( \mathcal{A}_{\hslash} \) of \( \mathbf{k}\lBrack \hslash \rBrack\)-flat, associative \( \mathbf{k}\lBrack \hslash \rBrack \)-algebras on \(X\) with the constraint that \begin{equation} 
+    \label{eqn:def_cons}
+    0 \rightarrow \hslash \mathcal{A}_\hslash \rightarrow  \mathcal{A}_{\hslash} \rightarrow \mathcal{O}_X  \rightarrow 0,
+    \end{equation}
+    is exact.
+    \end{defn}
+    In particular, for deformation quantisation, we consider when these are \emph{non-commutative} \( \mathbf{k}\lBrack \hslash \rBrack\)-algebras.
+    
+    Alternatively, the formal deformation of \(\mathcal{O}_X\) is a sheaf \( \mathcal{A}_{\hslash}\), which fits into the pullback square, induced from the sequence (\ref{eqn:def_cons}):
+    \begin{center}
+        \begin{tikzcd}                  \mathcal{O}_X\otimes_{\mathbf{k}\lBrack \hslash \rBrack } \mathcal{A}_{\hslash} \cong \mathcal{O}_X  &  \arrow[l] \mathcal{A}_{\hslash} \\
+                \mathbf{k} \arrow[u]  &  \arrow[l] \mathbf{k}\lBrack \hslash \rBrack \arrow[u] 
+        \end{tikzcd}
+    \end{center}
+    \begin{rem} 
+    Deformations are often seen in commutative contexts. For example in \cite{hartshorne_def}, a deformation refers to a family of commutative algebras giving rise to schemes. In particular \cite{hartshorne_def}, a deformation of a scheme \(X_0\), is a flat map of schemes \(\mathcal{X} \rightarrow S\) such that there is distinguished point in \(S\), so \(X_0\) fits into the following pullback diagram:
+    \begin{center}
+        \begin{tikzcd}
+            X_0 \arrow[d] \arrow[r] & \arrow[d] \mathcal{X}\\ 
+            \{ \text{pt} \} \arrow[r] &  S
+        \end{tikzcd}
+    \end{center}
+    The similarity between the deformations in \cite{hartshorne_def} and the deformations appearing here in deformation quantisation is the flatness of \( \mathcal{A}_{\hslash} \) as a \( \mathbf{k}\lBrack \hslash \rBrack\)-module, and the pullback square, even though there is not necessarily a spectrum or space associated to \( \mathcal{A}_{\hslash}\). The other difference is that there is no requirement for commutativity. Deformations in general usually only require some associative structure \cite{k_def_book}. Another example of a non-commutative deformation could be \emph{super-schemes} \cite{super}, which are \(\mathbb{Z}_2\)-graded algebras. There is a similar notion of a pullback square with a commutative algebra.
+    \end{rem} 
+    
+    A formal deformation of \( (X,\mathcal{O}_X)\) is a limit \(\mathcal{A}_{\hslash}\) given by successive non-commutative \( \mathbf{k}[\hslash]/\hslash^n\)-deformations, to give \( \mathcal{A}_{\hslash}\), a \( \mathbf{k} \lBrack \hslash \rBrack \)- deformation. 
+    \begin{center} 
+    \begin{tikzcd}
+        \mathcal{O}_X  & \arrow[l]   \mathcal{A}_1 & \arrow[l] \dots  & \arrow[l]  \mathcal{A}_{\hslash}  \\ 
+        k \arrow[u] &  \arrow[l] \arrow[u]  \mathbf{k}[\hslash]/\hslash^2  &  \arrow[l] \dots &  \arrow[l] \arrow[u] \mathbf{k} \lBrack \hslash \rBrack  
+    \end{tikzcd}
+    \end{center} 
+    
+    %\cite{hartshorne_def} gives necessary conditions for schemes and varieties, but there will be extra constraints when there is a Poisson structure.
+    
+
+    
+    %formal deformation is a flat deformation over k[h]
+    %Formal deformation quantisation of \(X\)  is an expansion of the algebra of functions on \(X\) in powers of a formal parameter \( \hslash\). Note this is in contrast to strict quantisation which would allow some evaluation in \(\hslash\).
+
+   
+    %context?
+   
+    \begin{rem} The isomorphism 
+    \( \mathcal{A}_\hslash \cong \mathcal{O}_X \otimes_{\mathbf{k}\lBrack \hslash \rBrack} \hslash \mathcal{A}_\hslash\) in diagram (\ref{eqn:def_cons}) is called an \textit{augmentation}.
+    \end{rem}
+    
+    
+    
+    \begin{defn}[Star-product]
+    \label{defn:star_prod}
+    Let \(f,g \in  \mathcal{A}_{\hslash}\) be sections. A \emph{star product}, \cite{collini}, is a \(\mathbf{k}\lBrack \hslash \rBrack \)-bilinear, associative, map
+    \(\star : \mathcal{A}_{\hslash}\otimes_{\mathbf{k}\lBrack\hslash\rBrack} \mathcal{A}_{\hslash} \rightarrow \mathcal{A}_{\hslash}\)
+    given by the formal sum:
+    \begin{equation} 
+        \label{eqn:star_prod_formal}
+        f \star g = \sum_k \omega_k(f,g) \hslash^k
+    \end{equation}
+    such that \(\omega_0 = \mathrm{prod} \), and \(\omega_k\) is a \( \mathbf{k}\lBrack \hslash \rBrack\)-bilinear map. 
+    \end{defn}
+    
+
+    \begin{corollary}
+    A choice of star product gives a formal non-commutative deformation of \( \mathcal{O}_X\). 
+    \end{corollary}
+    In particular, for deformation quantisation, this star-product will be required to satisfy extra constraints. 
+    
+    The requirement that \( \star \) is associative, recursively places constraints on \( \omega_k\). Associativity of \( \star\) means that:
+    \begin{align*}
+        (f \star g) \star h = f \star (g \star h).
+    \end{align*}
+    Substituting in the definition of \( \star\) as a formal power series, and using the initial condition \( \omega_{0}(f,g) = fg\), shows that \( \omega_k\), for \( k \geq 1\) must satisfy the recursive formula: 
+    \begin{align}
+        \sum_{j,k} \hslash^{j+k} \omega_j (\omega_k ( f ,g ),h) = \sum_{j,k} \hslash^{j+k} \omega_k(f,\omega_j(g,h)).
+    \end{align}
+    For example, looking at order \( \mathcal{O}(\hslash)\) terms gives the condition that \( \omega_1\) must satisfy:
+    \begin{align*}
+    \omega_{1}(f g, h)  +  \omega_1(f,g) h  - \omega_{1}(f, g h)  - f \omega_{1}(g,h) = 0.
+    \end{align*}    
+    \begin{rem} Note that in general, the existence of a star product is not guaranteed. At some point, solving for \( \omega_k\) can fail.
+    \end{rem}
+    
+    If we denote \( \star^{g}\) as a star product truncated to powers of \(\hslash^{g-1}\), a formal deformation is given by a limit 
+    \( \lim_g (\mathcal{O}_X \otimes_{\mathbf{k}} \mathbf{k}[\hslash]/\hslash^g, \star^g) = (\mathcal{O}_X \lBrack \hslash \rBrack, \star ) \)
+    
+    
+    %One familiar way to satisfy associativity constraints is given by a vanishing of \(H^3(X)\)
+
+    \subsection{Deformations of sheaves of \texorpdfstring{\(\mathcal{O}_X\)}{O\_X}-modules } 
+    
+    Let \((X,\mathcal{O}_X)\) be a scheme over \( \Spec(\mathbf{k})\). Let \( \mathcal{F}\) be a quasicoherent sheaf of \( \mathcal{O}_X\)-modules, and so consider \( \mathcal{F}\) as a sheaf of \( \mathbf{k}\)-modules.
+    
+    Consider a formal deformation \( \mathcal{A}_{\hslash}\) of \(\mathcal{O}_X\). The formal deformation of \( \mathcal{F}\) as a \( \mathbf{k}\)-module is given by:
+    \begin{defn}[Formal deformation of a sheaf]
+    A \emph{formal deformation} of a sheaf \( \mathcal{F}\) of \( k\)-modules is a sheaf \( \mathcal{F}_{\hslash} \) of \( \mathbf{k}\lBrack\hslash\rBrack\)-modules, such that \( \mathcal{F}_{\hslash}\) 
+    is \(\mathbf{k}\lBrack\hslash\rBrack \)-flat and satisfies: 
+    \[ 0 \rightarrow \hslash \mathcal{F}_{\hslash} \rightarrow  \mathcal{F}_{\hslash} \rightarrow \mathcal{F}  \rightarrow 0.\]
+    \end{defn}
+    %A similar definition applies for \(\mathcal{O}_X\) and \( \mathcal{A}_{\hslash}\)-modules.
+    
+    There are conditions on the existence of non trivial deformations. Theorem (\ref{thm:torsionfree}) is an obstruction to the existence of a particular formal deformation in the case of a Poisson scheme. Further note that the flatness condition rules out \( \mathcal{O}_X\) and similarly \( \mathcal{F}\) as a deformation, as \( \mathcal{O}_X\) or \( \mathcal{F}\), is not flat as a \( \mathbf{k}\lBrack \hslash\rBrack\)-algebra.
+
+    There is the possibility of multiple deformations, Let \( \mathcal{E}_\hslash \) and \( \mathcal{F}_\hslash\) be sheaves of  \(  \mathbf{k}\lBrack\hslash\rBrack\)-modules. It can be the case that \( \mathcal{E}_\hslash \ncong \mathcal{F}_\hslash\), but \( \mathcal{E}_\hslash/ \hslash \mathcal{E}_{\hslash} \cong \mathcal{F}_\hslash/ \hslash \mathcal{F}_{\hslash} = E\), where \( E \) is a sheaf of \( \mathcal{O}_X\)-modules.
+
+    %\begin{defn}[Equivalence of deformations]
+    %Two deformations \( \mathcal{F}_{\hslash}\) and \( \mathcal{F}_{\hslash}'\) of \(\mathcal{F}\) are equivalent if mod \( \hslash\) (via the quotient map) are isomorphic to \( \mathcal{F}\).
+    %\end{defn}
+    
+    %Note this is not a statement about \( \mathcal{A}_{\hslash}\)-modules in general which can be more interesting.
+ 
+    It is necessary to consider formal deformations in a neighbourhood of \(\hslash = 0\). Although sometimes written as setting \(\hslash\rightarrow 0\), this is not a well defined operation.
+    
+    \begin{defn}[Localisation] Define \( \mathcal{F}_{\hslash}^{\mathrm{loc}} \cong \mathcal{F}_{\hslash} \otimes_{\mathbf{k}\lBrack \hslash \rBrack} \mathbf{k} \lParen \hslash \rParen\), as the localisation at \( \hslash\).
+    \end{defn}
+    
+    \begin{ex}Consider \( A_{\hslash} = \mathbf{k} \lBrack \hslash \rBrack\). Then
+    \(A^{\mathrm{loc}}_{\hslash} = \mathbf{k}\lBrack \hslash \rBrack [  \hslash^{-1} ] \cong \mathbf{k} \lBrack \hslash \rBrack  [\lambda ] / ( \hslash \lambda - 1) \cong \mathbf{k} \lParen \hslash \rParen \).
+    \end{ex}    
+    
+    It will be necessary to allow \(\hslash\) to be invertible. Although in certain examples, deformation quantisation will produce a space of operators, there is not necessarily a corresponding space of solutions, unless \(\hslash\) is allowed to be invertible or non-zero. We will show this in the example of the conic, example (\ref{ex:the_conic}). This naively makes sense, as quantum objects do not necessarily need to have a classical limit.
+    
+    
+    \begin{ex}
+    \label{ex:poisson_brack}
+    The star product defines a Poisson bracket under restriction to \( \mathcal{O}_X\).
+    \( \frac{1}{\hslash} \left( f \star g - g \star f\right) \) restricted to \( \mathcal{O}_X\) is a Poisson bracket.
+    \end{ex} 
+
+    
+    
+    \emph{Deformation quantisation} of a Poisson scheme/variety is the inverse problem to example \ref{ex:poisson_brack}. Starting with the data of a Poisson scheme/variety, deformation quantisation is a formal deformation such that the star product recovers the Poisson bracket mod \( \hslash\). An example  (\ref{ex:moyal_prod}) of such a star product is called the \emph{Moyal} product.
+    
+    
+    \section{Deformation quantisation}
+   
+    %Suppose the existence of a sheaf \( \mathcal{A}_{\hslash}\).
+    
+    Starting with the data of a Poisson scheme or variety, what is termed \emph{deformation quantisation} in the literature, for example \cite{yekutieli}, is a formal non-commutative deformation with a choice of star product which recovers the Poisson bracket mod \( \hslash\).  Deformation quantisation is the inverse problem to example (\ref{ex:poisson_brack}). Deformation quantisation is a choice of star product that agrees with the Poisson structure. Note that deformation quantisation occurs at the level of functions, the meaning of some space associated to these non-commutative objects is not clear.
+    
+    Note in the following sections, for a module \(M_0\), we use the notation that
+    \( M_0 \lBrack \hslash \rBrack = \lim_n (M_0 \otimes_{\mathbf{k}} \mathbf{k} \lBrack \hslash \rBrack)  / ( 1 \otimes_{\mathbf{k}} \hslash)^n\).
+    
+
+    
+    \subsection{Poisson bi-vectors and bi-maps}
+    
+    Let \( (X,\mathcal{O}_X)\) be a Poisson scheme over a field \( \mathbf{k}\), which means it is equipped with a \emph{Poisson bracket}, a skew-symmetric bilinear map on sections \( \{ \cdot ,\cdot \} : \mathcal{O}_X \otimes_{\mathbf{k}} \mathcal{O}_X \rightarrow \mathcal{O}_X \), satisfying the Leibniz rule and the Jacobi identity. The data of a Poisson bracket is captured in an object called a \emph{Poisson bi-vector}:
+
+    \begin{defn}[Poisson bi-vector]
+    \label{defn:bi_vect}
+    A \emph{Poisson bi-vector} is a choice \( \Pi \in   H^0(X,\bigwedge^2 \mathcal{T}_X) \), such that for local sections \( f ,g : \mathcal{O}_X\), the Poisson bracket is computed via
+    \begin{equation}
+    \label{eqn:bi_vect}    
+    \{ f,g\} = (df \otimes_{\mathbf{k}} dg ) ( \Pi) = \sum_{i<j} \pi^{ij} \partial_i f \partial_j g.
+    \end{equation}
+    where \( \Pi =  \frac{1}{2} \pi^{ij} \frac{\partial}{\partial x_i} \wedge \frac{\partial}{\partial x_j} \), and \( \pi^{ij}\) is skew-symmetric.
+    %= (df\otimes dg )(\Pi) 
+    \end{defn}
+    
+    \begin{ex} 
+    A bi-vector identified with derivations acts as  map \( \mathcal{O}_X \otimes_{\mathbf{k}} \mathcal{O}_X \rightarrow \mathcal{O}_X\). It takes a pair of functions and produces a function, via the formula 
+    \[ (X \wedge Y) ( f \otimes_{\mathbf{k}} g) = X (f) Y (g) - Y (f) X (g). \]
+    Alternatively a bi-vector can be evaluated by a bi-differential to produce a function.
+    
+    Consider a two dimensional example with canonical coordinates \( (x_1,x_2)\), so \( \pi_{12}=1\), \(\pi_{21} = -\pi_{12}\), \(\pi_{11}=\pi_{22}=0\), and 
+    \[ \Pi = \frac{1}{2} \pi^{ij} \frac{\partial}{\partial x_i }\wedge \frac{\partial}{\partial x_j } =  \frac{\partial}{\partial x_1 }\wedge \frac{\partial}{\partial x_2 }.\]
+    Taking the differential 
+    \( ( d f \otimes d g )\) and evaluating on \( \Pi \) gives
+    \[ ( d f \otimes d g )( \Pi ) =  \frac{ \partial f}{\partial x_1}\frac{\partial g}{\partial x_2} - \frac{\partial f}{\partial x_2 }\frac{\partial g}{\partial x_1}.\]
+    This matches the application
+    \[ \frac{\partial}{\partial x_1 }\wedge \frac{\partial}{\partial x_2 } ( f \otimes g) = \frac{ \partial f}{\partial x_1}\frac{\partial g}{\partial x_2} - \frac{\partial f}{\partial x_2 }\frac{\partial g}{\partial x_1}. \] 
+    
+    
+    %\[ \{ f,g\}= \frac{ \partial f}{\partial x_1}\frac{\partial g}{\partial x_2} - \frac{\partial f}{\partial x_2 }\frac{\partial g}{\partial x_1}.\]
+    \end{ex}
+    
+    
+    
+    Closely related to the bi-vector \( \Pi\), is an endomorphism  \( \pi\), such that \( \pi : \mathcal{O}_X \otimes_{\mathbf{k}} \mathcal{O}_X \rightarrow \mathcal{O}_X \otimes_{\mathbf{k}} \mathcal{O}_X\).
+    \( \pi \) is built from the coefficients of \( \Pi\), as follows:  
+    \[ \pi(f\otimes_{\mathbf{k}} g) = \pi^{ij} \partial_i (f) \otimes_{\mathbf{k}} \partial_j (g).\]
+    
+    The difference between the two is an application of a natural linear map \( \mathrm{prod} : \mathcal{O}_X \otimes_{\mathbf{k}} \mathcal{O}_X \rightarrow \mathcal{O}_X\), which is the pointwise product of functions: 
+    \[ \mathrm{prod}(f \otimes_{\mathbf{k}} g ) = f g.\]
+    Composing \(\pi\) with \( \mathrm{prod} \) gives the Poisson bracket:
+    \[ \mathrm{prod} \circ \pi (f\otimes_{\mathbf{k}} g) = \{ f, g\}. \]
+    Note that \( \mathrm{prod} \circ  \pi \) satisfies the property, \( \mathrm{prod} \circ  \pi ( f \otimes_{\mathbf{k}} g) = -\mathrm{prod} \circ  \pi ( g \otimes_{\mathbf{k}} f ) \), by the skew-symmetry of the \( \pi^{ij}\).
+
+    
+    
+    \begin{defn}[Poisson endomorphism or bi-map]
+    Define the map \( \pi : \mathcal{O}_X \otimes_{\mathbf{k}} \mathcal{O}_X \rightarrow \mathcal{O}_X \otimes_{\mathbf{k}} \mathcal{O}_X\) to satisfy:  
+    \[  \mathrm{prod} \circ \pi (f,g) = \{ f, g\}. \]
+    \end{defn}
+    
+    %Picking local coordinates
+    %\[ \hat{\Pi} = \sum_{i>j} \Pi^{ij} \frac{\partial}{\partial x_i }\wedge \frac{\partial}{\partial x_j}.\]
+    
+    %In local coordinates \( \Pi_{ij} = \{ x_i , x_j \} \).
+    \subsubsection{Formal Poisson structures}
+    \begin{defn}[Formal Poisson structure] 
+    A \emph{formal Poisson structure}, is any extension of a \hyperref[defn:bi_vect]{bi-vector}, equation (\ref{eqn:bi_vect}), by a formal power series:
+    \[ \Pi_{\hslash} =  \sum_{g=1}^{\infty} \Pi_g \hslash^{g-1} \in H^0(X,\bigwedge\nolimits^{\!2} \mathcal{T}_X)\lBrack \hslash \rBrack , \]
+    where \(\Pi_1 = \Pi\), such that 
+    \( \Pi_{\hslash} \) is a Poisson structure on \( \mathcal{O}_X \lBrack \hslash \rBrack \).
+    \end{defn}
+
+    There are corresponding endomorphisms or bi-maps associated with \( \Pi_g\) like the Poisson case. 
+    
+    There is the question of what formal Poisson structures correspond to a formal deformation of a Poisson scheme. For example, does a formal Poisson structure correspond to a star product. The next section we give one particular answer to this, in terms of a special star product constructed as an exponential.
+    
+    \subsection{A deformation quantisation of Poisson schemes}
+    \label{sec:def_of_pois_sch} 
+    
+    A deformation quantisation of a Poisson scheme \( \mathcal{O}_X\), is a sheaf \( \mathcal{A}_{\hslash} = \mathcal{O}_X \lBrack \hslash \rBrack \) equipped with a star product \cite{cttaneo_star, k_defofPois, groenewold} that recovers the data of the Poisson bi-vector under the quotient by \(\hslash\), and gives \( \mathcal{O}_X \lBrack \hslash\rBrack\) a formal Poisson structure. Note that this is not yet fully analogous to a \emph{quantisation} as used in physics, as there is no Hilbert space. \( \mathcal{A}_{\hslash}= \mathcal{O}_X \lBrack \hslash \rBrack\) is analogous to a phase space representation of operators in quantum mechanics. Looking for a Hilbert space of functions on which these operators act, or more specifically an \( \mathcal{A}_\hslash\)-module is a more complete analogy. 
+    
+    Given a Poisson bracket or bi-vector \(\Pi\), and an associated bi-map \( \pi\), a star product \( \starp_{\pi}\), is constructed by requiring, that:
+    \[ [f,g] = f \starp_{\pi } g - g \starp_{\pi} \,f = \hslash \{f,g\} + \hslash^2 \,\Pi_{1}(f,g) + O(\hslash^3),   \]
+    and the higher order terms correspond to a formal Poisson structure \( \Pi_{\hslash}\).
+    
+    Higher order terms are chosen or constructed recursively to satisfy associativity. \( \starp_{\pi}\) contains half the information of the formal Poisson structure. One solution to this problem, when the formal Poisson structure is simply iterated applications of \( \Pi_g = \mathrm{prod} \cdot \pi^g \), is the following star product:
+    
+    \begin{defn} 
+    [Star-product associated to a Poisson bi-vector]\label{defn:star_prod_pois}
+    Associated to \( \Pi\), define a star product \( \starp_{\pi}  : \mathcal{A}_\hslash \otimes_{\mathbf{k}\lBrack \hslash \rBrack}  \mathcal{A}_\hslash \rightarrow \mathcal{A}_\hslash \) locally via the series:
+    \begin{align}
+    \label{eqn:star_prod}
+    f \starp_{\pi} g  &= \mathrm{prod} \circ \exp \left( \frac{\hslash}{2} \,\pi \right) (f \otimes g) , \\
+    f \starp_{\pi} g   &= f g + \frac{1}{2} \hslash \,\pi^{ij}\, \partial_i f \partial_j g + \frac{1}{4} \hslash^2 \pi^{ik} \pi^{jl} \, \partial_i \partial_j f \partial_k \partial_l g + O(\hslash^3) . 
+    \end{align}
+    \end{defn}
+    Non commutativity is given by the skew-symmetry of \( \pi \). This star product is chosen or constructed because it gives a representation into a Weyl-algebra, as we see in example (\ref{ex:the_conic}). Let \( \mathcal{W}_{\hslash}\) be a Weyl-algebra \( \varphi : \mathcal{A}_{\hslash} \rightarrow \mathcal{W}_{\hslash}\). This star product is constructed to satisfy \( \varphi( f \star g) = \varphi(f) \cdot \varphi(g)\), where \(\cdot\) is a product of operators.
+    
+    
+    %To see this is associative
+    %\( (f \starp_{\pi} g) \starp_{\pi} h = f \starp_{\pi} (g \starp_{\pi} h)\), 
+    
+    %observe that:
+    %\[ ( \starp \cdot ) \cdot \starp  = ( \cdot \starp ) \cdot ( \cdot ) \cdot \starp  \]
+    
+    \begin{rem}[Notation in definition (\ref{defn:star_prod_pois})]
+    Note in this definition.  \( \exp \) is the formal sum \( \exp(s) = \id + s + \frac{1}{2} s^2 + \dots\). Here \(  \id \) is the identity map \( \id (f \otimes g) = f \otimes g\). \( \mathrm{prod}\) is pointwise function multiplication, \( \mathrm{prod}(f \otimes g ) = f g\). Also \( \cdot\) is function composition. 
+    
+    Powers of \( \pi \) refer to iterated application \[ \pi^k ( f \otimes g ) = \pi^{k-1} ( \pi(f \otimes g ) ). \]  
+    The endomorphism \( \pi \) is needed because there is no natural way to compose bi-vectors \( \Pi\).
+    \end{rem} 
+
+    
+    The coefficient of \( \hslash\) in \( \starp_{\pi}\) is identified with a coefficient of \( \Pi_g\) in a formal Poisson structure. The star product is also found by fixing \( \omega_0 = \mathrm{prod} \cdot 
+    \id \), \( \omega_1 = \mathrm{prod} \cdot \pi\), and  \( \omega_k = \mathrm{prod} \cdot \pi^k \) in the definition of the star product (\ref{eqn:star_prod_formal}). A good reference on expanding out the star product and solving for explicit coefficients is \cite{starprodeasy}.
+    %
+    %
+    
+    Modulo \(\hslash^2\), the star product \( \starp_{\pi}\) recovers the Poisson bracket when applied to sections of \( \mathcal{O}_X\) in \( \mathcal{A}^{\text{loc}}_{\hslash}\),  \( \eta : \mathcal{A}^{\text{loc}}_\hslash \rightarrow \mathcal{O}_X\),
+    \( \eta ( f \starp_{\pi} g )= f g \). Then
+    \begin{align}
+        \label{eqn:star_to_pois}
+        \frac{1}{\hslash } \left( f \starp_{\pi} g - g \starp_{\pi} f \right) = \{f,g\} + O(\hslash).
+    \end{align}    
+    %\begin{rem}
+    %Note at order \(\hslash\), the star product contains half of the Poisson bracket.
+    %\end{rem}
+    \iffalse
+    %
+    %
+    %
+    
+    %
+    %
+    %
+    \fi 
+    %
+    %
+    %
+    A famous example of such a star product is the \emph{Moyal product}, defined in the case of a linear Poisson manifold.
+    
+    \begin{ex}[Moyal product]
+    \label{ex:moyal_prod} 
+    Consider the smooth symplectic case \(X = T^{*}C\), \(\dim(X)=2n\) with local coordinates \(\{x_1,\dots,x_n\}\) on a fibre. 
+    Let  \( \pi : \mathcal{O}(X) \otimes \mathcal{O}(X) \rightarrow \mathcal{O}(X)\otimes \mathcal{O}(X)\) be skew-symmetric and written in terms of local coordinates as:
+    \[ \pi(f \otimes g) = \pi^{ij} \frac{\partial f }{\partial x_i} \otimes \frac{\partial g}{\partial x_j }.\] 
+    In this case there is a star product called the \emph{Moyal product}, \( \starp_M\) on \( \mathcal{A}_{\hslash} = \mathcal{O}(X)\lBrack \hslash \rBrack\). So expanding formula (\ref{eqn:star_prod}) gives:
+    \[ f \starp_M g = f \cdot g + \frac{1}{2} \hslash \, \pi^{ij} \frac{\partial f}{\partial x_i} \cdot  \frac{\partial g}{\partial x_j} + \frac{\hslash^2}{4} \pi^{ij} \pi^{kl}\frac{\partial f}{\partial x_i \partial x_k} \cdot \frac{\partial g}{\partial  x_j \partial x_l} + \mathcal{O}(\hslash^3),\]
+    where repeated indices are summed over.
+    \end{ex} 
+    
+    The Moyal product from example (\ref{ex:moyal_prod}), is representable as the formal expansion of a formal Gaussian integral:
+    \begin{lem}[\cite{baker}]
+    If \( \star_M \) is the Moyal product per example (\ref{ex:moyal_prod}), then:
+    \[f \starp_{M} g(q) = \frac{1}{Z} \int_X D p\, Ds\, f(p) g(s) \, \exp\left( -\frac{1}{2 \hslash} \omega(p-q, s-q) \right),\]
+    where \(\omega\) is the quadratic form given by \( \omega =  (\pi^{-1})\) , \( Z = \int D p Ds \, \exp\left( -\frac{1}{2 \hslash}  \omega(p,s)\right) \). 
+    \end{lem}
+    This result is originally due to \cite[p. 2199]{baker}, equation (3''). In finite dimensions, \(Z\) is given by a determinant. 
+    \begin{proof}
+    Integrating over \( x=(p,s)\) as a Gaussian integral shows the correspondence:
+    %Set \( \tilde{f}(x) = \mathbf{lift} f(p)\), s
+    \[  \frac{1}{Z} \int Dx \, \mathrm{prod} \circ  (f \otimes g) (x) \exp \left( - \frac{1}{2\hslash} Q(x-q \otimes q,x-q\otimes q) \right), \]
+    where \(Q\) is represented as a block tensor, \(Q = \frac{1}{2}\left(\begin{array}{cc} 0 & \pi \\ \pi & 0 \end{array}\right) \), so  
+    \[ = \mathrm{const} * \mathrm{prod} \circ \exp\left( \frac{1}{2\hslash} (Q)^{-1}_{ij} \partial_i \otimes \partial_j \right) (f\otimes g)(x)  \big|_{x \rightarrow (q,q) }.\] 
+    \end{proof}
+    
+
+
+    
+    
+
+    So, the deformation quantisation of \( (X,\mathcal{O}_X)\) is a sheaf \( \mathcal{A}_{\hslash}\) of  \( \mathbf{k}\lBrack \hslash\rBrack\)-flat modules, equipped with a star product, such that the star product recovers the Poisson bracket via equation (\ref{eqn:star_to_pois}). 
+
+    \begin{defn}[Deformation quantisation of structure sheaf] 
+    \label{defn:def_quant}
+    Let \( (X,\mathcal{O}_X)\) be Poisson with a bi-vector \( \Pi\). A \emph{deformation quantisation} of \( \mathcal{O}_X\) is given by the sheaf \( \mathcal{A}_{\hslash} = \mathcal{O}_X \lBrack \hslash \rBrack \), equipped with a star product \( \starp_{\pi} \).
+    \end{defn}
+    
+    This result can be found in \cite{yekutieli}. Note that this does not necessarily correspond to quantisation from physics. Deformation quantisation has simply produced a non-commutative space of operators. In physics, quantisation also seeks to construct a Hilbert space of functions. Correspondingly we need to look for duals of \( \mathcal{A}_{\hslash}\)-modules, which is analogous to a Hilbert space. We give an example of the entire process in example (\ref{ex:the_conic}). The conditions on the existence of these extra modules is also an interesting question \cite[section 2.4, page 15]{abpolyquant}. 
+
+    \emph{Flatness} is a technical condition, required to exclude the classical objects \( \mathcal{O}_X\) counting as a deformation quantisation of itself. For a definition of flatness see \cite{lang}. \(\mathcal{O}_X\) is not sheaf of flat \( \mathbf{k}\lBrack \hslash \rBrack\)-modules.
+
+    \begin{lem} \( \mathcal{O}_X\) is not a sheaf of flat \( \mathbf{k}\lBrack \hslash \rBrack\)-modules.
+    \end{lem}
+    \begin{proof}
+    Let \( I_{\hslash} = \langle \hslash \rangle \). 
+    Consider the injective map of \( \mathbf{k} \lBrack \hslash \rBrack\)-modules:
+    \[ 0 \rightarrow  I_{\hslash} \overset{\phi}{\rightarrow} \mathbf{k} \lBrack \hslash \rBrack,\]
+    where \( \phi(f)  = f\), is inclusion. Now tensoring by \( \mathcal{O}_X\):
+    \[ I_{\hslash} \otimes_{\mathbf{k}\lBrack \hslash \rBrack} \mathcal{O}_X \overset{\Phi}{\rightarrow} \mathbf{k}\lBrack \hslash \rBrack \otimes_{\mathbf{k}\lBrack \hslash \rBrack} \mathcal{O}_X. \]
+    Now  \( \mathbf{k}\lBrack \hslash \rBrack \otimes_{\mathbf{k}\lBrack \hslash \rBrack} \mathcal{O}_X \cong \mathcal{O}_X\), so the induced map \( m \otimes f \rightarrow \phi(m) \otimes f \) cannot be injective.  %and consider the induced map \(\Phi\), \(m \otimes f \rightarrow \Phi(m \otimes f) = \phi(m) \otimes f \).
+    \end{proof}
+
+    
+    Lemma (\ref{lem:flat_kh_mod}), describing flat \( \mathbf{k}\lBrack\hslash\rBrack\)-modules, requires an important result from commutative algebra:
+    \begin{lem}[\cite{stacks_complete_flat}] 
+    \label{lem:complete_flat}
+    Let \(R\) be a Noetherian ring and \(I\) be an ideal. Then the completion of R with respect to I, \(\widehat{R}_I\) is a flat \(R\)-module.
+    \end{lem}
+
+
+
+    \begin{lem}
+    \label{lem:flat_kh_mod}
+    Let \(M_0\) be a \(\mathbf{k}\)-module. Then \( M_0 \lBrack \hslash \rBrack\) is a flat \( \mathbf{k}\lBrack \hslash\rBrack\)-module.
+    \end{lem}
+
+    \begin{proof}
+    The completion \(M_0 \lBrack \hslash \rBrack\) is flat over \(M_0 \otimes_{\mathbf{k}} \mathbf{k}\lBrack \hslash \rBrack \) by lemma (\ref{lem:complete_flat}), where we use \(I = 1 \otimes \hslash\).  \(M_0 \lBrack \hslash\rBrack\) is the completion of \(M_0 \otimes_{\mathbf{k}} \mathbf{k}\lBrack \hslash \rBrack\) by \( 1 \otimes \hslash\): 
+    \[ \lim_n \frac{M_0  \otimes_{\mathbf{k}} \mathbf{k}\lBrack \hslash \rBrack }{\left(1 \otimes_{\mathbf{k}} \hslash\right)^n} \cong \lim_n M_0 \otimes_{\mathbf{k}}  \frac{\mathbf{k}[\hslash]}{\hslash^n} \cong \lim_n \frac{M_0[\hslash]}{\hslash^n} \cong M_0 \lBrack\hslash\rBrack.\] 
+    Then \(M_0 \otimes_{\mathbf{k}} \mathbf{k} \lBrack \hslash \rBrack \) is flat over \( \mathbf{k} \lBrack \hslash\rBrack\), so \(M_0 \lBrack \hslash \rBrack\) is flat over \( \mathbf{k} \lBrack \hslash \rBrack\).
+    \end{proof}
+    
+    
+    %\begin{lem}
+    %\label{lem:flat_kh_mod_quot}
+    %\(M\) is a flat \( \mathbf{k}\lBrack \hslash \rBrack\)-module if and only if  \(M \cong M_0 \lBrack \hslash \rBrack\) where \(M_0 \cong M/\hslash M\).
+    %\end{lem}
+    
+
+    \subsubsection{Properties of the exponential star product}
+    
+    
+    There is a natural gauge transform for Poisson and formal Poisson structures. 
+    Let \( \starp_{\pi}\) be a star product associated to Poisson bi-vector \( \Pi\).
+    Let \( \Pi \rightarrow \Pi + \Gamma \) be a Gauge transform of a Poisson bi-vectors, where \( \Gamma \in H^0(X,\wedge^2 \mathcal{T}_X)\), 
+    \( \Gamma = \frac{1}{2} \gamma^{ij} \frac{\partial}{\partial x_i } \wedge \frac{\partial}{\partial x_j}\), and \( \gamma^{ij} = \gamma^{ji}\). Define a bi-map \( \gamma : \mathcal{O}_X \otimes \mathcal{O}_X \rightarrow \mathcal{O}_X \otimes \mathcal{O}_X\) associated to \( \Gamma \) as before. Then \( \Pi + \Gamma \) defines a corresponding star product \( \starp_{\pi + \gamma}\) as follows:
+    
+    \begin{lem}
+    There is an isomorphism, \( (\mathcal{O}_X \lBrack \hslash \rBrack,
+    \starp_{\pi} ) \cong ( \mathcal{O}_X \lBrack \hslash \rBrack, \starp_{\pi + \gamma} )\), given by a map 
+    \(\psi : \mathcal{O}_X \lBrack \hslash \rBrack \rightarrow \mathcal{O}_X \lBrack \hslash \rBrack\)  
+    \begin{equation} 
+    \label{eqn:star_prod_iso}
+    \psi(f) = \exp \left( \frac{\hslash}{4} \, \gamma^{jk} \partial_j \partial_k \right) f = \exp \left( \frac{\hslash}{2} \widehat{y} \right) f.
+    \end{equation}
+    where \( \widehat{y} = \frac{1}{2} \gamma^{jk} \partial_j \partial_k\).
+    Correspondingly the star product is given by: 
+    \[f \starp_{\pi + \gamma}g =  \mathrm{prod} \circ \exp  \left( \frac{\hslash}{2} ( \pi + \gamma ) \right) (f \otimes g) \]
+    \end{lem}
+    
+    \begin{proof}
+    We are required to show:
+    \[ \exp \left( \frac{\hslash}{2} \widehat{y} \right) \circ  \mathrm{prod} \circ \exp  \left( \frac{\hslash}{2}  \pi   \right) = \mathrm{prod} \circ \exp  \left( \frac{\hslash}{2}  (\pi + \gamma ) \right) \circ \left( \exp \left( \frac{\hslash}{2} \widehat{y} \right) \otimes \exp \left( \frac{\hslash}{2} \widehat{y} \right) \right).  \]
+    First note, via the product rule, 
+    \begin{align*} \widehat{y} \circ \mathrm{prod} ( f \otimes g) &= \mathrm{prod} \circ  ( \widehat{y} f \otimes g + f \otimes \widehat{y} g + \frac{1}{2} \gamma^{jk} \partial_j f \otimes \partial_k g + \frac{1}{2} \gamma^{jk}  \partial_k f \otimes \partial_j g) \\ 
+    &= \mathrm{prod} \circ  ( \widehat{y} f \otimes g + f \otimes \widehat{y} g + \gamma^{jk} \partial_j f \otimes \partial_k g ). 
+    \end{align*}
+    So 
+    \begin{align*} \exp \left( \frac{\hslash}{2} \widehat{y} \right) \circ \mathrm{prod} \circ \exp \left( \frac{\hslash}{2} \pi  \right)  &= \mathrm{prod} \circ  \exp \left( \frac{\hslash}{2} ( \pi +  \id \otimes \widehat{y} + \widehat{y} \otimes \id +  \gamma ) \right) \\
+    &= \mathrm{prod} \circ \exp  \left( \frac{\hslash}{2}  (\pi + \gamma ) \right) \circ \left( \exp \left( \frac{\hslash}{2} \widehat{y} \right) \otimes \exp \left( \frac{\hslash}{2} \widehat{y} \right) \right) 
+    \end{align*}
+    \end{proof}
+    
+    %\begin{defn}[Deformation quantisation]
+    %\emph{Deformation quantisation} is a functor
+    %\begin{align*}
+    %    \mathrm{quant} : \{\text{formal Poisson  structures},\text{gauge transforms}\} \rightarrow \{ \text {star products} , \text{gauge transforms}\}
+    %\end{align*}
+    %\end{defn}
+    
+    This extends more generally. Suppose for now \( (X, \mathcal{O}_X )\) is not necessarily Poisson. This exponential form of the star-product in general does not rely on a Poisson structure, only a bi-map, but there is always a skew-symmeterisation which may correspond to a Poisson structure. Consider the star product associated to any bi-map \( \tau : \mathcal{O}_X \otimes \mathcal{O}_X \rightarrow \mathcal{O}_X \otimes \mathcal{O}_X\) (\( \tau\) not necessarily skew-symmetric):
+    \begin{defn}[Star product associated to a bi-map] Let \( \tau\) be non-symmetric.
+    \[  f \starp_{\tau} g = \mathrm{prod} \circ \exp \left( \frac{\hslash}{2} \tau \right) ( f \otimes g) \]
+   \end{defn} 
+    The star product \( \starp_\tau \) is isomorphic to \( \star_{\tau_{\text{skew}}}\). With the skew-symmeterisation of \( \tau\), so \( \tau \rightarrow \tau_{\text{skew}} =\frac{1}{2} \left( \tau -  \tau^T \right) \), choose \( \gamma = \frac{1}{2}\left( \tau + \tau^T\right) \), then via the isomorphism in equation (\ref{eqn:star_prod_iso}),  \( \starp_{\tau} \rightarrow \starp_{\tau_{\text{skew}}}\).
+
+    One extra observation, for skew-symmetric bi-maps, composition with a permutation \( P : \mathcal{O}_X \otimes \mathcal{O}_X \rightarrow \mathcal{O}_X \otimes \mathcal{O}_X \), where \(P(f \otimes g) = - g \otimes f\) also gives a Poisson structure.
+    
+    \begin{lem} Let \( \pi \) be skew-symmetric.
+    Then \[  \widetilde{\pi} (f\otimes g)= \pi \circ P ( f \otimes g) = -\pi^{ij} \partial_i (g) \otimes \partial_j (f), \] also defines a Poisson bracket.
+    
+    \( \widetilde{\pi}\) also satisfies the Yang-Baxter equation:
+    \[ (\id \otimes \widetilde{\pi}) \circ ( \widetilde{\pi} \otimes \id  ) \circ ( \id \otimes \widetilde{\pi}) =  ( \widetilde{\pi} \otimes \id ) \circ (\id \otimes \widetilde{\pi}) \circ  ( \widetilde{\pi} \otimes \id ), \] 
+     applied to a section \( f \otimes g \otimes h  \in \mathcal{O}_X \otimes_{\mathbf{k}} \mathcal{O}_X \otimes_{\mathbf{k}} \mathcal{O}_X  \).
+     
+    Further with \( \widetilde{\Pi} = \mathrm{prod} \cdot \widetilde{\pi}\), \( \starp_{\widetilde{\pi}}\) also defines a star product equivalent to  \( \starp_{\pi}\).
+    \end{lem}
+    
+    \begin{proof}
+    Check with direct computation and use skew-symmetry, \( -\pi^{ij} = \pi^{ji}\), and then relabel the terms.
+    \end{proof}
+    
+    So \( \pi^k\) terms in the star product are diagrammatically braiding two threads together \( k \) times.
+    
+    
+    In summary, the star product \(\star_{\pi}\), gives a way to replace the standard commutative product of functions by a non commutative, associative product. %However this occurs step by step, such that it is compatible with the Poisson structure.
+    The purpose of the star product \( \star_{\pi}\) from definition (\ref{defn:star_prod_pois}), is that when \( \mathcal{O}_X\) is a ring of polynomial or formal polynomials functions on a completion, \((\mathcal{A}_{\hslash}, \star_{\pi})\), is representable by a Weyl-algebra or formal completion of a Weyl-algebra in section (\ref{sec:weyl_algebra}). 
+    
+
+    
+    \subsection{Coisotripic subschemes and an obstructions to existence}
+    
+    Let \((X,\mathcal{O}_X)\) be a Poisson scheme. Let the deformation quantisation of \(\mathcal{O}_X\) be given by \(\mathcal{A}_{\hslash} = \mathcal{O}_X\lBrack \hslash \rBrack\) as sheaf of \( \mathbf{k} \lBrack \hslash \rBrack\)-algebras. Let \( \mathcal{A}_{\hslash}\) be equipped with the star product per definition (\ref{defn:star_prod_pois}).  An important question is what obstructions are there for the existence of a sheaf \(\mathcal{F}_\hslash\) of \( \mathcal{A}_{\hslash}\) modules. 
+    
+    It is possible to find an obstruction, which has a geometric meaning, by considering \emph{torsion}. For a module \(M\) over a ring \(R\):
+    \begin{defn}[Torsion element] An element \(m\) in \(M\) is a \emph{torsion element}, if there exists an \(r \) in \(R\) such that \(rm=0\).
+    \end{defn}
+    \(M\) is a torsion module if all its elements are torsion elements. \(M\) is \(S\)-torsion if the \(r\) form a subring \(S\). 
+    
+    Flatness implies torsion free, while the converse is only true in \emph{Pr\'ufer domains}. For a flat \(R\)-module \(M\):
+    \begin{lem}
+    If \(M\) is flat over \(R\), then \(M\) is torsion free over \(R\).
+    \end{lem}
+    
+    \begin{proof}
+    We sketch the commutative case first. This extends to non-commutative \(R\) by considering left and right modules and annihilators. The goal is to show \( \mathrm{Ann}_R(M) = 0\).
+
+    Suppose for a contradiction \(M\) is flat, but there exists a non zero \(r\in \mathrm{Ann}_R(M)\). Consider the sequence \[ 0 \rightarrow R \rightarrow R \] 
+    given by multiplication by \(r\). If \( M\) is flat then
+    \[ 0 \rightarrow R \otimes M \rightarrow R \otimes M. \]
+    But \(r\) is an annihilator, so this must be the zero map, and hence this is a contradiction.
+    \end{proof}
+    
+    
+    Let the deformation quantisation of \((X,\mathcal{O}_X)\) be given by \( \mathcal{A}_\hslash = ( \mathcal{O}_X \lBrack \hslash \rBrack, \starp_{\pi} )  \) as before. Suppose there exists a deformation quantisation of a sheaf \( \mathcal{F}\), given by \( \mathcal{F}_{\hslash}\).
+    If \( \mathcal{F}_\hslash \) is flat over \( \mathbf{k} \lBrack \hslash \rBrack \), then this implies that \( \mathcal{F}_{\hslash}\) must be \( \hslash\)-torsion free. Then \(\hslash\)-torsion free gives the constraint, proven below in theorem (\ref{thm:torsionfree}), that the support of the sheaf \(\mathcal{F} \cong \mathcal{F}_{\hslash}/\hslash \mathcal{F}_{\hslash}\) must be \emph{coisotropic}. Recall coisotropic means \( \mathcal{F}\) is defined by an ideal sheaf closed under the Poisson bracket. A maximally coisotropic sheaf corresponds to a Lagrangian subscheme.
+   
+    Let \( \mathcal{F}\) be a sheaf of \(\mathcal{O}_X \)-modules, defined by a sequence
+    \[  0 \rightarrow \mathcal{J} \rightarrow \mathcal{O}_X \rightarrow \mathcal{F} \rightarrow 0. \]
+    Recall \( \mathcal{F}\) is coisotropic if \(\mathcal{J}\) is closed or involutive under the Poisson bracket.
+    Consider a sheaf \( \mathcal{F}_{\hslash}\). 
+    \begin{thm}[\cite{b_defquant}] \label{thm:torsionfree} 
+    Suppose the sheaf \( \mathcal{F}_{\hslash}\) of \(\mathcal{A}_{\hslash} \)-modules is defined by an ideal sheaf \( \mathcal{J}_{\hslash} \):
+    \[ 0 \rightarrow \mathcal{J}_{\hslash} \rightarrow \mathcal{A}_\hslash \rightarrow \mathcal{F}_{\hslash} \rightarrow 0. \]
+    For this quotient to restrict to the sequence for \( \mathcal{F}\), modulo \( \hslash\), such that \( \mathcal{F}_{\hslash}\) is \(\hslash\)-torsion free, then the support of \( \mathcal{F}\) in \(X\) must be coisotropic.
+    \end{thm}
+
+    The idea of the proof is to show that given a deformation quantisation, and two elements that restrict to elements of an ideal sheaf, their star product restricts to a Poisson bracket, and then this forces the ideal sheaf to be closed under the Poisson bracket. 
+
+    \begin{proof}
+    %As the tensor product is exact, by tensoring with \( \mathbf{k}\lBrack \hslash \rBrack\) we have a sequence of \( \mathcal{A}_\hslash\)-modules
+    %\[ 0 \rightarrow \mathcal{J}_\hslash \rightarrow \mathcal{A}_{\hslash} \rightarrow \mathcal{F}_\hslash\rightarrow 0\]
+    Consider the subsheaf \(\mathcal{J}_\hslash\)  of \(\mathcal{A}_{\hslash}\) which  maps to \( \mathcal{J}\) in the quotient by \(\hslash \mathcal{J}_{\hslash}\)
+    %Consider the action of \(\mathcal{A}_\hslash\) on \(\mathcal{F}_\hslash\).  consider \( \mathcal{F}_\hslash\) as a module over \( \mathcal{A}_\hslash\) as a ring.
+    
+    Then \( \mathcal{J}_\hslash\) acts on \( \mathcal{F}_\hslash\) via the star product, 
+    \( \mathcal{J}_\hslash \otimes_{\mathbf{k} \lBrack \hslash \rBrack } \mathcal{F}_\hslash \rightarrow  \mathcal{F}_\hslash\).  The image of this action is \( \hslash \mathcal{F}_\hslash\).
+    
+    This is because a section of \( \mathcal{J}_{\hslash}\) can be written as \( f + O(\hslash)\), where \(f \in \mathcal{J}\). Acting on \( \mathcal{F}_{\hslash}\), as \(f\) annihilates any \( O(\hslash^0)\) terms in \( \mathcal{F}_{\hslash}\), so elements of \( \mathcal{F}\), this leaves \( O(\hslash)\) terms which is \(\hslash \mathcal{F}_{\hslash}\).
+    
+    Define the sheaf \(  [\mathcal{J}_{\hslash},\mathcal{J}_{\hslash} ]:=  \{  f \, \starp_{\pi} \, g - g \, \starp_{\pi}\,  f, f,g \in \mathcal{J}_{\hslash}\}\). Then similarly consider an action 
+    \(  [\mathcal{J}_\hslash  ,   \mathcal{J}_\hslash  ]  \otimes_{\mathbf{k}\lBrack\hslash\rBrack} \mathcal{F}_\hslash \rightarrow  \mathcal{F}_\hslash\), which has an image contained in \( \hslash^2 \mathcal{F}_{\hslash}\).
+    
+    This is because successive applications of \(f\) and \(g\) on \( \mathcal{F}_{\hslash}\), yield \( (f \starp_{\pi} g) \mathcal{F}_{\hslash} = f ( g \mathcal{F}_{\hslash}) \subset f ( \hslash \mathcal{F}_{\hslash} ) \subset \hslash^2 \mathcal{F}_{\hslash}\) (where \( \subset\) means as a subsheaf).
+    
+    
+    Finally consider the action by
+    \( \frac{1}{\hslash} [ \mathcal{J}_\hslash, \mathcal{J}_\hslash ] \) on \( \mathcal{F}_{\hslash}\). Similary to above, this action has an image \( \hslash \mathcal{F}_{\hslash}\).
+    
+    Then under the quotient map by \( \hslash \mathcal{F}_{\hslash}\),  \(\hslash \mathcal{F}_\hslash \rightarrow 0\), \( [\mathcal{J}_{\hslash} ,\mathcal{J}_{\hslash}]\) acting on \( \mathcal{F}_{\hslash}\), maps to \( \{\mathcal{J},\mathcal{J}\} \) acting on \( \mathcal{F}\). 
+    
+    However the image of \(\{\mathcal{J},\mathcal{J}\}\) in the quotient is zero, so this says  \(\{\mathcal{J},\mathcal{J}\}\) annihilates \( \mathcal{F}\).
+
+    Hence \( \mathcal{J} \) is closed under the Poisson bracket.
+    \end{proof}
+    
+    \begin{rem}
+    Note \( \mathcal{J}_{\hslash} \neq \mathcal{J}\lBrack \hslash \rBrack\). In some later examples \( \mathcal{J}_{\hslash}(U) =  \sum_i \mathcal{A}_{\hslash}(U) \star  J_i \) where the \(J_i\) are minimal collection of generators from \(\mathcal{J}(U) = \langle J_i\rangle  \), but it is important to note the ring structure is different. \( \mathcal{J}_{\hslash}(U)\) is generated with the star product, while \( \mathcal{J}(U)\) just uses the commutative product.
+    \end{rem}
+    
+    
+    
+    A further corollary of lemma (\ref{thm:torsionfree}) is that we cannot find an \( \mathcal{A}_\hslash \) \(\hslash \)-torsion free module supported at a point. An example is the sky scraper sheaf associated to a point.
+
+    \begin{ex}Consider the following non-example of theorem (\ref{thm:torsionfree}). Let \( p = (0,0) \in X \cong \mathbb{C}^2 \) be a point. Consider the skyscraper sheaf \( \mathrm{skysc}_p \), defined by  the ideal of functions \( x,y\) with the standard Poisson structure \( \{ x,y \} = 1\). Then in the previous proof we must necessarily have \( \hslash \) torsion.
+    \end{ex}
+
+    %if there was to exist a module, then necessarily must have hslash torsion
+    
+    The proof fails if there is \( \hslash\) torsion. If \( \hslash \mathcal{F}_{\hslash} = 0\), then the only possibility is \( \mathcal{F}_{\hslash} = \mathcal{F}\), which is excluded by flatness.
+    
+    As expected, this torsion condition, lemma (\ref{thm:torsionfree}), is equivalent to the statement that \( \mathcal{A}_{\hslash}\) modules over \( \mathbf{k}\lBrack \hslash \rBrack \) are flat.
+    
+    \begin{lem} If \( \mathcal{F}_\hslash\) is flat over \( \mathbf{k}\lBrack \hslash \rBrack \), then the support is coisotropic.
+    \end{lem}
+    
+    As a corollary of lemma (\ref{thm:torsionfree}), if the support is isotropic, there must be \(\hslash\)-torsion. In the affine case, of a sheaf on a supported on a subvariety, if \(\mathcal{F}\) is determined by an ideal sheaf, \(\mathcal{J}\), then an example would locally be trying to satisfy an overdetermined collection of equations. 
+    
+    %\cite{dasilva} 
+    %\begin{thm}[Formal Weinstein-Lagrangian neighbourhood] 
+    %\end{thm}
+
+    \iffalse
+
+    \section{Global deformations}
+    
+    Consider the case of a polynomial ring in \(2n\) variables, \(R = \mathbf{k}[x_1, \dots x_n, y_1, \dots y_n]\), \(X= \Spec(R)\). A natural Poisson bracket is given by \( \{x_i,y_j\} = \delta_{ij}\).
+    \begin{ex}
+    Let \(n=1\), \( \Gamma_X( \mathcal{O}_X) = \mathbf{k}[x,y]\). Then \(\Gamma_X (\mathcal{O}_X \lBrack \hslash \rBrack) = \mathbf{k}[x,y]\lBrack \hslash \rBrack \). There is a \(\mathcal{O}_X\) isomorphism  \(0 \rightarrow \hslash\, \mathbf{k}[\hat{x},\hat{y}]\lBrack \hslash \rBrack \rightarrow \mathbf{k}[x,y]\lBrack \hslash \rBrack  \rightarrow \mathbf{k}[x,y] \rightarrow 0\). The star product is computed by the formal series.
+    \end{ex}
+    
+
+    Let \( (X,\mathcal{O}_X)\) be Poisson.
+    Let \(Y\) be a subscheme, so \( \mathcal{O}_X \rightarrow \mathcal{O}_Y\). The following is a sheaf theoretic version of the formal coisotropic theorem in \cite{dasilva}.
+    
+    \begin{thm}[Formal coisotropic neighbourhood theorem] 
+ 
+    \end{thm}
+    %Let M
+    %be a 2n-dimensional manifold, X a compact n-dimensional submanifold, i : X -> M the inclusion map, and ω0 and ω1 symplectic forms on M such that i∗ω0 = i∗ω1 = 0, i.e., X is a lagrangian submanifold of both (M,ω0) and (M,ω1). Then
+    %there exist neighborhoods U0 and U1 of X in M and a diffeomorphism \phi : U0 →U1
+    %such that the diagram commutes
+    
+    %   U0 -> \phi -> U1
+    %    \           /
+    %     i         i          
+    %       \     /            
+    %          X
+    %Moser relative theorem works in completion although not in ring
+    
+   %In the case of \( X=\Spec(R)\), and \(R\) is an even dimensional polynomial ring,  \( (\mathcal{A}_{\hslash}, \star)\), half of the variables can be identified with derivations.
+   
+   \fi 
+   
+    \section{Cyclic sheaves and cyclic DQ-modules}
+       
+
+    \subsection{Weyl-algebras and D-modules}
+    \label{sec:weyl_algebra}
+    
+    In physics, a operators on a Hilbert space represent the quantisation of some classical theory. For a scheme \( (X,\mathcal{O}_X)\), the algebraic analog of operators on a Hilbert space is a ring of differential operators \cite{k_holonomic}, as a \( \mathcal{O}_X\) module. These rings of differential operators arise from deformation quantisation.
+
+    Let \(X= T^* C\) be a symplectic variety with local Darboux coordinates \( (x_i,y_i)\). Consider the deformation quantisation of \( \mathcal{O}_X\), given by \( \mathcal{A}_{\hslash} = (\mathcal{O}_X\lBrack \hslash \rBrack , \starp_{\pi}) \), and the localisation at \(\hslash\), \( \mathcal{A}_{\hslash}^{\text{loc}} \). \( \mathcal{A}_{\hslash}\) is isomorphic to a sheaf of rings of differential operators on \(X\). These rings are representable as a Weyl-algebra over \( \mathbf{k} \lBrack \hslash \rBrack\). Further the localisation \( \mathcal{A}_{\hslash}^{\text{loc}}\) identifies differential operators with vector fields. 
+    
+    %\begin{rem} Note some commonly used terminology: rings of differential operators are called \(D\)-modules. The modules arising from deformation quantisation or sheaves of \(\mathbf{k}\lBrack \hslash\rBrack \)-modules are often termed \(DQ\)-modules. 
+    %\end{rem}
+
+    \begin{defn}[Weyl-algebra over \( \mathbf{k}\)] 
+    The Weyl-algebra \( \mathcal{W}_{n}\), is an associative unital \( \mathbf{k}\)-algebra generated by \(n\) elements \( x^{i}\) and \(n\) elements \( \partial_i\) with the constraints that \( x^i x^j = x^j x^i, \partial_i \partial_j = \partial_j \partial_i\) and \( \partial_j x^i - x^i \partial_j  = \delta^{i}_j\).
+    \end{defn}
+    
+    %\begin{rem} To relate to deformation quantisation, we replace \( \mathbf{k}\) with \( \mathbf{k}\lBrack \hslash \rBrack\), and \( \partial_i\) with \( \hslash \partial_i \).
+    %\end{rem}
+    
+
+    \begin{defn}[\(D\)-module] A \emph{\(D\)-module} is a module over a ring \(D\) of differential operators.
+    \end{defn}
+    \begin{ex}
+    Examples of \(D\)-modules are modules over \( \mathcal{D}(X)\), where \( \mathcal{D}(X)\) is the ring of differential operators on a variety \(X\).
+    \end{ex}
+    
+    
+    If \( \mathbf{k}\) is characteristic zero, there is an isomorphism between Weyl-algebras, and the ring of differential operators, \(\mathcal{D}( \mathbb{A}_n)\) acting on the ring (or module) \( \mathcal{O}(\mathbb{A}_n)\) of functions of an \(n\) dimensional affine space. Let \( \mathbb{A}_n = \Spec(R), R=\mathbf{k}[x_1, \dots x_n]\). Then
+    \begin{lem}
+    \(\mathcal{D}(\mathbb{A}_n) \cong \mathcal{W}_n \cong \mathbf{k}[x_1,\dots x_n,\partial_1, \dots , \partial_n].\)
+    \end{lem}
+    
+    
+    \begin{proof}
+    The ring of differential operators \( \mathcal{D}(\mathbb{A}_n) \), is generated by compositions of derivations, \( \mathrm{Der}(R,R)\), on \(\mathbb{A}_n\), which are \(\mathbf{k}\)-linear maps satisfying Leibniz. Derivations on the polynomial ring are given by \( \frac{\partial}{\partial x_i}\), which we identify with \( \partial_i \) in the Weyl-algebra.
+    \end{proof}
+    
+    For a subvariety \(X \rightarrow \mathbb{A}_n\), \(X = \Spec(R)\),  \(R=\mathbf{k}[x_1, \dots x_n]/I\), the ring of differential operators on \(X\) is given as follows:
+    \begin{lem}
+    \(  \mathcal{D}(X) \simeq \{ d \in \mathcal{W}_n, d(I) \subseteq I \}/I \cdot \mathcal{W}_n,\)  where
+    \( \mathcal{W}_n=\mathbf{k}[x_1,\dots x_n, \partial_1, \dots \partial_n]\).
+    \end{lem}
+    
+    %The quotient by \( I \cdot \mathcal{D}_n\) is essentially giving coefficients in \(I\).
+    \subsection{Weyl-algebras from deformation quantisation}
+    
+    These Weyl-algebras do not yet give a representation of a deformation quantisation. Consider the case of a \(2n\) dimensional Poisson algebraic variety \(W\), with coordinates \( x^i\) and \(y_i\), so 
+    \( \mathcal{O}(W) = \mathbf{k}[x^i, y_i]\). The Poisson bracket is given by \( \{x^i, y_j \} = \delta_{j}^i, \{x_i,x_j\} = \{y_i,y_j \} = 0\). 
+    In this case the ring of differential operators \( \mathcal{D}(W) \), is isomorphic to a Weyl-algebra in \(4n\) variables, \( \mathcal{D}(W) \cong \mathcal{D}_{2n}\), where \[\mathcal{D}_{2n} = \langle  x_i, y_i, \frac{\partial}{ \partial x_i}, \frac{\partial}{ \partial y_j} \rangle  .\] 
+    Ignoring the issue of \( \hslash \) coefficients, \( \mathcal{D}(W)\) does not give a representation of a deformation quantisation of \( \mathcal{O}(W) \). There are an extra \(2n\) generators. In the \(2n\) dimensional case, a choice of polarisation will give the correct result. Choosing a Lagrangian \(L\) in \(\mathcal{T}_W\), such that \( L = \mathcal{T}_{\cL} \), where \( \cL\) is a subvariety
+    determined by an ideal with \(n\) generators, there is an isomorphism \(\mathcal{D}(\mathbb{L})  \cong \mathcal{D}_n\). For a coisotropic subvariety of codimension \(g\),  there is a natural identification with \( \mathcal{D}_{2n-g}\) 
+            
+    \subsection{Cyclic sheaves}
+     Let \(M\) be a module over a commutative ring \(R\). 
+     % M_p localisation 
+    \begin{defn}[Support]
+    The support, \( \mathrm{Supp}(M)\) is the set of prime ideals \( \mathfrak{p}\) in \(R\) such that \(M_{\mathfrak{p}} \neq 0\).
+    \end{defn}
+    
+    The following result from commutative algebra is how we will think of cyclic modules. Let \(I\) be an ideal in \(R\).
+    \begin{lem}
+    \(R/I\) is a cyclic \(R\)-module.
+    \end{lem}
+    \begin{proof}
+    First of all we show \(R/I\) is an \(R\)-module. Scalar multiplication as an \(R\)-module is given by
+    \[ r \cdot ( m + I) = r m + I. \]
+    Now we show any cyclic \(R\)-module is expressible as \(R/J\). Suppose \(M\) is cyclic. Then there exists an \(m\) such that \( M  = \{ r m , r \in R \}\). Consider the map \(R \rightarrow M\), \( \phi(r) = r m\). The kernel of this map is an ideal \(J\) in \(R\), so \( \phi(r + J) = \phi(r) = r m\). This defines a module homomorphism and a bijection \(R/J \cong M\).
+    \end{proof}
+    
+    \begin{corollary}
+    An \(R\)-module \(M\) is cyclic if there exists an ideal \(I\) such that \(M \simeq R/I\).
+    \end{corollary}
+    This says \(1 + I\) generates \(M\). Converserly, given \( m + I \in R/I\), necessarily \( m + I = m \cdot 1 + m \cdot I = m ( 1 +  I)\). So \(1 + I\) is a generator, \(M = \langle 1 + I \rangle \). Hence \(M\) is cyclic.
+    
+    In the non-commutative case we can generalise this result for left and right \(R\)-modules.
+    
+    Now recall some properties of sheaves. Let \( \mathcal{F}\) be a sheaf over a space \(X\). 
+    
+    \begin{defn}[Stalk of a sheaf] The \emph{stalk} at a point \(x\in X\) is the limit
+    \[ \mathcal{F}_x = \colim_{U \rightarrow X | x\in U} F(U).\]
+    \end{defn}
+    
+    The \emph{support of a sheaf} \( \mathcal{F}\) over a topological \(X\),  is similar to the module case, but prime ideals are replaced by points in \(X\) with non zero stalks:
+    
+    \begin{defn}[Support of a sheaf] 
+    The support of a sheaf is the collection of points in \(X\) such that the stalks are non zero, \( \{x \in X, \mathcal{F}_x \neq 0_C \} \).
+    \end{defn}
+    
+    Let \( (X, \mathcal{O}_X)\) be a scheme, and let \(\mathcal{F}\) be a sheaf of \( \mathcal{O}_X\)-modules. Recall a sheaf of \( \mathcal{O}_X\)-modules \(\mathcal{F}\) is defined by functorial compatibility with \( \mathcal{O}_X\) maps:
+    \begin{center}
+        \begin{tikzcd}
+            \mathcal{F}(U) \arrow[r] \arrow[d] & \mathcal{F}(V) \arrow[d] \\
+            \mathcal{O}(U) \arrow[r] & \mathcal{O}(V)
+        \end{tikzcd}
+    \end{center}
+    
+    
+    For a sheaf of \( \mathcal{O}_X\) modules to be cyclic, there has to be a single element which generates all modules for all open sets, namely a global section \(H^0(X,\mathcal{F})\).
+    
+    \begin{defn}[Cyclic sheaf] 
+    \label{defn:cyclicsheaf}
+    A \emph{cyclic sheaf} of modules \(\mathcal{F}\), is a sheaf where every module
+    \(\mathcal{F}(U)\) is cyclic as an \( \mathcal{O}_X\)-module. Further every module is generated by a single element of \(H^0(X,\mathcal{F})\).
+    \end{defn}
+    
+    %There is potential ambiguity in the use of the word cyclic.
+    
+    %\begin{defn}[sheaf of cyclic modules]
+    %\( \mathcal{F}\) is a \emph{sheaf of cyclic modules}, if given an open set \(U\), \( \mathcal{F}(U)\) is a cyclic module over \( \mathcal{O}_X(U)\).
+    %\end{defn}
+    
+    \begin{rem} A cyclic sheaf is different to a \emph{sheaf of cyclic modules}. For example
+    \( \mathcal{O}_{\mathbb{P}^1}(n)\), is a sheaf of cyclic modules, but is not a cyclic sheaf, since it is not generated by a single section. %Likewise for \( \mathcal{O}_{\mathbb{P}^1}(-1)\).
+    \end{rem} 
+        
+    \begin{ex}
+    \( \mathcal{O}_X\) is a cyclic sheaf over itself.
+    Proof: the constant unit function.
+    \end{ex}
+
+    An important example of cyclic arises from a subvariety or a morphism of schemes. Let \(f : Y \rightarrow X\). Consider the pushforward sheaf \( f_{*} \mathcal{O}_Y\). As a \( \mathcal{O}_X\)-module, \( f_{*} \mathcal{O}_Y\) is cyclic if there exists an extension of elements as follows:
+
+    \begin{prop}
+    \(f_{*} \mathcal{O}_Y\) is cyclic if given any \(g \in f_{*} \mathcal{O}_Y(U) \), 
+    %so \(g\) is regular on \(U \cap f(Y) \), 
+    there exists \(h \in \mathcal{O}_X(U)\) such that \(h \cdot 1 = g\).
+    \end{prop}
+    So for example, in the affine algebraic case, when a regular function \(g\) on \(U \cap f(Y)\) extends to a regular function on \(U\), then \(f_{*} \mathcal{O}_Y\) is cyclic.
+    
+    \begin{note} Note that often the \(f_{*}\) is omitted if \(Y\) is an actual subvariety, \(Y \rightarrow X\), so if \(f\) is simply the inclusion map, and similarly \( \mathcal{O}_X \rightarrow \mathcal{O}_Y\) is restriction.
+    \end{note}
+    
+    The proposition is true in the affine algebraic case. Consider a subvariety \( Y \rightarrow X\), with  \(\mathcal{O}(Y) = \mathcal{O}(X)/I\) as a \( \mathcal{O}(X)\) module. Pick \(h\) such that \(h \rightarrow g\) in the quotient map \( \mathcal{O}(X) \rightarrow \mathcal{O}(X)/I\).
+    
+    %Cyclicness is not going to be the most important property on the existence of some quantisation, although it will useful for computations. 
+
+    In the Airy structure setting, this cyclic module encodes a \emph{wavefunction}, which is an object that is used to recover topological recursion. There is a cyclic sheaf, corresponding to a subvariety, that is quantised giving a cyclic \( \mathcal{D}\)-module. The generator of this module is termed a wavefunction.
+    
+    In general there are going to be extra requirements when a sheaf of modules is quantised (replaced with some non commutative objects). 
+
+
+    \subsection{Cyclic DQ-modules}
+    
+    
+    Let \( (X,\mathcal{O}_X)\) be a Poisson scheme (possibly formal), and consider a flat deformation quantisation of \( \mathcal{O}_X\) defined by a sheaf \( \mathcal{A}_\hslash\). What is termed a \emph{cyclic \( DQ\)-module} in \cite{ks_airy}, can be understood from a sheaf theoretic perspective. In particular a non-commutative version of a \hyperref[defn:cyclicsheaf]{cyclic sheaf}. Instead of a cyclic sheaf of \( \mathcal{O}_X\)-modules, there is a cyclic sheaf of \( \mathcal{A}_{\hslash}\)-modules.
+
+    %Consider a sheaf \( \mathcal{E}_{\hslash}\) of \( \mathcal{A}_{\hslash}\)-modules.
+    %\begin{defn}[Sheaf of cyclic modules]
+    % \( \mathcal{D}_{\hslash}\) of cyclic \( \mathcal{A}_\hslash \)-modules.
+    %\end{defn}
+    %The sheaf \( \mathcal{A}_{\hslash}\) can be identified with a sheaf of rings of differential operators. 
+    In general finding deformation quantisation modules is a hard task. We construct a particular example relevant for the application to Airy structures.
+    
+    While quantisation is not an exact functor from the category of sheaves on \(X\) to some category of non-commutative sheaves on \(X\), there are cases where there exists cyclic \( \mathcal{A}_\hslash\)-modules, or a cyclic \(DQ\)-module, that corresponds to cyclic sheaves on \(X\). 
+    
+    These cyclic DQ-modules naturally arise from the quantisation of subvariety or scheme. Consider a sub-scheme \((Y,\mathcal{O}_Y)\), in \((X, \mathcal{O}_X)\) defined by the sequence:
+    \[ 0\rightarrow \mathcal{J} \rightarrow \mathcal{O}_X \rightarrow \iota_*\mathcal{O}_Y \rightarrow 0.\]
+    Note \( \mathcal{O}_Y\) is a cyclic sheaf, \( \iota \) is the natural inclusion map. Let \( \mathcal{A}_{\hslash} = (\mathcal{O}_X \lBrack \hslash \rBrack, \star) \) be a deformation quantisation of \( \mathcal{O}_X\), flat over \( \mathbf{k}\lBrack \hslash \rBrack\), with a star product (\ref{defn:star_prod_pois}). Let the ideal sheaf \( \mathcal{J}\) locally be given by a minimal generating set \( \{ H_i\} \), so \( \mathcal{J}(U) = \langle H_i \rangle \). In general, a generator of an ideal \(I\) in a ring \(R\), is a subset \(S\) which generates \(I\).
+    
+    Furthermore, let \(Y\) be coisiotropic, so \( \mathcal{J}\) is closed under the Poisson bracket. Locally this gives each \( \mathcal{J}(U)\) the structure of a Poisson ideal \cite{jordan}. Define the ideal sheaf \( \mathcal{J}_{\hslash}\) of \( \mathcal{A}_{\hslash}\)-modules:
+    \[ \mathcal{J}_{\hslash}(U) = \sum_i \mathcal{A}_{\hslash}(U) \star  (H_i + O(\hslash)), \]
+    where \( O(\hslash) \) is some element in \( \hslash \, \mathbf{k} \lBrack \hslash \rBrack\).
+    Naturally \( [  \mathcal{J}_{\hslash} ,  \mathcal{J}_{\hslash}] \subset  \hslash \mathcal{J}_{\hslash}\).
+    Note that the ideal \( \mathcal{J}_{\hslash}(U)\) uses star multiplications of the \(H_i\). \(J_{\hslash}= \mathcal{J}_{\hslash}(U)\) is an (right) ideal in the non-commutative ring \( A_{\hslash} = \mathcal{A}_{\hslash}(U)\). This means for \( j \in J_{\hslash} \) and \( a \in A_{\hslash}\) we require \( a \star j \in J_{\hslash}\), not some classical product \(a  j\). 
+    
+    Then consider the sheaf \( \mathcal{E}_{\hslash}\) of \( \mathcal{A}_{\hslash}\) modules  given by 
+    \[ 0 \rightarrow \mathcal{J}_\hslash  \rightarrow \mathcal{A}_\hslash  \rightarrow \mathcal{E}_\hslash \rightarrow 0.\]
+    \begin{prop} 
+    If \(\mathcal{E}_\hslash\) is flat over \( \mathbf{k} \lBrack \hslash \rBrack\), then \( \mathcal{E}_\hslash\) is a deformation quantisation of \(\mathcal{O}_Y\).
+    \end{prop}
+    
+    We construct several examples of this in the following chapters.  Kontsevich and Soibelman \cite{ks_airy} show this works for \emph{quadratic Lagrangians}, where the ideal is given by a collection of quadratic polynomials satisfying certain constraints, and showing the quotient is free over \( \mathbf{k} \lBrack \hslash \rBrack\).
+    %As \( \mathbf{k} [ \hslash] \) is free over \( \mathbf{k}\), there is the sequence: 
+    %\[ 0 \rightarrow \mathcal{J} \otimes_{\mathbf{k}} \mathbf{k} [ \hslash ] \rightarrow \mathcal{O}_X  \otimes_{\mathbf{k}} \mathbf{k} [ \hslash ] \rightarrow \iota_{*}\mathcal{O}_Y \otimes_{\mathbf{k}} \mathbf{k} [ \hslash ]  \rightarrow 0.\]
+    
+    %Then completing at \( I \otimes \hslash\), using Lemma (\ref{lem:flat_kh_mod}), and noting limits preserve exact sequences, there is the sequence
+    %\[ 0 \rightarrow \mathcal{J}\lBrack \hslash \rBrack \rightarrow \mathcal{O}_X \lBrack \hslash \rBrack \rightarrow  \iota_{*}\mathcal{O}_Y \lBrack \hslash \rBrack  \rightarrow 0.\] 
+    %Define \( \mathcal{E}_{\hslash}  = \iota_{*}\mathcal{O}_Y \lBrack \hslash \rBrack\). However to have  \(\mathcal{E}_{\hslash}/\hslash \mathcal{E}_{\hslash} =  \iota_{*}\mathcal{O}_Y \), requires \( Y\) to be coisotropic.
+    
+    
+    \begin{corollary}
+    The sheaf \( \mathcal{E}_{\hslash}\) of \( \mathcal{A}_\hslash\)-modules is supported on \( Y\) modulo \(\hslash\). 
+    \end{corollary} 
+    We prove this in the affine case, so \(A_{\hslash}=  \mathcal{A}_\hslash(U)\), \( J_{\hslash} = \sum_i A_{\hslash} \star H_i \), \(A =  \mathcal{O}_X(U) \). 
+    \begin{proof}
+    The ideal \( J_{\hslash}\) restricts to an ideal \( J = \sum A \cdot H_i \cong \langle J_i \rangle \), so we obtain the sequence \( 0 \rightarrow J \rightarrow A \rightarrow A/J \rightarrow 0 \).
+    \end{proof}
+    
+    \begin{corollary}
+    The sheaf \( \mathcal{E}_{\hslash}\) of \( \mathcal{A}_\hslash\)-modules is cyclic.
+    \end{corollary}
+    This simply follows by the definition of \( \mathcal{E}_{\hslash}\).
+    
+    \begin{ex}[Non example]
+    Consider \(J = \langle x,y \rangle \) in \( A=\mathbf{k}[x,y]\), with Poisson bracket \( \{ y,x\}=1\), \( \{ x,x\}=\{y,y\}=0\). Let the deformation quantisation of \(A\) be given by \(A_{\hslash} = (\mathbf{k}[x,y]\lBrack\hslash\rBrack,\star)\), and consider the sum of ideals  \( J_{\hslash}  = A_{\hslash} \star  x + A_{\hslash} \star y \), where \( \star \) is the Moyal product. Now we have
+    \[ 0 \rightarrow J_{\hslash} \rightarrow A_{\hslash} \rightarrow \mathbf{k} \rightarrow 0, \]
+    but \( \mathbf{k}\) is not flat over \( \mathbf{k} \lBrack \hslash \rBrack\), so this is not a deformation quantisation.
+    Also note \( \{y,x\} = 1\), and \(1 \notin J\).
+    \end{ex}
+    
+    %\begin{ex}
+    %Consider \( J = \langle y - x \rangle\). Then let \( J_{\hslash} = A_{\hslash} \star ( y - x ) \). \(A_{\hslash} / J_{\hslash}\)
+    %\end{ex}
+    
+    %More generally, this is just the tensor product functor. While these modules may not seem to contain much new information, there are particular dual \( \mathcal{A}_{\hslash}\) modules, which define objects called \emph{wavefunctions}, which have enumerative or geometric meaning.
+
+
+    \section{Wavefunctions}
+    \label{sec:wavefunctions} 
+    As seen in the preceding sections, deformation quantisation produces a non-commutative algebra of operators. It is not necessarily yet a quantisation as used in physics. The question to ask is, what do these operators act on. In physics this would be analogous to a Hilbert space of functions. In this more algebraic context, it is a dual \( \mathcal{A}_{\hslash}\)-module. These dual modules define the objects known as \emph{wavefunctions}, where the word has the same meaning in quantum curves and topological recursion.  
+    
+    First, we recall some results from commutative algebra again as inspiration.
+
+    \subsection{A review of annihilators of modules}
+    
+    %\begin{lem} A \(R\)-module \(M\) is cyclic if there exists an ideal \(I\) such that \( M\simeq R/I \).
+    %\end{lem}
+    %\begin{proof}
+    %\end{proof}
+    Recall some results from commutative algebra:
+
+    \begin{lem} Let \(R\) be a commutative ring, \(I\) an ideal in \(R\). Then for the \(R\)-module \(R/I\), \( \mathrm{Hom}(R/I,R) \cong  \mathrm{Ann}_R(I)\).
+    \end{lem} 
+    
+    \begin{proof}
+       Consider the short exact sequence
+       \[ 0 \rightarrow I \rightarrow R \rightarrow R/I \rightarrow 0. \]
+       Apply the left exact Hom functor \(\Hom_R(\sbt,R)\) gives the left exact sequence:
+       \[ 0 \rightarrow \Hom(R/I,R) \rightarrow \mathrm{Hom}(R,R) \rightarrow \Hom(I,R). \]
+       So \( \Hom(R/I,R)\) is the kernel of the map \( \Hom(R,R) \rightarrow \Hom(I,R)\). Now \( \Hom(R,R) \cong R\) by the isomorphism given by evaluation at \(1\), \( f \in \Hom(R,R) \rightarrow f(1) \in R\). Similarly for \(\Hom(I,R)\). So explicitly as \(\Hom(R/I,R)\) is the kernel of multiplication of elements of \(I\) by elements of \(R\), \( \Hom(R/I,R) = \{ r \in R | \forall i \in I, \,r \cdot i = 0 \} = \mathrm{Ann}_R(I)\).
+    \end{proof}
+    
+    The same proof follows more generally for any \(R\)-module \(N\) by applying the functor \( \Hom(\sbt, N)\):
+    \begin{corollary}
+       \(\Hom(R/I,N) \cong \mathrm{Ann}_{N}(I)\).
+    \end{corollary}
+       
+    \begin{lem} There is an isomorphism between the cyclic \(R\)-module \(M\) generated by \(x\), \(M = \langle x \rangle \), and the quotient 
+    \( R / \mathrm{Ann}_R(x)\), where \( \mathrm{Ann}_R(x)\) is the ideal formed by all elements in \(R\) that annihilate \(x\):
+    \[M =R/\mathrm{Ann}_R(x).\]
+    \end{lem}
+    
+    
+    A version of these results generalise to the non-commutative case of rings of differential operators. However the handedness of the modules and annihilators will be important.
+    
+    \begin{defn}[Left and right annihilators]
+    Let \( {\lAnn}_R(x) \) denote \emph{left annihilators} of \(x\):
+    \[ {\lAnn}_R(x) = \{ l \in R\, | \, l\, x = 0\}. \]
+    Similarly let \({\rAnn}_R(x)\) denote \emph{right annihilators} of \(x\):
+    \[ {\rAnn}_R(x) = \{r \in R \,| \,x \,r = 0 \}. \]
+    \end{defn}     
+    
+    %maybe it has to be k[[h]] module not a k module.
+
+    Let \(R\) be a non-commutative ring or algebra, for example the ring of differential operators.  A \emph{wavefunction} \( \psi\) is a generator of a cyclic right \(R\)-module, \(M  \cong \langle \psi \rangle \cong R/{\lAnn}_R(\psi) \). Also \({\lAnn}_R(\psi) \cong D\), so \( D \psi = 0\).
+    
+    \begin{ex}\label{ex:sols}
+    Let \( \mathcal{O}(X)\) be a ring of smooth functions, \( \mathcal{D}(X)\) the ring of differential operators on \(X\). Consider a differential operator \( D : \mathcal{D}(X)\). Then 
+    \[ \mathrm{Hom}_{\mathcal{O}(X)}\left(\frac{\mathcal{D}(X)}{  \mathcal{D}(X)  D } , \mathcal{O}(X) \right)\]  
+    represents solutions to \(D\) in \(X\).
+    
+    \(\mathcal{D}(X)  D \) is a right submodule of differential operators with a factor of \(D\). The module quotient can be represented by \(M=\mathcal{D}(X)/D\).  
+    
+    Then \( \mathrm{Hom}_{\mathcal{O}(X)}\left(M, \mathcal{O}(X) \right) \cong {\rAnn}_{\mathcal{O}(X)}(D) \cong \langle \psi \rangle\), which are the solutions to the equation 
+    \( D \psi = 0\). 
+    \end{ex}
+    \subsection{Wavefunctions from deformation quantisation}
+
+    
+    Consider a Poisson scheme \((X,\mathcal{O}_X)\), and a deformation quantisation of \( \mathcal{O}_X\) given by \( \mathcal{A}_{\hslash} = (\mathcal{O}_X\lBrack \hslash \rBrack,\star )\), where \( \star\) is a star product. In particular, for the examples where we construct deformation quantisation modules \( \star\) will be a Moyal product per example (\ref{ex:moyal_prod}). 
+    
+    Consider a coisotropic subscheme, \(Y\) in \(X\), with the map \( \iota : Y \rightarrow X\) giving a sequence:
+    \[ 0 \rightarrow \mathcal{J} \rightarrow \mathcal{O}_X \rightarrow \iota_{*}\mathcal{O}_Y \rightarrow 0. \]
+    Locally the ideal sheaf is given by a minimal collection of generaors \(\{H_i\}\), \( \mathcal{J}(U) = \langle H_i \rangle \). In finite dimensions if \(X\) is \(2n\) dimensional there will be \(n\) generators or fewer. In the infinite dimensional case, where \(Y\) is a quadratic Lagrangian, for Airy structures there will be a special choice of \(H_i\).
+    
+    Consider a sheaf \( \mathcal{E}_{\hslash}\) of \( \mathcal{A}_{\hslash}\)-modules corresponding to the deformation quantisation of the coisotropic subscheme \( \iota_{*} \mathcal{O}_Y\), so
+    \[ 0 \rightarrow \hslash \mathcal{E}_{\hslash} \rightarrow \mathcal{E}_{\hslash} \rightarrow \iota_{*} \mathcal{O}_Y \rightarrow 0.\]
+    Further suppose \( \mathcal{E}_{\hslash}\) is defined by a quotient:
+    \begin{equation}
+        \label{eqn:exactseqJAE}
+        0 \rightarrow \mathcal{J}_{\hslash}   \rightarrow \mathcal{A}_\hslash  \rightarrow \mathcal{E}_\hslash \rightarrow 0,
+    \end{equation} 
+    where locally \( \mathcal{J}_{\hslash}(U) = \sum_i \mathcal{A}_{\hslash }(U) \star  H_i  \) is given by the generators from \( \mathcal{J}\).
+    Similarly, \( \mathcal{J}_{\hslash}/\hslash \mathcal{J}_{\hslash} = \mathcal{J} \). Consider the dual \( \mathcal{A}_{\hslash}\) module:
+    \[ \mathcal{E}_{\hslash}^{\vee} = \mathrm{Hom}_{\mathcal{A}_{\hslash}}(\mathcal{E}_{\hslash},\mathcal{O}_X \lBrack \hslash \rBrack ).\]
+    Necessarily there may be conditions on the existence of such an object, for example in  \cite[section 2.4, page 15]{abpolyquant}. If this module exists, it represents annihilators of the generators of \( \mathcal{J}_{\hslash}\). For example let \(H \in \mathcal{J}_\hslash\), then  \( w \in \mathcal{E}^{\vee}_{\hslash}\) are sections such that 
+    \begin{equation}
+        \label{eqn:annih}
+        H \star w = 0.
+    \end{equation}
+    Consider an isomorphism  \( \varphi : \mathcal{A}_{\hslash} \rightarrow \mathcal{W}_{\hslash}\) where \( \mathcal{W}_{\hslash}\) is a Weyl-algebra. \( \varphi\) sends the non-commutative star product of functions to the non-commutative composition of operators.
+    \begin{ex} 
+    For example let \(A=\mathbf{k}[x_1,\dots,x_n,y_1,\dots y_n]\), be equipped with the Poisson bracket:  \[\{y_i,x_j\} = \delta_{ij}, \quad  \{x_i,x_j \} = \{ y_i,y_j\} = 0,\] and consider the deformation quantisation \( \mathcal{A}_{\hslash} = (\mathbf{k}[x_1,\dots,x_n,y_1,\dots y_n]\lBrack\hslash \rBrack, \star )\).
+    Then there is an ismorphism, \( \varphi\), between \( \mathcal{A}_{\hslash}\) and the Weyl-algebra \( \mathcal{W}_{\hslash} = \mathbf{k} [x_1, \dots, x_n , \hslash \partial_1 , \dots \hslash \partial_n ] \lBrack \hslash \rBrack\). The map \( \varphi\) is defined on the generators by:
+    \[ \varphi(x_i \star x_j) = x_i \cdot  x_j, \quad \varphi( y_i \star y_j) = \partial_i \cdot \partial_j, \quad \varphi(x_i \star y_j ) = x_i \cdot \hslash \partial_j. \]
+    \end{ex}
+    
+    Under the isomorphism \( \varphi\) to the Weyl algebra, \( \varphi\) sends the star product equation (\ref{eqn:annih}), to differential equation
+    \[ \varphi(H \star w ) = \varphi(H) \cdot \varphi(w) = 0,\]
+    where \( \varphi(H)\) is an operator. 
+    
+    Furthermore \( \varphi\) defines isomorphisms \(  \mathcal{J}_{\hslash}\cong \varphi(\mathcal{J}_{\hslash})\) and \( \mathcal{E}_{\hslash} \cong \varphi ( \mathcal{E}_{\hslash})\), which commute at each step of the sequence in equation (\ref{eqn:exactseqJAE}), so 
+    \[ 0 \rightarrow \varphi(\mathcal{J}_{\hslash}) \rightarrow \mathcal{W}_{\hslash} \rightarrow \varphi(\mathcal{E}_{\hslash}) \rightarrow 0, \]
+    is also exact, via diagram chasing. 
+    
+    In previous work, for example in \cite{norbury_quant, ks_airy}, these modules are examined at a point, or at a formal completion, from the Weyl-algebra perspective. This is primarily to solve the differential equation with the WKB method at that point.
+    Globally \( \mathcal{E}_{\hslash}^{\vee}\) does not have to be cyclic, or generated by a single section. In the example (\ref{ex:the_conic}), \( \mathcal{E}_{\hslash}^*\) is defined as solutions to the Airy equation, which is dimension two. A general question in algebra is how to reconstruct more global information from infinitesimal local information, for example the Artin reconstruction theorem.
+    
+    Let \(p\) be a point in \(X\), with a corresponding ideal sheaf \( \mathfrak{m}\). In example (\ref{ex:the_conic}), this will be the point \(0\). Denote \( \widehat{\mathcal{A}}_{\hslash}\) as completion along \( \mathfrak{m}\). Similarly we consider a completed Weyl-algebra \( \widehat{\mathcal{W}}_{\hslash}\). 
+    
+    \begin{defn}[Wavefunction]
+    A \emph{wavefunction} \(w\) is an element of the module 
+    \[ w \in \mathrm{Hom}_{\mathcal{A}_{\hslash}} (\widehat{\mathcal{E}}_{\hslash},  \widehat{\mathcal{O}}_{X}\lBrack \hslash \rBrack ),\] 
+    or alternatively in the Weyl-algebra perspective \( \psi\), 
+    \[ \psi \in  \mathrm{Hom}_{\mathcal{W}_{\hslash}} (\varphi(\widehat{\mathcal{E}}_{\hslash}),  \widehat{\mathcal{W}}_{\hslash} ).\]
+    \end{defn}
+
+    
+    
+    Of course the global objects could also be called a wavefunction.  This definition is to be consistent with others in the literature, for example the wavefunctions in \cite[page 52]{ks_airy}, which are represented as a formal power series found by the WKB method at a point in \(X\). Alternatively called \( \mathcal{D}\)-modules in \cite[page 148]{holland}.
+    The formal power series also often contains interesting enumerative data, for example in the case of the conic, example (\ref{ex:the_conic}), the wavefunction is the generating function for rooted planar graphs in various genus. The important thing we emphasise is that these module in these examples all arise from deformation quantisation, and are not constructed in an ad-hoc fashion.
+    
+    There is the possibility that there are other deformation quantisation modules which restrict to \(\iota_{*} \mathcal{O}_Y\) under the quotient by \(\hslash\). We are not ruling out any possibilities, only constructing modules in specific cases.
+    %\begin{prop} When \(Y\) is coisotropic, the left module \(\mathrm{Hom}(\mathcal{E}_{\hslash}, \mathcal{A}_{\hslash} )\) is cyclic. 
+    %\end{prop}
+    %\begin{proof}
+    %We consider the affine case, \( \Hom(E_{\hslash}, O(X)\lBrack \hslash \rBrack) \). Coisotropic is required for existence. Suppose \(E_{\hslash} = O(X) \lBrack \hslash \rBrack / \mathcal{J}_{\hslash}  \) as a right \( O(X)\lBrack \hslash \rBrack\)-module. Then 
+    %\[E_{\hslash}^{*} = \Hom(E_{\hslash}, O(X)\lBrack \hslash \rBrack) \cong \rAnn_{\mathcal{O}(X)\lBrack\hslash\rBrack} ( \mathcal{J}_{\hslash} ) = \{ f \in \mathcal{O}_X \lBrack \hslash \rBrack , \mathcal{J}_{\hslash} \star f = 0 \} .\]
+    %The question is, is \( E_{\hslash}^{*} = \mathcal{O}(X) \lBrack \hslash \rBrack / \mathcal{I}\)
+    %for some ideal \( \mathcal{I}\), as a left module.
+    %Suppose \(  \psi_1 ,\psi_2 \in E_{\hslash}^*\). Then consider \(\psi_1-\psi_2\). Necessarily \( \mathcal{J}_{\hslash} \star (\psi_1-\psi_2) = \mathcal{J}_{\hslash} \star \psi_1 - \mathcal{J}_{\hslash} \star \psi_2 = 0\). Then consider \( f \in \mathcal{O}_X \lBrack \hslash \rBrack , \psi_1 \in  E_{\hslash}^* \). Then consider  \( \mathcal{J}_{\hslash} \star ( \psi_1 \star f  ) = (\mathcal{J}_{\hslash} \star  \psi_1) \star f  = 0 \). So given a right module of operators, we can act on the left, and this is still \(0\) 
+    %The question is can \( E_{\hslash}^{*}\) be written as \( E_{\hslash}^{*} = \mathcal{O}(X) \lBrack \hslash \rBrack / \mathcal{I} \) for some \( \mathcal{I}\).
+    %\end{proof}
+    Kontsevich and Soibelman find a particular generator in the case where \(Y\) is a quadratic Lagrangian \cite{ks_airy}. 
+    
+    %In the particular case of Airy structures, when \( \mathcal{O}_X \) is algebraic, wavefunctions are defined for the formal completion.
+    %\begin{prop}
+    % \(\mathrm{Hom}\left(\widehat{\mathcal{E}}^{loc}_{\hslash},\mathcal{O}_W\right)\) is cyclic.
+    %\end{prop}
+
+    The deformation quantisation perspective highlights that \emph{wavefunctions} as understood in topological recursion and Airy structures are a module homomorphism. 
+    We want to emphasise the importance of the deformation quantisation perspective, as these modules may be more interesting than just a particular choice of generator.
+    
+    The other primary use of the deformation quantisation perspective is to understand the origin of the intersection formula for wavefunctions presented in \cite[ section (7.2)]{ks_airy}. The formula presented there gives a wavefunction on the deformation space of curves. The concept of wavefunction reduction can be understood as an intersection of sheaves which we explore in section (\ref{section:wavefunction_reduction}).
+
+
+    \section{Deformation quantisation of the conic}
+    \label{sec:def_of_conic}
+    
+    We give an explicit construction of a deformation quantisation module, and an associated wavefunction in the case of a conic in the plane.
+    
+    Let \( W = \mathbb{A}^2\), \(\mathcal{O}(W) = \mathbf{k}[x,y]\), with Poisson bracket defined on the generators \[ \{y,x\}=  (dx\otimes dy) ( \Pi) = \pi_{ij} \,\partial_i x \, \partial_j y = 1, \quad \{x,x\} = \{y,y\}=0, \] 
+    where for for clarity we use the notation \(i,j \in \{x,y\}\), \( \pi_{xy}=-1,\pi_{yx}= 1,\pi_{xx} = \pi_{yy}=0\), or alternatively as a matrix: 
+    \[ \pi = \left( \begin{array}{cc}
+         0 &-1  \\
+         1 & 0 
+    \end{array}\right).\]
+       \begin{ex}
+       \label{ex:the_conic}
+        Consider the conic \( \cL \subset W\), defined by the quotient \(\mathcal{O}(\mathbb{L})= \mathbf{k}[x,y]/(H = -y + x^2 + 2\, x\, y + y^2) \).
+    \end{ex}
+    Wavefunctions associated to \( \mathbb{L}\) are defined on a formal neighbourhood of the origin \((x,y)=(0,0)\).
+    
+    Corresponding to \(\cL \) is a formal scheme \( \widehat{\cL \hspace{0pt} } \), (respectively \(W\)), which is given by completion of \(\cL \) by a maximal ideal \( \mathfrak{m}=\langle x, y\rangle\). This is given by taking the colimit of the spectrum of the quotient: 
+    \[ \widehat{\cL} = \colim_n  \mathrm{Spec} \left( \mathcal{O}(\cL )/\mathfrak{m}^n \right). \]
+    \( \widehat{\cL}\) is representable by a formal series \(u_0(x)\), so \( y(x) =u_0(x)\), 
+    \[ \widehat{\cL} = \Spf \left(\mathbf{k}\lBrack x,y\rBrack /\langle y - u_{0}(x \rangle \right)\] 
+    Where  \( u_0(x) \in \mathbf{k}\lBrack x \rBrack\) is found by taking \( -y + x^2 + 2 \,x\, y + y^2 = 0 \) and solving for \(y(x)\). \(u_0(x)\) has a closed form, understood as a formal power series, given by: 
+    \[ u_0(x) = \frac{1}{2}\left( 1 - \sqrt{1-4x} - 2 \, x \right),\]
+    in a formal neighbourhood of \(y=x=0\). 
+    \begin{rem}
+    The positive square root would correspond to completing around \(y=1\).
+    \end{rem}
+    Expanding, \( u_0(x)\) is the generating function for Catalan numbers:
+    \[ u_0(x) = x^2 + 2\, x^3 + 5 \,x^4 + \cdots + \frac{(2n)!}{(n+1)!\,n!} \, x^{n+1}  + \cdots,\]
+    which counts rooted binary trees. Some terms and the corresponding binary trees are shown in figure (\ref{fig:catalantrees}), up to isomorphism.
+    \begin{figure}[htbp]
+        \centering
+        \input{tikz/catalan_tree}
+        \caption{Trees drawn up to \( \cong\). The unfilled vertex is the root. The number of pink edges correspond to the power of \(x\). The coefficient of \(x\) counts the total number of trees with \(n\)-edges.}
+        \label{fig:catalantrees}
+    \end{figure}
+    
+    
+    \begin{rem}
+    Note, in chapter (\ref{chapter:airy}) we examine the conic:
+    \[ - y + a \,x^2 + 2\, b\, x \,y + c\, y^2 = 0,\] 
+    with arbitrary \((a,b,c)\). Solving for \(y\) produces a series in \(x\), where coefficients of \(x\) are combinations of \((a,b,c)\), which distinguishes trees up to isomorphism. Here when \(a=b=c=1\) solving for \(y\) just produces a generating function counting total number of trees, figure (\ref{fig:catalantrees}).
+    \end{rem}
+    
+    
+    \(\mathbb{L}\) is locally representable in a formal neighbourhood of the origin as a primitive \( S_0\), so
+    \[ y(x) dx = u_0(x) dx = d S_0(x).\] 
+    Consider the deformation quantisation of \( \mathcal{O}(W)\) given by \( \mathcal{A}_{\hslash} = (\mathbf{k}[x,y]\lBrack \hslash\rBrack,\star)\), where \( \star\) is the Moyal product per example (\ref{ex:moyal_prod}). Correspondingly, after completion along \( \langle x , y \rangle\) there is a deformation quantisation of the formal scheme associated to \(\widehat{W}= \mathrm{Spf}( \mathbf{k}\lBrack x,y \rBrack) \), which gives the formal non-commutative algebra 
+    \begin{equation}
+    \label{eqn:completed_conic}
+    \widehat{\mathcal{A}}_{\hslash} = ( \mathbf{k} \lBrack x,y \rBrack \lBrack \hslash \rBrack , \star).
+    \end{equation}
+    Duals to these formal completed algebras are used to investigate the wavefunctions.
+    
+    %For now there will be no formal series in \(\hslash\), as Moyal products of polynomials terminate. However for formal series in \(x\) and \(y\), there are necessarily corresponding \(\hslash\) terms of arbitrary degree.
+    \subsubsection{The deformation quantisation of the conic, example (\ref{ex:the_conic}), on formal neighbourhoods}
+    The corresponding deformation quantisation \(\widehat{\mathcal{A}}_{\hslash} = ( \mathbf{k} \lBrack  x,y \rBrack \lBrack \hslash \rBrack , \star) \) of example (\ref{ex:the_conic}), (on the formal completion) is representable by the Weyl-algebra \( \widehat{\mathcal{W}}_{\hslash}=(\mathbf{k} \lBrack x, \hslash \partial_x \rBrack \lBrack \hslash \rBrack , \cdot) \), where \( \cdot\) is ordinary composition, as follows. First, checking some terms of the star product:
+    \[ x \star x = x^2 , \quad  x \star y = x y - \frac{1}{2} \hslash , \quad y \star y = y^2, \quad y \star x = x y + \frac{1}{2}\hslash, \]
+    where it is important to note a term like \(xy\) is another function in
+    \( \mathbf{k}[ x,y ]\lBrack\hslash \rBrack\). Checking the anti-commutator:
+    \[ \frac{1}{\hslash}\left( \hat{y} \star \hat{x} - \hat{x} \star \hat{y} \right) = 1 =  \{y,x\} , \]
+    which is the Poisson bracket as expected. Now there is a map between \( \mathcal{A}_{\hslash}\) and the Weyl-algebra \(\mathcal{W}_{\hslash}\). The map \( \varphi  :  \mathcal{A}_{\hslash}   \rightarrow \mathcal{W}_{\hslash}\),  is required to have the property:
+    \[ \varphi( f \star g ) = \varphi(f) \cdot \varphi(g).\] 
+    On monomials this is given by:
+    \begin{align*}
+        \varphi(x) &= x, \\ 
+        \varphi(y) &= \hslash \partial_x. 
+    \end{align*}
+    This is the source of the quantisation rule \( x \rightarrow x\), \( y \rightarrow \hslash \partial_x\).
+    
+    The map \(\varphi\) is an isomorphism. It sends star products of functions to products of operators.  For example \( x \cdot ( \hslash \partial_x ) = \varphi( x \star y)\). An operator like \( \varphi(xy)\) is defined to be \( \varphi(x \star y) + \frac{\hslash}{2}\), or \( \varphi(y \star x ) - \frac{\hslash}{2}\).  The star product was defined to account for the potential ambiguity. The action of both ways of writing the operator \( \varphi(xy) \) on functions are equivalent. 
+    
+    This map is analogous to the Wigner-Weyl transform. The star-product is analogous to constructing the phase-space picture of quantum mechanics, while the Weyl-algebra is more analogous to operators in the Schrodinger picture from quantum mechanics \cite{baker}.
+    
+    Now we consider a module supported on the deformation quantisation of  \( \mathcal{O}(\mathbb{L})\) in \( \mathcal{O}(W)\). The purpose is to study \(\mathcal{A}_{\hslash}\)-modules, which under the quotient map by \(\hslash^2\), give the \(\mathcal{O}(W)\)-module \(E =\mathcal{O}(W)/ \mathcal{O}(W) H  \). Consider elements of \( \mathbf{k}[x,y]\lBrack\hslash\rBrack\), of the form \(H - \hslash J\). 
+    Then the modules of interest are
+    \begin{equation}  
+    E_{\hslash} = \frac{\mathcal{A}_{\hslash}}{  \mathcal{A}_{\hslash} \star  (H - \hslash J)  } ,
+    \end{equation}
+    for different \(J \in \mathbf{k}[x,y]\lBrack\hslash\rBrack\). This module corresponds to operators acting on functions on \( \mathbb{L}\). Also we consider the dual as a \( \mathcal{A}_\hslash\)-module:
+    \begin{equation} 
+    E_{\hslash}^{\vee} = \mathrm{Hom}_{ \mathcal{A}_{\hslash} }\left(E_{\hslash}, \mathcal{A}_{\hslash} \right),
+    \end{equation}
+    which is the module or vector space of solutions to the equation \( (H - \hslash J) \star w =0\), for \( w \in  E_{\hslash}^{\vee}\). Correspondingly we investigate the completions \( \widehat{E}_{\hslash}\) and its dual, but with corresponding Weyl-algebras. 
+    
+    The purpose of the formal completion is a calculation tool to be able to write down a formal series representation for \(w\). The formal series for \(w\) contains interesting enumerative data. 
+    
+    \begin{rem}
+    \label{rem:constraints}
+    There are possible constraints on the \(J\). Consider a higher dimensional example, where  \( \mathcal{A}_{\hslash}= \mathbf{k}[x_{\sbt},y_{\sbt}] \lBrack \hslash \rBrack\) with the star-bracket \( [f,g] = f \star g - g \star f \). Let \( \mathcal{J} = \{H_i(x_{\sbt},y_{\sbt})\} \) be an ideal closed under the Poisson bracket. Consider the deformation \(\mathcal{J}_{\hslash} = \{ H_i + \hslash J_i \}\). To satisfy theorem (\ref{thm:torsionfree}), \(\mathcal{J}_{\hslash}\) is also required to be closed, \( [\mathcal{J}_{\hslash}, \mathcal{J}_{\hslash} ] \subseteq \mathcal{J}_{\hslash}\). In the case where \(H_i\) are degree two in \(x_{\sbt}\) and \( y_{\sbt}\), one possibility is  find \( J_i\) as a function of only \(\hslash\), for example the quantisation of an Airy structure in \cite{ks_airy}.
+    \end{rem}
+    
+    \begin{rem}
+    Deformation quantisation does not uniquely determine \( \mathcal{A}_{\hslash}\)-modules. For a given \( \mathcal{O}_W\)-module \(M\), there are multiple \( \mathcal{A}_{\hslash}\)-modules \(M_{\hslash}\) such that \(M_{\hslash}/\hslash M_{\hslash} = M\).
+    \end{rem}
+    This two dimensional case is less restricted than the example in remark \ref{rem:constraints}. However we consider when \(J\) is just a function in \(\hslash\), so elements of the module represent solutions to the equation
+    \[ H \star w_{\mathbb{L}}(x) = \hslash j(\hslash) w_{\mathbb{L}}(x), \]
+    where \( j(\hslash) \) is the function \( j(\hslash) = j_1 \hslash  + \mathcal{O}(\hslash^2)\). In the classical limit, \(H - \hslash J\) restricts to \( H\), and the equation becomes \( H w =0\), which is describing an element of the module 
+    \[ w \in \mathrm{Hom}_{\mathcal{O}(W)}(\mathcal{O}(W)/  \mathcal{O}(W) H , \mathcal{O}(W) ) = \mathrm{Ann}_{\mathcal{O}(W)}(  H) =  0,\]
+    which is just zero, as zero is the only annihilator of \(H\).
+    
+    
+    Using the isomorphism to the Weyl-algebra, this becomes an equation involving operators:
+    \begin{equation} \varphi(H) \cdot \varphi(w_{\mathbb{L}}) = \varphi(H) \cdot \psi_{\mathbb{L}} = \hslash j \psi_{\mathbb{L}},
+    \end{equation}
+    where 
+    \[ \varphi(H)  = - \hslash \partial_x +  x^2 + 2  \hslash\, x \, \partial_x + \hslash^2  \partial^2_x + \hslash. \]
+    In the Weyl-algebra representation, the module \(\widehat{E}_{\hslash}\) is a quotient of the Weyl-algebra \( \widehat{\mathcal{W}}_{\hslash} =  (\mathbf{k} \lBrack x, \hslash \, \partial_x \cdot \rBrack \lBrack \hslash \rBrack ,\cdot) \). In particular the elements of \( \widehat{E}_{\hslash}^*\), \( \psi_{\mathbb{L}}\) are called   \emph{wavefunctions}, \cite[page 13]{ks_airy}. In this case, \( \widehat{E}_{\hslash}^*\) (for a fixed \(J\)) is one dimensional, so \( \psi_{\mathbb{L}}\) is a generator of a cyclic module:
+    %needs a co
+    %assumed how x y acts, but we dont actually know, need to use the formula, its just a function
+    %reference yoshioko
+    %creation and annihilation operators
+    %map to weyl-algebra
+    %This is what gives the quantisation map on \( \mathbb{L}\).
+    %\[ x \rightarrow x , \quad  \hslash\, \partial =  \hslash \frac{d}{dx} \rightarrow y .\]
+    %However, this is a very specific instance, of the Weyl-algebra representation of the deformation quantisation of \( \mathbf{k}[x,y]\), per section (\ref{sec:def_of_pois_sch}), \( (\mathbf{k}[x,y]\lBrack \hslash \rBrack ,\star) \) where the star product is the exponential star product associated to the Poisson structure (\ref{defn:star_prod_pois}).
+    \[ \langle \psi_{\cL} \rangle = \Hom_{\mathcal{W}_{\hslash}}\left(  \frac{\widehat{\mathcal{W}}_{\hslash}}{\widehat{\mathcal{W}}_{\hslash} \langle - \hslash \partial_x +  x^2 + 2  \hslash\, x \, \partial_x + \hslash^2  \partial^2_x + \hslash - \hslash j  \rangle }, \widehat{\mathcal{W}}_{\hslash} \right).\] 
+    This module is supported on formal neighbourhoods, \( \widehat{\cL}-\{\hslash=0\}\), and elements are viewed as the formal solutions to the equation: 
+    \begin{equation} 
+    \label{eqn:quant_conic}
+    \left( - \hslash \frac{d}{d x} +  x^2 + 2  \hslash\, x \frac{ d }{d x}+ \hslash^2  \frac{d}{d x}  + \hslash - \hslash j\right) \psi_{\mathbb{L}}(x)  = 0, 
+    \end{equation}
+    where \(  \frac{d}{dx} = \partial_x\), at \(x=0\). Writing this as an eigenvalue equation:
+    \[ \left(- \hslash \frac{d}{d x} +  x^2 + 2  \hslash\, x \frac{ d }{d x}+ \hslash^2  \frac{d}{d x} \right) \psi_{\mathbb{L}}(x)  = \hslash ( j -1) \, \psi_{\mathbb{L}}(x). \]
+    Consider when \(j = 1\), \( \psi_{\mathbb{L}}(x)= \psi_{\mathbb{L},0}(x)\). Explicitly \( \psi_{\mathbb{L},0}(x)\) is found via a formal series of the form
+    \[\psi_{\cL,0}(x) = \mathrm{const} \, \exp\left(\frac{1}{\hslash} S(x)\right),\]
+    where \( S(x) = \sum \hslash^g S_g(x)\), and const is a constant. 
+    \begin{rem} Note, in other work such as \cite{ks_airy}, the solution is usually chosen to correspond to the point \(x=y=0\), which is a choice of square root. Normally a second order differential equation such as equation (\ref{eqn:quant_conic}) has a two dimensional space of solutions. Completing at \( \langle x, y\rangle\) is analogous to picking a choice of square root. Completing \( \mathcal{W}_{\hslash}\) only along \(x\), so \( \mathbf{k}[\hslash \partial ] \lBrack x\rBrack \lBrack \hslash \rBrack\) , and then expanding as a power series in \(x\) would be analogous for looking for both solutions. In this case the other solution would correspond to the point \(x=0, y = 1\). 
+    \end{rem}
+    
+    The \( S_g(x)\) satisfy \emph{abstract topological recursion}, \cite{ks_airy}, as the conic is a finite dimensional example of a  \emph{Airy structure}, as defined in \cite{ks_airy}. Writing out some terms, when \(j=1\), and where integration means formal integration of polynomials, we find: 
+    \[ S_0(x) = \int dx\, u_0(x), \quad S_1(x) = \int dx\, u_1(x),\]
+    where 
+    \[u_1(x) =\frac{2 u_0(x)  x}{1 - 4 x} = 2 \, x + 10 \, x^2 + \cdots + \left(4^n - \frac{(2n)!}{(n!)^2}\right) x^n + \cdots \] is the generating function counting genus one Feynmann diagrams or genus one rooted maps \cite{feynmaps, walsh}. Figure (\ref{fig:u1}) gives the first few diagrams.
+    
+    \begin{figure}[htbp]
+        \centering
+        \input{tikz/genus1catalan.tex}
+        \caption{
+        The first few un-directed, and un-rooted primitives for \(u_1\). Choosing an orientation on the edges will determine the root vertex, but this is considered in chapter (\ref{chapter:airy}). We draw these diagrams un-directed to contrast to figure (\ref{fig:catalantrees}).  
+        }
+        \label{fig:u1}
+    \end{figure}
+
+    \begin{rem}
+        In figure (\ref{fig:u1}) there are \(10 = 2 \times ( 3 \times 2) - 2\) choices for orientations of internal degree \(3\) edges corresponding to the \(10 x^2\) term in \(u_1\). The labelling will determine the root node, which we address in chapter (\ref{chapter:airy}).
+        
+         Drawn in a style to the trees from figure (\ref{fig:catalantrees}), note how an extra vertex and edge has been inserted at various levels. 
+
+         Note the lack of the \emph{tadpole diagrams} - which is a loop attached to only a single vertex. An additional \((2n)!/(n!)^2\) tadpole like diagrams would appear when \(j \neq 1\), and their inclusion is considered in chapter (\ref{chapter:airy}).
+    \end{rem}
+        
+    
+    \begin{prop}
+    When \(j=1\), \(u_{g}(x) \) is the generating function for numbers of genus \(g\) Feynmann diagrams.
+    \end{prop}
+    Note these are formal objects defined at the point \(y=x=0\), (which is a point on \( \mathbb{L}\)).
+    
+
+    \begin{figure}[htbp]
+    \centering
+    \tikz [ baseline=(a.base), tree layout, significant sep=1em, grow'=up, sibling distance=7mm, level distance=7mm]
+    \graph {
+        [nodes={circle, draw, fill, inner sep=0pt, minimum size=2mm, as =}]{ a };
+        // [nodes={circle, inner sep=0pt, minimum size=2mm, fill, as=}]{ a -- { b-- {c,d}} };
+        // [nodes={circle, fill }]{ c -- {e,f}};
+        // [simple necklace layout, necklace routing, edges={>={Stealth[round,sep,bend]}}, nodes={circle, inner sep=0pt, minimum size=0mm, fill, as=}]{ x --[pink] d };
+        // [simple necklace layout, necklace routing, edges={>={Stealth[round,sep,bend]}}, nodes={circle, inner sep=0pt, minimum size=0mm, fill, as=}]{ d --[pink] x };
+    };
+    \quad 
+    \tikz [ baseline=(a.base), binary tree layout, significant sep=1em, grow'=up, sibling distance=7mm, level distance=7mm]
+    \graph {
+        [nodes={circle, fill, draw, inner sep=0pt, minimum size=2mm, as =}]{ a };
+        // [nodes={circle, inner sep=0pt, minimum size=2mm, fill, as=}]{ a -- b -- { d -- {e }} };
+        // [nodes={circle, fill }]{ b -- c};
+        // [nodes={circle, fill }]{ d -- f};
+        // [simple necklace layout, necklace routing, edges={>={Stealth[round,sep,bend]}}, nodes={circle, inner sep=0pt, minimum size=0mm, fill, as=}]{ x --[pink] e};
+        // [simple necklace layout, necklace routing, edges={>={Stealth[round,sep,bend]}}, nodes={circle, inner sep=0pt, minimum size=0mm, fill, as=}]{ e --[pink] x };
+        };
+
+    \caption{
+    An example of the types of tadpole diagram appearing when \(j\neq 1\), which would give contributions to the \(x^2\) term in \(u_1\).
+        }
+        \label{fig:u1tadpole}
+
+    \end{figure}
+    
+    
+    \subsubsection{Solving the star-product equation directly}
+    
+    %references 
+    
+    The purpose of the formal completion of \( \mathcal{A}_{\hslash}\), in \(x,y\), \( \widehat{\mathcal{A}}_{\hslash} = \mathbf{k}\lBrack x, y\rBrack \lBrack \hslash \rBrack\),  is to write down a formal power series solution to the differential equation in a series of \(x\) and \(\hslash\). Further this solution is chosen at a single point.
+    
+    However we can investigate the star-product equation \( H \star w =0 \), and hope to find a function for \(w\) as a series in \(\hslash\), where 
+    \[ H = -y + x^2 + 2 x y + y^2.\]
+    %
+    %However, if we introduce \emph{creation} and \emph{annihilation} operators, \cite{antonsen, Yoshioka}, we can describe the module of interest in \ref{}. 
+    %Consider the morphism \((\mathbf{k}[a^{\dagger},a]\lBrack \hslash \rBrack, \star)  \rightarrow (\mathbf{k}[x,y]\lBrack \hslash \rBrack,\star)  \), defined by
+    %\begin{align*}
+        %a &=\frac{1}{2} \left( x + y \right)\\
+        %a^{\dagger} &= \frac{1}{2} %\left( x - y \right)
+    %\end{align*}
+    %So 
+    %\( x = \left( a + a^{\dagger}\right)\), \(y=\left( a - a^{\dagger}\right)\).
+    %These compose together using the star product: \( 4 a^{\dagger} \star a = (x+y)\star (x-y) = (x^2 -y^2) + (x \star x) +y \star x - x \star y - y \star y = (2 x^2-2 y^2) + 1   \).  Also \(  a \star a^{\dagger} + \frac{1}{2}=  a^{\dagger} \star a \).
+    %\begin{align*} 
+    %H = -y + x^2 + x y + y^2 &= -y + x \star x + 2 \left(x \star y - \frac{1}{2}\hslash \right) + y \star y \\ 
+                            %&= -(a - a^{\dagger}) + (a + a^{\dagger})\star(a + a^{\dagger})   
+                            % +2 \left( (a+a^{\dagger}) \star(a-a^{\dagger}) - \frac{\hslash}{2}\right)+ (a - a^{\dagger}) \star (a - a^{\dagger})\\
+                            %&= a^{\dagger} - a + a \star a + a \star a^{\dagger} + a^{\dagger} \star a + a^{\dagger} \star a^{\dagger} \\
+                            %&+ 2 \left( a \star a - a \star a^{\dagger} + a^{\dagger} \star a - a^{\dagger}\star a^{\dagger}\right) - \hslash + a \star a - a \star a^{\dagger} - a^{\dagger} \star a + a^{\dagger } \star a^{\dagger} \\
+                           % &=4 a \star a  - 2 a \star a^{\dagger} + 2 a^{\dagger} \star a   + a^{\dagger} - a - \hslash
+            %                 &=  4 \,a \, a    + a^{\dagger} - a -  1 - \hslash 
+    %\end{align*}
+    %Define \[ w = \exp\left(\frac{1}{\hslash}\left(4 \, a\, a + a^{\dagger} - a\right) + \sum_{g=1}^{\infty} \hslash^{g-1} S_g(a,a^{\dagger}) \right). \] 
+    As \(H\) is degree \(2\), there are only two terms in the star-product to consider:
+    \begin{align*}
+        H \star w &= H w + \frac{\hslash}{2} \mathrm{prod} \cdot (\pi_{ij} \partial_i ( H ) \otimes \partial_j (w) ) + \frac{\hslash^2}{4} \mathrm{prod} \cdot ( \pi_{ij} \pi_{kl} (\partial_i \partial_k H) \otimes (\partial_{j} \partial_{l} w )), \\
+        %&= \left( H   -\frac{\hslash}{2} \bigg( 2 (x+y) \left(P_y(x,y)-P_x(x,y)\right)+P_x(x,y)\bigg) \right) w
+        &= H w +\frac{\hslash }{2}  \left((2 x+2 y-1)  \frac{\partial w}{\partial x}-(2 x+2 y) \frac{\partial w}{\partial y} \right) +  \frac{\hslash^2 }{4} \left(2 \frac{\partial^2 w}{\partial^2 y}-4 \frac{\partial^2 w}{\partial x \partial y}+2 \frac{\partial^2 w}{\partial x^2}\right)=0.
+    \end{align*}
+    %From first impressions, this is a much harder looking equation to solve. However, 
+    Instead of a second order ordinary differential equation in the completed case, equation (\ref{eqn:quant_conic}), in terms of \(x\), this is a second order PDE in terms of \(x\) and \(y\). 
+
+    %It is possible to get solutions in terms of \(H\). 
+    Suppose we have a solution of the form \(w(x,y)= \lambda(H(x,y))\). The entire equation reduces to
+    \[ \lambda(H) H + \frac{\hslash^2}{2} \frac{\partial^2 \lambda(H)}{\partial^2 H } = 0,\]
+    which is similar to the \emph{Airy equation} \cite{airy}, or the equation for a harmonic oscillator.  Writing out a series solution for \( \lambda\) in powers of \( 1/\hslash\) and \(H\), around \(H=0\), gives
+    \[ \lambda(H) = \sum_m \frac{\lambda_{3m+4} }{\hslash^{3m+4}} H^{3m+4},\]
+    where
+    \[ \lambda_{n+2} = \frac{-1}{(n+1)(n+2)} \lambda_{n-1},\]
+    and \( \lambda_0\), and \( \lambda_1 \in \mathbf{k}\). In this case the solution \(w(x,y)\) is an element of the module \( \mathbf{k}[x,y]\lBrack\hslash^{-1} \rBrack\). 
+    \begin{ques} 
+    Can the \(S_g(x)\) be recovered from \( \lambda\)?
+    \end{ques}
+
+    
+    \begin{rem}
+    Naively, the equations defining the wavefunction \( \psi_{\mathbb{L}}\), are a collection of second order PDEs. In an analytic setting, we would expect there to two dimensional vector space of solutions, but this is a global statement. Investigating the wavefunction at a point has restricted us to a single solution.
+    \end{rem}
+    
+    %
+    % content from paper
+    
+    %Finally we examine a natural transformation of wavefunctions associated with \emph{symplectic reduction}. This transformation, observed in \cite{ks_airy}, behaves like a Laplace or Fourier transform, and we give an example in the case of a four dimensional variety in section (\ref{section:wavefunction_reduction}).
+
+    % a wavefunction is central to an A_h module
+    % quantisation of a subvariety is an A_h module
+    %wavefunction is central to quantisation
+    
+    %a quantisation of L inside M is a module over A_h

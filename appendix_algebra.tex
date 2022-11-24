@@ -1,0 +1,84 @@
+    \section{Algebraic geometry}
+    
+    
+    Let \(R\) be a ring.
+    \begin{defn}[spectrum]
+    The spectrum, \( \Spec \), is a functor which maps \(R\) to the set \(\Spec(R)\) of prime ideals of \(R\). 
+    \end{defn}
+    \(\Spec(R)\) is given a topology \(T\), by the closure. Let \(I\) be an ideal. Then let \(T\) be the collection of prime ideals containing \(I\). 
+    
+    A \emph{sheaf} is a tool for attaching data to open sets of a topological space.
+    
+    Let \(C\) be a category. Let  \(\mathbf{\mathrm{Set}}\) be the category of sets. 
+    
+    \begin{defn}[pre-sheaf] A \emph{pre-sheaf} (of sets) is a functor F, \( F : C^{\mathrm{op}} \rightarrow \mathbf{\mathrm{Set}}\).
+    \end{defn}
+    
+    A sheaf is additional constraints on morphisms.
+    
+    \begin{defn}[sheaf]
+    A \emph{sheaf} is a pre-sheaf with the following additional constraints on morphisms:
+        \begin{itemize}
+            \item \emph{Gluing}:
+            \item \emph{Locality}:
+        \end{itemize}
+    \end{defn}
+    
+    A \emph{scheme} is a generalisation of a manifold or algebraic variety. 
+    Let \(X\) be a topological space, and \( \mathcal{O}_X\) be a sheaf. Given an inclusion \( \iota : U \rightarrow X\), consider the restriction of \( \mathcal{O}_X\) to \(U\) via the inverse image functor \( \iota^* (\mathcal{O}_X)\).
+    
+    \begin{defn}[scheme]
+    A scheme is the pair \( (X,\mathcal{O}_X)\) such that for an open set \(U \subset X\), the pair \( (U, \iota^*(\mathcal{O}_X))\) is isomorphic to the spectrum of a commutative ring \(R\), \( (\Spec(R), R)\).
+    \end{defn}
+    
+    %For example a smooth manifold is a topological space with rings of smooth functions. Such a definition is an needed to generalise varieties and manifolds to infinite dimensional spaces.
+    
+    %Formal power series are useful for capturing information in an infinitesimal neighbourhood at a point. For example a quantum field theory can be seen as some infinitesimal deformation of a classical field theory. We need to study an infinite dimensional space in an infinitesmial neighbourhood to generate the topological recursion data.
+    
+    \begin{defn}[Artin ring]
+        A ring \(A\) is \emph{Artin} if there is a \emph{descending} chain of ideals, \(I_k\),
+        \[ A \leftarrow I_1 \leftarrow I_2 \leftarrow I_3 \dots \]
+        such that there exists an \(n\) for all \(m \geq n\), \(I_n = I_m\) (there is a minimum ideal).
+    \end{defn} 
+    
+    \begin{ex}
+    \(\mathbf{k}[x]/\langle x\rangle^n \) is Artin.
+    \end{ex}
+
+    
+    \begin{ex} If \( A\) is an Artin ring then \(\Spec(A)\) as a topological space is discrete.
+    \end{ex} 
+    
+    
+    Let \(R\) be a ring. Let \(I\) be an ideal in \(R\). Consider the completion of \(R\) by \(I\): \(\widehat{R\hspace{0pt}}_I\).
+    
+    \begin{defn}[formal spectrum]
+    The formal spectrum is a functor which as represented as a direct limit \( \Spf(\widehat{R\hspace{0pt}}_I)\), as 
+    \[ \mathrm{Spf}(\widehat{R\hspace{0pt}}_I) = \colim_n \Spec(R/I^n)\]
+    \end{defn}
+    
+    \begin{defn}[\(I\)-adic topology]
+    Let \(r \in R\). The \(I\)-adic topology is given by open sets \( r + I^n\).
+    \end{defn}
+    
+    A \emph{formal scheme} is an infinitesimal neighbourhood or \emph{formal disc} of points in a scheme, so it is an infinitesimal thickening of a scheme.
+    
+
+    \begin{defn}[formal scheme]
+    A \emph{formal scheme} is a pair \(( \mathcal{X} , \mathcal{O}_\mathcal{X} )\), such that \( \mathcal{O}_\mathcal{X}\) is a sheaf of topological rings, such that for open sets \(U \subset \mathcal{X}\), \(U\) is isomorphic the formal spectrum of a Artin ring, equipped with the \(I\)-adic topology.
+    \end{defn}
+    
+    %In general formal schemes are usually defined for Noetherian rings, however Artin is a stronger condition which is meant to mirror compactness in the formal spectrum. Compactness will be important (roots/integrals). 
+    
+    With these definitions we can take direct limits of schemes to construct infinite dimensional spaces.
+    \begin{defn}[ind-scheme]
+    An \emph{ind-scheme} is a direct limit of closed immersion of schemes. 
+    \end{defn}
+
+    %\section{Foliations}
+    %In physics an integrable system is a collection of differential equations which behaviour is entirely determined by initial conditions. This is equivalent to a \emph{foliation}
+%- main results : 
+%a tensor?
+
+    \begin{defn}[Period] A \emph{period} is a number that can be written as an integral of an algebraic function.
+    \end{defn}

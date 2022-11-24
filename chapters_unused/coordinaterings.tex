@@ -1,0 +1,38 @@
+    \section{Coordinate rings on a vector space}
+    
+    The symmetric algebra functor is useful for doing coordinate free algebraic geometry over a vector space. For the category of vector spaces, the dual functor gives the dual vector space.  Taking the dual is contravariant, so reverses directions of arrows. 
+    
+    So it is natural to consider a presheaf on a vector space given by the functor \( F = \rS \cdot (\, )^*\), instead of just considering the symmetric algebra.
+    
+    
+
+    
+    %As every vector topology is translation invariant, the map \( V \rightarrow  V\) defined by \( v \rightarrow v + p\), is a homeomorphism, it is sufficient to construct the sheaf o
+    %It is sufficient to construct the sheaf structure over linear subspaces.
+    
+    
+    Given a subset \(U\) (not necessarily a linear subspace, but the argument goes through in terms of basis elements), assign it the value of \( \rS(U^*)\). 
+    Now for subsets \(P \subset Q \subset V \), there is an inclusion morphism \( \iota : P \rightarrow Q \).  Taking duals this gives a morphism \( \iota^* : Q^* \rightarrow P^*\). By universality this gives a restriction morphism, \( \mathrm{res}_{PQ} = \rS(\iota^*)  : \rS(Q^*) \rightarrow \rS(P^*)\). Likewise by universality, \( \mathrm{id} : U \rightarrow U \) lifts to a morphism \( \rS(\mathrm{id}) = \mathrm{id}\).
+    This also has the necessary functorial properties. Given \( P \rightarrow Q \rightarrow R\), this lifts to a composition of restriction morphisms as expected. 
+    
+    
+    
+    Finally to show that this does indeed generate a sheaf, 
+    %\( \Gamma(V, \mathcal{O}_V) = S(V^*)\).
+    %Given a sub vector space \(U \subset V\), which is a morphism \( U \rightarrow V\), by the universal property of the symmetric algebra, this induces a restriction map \( \mathcal{O}(V) \rightarrow \mathcal{O}(U)\)
+    
+    So for a finite symplectic vector space \(W \cong V \otimes V^*\), 
+    picking a basis \( \mathcal{B} = \{ e_i\}\) for \(V\) by the previous construction, this is sent to the symmetric algebra \( \mathbf{k}[\mathcal{B}^*]\), where the \( \mathcal{B}^*\) are now a set of coordinates on \(V\).  Rephrasing this, these are \emph{Darboux} coordinates. Given linear coordinates \(\{x^k\mid k\in I\} \) on \(V^*\), then \( x^k \in (V^*)^* \cong V\). Likewise pick coordinates \(\{y_k\mid k\in I\} \) on \(V\), so that \(y_k \in  V^*\). This gives a ring 
+    \( \mathbf{k}[W] \cong \mathbf{k}[x^\bullet] \otimes_{\mathbf{k}} \mathbf{k} [y^\bullet]\), where the bullets represent all the \(x^k\) and \(y_k\). 
+    
+    
+    Overall this does give a candidate for a locally ringed space 
+    \( (W, \mathcal{O}_W)\), where \( \Gamma(W, \mathcal{O}_W ) = \mathbf{k}[W]\). However, if \(W\) was infinite dimensional this construction of \( \mathcal{O}_W\) would forget information about the topology on \(V^*\). The symmetric algebra as defined with algebraic tensor products does not capture all the information. 
+    
+    The functor mapping from the category of topological vector spaces to commutative algebras is foregtful, so this suggests two approaches.
+    
+    One option is to embed \(W\) in an ind-scheme.
+    The alternative approach is replacing the tensor product with a topological complete tensor product, and looking for a functor to the category of topological algebras.
+    
+    \subsection{Completed symmetric algebras}
+    

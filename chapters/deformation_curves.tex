@@ -1,0 +1,1184 @@
+\chapter{Deformations of curves in surfaces}
+    \label{chapter:Atensor}
+    
+    
+    %A_Sigma define
+    
+    
+    The main purpose of this chapter is to tie together the previous chapters and to give a new result; to show that a tensor \(A_\Sigma\), definition (\ref{defn:Asigma}), maps to a tensor \(\overline{A}_\Sigma\), also known as the \emph{Donagi-Markman cubic}, under symplectic reduction described generically in chapter (\ref{chapter:symplecticreduction}). A version of this chapter appears in our joint paper \cite{chaimanowong2020airy}.  
+    
+    Let \( (X,\omega)\) be a symplectic surface, and consider a curve \(\Sigma\) in \(X\), \( \Sigma \subset X\). A choice of Torelli marked basis determines a space \( V_{\Sigma}\), the topological vector space of residueless differentials. From this we construct a Tate space \( W_\Sigma\). Associated to \(W_\Sigma\) we consider a quadratic Lagrangian \( \cL\) per chapter (\ref{chapter:airy}), as a subvariety in an infinite dimensional affine space. One purpose of this chapter is to relate the deformation space of \( \Sigma\) to Airy structures \cite{ks_airy}, using symplectic reduction as outlined in chapter (\ref{chapter:symplecticreduction}).
+    
+    Note in the following sections we will use the following notation:
+    
+    \begin{defn}[Normalised integral]
+    \label{defn:normalint}
+    We use the notation \[ \oint_{[\gamma]} = -\frac{1}{2 \pi i} \oint_{\gamma},\] to represent the integral over \(\gamma\) normalised by \( - 2 \pi i \),
+    where \(\gamma \in H_1(\Sigma,\mathbb{Z})\), for example a \(b\)-period in a Torelli basis.
+    \end{defn}
+    
+    Furthermore we also use the notation, for coordinates \(x^i\) with upper indices, derivations use lower indices \( \frac{\partial}{\partial x_i}\), so Einstein summation conventions can apply (summing over an upper and lower index). Similarly for coordinates with lower indices.
+    
+    \section{Example of a formal Lagrangian subvariety}
+    
+    An example of a formal, infinite dimensional, Lagrangian subvariety, described in chapter (\ref{chapter:airy}), arises from the \emph{Virasoro relations} of the \emph{KdV hierarchy} \cite{kdv}. Briefly, the KdV hierarchy describes a collection of differential operators, and the Virasoro relations are a collection of commutation relations. This space is used to construct the Airy structure related to topological recursion of a curve \( \Sigma\). 
+    
+    Central to this example is the Kontsevich-Witten tau function:
+    
+    \begin{defn}[Kontsevich-Witten tau function] The \emph{Kontsevich-Witten tau function} is a formal exponential generating function:
+    \[ Z^{KW}(x^{\sbt}) = \exp \left( \sum_{g,n,k_{\sbt}} \frac{\hslash^{g-1}}{n!} \int_{\widebar{\mathcal{M}}_{g,n}} \prod_i \psi_i^{k_i}\, (2k_i+1)!! \, x^{2k_i + 1} \right). \]
+    \end{defn}
+    Similar to \( \exp(S(x^{\sbt}))\), from chapter (\ref{chapter:airy}), \(Z^{KW}\) stores the intersection numbers of tautological classes \( \psi_i\) on the moduli space \( \widebar{{\mathcal{M}}}_{g,n}\), inside the exponent, as coefficients of \(x^{\sbt}\) and \(\hslash\).
+    
+    Closely related to \(Z^{KW}\) is an infinite collection of differential operators \( \{L_{-1}, L_0, L_1 , \dots \}\), by 
+    \[ L_m = -\frac{1}{2} \frac{\partial}{\partial x_{2m+3}} +\frac{(x^1)^2}{4\hbar}\delta_{m}^{-1}  +\frac{1}{2}\sum_{i = 2 k + 1} i\, x^i \, \frac{\partial}{\partial x_{i+2m}}+ \frac{\hslash}{4} \mathop{\sum_{i+j=2m}^{'}}_{i,j\text{ odd}} \frac{\partial}{\partial x_i} \frac{\partial}{\partial x_j } + \frac{1}{16} \delta_{m}^{0},
+    \]
+    where the sum \( \sum^{'} \) denotes excluding the case \(m=0\) or \(-1\). Also note \(\frac{\partial}{\partial x_{-1}} = 0\), the zero operator. 
+    
+    The operators \( L_m\) satisfy the \emph{Virasoro commutation relations}:
+    \begin{defn}[Virasoro commutation relations]
+    \[ [L_m,L_n] = (m-n) L_{m+n},\]
+    \end{defn}
+    
+    In this particular example, the Lie bracket is given by \( \left[\frac{\partial}{\partial x_i},x^j \right] =  \delta^j_i\).
+    
+    As originally conjectured by Witten \cite{WitTwo}, and shown by Kontsevich \cite{KonInt}, solving the equation
+    \[L_m \, Z(x^{\sbt})= 0, \quad m\geq -1, \]
+    for \(Z\) recursively, similar to the procedure for quantum Airy structures in chapter (\ref{chapter:airy}), gives 
+    \[Z = Z^{KW}(\hbar,x^1,3x^3, \dots , (2k+1) \,x^{2k+1}, \dots ).\]
+    Writing out the exponent as a series in \(\hslash\) and \(x^{\sbt}\), and solving recursively, determines any intersection number with the initial condition  \(\int_{\overline{\mathcal{M}}_{0,3}} 1=1\). \( Z^{KW}\) is a wavefunction per chapter (\ref{chapter:deformation}).
+    
+    Consider a classical limit of the operators \(L_m \rightarrow H_n\). First, multiply \(L_m\) by \(\hslash\), then mapping \(L_m\) to a star product of functions with \( \hbar \frac{\partial}{\partial x_i} \rightarrow y_i\), where composition of operators are replaced by star products (\ref{defn:star_prod_pois}). Then ignoring \( \hslash^2\) terms, gives a collection of quadratic and linear polynomials:
+    \begin{ex} The classical limit of the \(L_m\) are the quadratic polynomials:
+    \label{ex:Hvirasoro} 
+    \begin{align*}
+        H_k(x^{\sbt},y_{\sbt})&=-y_k,\quad k\in{\mathbb{Z}}^+_{\text{even}},\\
+        H_k(x^{\sbt},y_{\sbt})&=-\frac{1}{2} \,y_k +  \frac{1}{4}\,\delta_{k}^{1} x^1 x^1+\frac{1}{2}\mathop{\sum_{i=1}}_{i\text{ odd}}^\infty i\, x^i\, y_{i+k-3} +\frac{1}{4} \, \mathop{\sum_{i+j=k-3}}_{i,j\text{ odd}} \, y_i \, y_j + \frac{1}{16} \delta_{k}^{3} ,  \quad k \in{\mathbb{Z}}^+_{\text{odd}} 
+    \end{align*}
+    \end{ex}
+    also with the constraint \(y_{-1}=0\). These polynomials then define an ideal \( I(\mathbb{L}_{KW})= \langle H_k \rangle \), which defines a subscheme inside an infinite dimensional pro/ind-scheme \( W \cong \mathbb{W}= \Spec\left(\mathbb{C} [ x^{\sbt}, y_{\sbt} ] \right) \), where \(x\) terms are ind-infinite, \(y\) terms are pro-infinite, per lemma (\ref{lem:coordring}), equipped with a Poisson bracket  \(\{x^i,y_j\}=\delta^i_{j}\) and \(\{x^i,x^j\}=\{y_i,y_j\}=0\), \(i,j=1,\dots\).  Note the identification of the spectrum with \(W\).
+    
+    Completing at a maximal ideal \( \langle x^{\sbt}, y_{\sbt}\rangle\) defines a formal subscheme  \( \widehat{\cL}_{KW} \subset \Spf\left(\mathbb{C} \lBrack x^{\sbt}, y_{\sbt} \rBrack \right)\). Furthermore this lets us write a series expansion for \(y\): 
+    \[ y_k(x^{\sbt}) = u_{0,k}(x^{\sbt}),\]
+    which is done explicitly via fixed-point iteration on the equations \( y_k = f(x^{\sbt}, y_{\sbt})\), where \(f\) are the quadratic and constant terms in the \(H_k\) per example (\ref{ex:Hvirasoro}). %Later we see the symplectic reduction of \( u_{0,k}(x^{\sbt}) x^k\) defines a formal series \( \vartheta\), in section (\ref{sec:vartheta}), which is useful to investigate the Donagi-Markman cubic.
+    
+    The \( H_k\) in example (\ref{ex:Hvirasoro}) also define an Airy structure. Consider the coefficients \(a_{ijk}\) of the coefficients of \(O((x^{\sbt})^2)\) terms in the \(H_k\), and consider the polynomials
+    \begin{align*} 
+    A &= a_{ijk} x^i x^j x^k = \frac{1}{4} x^1 \,x^1 \,x^1, \\
+    B &= b_{ij}^k x^i x^j y_k = \frac{1}{2} \left(  x^1 \left(  3 x^3 y_{1} + \dots  \right) + 0   + x^3 \left( x^1 y_1 + 3 \, x^3 y_3 + \dots   \right) + 0  + \dots   \right) , \\
+    C &= c_{i}^{jk} x^i y_j y_k = \frac{1}{4} \left( x^5 \,y_1 \,y_1 + 2 \,x^7 \,y_1\, y_3 + 2 \,x^9\,y_1 \,y_5 + x^9 \,y_3\, y_3 + \dots  \right).
+    \end{align*}
+    This gives \( a_{111} = \frac{1}{4}\), \( a_{ijk} = 0\) for \(i\neq j \neq k \neq 1\). 
+    \begin{rem}
+    Note, if we tried to quantise these \(H_k\) there would be terms that contribute to the trace of the \(B\) tensor \(b_{ij}^{j} = b_{i1}^{1} + b_{i2}^{2} + \dots \), which has a divergent sum for \(i=3\). In this case however we started with renormalised Hamiltonians, \(L_m\), per chapter (\ref{chapter:airy}), they are missing  this divergent term, which has been cancelled out by a choice of \(J\). Also note the \( a_{ijk} \) and \(c_{i}^{jk}\) tensors satisfy the constraint imposed by the quantum Airy structure:
+    \[ a_{jst} c^{st}_i - a_{ist} c^{st j } = 0.\]
+    \end{rem}
+    
+    \begin{rem}
+    Note that solving for \(y\), all terms in the resulting series for \(x\) contain contractions between the tensors \(a_{ijk}\), \(b_{ij}^k\), and \( c_{i}^{jk}\). However as tensors contract between lower and upper indices, note that as lower indices pair with \(x^{\sbt}\), they are forced to have only finitely many non zero terms, as the \(x^{\sbt}\) are ind-infinite, or correspond to a discrete vector space.
+    \end{rem}
+    % sum of all odd = 1/12?
+    
+    \((A,B,C)\) are identified with tensors in completed tensor products of an infinite dimensional vector space \(W = \langle x^i , y_j \rangle \):
+    \[ x^i x^j \dots \rightarrow x^i \otimes x^j \otimes \dots . \]
+    These tensors \( (A,B,C)\) satisfy the conditions of an Airy structure, per chapter (\ref{chapter:airy}).
+    
+    \( \cL_{KW}\) is the basis for the work in \cite{ks_airy}, where formal neighbourhoods of \( \cL_{KW} \) are identified with a neighbourhoods of a space \( \cL_{\mathrm{Airy}}\) defined from \emph{residue constraints}. As per chapter (\ref{chapter:tate}), define an infinite dimensional  symplectic vector space of residueless meromorphic differentials:
+    \begin{equation}  
+    \label{wairy}
+        W_{\mathrm{Airy}}=\left\{ J=\sum_{n\in\mathbb{Z}} J_nz^{-n}\frac{dz}{z}\mid J_0=0, J_n \in \mathbb{C}, \exists N \text{ such that }J_n=0,\ n>N\right\},
+    \end{equation} 
+    with symplectic form
+    \[ \Omega_{W_{\mathrm{Airy}}}(\eta_1,\eta_2)=\Res_{z=0}f_1\eta_2,\quad df_1=\eta_1,\eta_2\in W_{\mathrm{Airy}}.\]
+    We consider \( W_{\mathrm{Airy}} \) to be contained in an affine space \( \mathbb{W}\) with infinite ind and pro directions, \(\mathbb{W} \rightarrow W_{\mathrm{Airy}}   \), so notion of subvariety makes sense. Consider a curve \( \Sigma\) inside a symplectic surface \(X\) with a divisor \(R\).  \(W_{\text{Airy}}\) is identified with local residue free differentials, given by sending global meromorphic differentials to their local expansions at each point in \(R\) with respect to a given local coordinate.
+    Then define \( \dim(R)\) copies of \( \cL_{KW}:\)
+    \[ \cL_{KS}=\cL_{\mathrm{Airy}}^R \cong \widehat{\cL}_{KW}^R \]
+    Taking \(\dim(R)\) copies of \(H_k\) is used to define a tensor \(A_\Sigma\).  Let \( \alpha , \beta, \gamma \in R \) represent points in the divisor. We construct a new bigger tensor from \(\dim(R)^3\) copies of \(A\), which allows linear combinations of points around the divisor:
+    \begin{defn}
+    \label{defn:Asigma}
+    \[ A_\Sigma = a_{ijk,\alpha \beta \gamma} \, x^{i,\alpha} x^{j,\beta} x^{k,\gamma} = \frac{1}{4} \sum_{\alpha \in R} x^{1,\alpha} x^{1,\alpha} x^{1,\alpha}.  \]
+    \end{defn}
+    where \( (i,\alpha)\) is a multi-index. Furthermore \( A_\Sigma = \omega_{0,3}\) from topological recursion, which we show in section (\ref{sec:rescons}).
+    
+    %\subsection{An alternate Lagrangian}
+    %\hbar L_{\frac{k-3}{2}}\left(x^{\sbt},\hbar\frac{\partial}{\partial x^{\sbt}}\right)|_{\hbar\frac{\partial}{\partial x^i}=y_i}\quad k\in\bz^+_{\text{odd}}
+    
+    
+    
+    
+    
+    \section{A short review of the Tate space of differentials}
+    
+    This section is mostly from chapter (\ref{chapter:tate}), section (\ref{sec:tatespaceofdiff}), reproduced here as a reminder. Consider an algebraic curve \(\Sigma \subset X\), a divisor \(R\), and local coordinates \(z_\alpha\) defined on \( \Sigma - R\) around each point \(\alpha \in R\). Define \( \dim(R)\) copies of \(W_{\mathrm{Airy}}\): 
+    \[ W_\Sigma =(W_{\text{Airy}})^R.\]  
+    Each copy of \(W_{\text{Airy}}\) uses the local coordinate \(z_\alpha\) around points in \(R\). The subspace 
+    \[L_\Sigma =(L_{\mathrm{Airy}})^R \subset W_\Sigma \] consists of locally holomorphic differentials, and satisfies the property \( L_\Sigma, \mathcal{T}_0 \mathbb{L}^R_{\mathrm{Airy}}\). 
+    
+    As per chapter (\ref{chapter:tate}), define \(G_\Sigma\) as the space of meromorphic differentials with zero residue:
+    \begin{defn}[\(G_\Sigma\)]
+    \begin{equation} 
+     \label{eqn:gsigma}
+         G_\Sigma=\{ \eta\in H^0(\Sigma,\Omega^1(\Sigma-R)) \text{\ meromorphic on }\Sigma \, \mid\,\Res_{r\in R}\eta=0\}.
+    \end{equation}
+    \end{defn}
+    \(G_\Sigma\) is identified with the image under the injective map \(G_\Sigma \rightarrow W_\Sigma\), so \(G_\Sigma \subset W_\Sigma\). 
+    
+    Given a choice of Torelli basis on \(\Sigma\), define
+    \begin{equation} \label{vsigma}
+        V_\Sigma=\{ \eta\in G_\Sigma\mid\oint_{a_i}\eta=0,\ i=1,...,g\}.
+    \end{equation}
+    \( V_\Sigma \) defines a polarisation of \(W_\Sigma\). Equipping \(W_\Sigma\) with the Tate topology, \(V_\Sigma\) with discrete topology, \(L_\Sigma\) with the linearly compact topology, the topological dual gives \( V_\Sigma^* \cong L_\Sigma \), and 
+    \[ W_\Sigma \cong L_\Sigma \oplus V_\Sigma \cong V_\Sigma \oplus V_\Sigma^*,\] which was shown in chapter (\ref{chapter:tate}).
+
+    \subsection{Symplectic reduction of the Tate space of differentials}
+
+    In chapter (\ref{chapter:tate}) we showed that         
+    \( G_\Sigma\), equation (\ref{eqn:gsigma}), the space of meromorphic differentials is coisotropic in \(W_\Sigma\):
+     \begin{equation} 
+         G_\Sigma=\{ \eta\in H^0(\Sigma,\Omega^1(\Sigma-R)) \text{\ meromorphic on }\Sigma\mid\Res_{r\in R}\eta=0\},
+     \end{equation}
+    where \( \Sigma \) is a symplectic surface \(X\) with divisor \(R\) satisfies the following:
+    \begin{lem}  \label{coisotropic}
+        \(G_\Sigma\subset W_{\Sigma}\) is coisotropic.
+    \end{lem}
+    This was shown in chapter (\ref{chapter:tate}), section (\ref{sec:tatespaceofdiff}).
+    
+    Let \(G_\Sigma^{\perp}\) denote the symplectic complement to \(G_\Sigma\). Then: 
+    \begin{lem}
+    \( G_\Sigma^{\perp}\) is the vector space of exact differentials
+    \[ G_\Sigma^{\perp}=\{ \eta=df,\  f \text{\ holomorphic on }\Sigma-R\}
+    \] 
+    \end{lem}
+    Similarly this was shown in chapter (\ref{chapter:tate}), section (\ref{sec:tatespaceofdiff}).
+    
+    Now the symplectic quotient of \(W_\Sigma\) by the coisotropic subspace \(G_\Sigma\) is given by
+    \[ W_\Sigma \sslash G_\Sigma^\perp = G_\Sigma / G_\Sigma^{\perp}.\]
+    
+    
+    \begin{lem} There is a short exact sequence:
+    \[0 \rightarrow G_\Sigma^{\perp} \rightarrow G_\Sigma   \rightarrow \mathcal{H}_\Sigma \cong H^1(\Sigma,\mathbb{C}) \rightarrow 0 \]
+    \end{lem}
+    
+    
+    \begin{proof}
+    The map \(G_\Sigma \rightarrow H^1(\Sigma, \mathbb{C}) \) is surjective as any differential defines a cohomology class on \(\Sigma\), by integrating along periods. Further \(G^{\perp}_\Sigma \rightarrow G_\Sigma \) is injective, by the definition of \(G^{\perp}\). Furthermore \(G_\Sigma^{\perp}\) is precisely the kernel of \(G_\Sigma \rightarrow H^1( \Sigma, \mathbb{C})\), as exact differentials in \( G^{\perp}_\Sigma\) have all zero periods.
+    \end{proof}
+    
+    So the quotient by exact differentials sends a meromorphic differential (with zero residues) to its cohomology class, and the map is surjective. As a consequence \(W_\Sigma \sslash G_\Sigma \cong H^1(\Sigma , \mathbb{C})\). 
+    \begin{lem} Symplectic reduction of \(W_\Sigma\) is given by a map \( [ \cdot ] : W_\Sigma \rightarrow H^1(\Sigma, \mathbb{C})\), where
+    \[ [ \eta ] = \left( \oint_{a_i} \eta, \oint_{b_j} \eta \right) \]
+    and \( \eta \in W_\Sigma\).
+    \end{lem}
+    
+    Furthermore, we examine the image of \(V_\Sigma \subset W_\Sigma\) under symplectic reduction, or the map \(W_\Sigma \rightarrow H^1(\Sigma, \mathbb{C})\) given by taking periods:
+    
+    \begin{lem}[Reduction of \(V_\Sigma\)]
+    \label{lem:redVSig}
+    The reduction of \(V_\Sigma\) is given by:
+    \[ \overline{V}_\Sigma \cong V_\Sigma/G_\Sigma^\perp,\]
+    Furthermore \(\overline{V}_\Sigma\subset \mathcal{H}_\Sigma \cong H^1(\Sigma, \mathbb{C}) \) consists of those cohomology classes with vanishing \(a\)-periods. 
+    \end{lem}
+    This follows from the definition of \(V_\Sigma \subset G_\Sigma \) as the space of differentials with zero \(a\)-periods, and \(G^{\perp}_\Sigma\) as the space of exact differentials.
+    
+    
+    
+    
+    
+    \section{Residue constraints}
+    \subsection{Foliations}
+    Let \(X\) be a complex surface.
+    \begin{defn}[Foliation] A foliation \(\mathcal{F}\) on \(X\), is a decomposition of \(X\) into a disjoint union of \(1\)-dimensional submanifolds \(\{L\}\) called \emph{leaves}.
+    
+    Let \(p \in X\), and let \(U\) be an open neighbourhood  \(p \in U\),  and let \((x,y)\) be local holomorphic coordinates. Leaves must satisfy the constraint that for each leaf \(L\), \(L \cap U\) is represented by \( \{x=\mathrm{const}\}\).
+    \end{defn}
+    
+    Let \(X\) be a symplectic surface with symplectic form \( \Omega\), and equipped with a foliation \( \mathcal{F}\). There are special coordinates on \(X\) called foliation Darboux coordinates:
+    
+    \begin{defn}[Foliation Darboux coordinates]  \label{defn:FDcoord}
+    \emph{Foliation Darboux coordinates}, are local coordinates \( (u,v)\) on \(X\) which are \emph{Darboux coordinates}, so
+    \[ \Omega =  du\wedge dv,\]
+    and also define the leaves of the foliation via \(u= \mathrm{const}\).
+    \end{defn}
+
+    Foliation Darboux coordinates are unique up to a symplectic change of coordinates which preserves the foliation:
+    \begin{lem}
+    Coordinate transforms of the form
+    \begin{equation}  
+    \label{eqn:trans}
+        (u,v)\longrightarrow (f(u),\frac{v}{f'(u)}+g(u)),
+    \end{equation}
+    for \(f'(u)\neq 0\) in the neighbourhood of \(X\), preserve the foliation, and symplectic structure.   
+    \end{lem}
+
+    These preserve the symplectic form as \[ d(f(u))\wedge d ( \frac{v}{f'(u)}+g(u) ) = f'(u) du \wedge \left( \frac{dv}{f'(u)} - \frac{ v f''(u) du }{f'(u)} + g'(u) du \right) = d u \wedge dv = \Omega.\]
+
+    Now let \( X\) be a symplectic surface, with symplectic form \( \Omega\), and equipped with a foliation \( \mathcal{F}\). Consider a curve \(\Sigma \subset X\), and let \(R\) be a divisor on \(\Sigma\). Let \(\alpha\in R\subset\Sigma\). We introduce a choice of foliation Darboux coordinates, \( (u_\alpha,v_\alpha)\) on \(X\) in a neighbourhood of \(\alpha\), to define \(\Sigma\):
+    
+   \begin{defn}[Spectral coordinates]  
+   \label{defn:specoord}
+   Define local coordinates \( (u_\alpha,v_\alpha) \) in a neighbourhood \(U_\alpha \subset X\) of \( \alpha \in R\) satisfying:
+   \begin{itemize}
+       \item \( (u_{\alpha}, v_{\alpha})\) are foliation Darboux coordinates.
+       \item \( (u_\alpha,v_\alpha)|_\alpha=(0,0)\).
+       \item The equation \(u_\alpha-v_\alpha^2=0\) locally defines \( \Sigma\).
+   \end{itemize}
+   \end{defn}
+    The purpose of these coordinates is to locally define \( \Sigma\), so we treat \( \Sigma\) as a local spectral curve, definition (\ref{defn:localspectral}). Furthermore, any foliation Darboux coordinates can be transformed into coordinates in definition (\ref{defn:specoord}), via transforms of the form (\ref{eqn:trans}).
+
+    
+    
+    
+    \iffalse 
+
+
+    \subsection{Lie algebroids}
+    
+    A foliation is a Lie algebroid with the extra constraint that there is an injective map into the tangent bundle. Let \( \mathbf{k}\) be a field. In this section we consider all vector spaces to be over \( \mathbf{k}\).
+    
+   \begin{defn}[Lie algebroid]
+   A Lie algebroid \(E\), over a space \(X\), is a vector bundle \(E \rightarrow X\),  with the following properties:
+   \begin{enumerate}
+       \item Equipped with a Lie bracket on sections:
+       \[ [\cdot,\cdot]_{E} : \Gamma(E) \otimes_{\mathbf{k}} \Gamma(E) \rightarrow \Gamma(E). \]
+       \item A morphism \( \rho\) of bundles called the anchor map, which preserves Lie brackets \[ \rho : E \rightarrow TX,\]
+       so 
+       \[ d \rho ( [\xi_1, \xi_2 ]_E ) = [d\rho(\xi_1), d \rho(\xi_2) ]_{TX},\]
+       where \( d \rho(\xi_i) \) is a vector field on \(X\), and \([,]_{TX}\) is the Lie bracket of vector fields.
+       \item \( [\cdot, \cdot]_E\) satisfies the Leibniz rule:
+       \[ [\xi_1, f_{\star} \cdot \xi_2 ] _E= f_{\star} \cdot [\xi_1,\xi_2]_E + (\rho(\xi_1))(f) \cdot \xi_2\]
+       where \(f_{\star}\) is a function on vector fields induced from a smooth function \( f :  X \rightarrow \mathbf{k}\).
+   \end{enumerate}
+   \end{defn}
+   
+    \begin{defn} A \emph{foliation} on a surface \(X\), 
+    is a Lie algebroid \((E, [\cdot,\cdot]_E, \rho )\) where the anchor map \( \rho \) is an injective morphism of vector bundles \(E \rightarrow TX \).
+    \end{defn}
+    
+    Recall for a symplectic surface or manifold \((X, \Omega)\), where \( \Omega \in \Omega^2(X) \) is a closed \(2\)-form. A \emph{Lagrangian foliation} \( \mathcal{F}\) is usually stated as a partition of \(X\) into Lagrangian submanifolds \( \mathcal{L} \subset X\), where \(T_p \mathcal{L} \subset T_p X\) is a Lagrangian sub-vector space. From now on we will consider a foliation \( \mathcal{F}\) as the data of a Lie algebroid \( \mathcal{F} \rightarrow X\), with an injective map \( \rho : \mathcal{F} \rightarrow TX\), where the image of a section \(F \in \Gamma(\mathcal{F})\) defines a Lagrangian sub-bundle.
+    
+    
+    \fi 
+    
+    
+    
+    
+    
+    
+    \subsection{Residue constraints and Lagrangian foliations}
+    \label{sec:rescons}
+    Consider a curve \(\Sigma \subset X\) in a foliated surface \((X,\Omega,\mathcal{F})\), with divisor \(R\).
+
+    
+    Neighbourhoods of the Lagrangian \( \cL_{KS} \) associated with \(W_\Sigma\), are alternatively described by a collection of \emph{residue constraints}, due to \cite{ks_airy}. Pick foliation Darboux coordinates \( ( u_{\alpha}, v_{\alpha})\) in a neighbourhood of \( \alpha \in R \subset X\). The Lagrangian \( \cL_{KS }\) is described locally by the constraints:
+    \begin{defn}[Residue constraints]
+    \begin{alignat}{3}  
+        \label{eqn:rescon1}
+        &\Res_\alpha\left(v_\alpha-\frac{\eta}{du_\alpha}\right)u_\alpha^mdu_\alpha &= 0,\quad m\geq 1,\\
+        &\Res_\alpha\left(v_\alpha-\frac{\eta}{du_\alpha}\right)^2u_\alpha^mdu_\alpha &= 0,\quad m\geq 0. \label{eqn:rescon2}
+    \end{alignat} 
+    \end{defn}
+    These are called \emph{residue constraints}, and are used to investigate the tensor \(A_\Sigma\). 
+    
+    \begin{lem}[\cite{ks_airy}]   
+    \[A_\Sigma=\omega_{0,3}\in V_\Sigma\otimes V_\Sigma\otimes V_\Sigma.\]
+    \end{lem}
+    
+    \begin{proof}
+    \(\eta \in W_\Sigma\) is in \(\cL_{\text{KS}}\) if it satisfies the residue constraints \eqref{eqn:rescon1}. 
+    Let \(\alpha \in R\). Pick foliation Darboux coordinates \(u_\alpha=z^2_\alpha\), and  \(v_\alpha=z_\alpha\), per \cite{chaimanowong2020airy,ks_airy}, which satisfy the residue constraints:
+    \begin{alignat*}{3} 
+    &\Res\left(\frac{\eta}{du_\alpha}-v_\alpha\right)u_\alpha^mdu_\alpha   &=0,\quad m\geq 1,\\
+    &\Res\left(\frac{\eta}{du_\alpha}-v_\alpha\right)^2u_\alpha^mdu_\alpha &=0,\quad m\geq 0.
+    \end{alignat*}
+    To investigate the residue constraints, we construct a new basis for \(W_\Sigma\): 
+    \[\{x^{k,\alpha},y_{k,\alpha}\mid k\in\mathbb{N},\alpha\in R\}\]
+    where \(x^{k,\alpha}\) has a pole of order \(k\) at \(\alpha \in R\) and is holomorphic on \(\Sigma-R\). \(y_{k,\alpha}=z_\alpha^k\) is defined only locally near \(\alpha \in R\) via the local coordinate \(z_\alpha\).
+    
+    The first residue constraint gives 
+    \[ \Res_\alpha\left(\frac{\eta}{du_\alpha}-v_\alpha\right)u_\alpha^mdu_\alpha=\Res_\alpha\eta\, u_\alpha^m=-2\,m\,\langle y_{2m-1,\alpha},\eta\rangle
+    \]
+    which uses the fact \(u_\alpha=z_\alpha^2\) and \(d(u_\alpha^m)=2\,m\,y_{2m-1,\alpha}\).
+    %the principal part of $\eta$ is skew invariant
+    
+    The second residue constraint gives 
+    \begin{align*}
+    \Res\left(\frac{\eta}{du_\alpha}-v_\alpha\right)^2u_\alpha^mdu_\alpha &= \Res_\alpha\frac{\eta\cdot\eta }{du_\alpha}u_\alpha^m-2 \Res_\alpha \eta\, z_\alpha u_\alpha^m,\\
+    &=\Res_\alpha\frac{\eta\cdot\eta }{du_\alpha}u_\alpha^m-2\langle y_{2m,\alpha},\eta\rangle,
+    \end{align*} 
+    which is linear in \(y_{2m,\alpha}\) with plus a quadratic term
+    \begin{equation}
+    \label{eqn:ff}
+    \Res_\alpha\frac{\eta\cdot\eta }{dx}x^m=a_{ijk,\alpha\beta\gamma} \, x^{j,\beta} x^{k,\gamma}+b_{ij,\alpha \beta}^{k,\gamma }\, x^{j,\beta} y_{k,\gamma}+c_{i ,\alpha}^{jk ,\beta \gamma}\, y_{j,\beta} y_{k,\gamma}.
+    \end{equation}
+    The right hand side is the most general quadratic term with respect to the coordinates \[x^{i,\beta}=\langle x^{i,\beta},\eta\rangle \] 
+    and 
+    \[ y_{i,\beta} =\langle y_{i,\beta},\eta\rangle.\]   
+    The coefficients \(a\),\(b\) and \(c\) depend on \(m\).  
+    
+    To determine the coefficient of \(x^{j,\beta} x^{k,\gamma}\) evaluate equation (\ref{eqn:ff}) on any differential \(\eta\) which is locally holomorphic. As \(\eta\) is holomorphic, it annihilates all \(y_i\) terms,  \( \langle y_i^\beta,\eta\rangle=0\). 
+    
+    Further, when \(\eta\) is locally holomorphic
+    \[\Res_\alpha\frac{\eta\cdot\eta }{dx}x^m=0,\quad \text{for }m>0
+    \]
+    since 
+    \[ \frac{x^m}{dx}=\frac{z^{2m-1}}{dz},\]
+    has no pole.  
+    
+    Therefore, we are left with the case \(m=0\):
+    \[\Res_\alpha\frac{\eta\cdot\eta }{dx}=a_{ijk,\beta\gamma} x^{j,\beta} x^{k,\gamma}+ \dots ,
+    \]
+    so 
+    \[ a_{ijk,\beta\gamma}= \frac{1}{4} \delta_{ij}\delta_{ik}\delta_{\alpha\beta}\delta_{\alpha\gamma}.\]
+    Packaging the coefficients into a tensor, gives the tensor \(A_\Sigma\):
+    \[ A_\Sigma=\frac{1}{4} \sum_{\alpha \in R} x^{1,\alpha} \otimes x^{1,\alpha} \otimes x^{1,\alpha} = \frac{1}{4} \sum_{\alpha \in R} x^{1,\alpha} \otimes  x^{1,\alpha} \otimes  x^{1,\alpha}.  \] 
+    This agrees with definition (\ref{defn:Asigma}), the coefficient from \(R\) copies of \( \cL_{\mathrm{Airy}}\). Finally, this expression also agrees with the formula for \(\omega_{0,3}\) given with the Bergman kernel from the introduction:
+    \[\omega_{0,3}(p_1,p_2,p_3)=\sum_{\alpha \in R} \Res_{p=\alpha}\frac{B(p,p_1)B(p,p_2)B(p,p_3)}{du(p)dv(p)},
+    \]
+    for topological recursion locally on the Airy curve, where \(u(p)=p^2\), \(v(p)=p\), a local spectral curve, definition (\ref{defn:localspectral}) in chapter (\ref{chapter:prelim}).
+    \end{proof}
+
+    
+
+    \section{Local deformation space}
+    
+    The local deformation space \( \mathcal{B}\) of \( \Sigma\) is a moduli space, parameterising smooth curves which are deformations of  \( \Sigma \) inside \(X\). As \(\Sigma\) is a genus \(g\) curve, \( \dim( \mathcal{B}) = g\). A point, denoted \( [\Sigma] \in \mathcal{B}\) represents a curve \( \Sigma \subset X\).  
+    
+    Over \( \mathcal{B}\) is flat symplectic vector bundle \( \mathcal{H}\),  \( \mathcal{H} \rightarrow \mathcal{B}\), where a fibre over a point \( \Sigma\) is given by \( \mathcal{H}_\Sigma =  H^1(\Sigma, \mathbb{C})\). \( \mathcal{H}\) is equipped with the \emph{Gauss-Manin} connection \( \nabla^{GM}\). 
+    
+    The linear embedding 
+    \[ H^0(\Sigma,K_\Sigma)\rightarrow  H^1(\Sigma, \mathbb{C}),\] 
+    sends a holomorphic differential to a cohomology class, and defines a Lagrangian sub-bundle of \( \mathcal{H}\) with fibres \(\overline{L}_\Sigma = H^0(\Sigma,K_\Sigma)\).  
+    
+    Furthermore, the symplectic structure on \(X\) defines an exact sequence:
+    \begin{equation}              
+        \label{eqn:ext}
+        0 \rightarrow T \, \Sigma \rightarrow T\, X|_\Sigma \rightarrow K_\Sigma \rightarrow 0.
+    \end{equation}
+    The normal bundle \(\nu_\Sigma\) to \(\Sigma\subset X\) is isomorphic to \(K_\Sigma\),
+    and so the tangent space \(T_{[\Sigma]} \mathcal{B} = H^0(\Sigma,\nu_\Sigma)\) to \(\mathcal{B}\) at a point \([\Sigma]\) is isomorphic to the vector space of holomorphic differentials \(\overline{L} = H^0(\Sigma,K_\Sigma)\), via the adjunction 
+    \[ K_\Sigma\cong K_X|_\Sigma\otimes\nu_\Sigma\cong \nu_\Sigma.\]
+    
+    
+    Now consider the \( \mathcal{H}\)-valued 1-form: 
+    \begin{equation} \label{eqn:phi} \phi \in \Gamma(\mathcal{B},\Omega^1_{\mathcal{B}}\otimes \mathcal{H} )
+    \end{equation} 
+    which is defined by the composition of morphisms
+    \[ T_\Sigma \mathcal{B} \stackrel{\cong}{\longrightarrow} H^0(\Sigma,\Omega^1_\Sigma) \rightarrow H^1(\Sigma, \mathbb{C}) =\mathcal{H}_\Sigma. \]
+    \begin{lem} \(\phi\) is flat with respect to \(\nabla^{GM}\),
+    \[ \nabla^{GM} \phi = 0. \]
+    \end{lem} 
+
+    \begin{proof}
+    To do this, show \( \phi \) is locally exact, we show that integrating \( \phi \) along a small loop in \( \mathcal{B}\) is zero.
+    
+     Let \([\Sigma]\in\mathcal{B}\), and choose a small enough loop \( \gamma \subset \mathcal{B}\) containing the point \([\Sigma]\).  Choose \([\alpha]\in H_1(\Sigma,\mathbb{Z}) \) represented by an embedded closed curve \(\alpha\subset\Sigma\) and choose a family \(\widetilde{\alpha}\) of embedded closed curves representing the homology cycle in each fibre.  
+     
+     As \( \Sigma \rightarrow X\), the choice of \( \gamma\) gives a torus \(T^2\rightarrow X\) which bounds a solid torus \(S^1 \times D^2 \rightarrow X\) when \(\gamma\) is chosen small enough.  
+     
+    Integrating \(\phi\) along \(\gamma\) gives an element of a fibre of \(\mathcal{H}\) which pairs with \([\alpha]\) by
+    \[\left\langle\int_\gamma\phi,[\alpha]\right\rangle. \]
+    Then 
+    \[ \left\langle\int_\gamma\phi,[\alpha]\right\rangle  = \int_{T^2}\Omega_X=0\]
+    since \(d\Omega_X=0\), as \(X\) is a curve, and \(T^2\) is homologically trivial.  
+    
+    This applies to any homology class \([\alpha]\) hence 
+    \[ \int_\gamma\phi=0.\]
+    Therefore \(\phi\) is locally exact, and hence closed or flat with respect to \(\nabla^{\mathrm{GM}}\).
+    \end{proof}
+    
+    
+    So now as the \( \mathcal{H}\) 1-forms are flat with respect to \( \nabla^{GM}\), tensoring forms on \( \mathcal{B}\) with \( \mathcal{H}\) gives the complex:
+    \[ 0 \longrightarrow \Omega^0_\mathcal{B} \otimes{\mathcal{H}} \stackrel{\nabla^{GM}}{\longrightarrow} \Omega^1_\mathcal{B} \otimes {\mathcal{H}} \stackrel{\nabla^{GM}}{\longrightarrow } \Omega^2_\mathcal{B} \otimes{\mathcal{H}} \stackrel{\nabla^{GM}}{\longrightarrow} \dots. \]
+ 
+    Define a local section \(s\), \(s\in\Gamma(U_{[\Sigma]},\mathcal{H} )\), for a neighbourhood \(U_{[\Sigma]}\)  of a point \([\Sigma]\in \mathcal{B} \),
+    \[ U_{[\Sigma]}\subset \mathcal{B},  \] 
+    as the solution to the equation:
+    \[ \nabla^{\text GM}s = -\phi.\]  
+    The solution \(s\) is a cohomology class \[ s([\Sigma'])\in \mathcal{H}_\Sigma' \] for each \( [\Sigma']\in U_{[\Sigma]}\), and is well-defined up to addition of a constant,  independent of \([\Sigma']\). 
+    
+    Now consider a morphism \([\vartheta]:U_{[\Sigma]}\rightarrow \mathcal{H}_\Sigma\), defined by the difference:
+    \begin{equation}  
+    \label{eqn:cohtheta}
+    [\vartheta]([\Sigma']):=s([\Sigma])-s([\Sigma'])\in\mathbb{C}^{2g}\cong \mathcal{H}_\Sigma.
+    \end{equation}
+    \( [\vartheta ]\) is a well-defined map from  the open set \(U_{[\Sigma]}\subset\mathcal{B}\) to \(\mathbb{C}^{2g}\). Note that the isomorphism of the cohomology group \(H^1(\Sigma, \mathbb{C})\) with \( \mathbb{C}^{2g}\) uses a choice of Torelli basis. 
+    
+    Note in equation (\ref{eqn:cohtheta}), \(s([\Sigma'])\) has been parallel transported from a nearby fibre \(\mathcal{H}_{\Sigma'}\) to \(  \mathcal{H}_\Sigma\) via the Gauss-Manin connection \( \nabla^{GM}\). By definition, the covariant derivative of \( [\vartheta]\) is given by
+    \[ \nabla^{\text GM}_\eta[\theta]=\eta, \]
+    for any \(\eta\in H^0(\Sigma, K_{\Sigma})\cong T_{[\Sigma]}\mathcal{B}\).  The linearisation 
+    \[ \nabla^{GM}[\vartheta] : T_{[\Sigma']}\mathcal{B} \rightarrow \mathcal{H}_{\Sigma'}, \] 
+    has image given by the parallel transport of the Lagrangian subspace \[ H^0(\Sigma, K_{\Sigma'})\subset \mathcal{H}_{\Sigma'},\] 
+    so \( [\vartheta]\) defines a local Lagrangian embedding of \( U_{[\Sigma]} \subset\mathcal{B} \)  into \(\mathcal{H}_\Sigma\):
+    \begin{equation}  \label{eqn:Bemb}
+    U_{[\Sigma]} {\longrightarrow}\mathcal{H}_\Sigma\cong\mathbb{C}^{2g}.
+    \end{equation}
+    
+    \([\vartheta]\) is related to the cohomology class of the tautological 1-form \( vdu|_{\Sigma'}\) in the case \(X=T^*C\). In particular it is given by the difference:
+    \[ [\vartheta]([\Sigma'])=\left[vdu|_{\Sigma}\right]-\left[vdu|_{\Sigma'}\right]\in\mathbb{C}^{2g}.\]
+    As mentioned before, this difference is from parallel transport by the Gauss-Manin connection.  
+    
+    In section (\ref{sec:formaltheta}) there is a meromorphic differential \(\vartheta\) which is defined only in a formal neighbourhood of \([\Sigma]\in\mathcal{B}\) with cohomology class given by an analytic expansion of the class \( [\vartheta]\) defined here.
+    
+    Using a choice of \(a\)-cycles on each \(\Sigma'\), the class \([\theta]\) defines holomorphic coordinates on \( U_{[\Sigma]}\subset\mathcal{B}\) by:
+    \begin{defn}[Holomorphic coordinates]  Define \(g\) coordinates \( {z^1, \dots z^g}\) on \(U_{[\Sigma]} \subset \mathcal{B}\) by: 
+    \begin{equation}  \label{eqn:zcoords}
+        z^i([\Sigma'])=\oint_{a_i}[\theta]([\Sigma']),\quad i=1,\dots,g.
+    \end{equation}
+    \end{defn}
+    These coordinates satisfy \(z^i([\Sigma])=0\), and coordinates defined with respect to any nearby point are related via shift \(z^i\rightarrow z^i+z^i_0\). From these coordinates we consider an affine space modelled on \( \mathcal{B}\) with coordinate ring \( \mathbb{C}[z^1, \dots , z^g]\), and the point \(\Sigma\) corresponds to the maximal ideal \( \langle z^1, \dots , z^g\rangle\). 
+    
+    A choice of \(b\)-cycles on each \(\Sigma'\) give rise to functions \(\w_i(z^1,...,z^g)\) defined by 
+    \begin{equation} 
+    \label{eqn:wcoords}
+    \w_i=\oint_{b_i}[\theta]([\Sigma']), \quad i = 1, \dots g.
+    \end{equation}
+    The derivatives of \(\w_i\) satisfy
+    \[ \frac{\partial \w_i}{\partial z_j}=\frac{\partial}{\partial z_j}\oint_{b_i}[\theta]=\oint_{b_i}\nabla^{GM}_{\hspace{-1mm}\frac{\partial}{\partial z_j}}[\theta]=\oint_{b_i}\omega_j=\tau_{ij},\]
+    where the second equality uses the definition of the Gauss-Manin connection, where \(\tau_{ij}\) is a symmetric tensor called the \emph{period matrix}. The period matrix is defined in definition (\ref{defn:periodmat}).
+    
+    Now \( \mathcal{H}\) is treated as a variety with coordinate ring \( \mathbb{C}[z^1, \dots , z^g, \w_1, \dots \w_g]\). Later we investigate how \( \mathcal{B}\) lives inside \( \mathcal{H}\) from this algebraic perspective.  It is not obvious if \( \mathcal{B}\) is algebraic inside \( \mathcal{H}\), which means writing algebraic equations in terms of \(z^{\sbt}\) and \(\w_{\sbt}\), which defines a map \[ \mathbb{C}[z^1, \dots , z^g, \w_1, \dots w_g] \rightarrow \mathbb{C} [ z^1, \dots , z^g ], \]
+    describing \( \mathcal{O}(\mathcal{B})\) in \( \mathbb{C}[z^1, \dots , z^g, \w_1, \dots \w_g]\). 
+    However, what we do is investigate the situation on formal neighbourhoods, or on a formal completion, 
+    \[ \mathbb{C} \lBrack z^1, \dots , z^g, \w_1, \dots w_g \rBrack \rightarrow \mathbb{C} 
+    \lBrack z^1, \dots , z^g \rBrack, \]
+    which represents what we call \( \widehat{\mathcal{B}}\) in \( \mathcal{H}\). Symplectic reduction will give a version of this map.
+    
+    This will involve constructing a formal series \( \vartheta\). Solving \( \w_i\), in section (\ref{sec:formaltheta}), as a function of \(z^{\sbt}\), is analogous to completing a subvariety along a maximal ideal \( \langle z^1, \dots z^g, \w_1, \dots w_g \rangle\). In this way we examine formal neighbourhoods of \( \mathcal{B}\), represented by \( \widehat{\mathcal{B}}\) inside \(\mathcal{H}\). 
+    
+
+    \begin{rem}This is analogous to the case of the conic, from example (\ref{ex:the_conic}) solving \(-y+ax^2 + 2b x y +y^2\) for \(y\), and producing a series \(u_0(x)\). In this case we do not necessarily know how to write an original algebraic equation \( \mathcal{B}\) in \( \mathcal{H}\), but we still use the analogy of a series \( u_0(x)\). 
+    \end{rem}
+    \begin{ex}[Artin approximation theorem]
+    Let \(z^{\sbt}\) be a collection of \(g\)-variables. Consider the ring \( \mathbf{k}\lBrack z^{\sbt} \rBrack\), and \( \w_{\sbt}\) a different set of variables. Let \(f(z^{\sbt}, w_{\sbt})= 0\) be a system of polynomial equations in \( \mathbf{k}[z^{\sbt},\w_{\sbt}] \). The \emph{Artin approximation theorem} says that given the formal power series 
+    \[ \widehat{\w}_{\sbt}(z^{\sbt}) \in \mathbf{k}\lBrack z^{\sbt}\rBrack,\]
+    there are algebraic functions \( \w_{\sbt}\), such that 
+    \[ \w_{\sbt} = \widehat{\w}_{\sbt} \mod (z^{\sbt})^n .\]
+    \end{ex}
+    
+    By the Riemann bilinear relations \(\tau_{ij}\) is a symmetric tensor, hence there exists a function, known as the {\em prepotential}, \(F_0\):
+    \begin{defn}[Prepotential] The prepotential is a function \(F_0\),
+    \(F_0:U\rightarrow \mathbb{C}\)
+    satisfying
+    \[\w_i(z^1, \dots,z^g) =\frac{\partial F_0(z^1,\dots,z^g)}{\partial z_i},\quad i=1,\dots,g,\]
+    so
+    \[ \frac{\partial^2 F_0}{\partial z_i\partial z_j}=\tau_{ij},\]
+    \end{defn}
+    Higher order derivatives of the prepotential give the Donagi-Markman cubic, defined in lemma (\ref{lem:cubic}):
+    \[ 
+    \frac{\partial^3 F_0}{\partial z_i\partial z_j\partial z_k}=\overline{a_\Sigma}_{ijk}.\]
+    The constants \( \overline{a_\Sigma}_{ijk}\) define the tensor \[ \overline{A}_\Sigma\in\overline{V}_\Sigma\otimes\overline{V}_\Sigma\otimes\overline{V}_\Sigma,\]
+    where \(\overline{V}_\Sigma\) is given by lemma (\ref{lem:redVSig}). Furthermore
+    \begin{prop}
+    \[F_0 = \frac{1}{2} z^i \w_i \]
+    \end{prop}
+    Differentiating
+    \begin{align*}
+    \frac{\partial}{\partial z_j}\frac12 z^i\w_i&=\frac12\w_j+\frac12 z^i\frac{\partial}{\partial z_j}\w_i
+    =\frac12\w_j+\frac12 z^i\tau_{ij}=\frac12\w_j+\frac12 z^i\tau_{ji},\\
+    &=\frac12\w_j+\frac12 z^i\frac{\partial}{\partial z_i}\w_j=\frac12\w_j+\frac12\w_j=\w_j,
+    \end{align*}
+
+
+    
+    
+    %\section{Lagrangian foliations}
+    
+    
+    %\section{Topological recursion of curves in surfaces}
+    
+    
+    
+    
+    \section{Period matrix}
+
+    \subsection{Definition and variations}
+        
+    Associated to the curve \( \Sigma\) is a fundamental matrix of functions called the \emph{period matrix} \( \tau_{ij}\) \cite{period, bertola}. Period matrices are used to define \( \Sigma\).
+    
+    Let \( \{ a_1, \dots a_g, b_1, \dots b_g\}\) be a Torelli marked basis for the homology group \(H_1(\Sigma, \mathbb{Z})\).  Associated to this basis is a basis of normalised differentials \( \omega_i\)
+    \begin{defn}[Normalised differentials]
+    \label{defn:normaliseddiffs}
+    There is a unique basis 
+    \[ \omega_1, \dots \omega_g  \]
+    of \(g\) normalised holomorphic differentials satisfying
+    \[ \oint_{a_i} \omega_j = \delta_{ij},\]
+    for \( H^0(\Sigma, \Omega_\Sigma^1)\). 
+    \end{defn}
+    %\begin{defn}[Period matrix]
+    %A \emph{period matrix}, is a matrix \( \tau_{ij}\) of functions such that the symplectic form \( \omega\) can be written as:
+    %\[ \omega = \mathrm{const}  \, \mathrm{Im}\left( \tau_{ij} \right) dz^i \wedge d \widebar{z}^j,\]
+    %where \( \mathrm{const} \) is a constant, usually \( -\sqrt{-1}/2\).
+    %\end{defn}
+    Period matrices define a Riemann surface \( \Sigma\) in terms of the \(b\)-periods. 
+    \begin{ex} A genus \(1\) Riemann surface \( \Sigma\), is expressible as a quotient 
+    \[ \Sigma \cong \frac{\mathbb{C}}{1 \, \mathbb{Z} + \tau \, \mathbb{Z}} \cong ,\frac{\mathbb{C}}{\oint_{a_1} \omega_1 \mathbb{Z} +  \oint_{b_1} \omega_1 \mathbb{Z}},\]
+    where the periods \( 1 = \oint_{a_1} \omega_1\), \(\tau = \oint_{b_1} \omega_1 \) define a \(2\)-dimensional lattice \( \mathbb{Z} + \tau \mathbb{Z}\) in \( \mathbb{C}\). Identifying and gluing edges of the lattice we see generates a torus.
+    
+    More generally a genus \(g\) Riemann surface is defined as a quotient of \( \mathbb{C}^{g}\), by a \(2 g \)-dimensional lattice:
+    \[ \Sigma \cong \frac{\mathbb{C}^g}{ \langle \oint_{a_1} \omega_1, \dots, \oint_{a_g} \omega_g, \oint_{b_1} \omega_1, \dots, \oint \omega_g \rangle \mathbb{Z} }.\]
+    \end{ex} 
+    
+    So the period matrix contains a lot of information about the surface \( \Sigma\).  
+
+    \begin{defn}[Period matrix]
+    \label{defn:periodmat}
+    The \emph{period matrix} \( \tau\), is a symmetric matrix, defined component-wise by the integral
+    \[ \tau_{ij} = \oint_{b_i} \omega_j. \]
+    \end{defn}
+    
+    \begin{ex}[Theta functions]
+    One use of the period matrix is to define \emph{Theta functions} \cite{fay,bertola}, which are functions of \(g\) complex variables \(z_{\sbt} = (z_1, \dots z_g)\):
+     \[ \Theta(z^{\sbt},\tau) = \sum_{n^{\sbt} \in \mathbb{Z}^g} \exp \left( \frac{1}{2} n^i \tau_{ij} n^j + n^i z_i \right),\]
+    where repeated indices are summed over, and \( n^{\sbt} = (n^1, \dots , n^g)\), \( n^i \in \mathbb{Z}\). Theta functions appear as the solution to the heat equations \cite{bertola}:
+    \begin{align*}
+        \frac{\partial \Theta}{\partial \tau_{jk}} &= \frac{1}{2 \pi i } \frac{\partial^2 \Theta}{\partial z_j \partial z_k}, \quad j \neq k \\
+        \frac{\partial \Theta}{\partial \tau_{jj}} &= \frac{1}{4 \pi i } \frac{\partial^2 \Theta}{\partial z_j \partial z_j}.
+    \end{align*}
+    \end{ex}
+
+    We examine how the period matrix varies with the curve \(\Sigma\) as a point in the deformation space \( \mathcal{B}\):
+    \begin{lem} 
+    \label{lem:om3cor}
+    The variation of the period matrix \(\tau_{ij}\) of a curve in a symplectic surface \(\Sigma\subset (X,\Omega)\) is given by:
+    \[\frac{\partial^n\tau_{ij}}{\partial z_{i_1}...\partial z_{i_n}}=-2\pi i \oint_{[b_i]}\oint_{[b_j]}\oint_{[b_{i_1}] }...\oint_{[b_{i_n}]}\omega_{0,n+2}.\] 
+    \end{lem}
+    Note the integral over \([b_j]\) refers to a normalised period integral, definition (\ref{defn:normalint}).
+    
+    For example, in the the case of \(n=1\), 
+    \[ \frac{\partial\tau_{ij}}{\partial z_k}= -2\pi i \oint_{[b_i]}\oint_{[b_j]}\oint_{[b_k]}\omega_{0,3}.\]
+    When \(X=T^*C\), for a compact curve \(C\), lemma (\ref{lem:om3cor}) was proven by Baraglia and Huang in \cite{bhuespe}, and also by Bertola and Korotkin in \cite{bkospa}. 
+
+    \subsection{Relation to the Donagi-Markman cubic}
+    
+    The \emph{Donagi-Markman cubic} \cite{domacubic}, is the extension class defined by the exact sequence (\ref{eqn:ext}), which gives rise to a tensor \( \overline{A}_\Sigma\) on \(\mathcal{B}\), and is closely related to the period matrix.
+    
+    \begin{defn}  We define \(\overline{A}_\Sigma\) as the extension class:
+    \[ \overline{A}_\Sigma \in\mathrm{Ext}^1(K_\Sigma,T \Sigma) \cong H^0(\Sigma,K_\Sigma^{\otimes 3})^\vee\cong \left(T^*_{[\Sigma]}\mathcal{B} \right)^{\otimes 3}.\]
+    \end{defn}
+    
+    This tensor was first studied in \cite{domacubic}, in the context of integrable systems. \cite{bhuespe} relate this tensor to the variation of the period matrix. Consider the coefficients of \( \overline{A}_\Sigma\), so \( \overline{A}_\Sigma = (\overline{a_\Sigma}_{ijk})\):
+    
+    \begin{lem}[\cite{bhuespe}] 
+    \label{lem:cubic}
+    The coefficients of the variation of the period matrix give the coefficients of \( \overline{A}_\Sigma\):
+    \[\overline{a_\Sigma}_{ijk} = \frac{\partial \tau_{ij}}{\partial z_j} . \]
+    \end{lem}
+
+    %\subsection{Relation to prepotentials}
+    
+    \section{Formal and convergent series}
+    \label{sec:formaltheta}
+    
+    Let \((X,\Omega,\mathcal{F})\) be a foliated symplectic surface, Let \(\Sigma\), \( \Sigma \rightarrow X\) an algebraic curve in \(X\), and \( \mathcal{B}\) the moduli space of deformations of \( \Sigma \) in \(X\). Define \(W_\Sigma\) to be the symplectic vector space of residueless meromorphic differentials on \(\Sigma\). Let \(V_\Sigma \subset W_\Sigma\) be the space of differentials with zero \(a\)-periods.
+    
+    Associated to \(W_\Sigma\) is a quadratic Lagrangian subvariety \( \mathbb{L}_{KS}\) generated by a collection of quadratic polynomials, like section (\ref{chapter:airy}). We are interested in studying the symplectic reduction of \( \mathbb{L}_{KS}\), described in chapter (\ref{chapter:symplecticreduction}), to \( \mathcal{B}\). This process is representable as the commutative diagram:
+    \begin{equation}  
+    \label{eqn:lagmap}
+    \begin{tikzcd}
+    \cL_{KS}\cap  G_{\Sigma} \arrow[r] \arrow[d] &  G_{\Sigma} \arrow[r] \arrow[d] &  V_\Sigma \oplus V_\Sigma^*\cong W_\Sigma \arrow[d] \\
+   \mathcal{B} \arrow[r] & \mathcal{H}_\Sigma \arrow[r,"\cong"]  &\overline{V}_\Sigma\oplus \overline{V}_\Sigma^*
+    \end{tikzcd}
+    \end{equation}
+    The image of the Lagrangian \( \cL_{KS} \) maps to the deformation space \( \mathcal{B} \subset \mathcal{H}_\Sigma = H^1(\Sigma, \mathbb{C})\), under the symplectic reduction
+    \[ W_\Sigma \sslash G_\Sigma^\perp:=G_\Sigma/G_\Sigma^\perp \cong \mathcal{H}_\Sigma.\]
+    Neighbourhoods of zero of \( \cL_{KS}\) are mapped to neighbourhoods of a point \([\Sigma]\in \mathcal{B}\), \( U_{[\Sigma]} \subset \mathcal{B}\). This process is carried out explicitly for formal neighbourhoods. A formal neighborhood of zero of  \(\cL_{KW}^R\), maps to a formal neighbourhood of a point \( [\Sigma]\) in \( \mathcal{B}\),
+    \begin{equation*}
+        \begin{tikzcd}
+            \widehat{\cL}_{KW,0}^R \arrow[d] \arrow[r] & \cL_{KS} \arrow[d,dashed]   \\ 
+            \widehat{\mathcal{B}}_{[\Sigma]} \arrow[r] & \mathcal{B}
+        \end{tikzcd}
+    \end{equation*}
+    To do this, we construct a series \( \vartheta\), which represents functions on formal neighbourhoods of \(  \widehat{B}_{[\Sigma]}\), or the image of the map 
+    \[\mathcal{O}( \widehat{\cL}_{KW}^R \cap \widehat{G}_\Sigma) \rightarrow  \mathcal{O}( \widehat{B}_{[\Sigma]} ).\]
+    Furthermore, under the quotient map, \(\vartheta\) maps to a cohomology class \([\vartheta]\), which is an analytic function.
+    
+    \subsection{The formal section \texorpdfstring{\( \vartheta\)}{theta} and corresponding vector fields}
+    \label{sec:vartheta} 
+    
+    The purpose of this section is describing how \( \mathcal{B}\) sits inside \( \mathcal{H}\) as a Lagrangian, via formal neighbourhoods. 
+    
+    Recall in chapter (\ref{chapter:symplecticreduction}), we examined a reduction via a sum of ideals in a ring \[ \mathbf{k}[x^1, \dots , y_1, \dots ,z^1, \dots z^g, \w_1, \dots \w_g],\] which describes \( \mathcal{B}\) as an intersection.
+    
+    Taking a formal completion \( \mathbf{k} \lBrack x^1, \dots , y_1, \dots ,z^1, \dots z^g, \w_1, \dots \w_g \rBrack \), and using the equations in the defining ideal, it was possible to eliminate \(x^{\sbt}\) and \(y^{\sbt}\), and find a series \(\w_i(z^{\sbt})\). This described an analogous \( \widehat{\mathcal{B}}\) as an ideal in  \(\mathbf{k} \lBrack z^1, \dots z^g, \w_1, \dots \w_g \rBrack \).
+    
+    This section first constructs \( \w_i(z^{\sbt})\) directly from the definition of \( \mathcal{B}\) in \( \mathcal{H}_\Sigma\). Then later we will show this same series for \( \w_{i}(z^{\sbt})\) coincides with the series produced from reduction, establishing these two objects are the same.
+    
+    Represent functions defined on formal neighbourhoods of \(\widehat{\mathcal{B}}_{[\Sigma]}\) with respect to the coordinates \(\{z^1,...,z^g\}\) defined in \eqref{eqn:zcoords} satisfying \(z^i([\Sigma])=0\), where \(i  \in \{1,...,g\}\).  For any residueless meromorphic differential \(\eta\) defined on \(\Sigma\), recall the normalised periods of \( \eta\) are defined as:
+    \[ \oint_{[b]_k} \eta:=-\frac{1}{2\pi i}\oint_{b_k}\eta, \]
+    per definition (\ref{defn:normalint})
+    \begin{defn}[\(\vartheta\)] 
+    \label{defn:thetaTR}
+    Define a formal series \( \vartheta\):
+    \begin{equation} 
+        \vartheta = z^i\, \omega_i-\frac{1}{2!} z^i \, z^j \oint_{[b]_i} \oint_{[b]_j}\omega_{0,3}-\frac{1}{3!}z^i\,z^j\, z^k\oint_{[b]_i}\oint_{[b]_j}\oint_{[b]_k}\omega_{0,4}- \dots ,
+    \end{equation}
+    where \( \omega_i\) is a normalised differential per definition (\ref{defn:normaliseddiffs}).
+    
+    \begin{rem} Although \( \vartheta\) contains the topological recursion invariants, it is not constructed via topological recursion, and it is an object that produces the reduction of the \(u_i\). In certain examples it can be identified with a canonical differential \( \theta = p dq\), but this does not hold generally.  
+    \end{rem}
+    
+    \end{defn}
+    Furthermore:
+    \begin{thm}
+    \label{thm:phisec}   
+    \( \vartheta\) satisfies the following properties:
+    \begin{enumerate}
+        \item \( \vartheta \) is in the pushforward \( \iota_{*}  \mathcal{O}( \widehat{\cL}^R_{KW}) \cong   \iota_{*}  \mathcal{O}( \cL_{KS}) \).
+        \item The cohomology class \( [\vartheta]\) is analytic in \( z^1, \dots , z^g\).
+    \end{enumerate}
+    \end{thm}
+    
+    \begin{proof}
+    The proof of theorem (\ref{thm:phisec}) is given by lemmas (\ref{lem:phisec1}) and (\ref{lem:phisec2}) in section (\ref{sec:formalandanalytic}). 
+    \end{proof} 
+    
+    \( \vartheta\) is going to be a tool to associate vector fields on \( \mathcal{B}\) to vector fields on \( \cL_{KS}\). In particular this will relate the tensor \(A_\Sigma = a_{ijk}x^i x^j x^k\), from the Airy structure on \(W_\Sigma\), \(A_\Sigma \in V_\Sigma \otimes V_\Sigma \otimes V_\Sigma\), to a tensor \( \overline{A}_\Sigma \in \overline{V}_\Sigma \otimes \overline{V}_\Sigma \otimes  \overline{V}_\Sigma\) representing the Donagi-Markman cubic.
+    
+    The formal cohomology class \([\vartheta]\) is the restriction of an analytic section \( \iota^* [ \vartheta]\) to a formal neighbourhood of \([\Sigma] \) in \( \mathcal{B}\). Recall that a cohomology class is characterised by its periods along a Torelli marked basi. We integrate \( \vartheta \in \mathbb{C}\lBrack z^1, \dots, z^g \rBrack \) term by term, to get formal expression \([\vartheta]\)
+    \[[\vartheta]= \left( \oint_{a_i}\vartheta, \oint_{b_i}\vartheta \mid i=1,\dots,g\right) \in \mathbb{C}^{2g}\lBrack z^1, \dots, z^g \rBrack,\]
+    where the periods are given by:
+    \[\oint_{a_i}\vartheta=z^i,\quad\oint_{b_i}\vartheta= \w_i(z^1,...,z^g). \]
+    \begin{lem}  
+        \label{lem:bper}
+        The expansion of \(\w_i(z^1,...,z^g)\) in a neighbourhood of \(z^i=0\) is:
+        \begin{equation}   \label{bperi}   
+            \w_i = \mathrm{u}_i = z^j\tau_{ij}-\frac12z^jz^k\oint_{b_i}\oint_{[b]_j}\oint_{[b]_k}\omega_{0,3}-\frac{1}{3!}z^jz^kz^\ell\oint_{b_i}\oint_{[b]_j}\oint_{[b]_k}\oint_{[b]_\ell}\omega_{0,4}-\dots .
+        \end{equation}
+    \end{lem}
+    \begin{rem} Note that \( \mathrm{u}_i \) is analogous to \( u_i\) for solving for \(y_{\sbt}(x^{\sbt})\) as a function of \(x^{\sbt}\) via fixed point iteration from the \(H_{\sbt}\), as seen in chapter (\ref{chapter:airy}). Further \( [u_i] = \mathrm{u}_i\). Repackaging \( \mathrm{u}_i\) into some implicit equation is not obvious to us from this expression. 
+    \end{rem}
+    Note in lemma (\ref{lem:bper}, all but the first integral in each term is a normalised period integral, definition (\ref{defn:normalint}).
+    
+    Note that if we substitute this expression into the prepotential \( 
+    F_0(z^{\sbt},\w_{\sbt})\), we obtain a series for \(F_0\) purely in terms of \(z^{\sbt}\).
+    \begin{lem}[Expansion of the prepotential]
+    \begin{equation} 
+    \label{eqn:prepotential}
+     F_0(z^1, \dots, z^g) = \frac{1}{2} z^i \w_i(z^{\sbt})= \frac{1}{2} \tau_{ij} z^i z^j + O((z^{\sbt})^3).
+    \end{equation}
+    \end{lem}
+    As expected, this series will appear precisely in the wavefunction \( \psi_{\mathcal{B}}\).
+    
+    
+    Lemma (\ref{lem:bper}) shows that
+    \[\frac{\partial}{\partial z_i}\tau_{jk}=-2\pi i\oint_{[b]_i}\oint_{[b]_j}\oint_{[b]_k}\omega_{0,3},\]
+    and more generally 
+    \[\frac{\partial^{n-2}}{\partial z_{i_1} \dots \partial z_{i_{n-2}}}\tau_{i_{n-1}i_n}=-2\pi i\oint_{[b]_{i_1}}\oint_{[b]_{i_2}} \dots \oint_{[b]_{i_n}}\omega_{0,|I|},\] 
+    which proves lemma (\ref{lem:om3cor}) and generalises the result of \cite{bhuespe} to curves \(\Sigma\subset X \) for any foliated symplectic surface \((X,\Omega,\mathcal{F})\).
+    
+    Given any normalised holomorphic differential \( \omega_i\), its cohomology class \( [\omega_i]\) gives a vector field on \( \mathcal{B}\). The corresponding vector field associated to \([\omega_i]\) is represented by
+    \[ \frac{\partial}{\partial z_i},\] with respect to the coordinates \( z^1,\dots,z^g\). 
+    
+    \begin{rem} In section (\ref{sec:vectorfields}), this is analogous to \(y_i\) acting as a vector field \( \frac{\partial}{\partial x_i}\) in a symplectic space \(W\).
+    \end{rem} 
+    
+    This vector field maps naturally to a vector field on a formal neighbourhood of \( \Sigma\), under the pullback \( \iota : \widehat{\mathcal{B}}_\Sigma \rightarrow \mathcal{B}\), so
+    \( [\omega_i]=\iota^*[\omega_i]\). Explicitly it is given by the Taylor expansion of \([\omega_i]\) at \([\Sigma]\) in the coordinates \( z^1, \dots , z^g\), giving a series in \( \frac{\partial}{\partial z^i}\).
+    
+    \begin{rem} Similarly in section (\ref{sec:vectorfields}), expanding \(y_i\) as a series in \(x_o\), gives a series in \( \frac{\partial}{\partial x_i}\) in a formal neighbourhood of \(0\) of \( \cL\).
+    \end{rem} 
+
+    There is a formal vector field defined on the image of \( \cL_{KS}\), \(\widehat{\omega}_i\), which maps to \([\omega_i]\) under the quotient map, defined from the differential 
+    \begin{equation} 
+        \widehat{\omega}_i=d\vartheta\left(\frac{\partial}{\partial z^i}\right),
+    \end{equation} 
+    and explicitly in coordinates \(z^1, \dots z^g\):
+    \begin{equation}  
+    \label{eqn:hatomegavectfields}
+        \widehat{\omega}_i=\frac{\partial}{\partial z_i}-z^j\oint_{[b]_i}\oint_{[b]_j}\omega_{0,3}-\frac{1}{2}z^j z^k\oint_{[b]_i}\oint_{[b]_j}\oint_{[b]_k}\omega_{0,4}- \dots, 
+    \end{equation} 
+    where all integrals are normalised \(b\)-period integrals, as per definition (\ref{defn:normalint}).
+    
+    Integrating term by term, it is the case that  
+    \[ [\widehat{\omega}_i]= [\omega_i] \in \mathbb{C}^{2g} \lBrack z^1,\dots,z^g \rBrack, 
+    \] but this is also an analytic function in \(z^1,\dots,z^g\). 
+    \begin{lem}
+     \([\widehat{\omega}_i] \) is analytic in \(z^1,\dots ,z^g\).
+    \end{lem}
+    The analytic expansion of \( [\widehat{\omega}_i]\) is given by:
+    \begin{align*}
+   \oint_{b_i}\widehat{\omega}_j&=-\sum_{I}\frac{z^I}{|I|!}\oint_{b_i}\oint_{[b]_j}\oint_{[b]_I}\omega_{0,|I|+2}\\
+   &=\tau_{ij}-z^k\oint_{b_i}\oint_{[b]_j}\oint_{[b]_k}\omega_{0,3}- \dots ,
+    \end{align*}
+    where \( \tau_{ij}\) is the period matrix, the integral over the index set represents:
+    \[ \oint_{[b]_I}=\oint_{[b]_{i_1}}\dots \oint_{[b]_{i_n}}, \] 
+    \(I\) is the index set: \(I=(i_1\dots,i_n)\), and the integrals with the square bracket \( [b_i]\) are normalised integrals, definition (\ref{defn:normalint}). 
+    
+    
+    \section{The reduction of the Lagrangian}
+    \label{sec:Breduction}
+    Now we are in the position to investigate the symplectic reduction of the Lagrangian \( \cL_{KS}\). A finite dimensional example of this was given in chapter (\ref{chapter:symplecticreduction}), along with the symplectic reduction of wavefunctions. The same results will follow from that section, except that we need to take appropriate limits -- this section now deals with an infinite dimensional example.
+    
+    First note the intersection \(\cL_{KS} \cap G_\Sigma\) is transversal since \[ W_\Sigma =G_\Sigma+L=G_\Sigma+T_0\cL_{KS}\] which was proven in chapter (\ref{chapter:tate}).
+    
+    To make sense of the quotient of \(\cL_{KS}\cap G_\Sigma\) by \(G_\Sigma^\perp\), we need to use the ideas in chapter (\ref{chapter:symplecticreduction}), and investigate the process algebraically. This is because \(\cL_{\text{KS}}\) is defined in terms of formal neighbourhoods.
+    
+    First note, the quotient
+    \[ 0 \rightarrow G_\Sigma^\perp \rightarrow G_\Sigma \rightarrow \mathcal{H}_\Sigma \rightarrow 0  \]
+    corresponds to the ring homomorphism:
+    \[ 
+    \mathcal{O}(\mathcal{H}_\Sigma)    \longrightarrow   \mathcal{O}({G_\Sigma})^{G_\Sigma^\perp}\] 
+    which in terms of coordinates \(( z^i, \w_i )\) is given by 
+    \[ 
+    (z^i,\w_i) \longrightarrow     \left(\oint_{a_i}[\vartheta],\oint_{b_i}[\vartheta]\right)\]
+    %where $\mathbf{k}=\bc$ and $\mathbf{k}[V]=\bigoplus_k \mathrm{S}^k(V^*)$ is the ring of regular functions on the vector space $V$.
+    Next, \( \mathcal{O}(G_\Sigma)\) is defined in terms of the Darboux coordinates 
+    \[ 
+    \mathcal{O}(G_\Sigma) =\mathcal{O}(W_\Sigma)/\langle x^{i>g} \rangle 
+    \] 
+    since the restriction \(x^i |_{G_\Sigma}\), for \(i\in\mathbb{N}\) depends only on its cohomology class \([x^i]\in H^1(\Sigma, \mathbb{C})\). The ambiguity in the choice of coordinates \(x^1,\dots,x^g\) disappears under restriction to \(G_\Sigma\).  
+    
+    Also recall \( \cL_{KS}\) is defined as a formal completion
+    \[ 
+    \mathcal{O}(\cL_{KS}) =\mathcal{O}(W_\Sigma ) /\langle y_i - u_{0_i}\rangle ,
+    \] 
+    where \( u_{0,i}\) is the formal series, defined in chapter (\ref{chapter:airy}):
+    \[ u_{0,i} = a_{ijk}x^jx^k+2b_{ij}^ka_{k\ell m}x^jx^\ell x^m+ \dots \]
+    
+    From the commutative square
+    \begin{equation}
+    \label{eqn:commsquare}
+    \begin{tikzcd}
+         \mathcal{O}(W_\Sigma) \arrow[r] \arrow[d] & \mathcal{O}(G_\Sigma)\arrow[d]\\
+    \mathcal{O}(\cL_{KS}) \arrow[r] & \mathcal{O}(\cL_{KS} \cap G_\Sigma) 
+    \end{tikzcd}
+    \end{equation}
+    \(\mathcal{O}(\cL_{KS}\cap G_\Sigma )\) is given explicitly by:
+    \[
+    \mathcal{O}(\cL_{KS}\cap G_\Sigma )=\ \mathcal{O}(W) / \langle y_i-u_{0,i} , x^{m>g} \rangle \cong \mathbf{k} \lBrack x^1,...,x^g \rBrack.
+    \] 
+    Composing the arrow from \[ \mathcal{O}(\mathcal{H}_\Sigma) \rightarrow  \mathcal{O} (G_\Sigma) \]
+    with the right vertical arrow in the commutative square, equation (\ref{eqn:commsquare}), to get:
+    a map 
+    \begin{equation}            
+    \label{eqn:BLcorr}
+    \mathcal{O}(\widehat{\mathcal{H}}_\Sigma) \longrightarrow \mathcal{O}(\cL_{KS}\cap G_\Sigma)  
+    \end{equation} 
+    where 
+    \[ 
+    (z^i,\w_i)\longrightarrow (x^{i \leq g},y_{i\leq g}+\tau_{ij}x^{j \leq g})
+     \] 
+      
+
+    This is a map from a formal neighbourhood of \( 0\in\mathcal{H}_\Sigma\) to a formal neighbourhood of \(0\in W_\Sigma \).
+    
+    In Section (\ref{sec:formaltheta}) it is proven that the kernel of (\ref{eqn:BLcorr}) is given by the ideal \[ \langle \w_i-u_i(z^1,...,z^g) \rangle, \]
+    where \( u_i\) represents expanding \(\w_i \) in a series for \(z^{\sbt}\),  which means completing at a maximal ideal  \(\langle \w_{\sbt} ,z^{\sbt} \rangle \), similarly to the idea of expanding \(y_i\) in a series for \(x^{\sbt}\) which was completing the variety defined by the ideal generated by the quadratic polynomials
+    \[ I(\mathbb{L})= \langle -y_i  + a_{ijk}x^j x^k + 2 b_{ij}^k x^j y_k + c_{i}^{jk} y_j y_k \rangle\]
+    at the maximal ideal \( \langle y_{\sbt} , x^{\sbt} \rangle \).
+    
+    Therefore equation (\ref{eqn:BLcorr}) defines an isomorphism
+    \[ \mathcal{O}(\widehat{\mathcal{B}}_\Sigma)\cong \mathcal{O}(\cL_{KS}\cap G_\Sigma).\]
+    Note \( \cL_{KS}\) is topologically a point in \(W\). The intersection gives the formal neighbourhood of a point \([\Sigma]\in \mathcal{B}\) which Kontsevich and Soibelman denote as \( \widehat{\mathcal{B}}_\Sigma\)
+
+    
+    The big picture is that formal power series expansions of algebraic functions (albeit in infinite variables) have been mapped into functions on formal neighbourhoods of a finite dimensional space. 
+    \begin{rem} 
+    We conjecture that \( \mathcal{B}\) is not algebraic in \( \mathcal{H}\). The entire process must be done on formal neighbourhoods. Taking the quadratic polynomials:
+    \[ -y_i + a_{ijk}x^j x^k + \dots \] 
+    and simply making a replacement like \(x^{i>g} = y_{i>g} = 0\), to get a polynomial in \( z^i , \w_i\) does not recover the same series for \(\w_i\), which was built to recover topological recursion.
+    \end{rem}
+    
+    \subsection{Symplectic reduction and vector fields}
+    \label{sec:vectorfieldsSigma}
+    Consider the Lagrangian subspace \( L_\Sigma = \mathcal{T}_0 \cL_{KS} \subset W_\Sigma\), of locally holomorphic differentials on \( \Sigma\), defined on \( \Sigma - R\), where \(R\) is a divisor. The symplectic form on \(W_\Sigma\),  \( \Omega_{W_\Sigma}\), defines a natural isomorphism  
+    \[ L_\Sigma \cong V_\Sigma^*.\]
+    Similarly the symplectic form \( \Omega\) on \(X\), also defines an isomorphism of a Lagrangian subspace in \( \mathcal{H}_\Sigma = H^1(\Sigma, \mathbb{C})\), 
+    \[ \overline{L}_\Sigma = H^0(\Sigma,K_\Sigma)\cong \overline{V}_\Sigma^*.\]
+    There is a natural map 
+    \[ h : H^0(\Sigma, K_\Sigma ) \rightarrow L_\Sigma\]
+    which expands any holomorphic differential locally in a series around \(R\).
+    
+    For any \( T\in\mathrm{Hom}(L_\Sigma \otimes L_\Sigma,V_\Sigma)\) consider the commutative square:
+    \begin{equation}
+        \begin{tikzcd} 
+        L_\Sigma \otimes L_\Sigma \arrow{r}{T} & V_\Sigma \arrow{d} 
+        \\ H^0(\Sigma,K_\Sigma)\otimes H^0(\Sigma,K_\Sigma)\arrow{r}\arrow{u}{h\otimes h} & \overline{V}_\Sigma  
+    \end{tikzcd} 
+    \end{equation}
+    This defines a map
+    \[ T \rightarrow [T\circ (h\otimes h)] \in \mathrm{Hom}(H^0(\Sigma,K_\Sigma)\otimes H^0(\Sigma,K_\Sigma),\overline{V}_\Sigma),\]
+    where \([\cdot]\) is the map \(V_\Sigma\to\overline{V}_\Sigma\). Further, this defines the right vertical arrow in the following commutative diagram:
+    \begin{equation}  \label{tenscovder}
+        \begin{tikzcd}
+        V_\Sigma\otimes V_\Sigma\otimes V_\Sigma\arrow{d}\arrow{r}{\Omega_{W_\Sigma}}  & \mathrm{Hom} (L_\Sigma \otimes L_\Sigma,V_\Sigma)\arrow{d}  \\
+        \overline{V}_\Sigma\otimes \overline{V}_\Sigma\otimes \overline{V}_\Sigma  \arrow{r}{\Omega} &
+    \mathrm{Hom}\left(H^0(\Sigma,K_\Sigma)\otimes H^0(\Sigma,K_\Sigma),\overline{V}_\Sigma \right). 
+    \end{tikzcd}
+    \end{equation}
+    
+    In the next section, we see that a quadratic Lagrangian subvariety, defined by an ideal:
+    \[I(\cL) =  \langle H_k = a_{ijk} x^j x^k + O(x^{\sbt}y^{\sbt}) + O((y^{\sbt})^2) \rangle \]
+    in a symplectic space, so \(\cL  \subset V\oplus V^*\), the tensor \(A\) built from the coefficients \( a_{ijk}\), defines a map
+    \[ \mathcal{T}_p \cL \otimes \mathcal{T}_p \cL \longrightarrow V\]
+    given by variation of a vector field with respect to another vector field on \( \cL\).  
+    
+    This uses a canonical extension of any vector in \(T_p \cL\) to a local vector field, so that covariant differentiation gives a tensor. By relating vectors, their canonical extensions to vector fields, and covariant differentiation upstairs and downstairs in equation (\ref{eqn:lagmap})  we prove \[ A_\Sigma \longrightarrow \overline{A}_\Sigma \] 
+    with the vertical map in \eqref{tenscovder}.       
+    
+    
+
+    \section{Lie algebras and formal vector fields on quadratic Lagrangians}
+    \label{sec:vectorfields} 
+
+    Let \(R\) be a ring, \(M\) an \(R\)-module, and let \( Der(R)\) be the ring of derivations on \(R\). An \emph{algebraic connection} on \(M\), is a \(R\)-module homomorphism
+    \[ \nabla : Der(R) \rightarrow Der(M,M),\]
+    which takes a derivation \(f\), which is a map \(f:R \rightarrow R \) satisfying the Leibniz rule, to a generalised derivation on \(M \rightarrow M\) denoted \( \nabla_f\),
+    \[ f \rightarrow \nabla_f.\]
+    \( \nabla_f\) on \(M\) also obeys the Leibniz rule:
+    \[ \nabla_f ( r m ) = f(r) m  + r \nabla_f (n), \]
+    where \( r \in R\), \( m \in M\). The \(A\) tensor will be used to define an algebraic connection.
+    
+    
+    %\begin{ex}
+    %For example consider the sub-variety \( R = \mathbf{k}[x, y ]/\langle - y + a x^2 \rangle \). Derivations on \(R\) are equivalent to vector fields \( \frac{\partial}{\partial x}\).
+    %\end{ex}
+    
+    
+    Let \( \mathcal{O}(W) = \mathbf{k}[x^{\sbt},y_{\sbt}]\), with Poisson bracket \( \{y_i, x^j \} = \delta^{i}_j\).  As per chapter (\ref{chapter:airy}) we consider a quadratic Lagrangian subvariety defined by the ideal 
+    \[ I(\mathbb{L}) = \langle H_i := - y_i +  a_{ijk} x^j x^k  + 2 b_{ij}^k x^j y_k +  c_{i}^{jk} y_j y_k \rangle, \]
+    in \( \mathcal{O}(W)\). As \( \cL\) is Lagrangian there are constraints on the corresponding tensors 
+    \[ A \cong a_{ijk}x^i x^j x^k,B\cong b_{ij}^k x^i x^j y_k,C \cong c_{i}^{jk} x^i y_j y_k,\] which  determines an Airy structure. We consider this in the more general case before looking later at vector fields on \( \cL_{KS}\), and the relation to \(A_\Sigma\).
+    
+    Now \( \mathcal{O}(W)\) has a maximal ideal \(\mathfrak{m} = \langle x^{\sbt}, y_{\sbt} \rangle\).  Denote \( L_i = -y_i \), the linearisation of \(H_i\). The (Zariski) tangent space of \( \cL\) at \(0\) is given by 
+    \[  \mathcal{T}_0 \cL = \mathfrak{m}/(\langle L_i \rangle  + \mathfrak{m}^2) \cong L \cong \langle y_i \rangle.  \] Further this gives \(\{x^i\}\) as coordinates on \(L\), and \(y_i\) is identified with derivations \( \frac{\partial}{\partial x_i}\) on \( \cL\).
+
+    The tangent space \( L \cong T_0\cL\) is equipped with the structure of a Lie algebra \( \mathfrak{g} = (L, [, ]_{\mathfrak{g}}) \) as follows. The constants \(g_{ij}^k\) from the closure of the Poisson bracket on \(I = \langle H_i\rangle \), determine the structure constants of \( \mathfrak{g}\). This gives a Lie bracket on \( L\) defined as \( [y_i,y_j]_{\mathfrak{g}} =g_{ij}^k y_k\). 
+
+    We have the usual Lie algebra homomorphism between Hamiltonian vector fields and functions. On \(W\), for the function \(H_i\), define a Hamiltonian vector field:
+    \[ X_{H_i} = \left( \frac{\partial H_i}{\partial y^j}, - \frac{\partial H_i}{\partial x_j} \right), \]
+    where 
+    \begin{align*}
+    \frac{\partial H_i}{\partial y^j} &= - \delta_{i}^j +  b_{im}^j x^m + 2 c_{i}^{j m} y_m, \\
+    -\frac{\partial H_i}{\partial x_j} &= -2 a_{ijm}x^m -  b_{ij}^m y_m.
+    \end{align*}
+    Then the the corresponding Lie bracket of vector fields is given by:
+    \[ [X_{H_i}, X_{H_j} ]_{\mathfrak{g}} = X_{\{H_i,H_j\}} = X_{g_{ij}^k H_k}. \]
+    Furthermore, these are dual to the differentials \(dx^i\) on \( \cL\). 
+
+    The vector fields corresponding to the \(H_i\), are examined in a formal neighbourhoods. Denote \( \xi_i\) as a vector field on a formal neighbourhood of \( \mathbb{L}\) given by:
+    \begin{defn}[Formal vector fields]
+    \label{defn:vectfields} Define the vector fields \( \xi_i\) defined on formal neighbourhoods of \( \mathbb{L}\) by:
+    \[ \xi_i=\frac{\partial}{\partial x_i}+ f_{ij}\frac{\partial}{\partial y^j}
+    =(0,\dots,\underbrace{1}_{i-\text{th entry}},\dots \, \mid \, f_{i1},f_{i2}, \dots )\]
+    such that 
+    \[ \frac{\partial}{\partial x_j}\xi_i=(0,\dots,0,\dots\, \mid \partial_j f_{i1},\dots)\in V.\]
+    \end{defn}
+    The functions \( f_{ij}\) are determined by the invertible (infinite dimensional) linear system:
+    \begin{align*}   
+    0=dH_i(\xi_j)&=\xi_j(H_i)\\
+    &=\left(\frac{\partial}{\partial x^j}+ f_{jk}\frac{\partial}{\partial y^k}\right)H_i\\
+    &=2a_{ijk}x^k+b_{ij}^ky_k+ f_{jk}(-\delta_{ik}+ b_{ij}^kx^j+2c_i^{jk}y_j).
+    \end{align*}
+    The functions \(f_{ij}\) are expanded in a formal neighbourhood of zero in \(  \cL\). Given \(y dx = d S_0\), evaluating the differential on a vector field
+    \[\xi_i=dS_0\left(\frac{\partial}{\partial x^i}\right),\]
+    gives
+    \[f_{ij}=2a_{ijk}x^k+(4b_{jk}^ma_{i\ell m}+2b_{ji}^ma_{k\ell m})x^kx^\ell+ \dots. \]
+    
+    Overall this is describing the data of an algebraic connection on formal neighbourhoods. Varying a vector field \( \xi\) by a vector field \( \frac{\partial}{\partial x_j}\) is encoded in \(a_{ijk}\).
+    
+    Furthermore, using the normal identification between polynomials and symmetric tensor products, and noting \( L = \mathcal{T}_0 \cL \),
+    \begin{lem} The tensor \(A = a_{ijk} x^i \otimes x^j \otimes x^k\) defines a map:
+    \[ A : \mathcal{T}_0 \mathbb{L} \otimes \mathcal{T}_0 \mathbb{L}\to V.\]
+    \end{lem}
+    
+    \begin{proof}
+    Differentiating \(f_{ij}\) by \(x^k\), and looking at the constant term (so in the first formal neighbourhood given by \( \mathfrak{m} = \langle x^{\sbt},y_{\sbt}\rangle\)):
+    \[ 2a_{ijk}-\frac{\partial}{\partial x^k}f_{ij}=0.\]
+    Hence the tensor \(a_{ijk}\) is defining a map \(A : \mathcal{T}_0 \mathbb{L} \otimes \mathcal{T}_0 \mathbb{L}\to V \), or \( L \otimes L \rightarrow V\), via
+    defining the variation of a vector field with respect to another vector field:
+    \[ \frac{\partial}{\partial x^k}f_{ij} = 2 a_{ijk}. \]
+    \end{proof}
+        
+    In particular, with the specialisation \(W= W_\Sigma\) and \(V=V_\Sigma\), this lemma is related to the variation of a period matrix. 
+
+
+    \section{Connections on foliated surfaces}    
+    
+    \subsection{Connections on bundles} 
+    
+    Let \( E \stackrel{\pi}{\rightarrow} B\) be a fibre bundle over \(B\), with fibres \(F\). Connections on \(E\) are defined in terms of a splitting. 
+    
+    
+    \iffalse 
+    \begin{defn}[Connection]
+    A \emph{connection} \( \nabla\), on a bundle \(E\), is a linear map 
+    \[ \nabla : \Gamma(E) \rightarrow \Omega^1(E,B), \]
+    which for a section \(s\), and function \(f\) on \(B\), satisfies Leibniz rule:
+    \[ \nabla(f s) = d f \otimes s + f \nabla s. \] 
+    \end{defn}
+    \fi 
+    
+    %satisfyies
+    %satisfies derivation nabla (f s) = (d f)  \otimes s + f \nabla s 
+    %
+
+    %pick path in B,
+    
+    \begin{defn}[Parallel transport] The \emph{parallel transport} of a connection \( \nabla\) is a functor \(\Gamma_{\nabla}\), which assigns for any path \( \gamma : [0,1] \rightarrow B\), a smooth morphism (an isomorphism) between fibres \( \Gamma_{\nabla}(\gamma) : E_{\gamma(0)} \rightarrow E_{\gamma(1)}\).
+    \end{defn}
+    Recall that functors preserve composition, so for composition of paths \( \gamma_1\) , \( \gamma_2\), \( \Gamma_{\nabla}(\gamma_1 \circ \gamma_2) = \Gamma_{\nabla}(\gamma_1) \circ \Gamma_{\nabla}(\gamma_2) \), which is well defined.
+    %lifts of paths have \nabla, \nabla(s)
+    
+    %equivalent to horizontal
+    
+    %needs the fact paths compose
+    %paths form a monoid
+    
+    
+    As before, let \( E \stackrel{\pi}{\rightarrow} B\) be a smooth bundle. Then there is an exact sequence
+    \[ 0 \rightarrow V E \rightarrow TE \rightarrow \pi^{*} TB \rightarrow 0\]
+    where \(VE\) is called the \emph{vertical bundle}, which is the kernel of the induced map \( TE \rightarrow \pi^{*} TB\). 
+    
+    %A choice of connection \(\nabla\) gives the following splitting:
+    Consider the splitting:
+    \[ 0 \rightarrow VE \rightarrow VE \oplus H \rightarrow \pi^{*} TB \rightarrow 0\]
+    so \(H \cong \pi^{*} TB\) is a  \emph{horizontal bundle}. Define the bundle morphism \( \rho : H \rightarrow TE\), and note \( d \pi \circ \rho = \mathrm{id} \). Furthermore given \(VE \cong \pi^{*} E\),  there is an isomorphism \[ TE \cong \pi^{*} E \oplus H .\]
+    The map \( \rho \) is equivalent to a connection \( \nabla\) on \(E\).
+    
+    %each nabla defines a splitting
+    %any connection induces a splitting
+
+    \subsection{Connections on a foliated surface}
+    \label{sec:connonfoliated}
+    Now let \( \Sigma \subset X\) be a curve in a foliated symplectic surface \( (X, \Omega, \mathcal{F} )\), and let \( \mathcal{B}\) be the deformation space of \( \Sigma \) in \(X\). Let \(R \subset \Sigma \) be a divisor. Consider as before the bundle \( \mathcal{H} \rightarrow \mathcal{B}\), where a fibre of a point \( \Sigma\) in \( \mathcal{B}\), is given by \( \mathcal{H}_{\Sigma} = H^1(\Sigma, \mathbb{C})\). \( \mathcal{H}\) is equipped with the Gauss-Manin connection \( \nabla^{GM}\). Following Kontsevich and Soibelman, in this section we use the foliation to define a foliation dependent connection \( \nabla^{\mathcal{F}}\), which lives above the Gauss-Manin connection so for a holomorphic differential \( \eta\),
+    \[ [ \nabla^{\mathcal{F}} \eta ] = \nabla^{GM} [\eta].\]
+    This connection restricts to formal neighbourhoods so 
+    \[ [ \nabla^{\mathcal{F}} \widehat{\omega}_j ] = \nabla^{GM}[\omega_j],\]
+    for the formal expansion of the vector field \( \omega_j\) defined in equation (\ref{eqn:hatomegavectfields}). In section \ref{sec:vectLsig} the covariant derivative \[\nabla_i^{\mathcal{F}} \widehat{\omega}_j\] 
+    gives rise to the tensor 
+    \[ A_\Sigma\in V_\Sigma\otimes V_\Sigma\otimes V_\Sigma,\] 
+    and 
+    \[ \nabla_i^{GM}\left[\omega_j\right]\] 
+    gives rise to the tensor 
+    \[ \overline{A_\Sigma} \in\overline{V}_\Sigma\otimes \overline{V}_\Sigma\otimes \overline{V}_\Sigma, \] 
+    compatibility of the covariant derivatives of vector fields is used to prove that 
+    \[ A_\Sigma \rightarrow \overline{A_\Sigma} \] under the map \[ V_\Sigma \to\overline{V}_\Sigma, \] which is the map sending a differential to its cohomology class.
+    %locally \lambda : X->U
+    %locally when d \lambda non zero
+    
+    Towards constructing \( \nabla^{\mathcal{F}}\), above \( \mathcal{B}\) is a universal space \( \mathcal{U}\), the universal space of curves in \( \mathcal{B}\). \( \mathcal{U}\) is a smooth bundle over \( \mathcal{B}\), \( \pi  : \mathcal{U} \rightarrow \mathcal{B}\). There is a natural map \( \mathcal{U} \rightarrow X \), which induces a map \( \Sigma \rightarrow X\) on the fibre of \( \mathcal{U} \) over a point \( [\Sigma] \in \mathcal{B}\). Fibres of \( \mathcal{U} \rightarrow \mathcal{B}\) induce a one dimensional, \emph{vertical}, foliation on \(\mathcal{U}\), denoted \(\mathcal{V}\).
+    
+    The codimension one foliation \( \mathcal{F} \) on \(X\) induces a codimension one foliation \(H\) on \( \mathcal{U}\), where we use the notation
+    \[ H_p \subset T_p \, \mathcal{U},\]
+    for a point \( p\in \mathcal{U}\).
+    
+    The foliation \(H\) gives a splitting:
+    \begin{equation}
+    \label{eqn:univsplit}
+    T_z \, \mathcal{U} \cong T_z \Sigma \oplus H_z
+    \end{equation}
+    where \( z \in \mathcal{U} - \mathcal{U}_R\), \( \Pi(z) = [\Sigma]\), and \(\mathcal{U}_R\) is the codimension one set where the foliation \(H\) intersects the vertical foliation \( \mathcal{V}\) non-transversally. On \( \mathcal{U}^{\times} = \mathcal{U} - \mathcal{U}_R\), \( H_z \cong T_{[\Sigma]} \mathcal{B}\), the splitting, equation (\ref{eqn:univsplit}), defines a horizontal lift of \(T_{[\Sigma]}\mathcal{B}\) to \(T_z \mathcal{U}\).
+
+    % only on points H_z 
+
+    This leads to a connection on \(\mathcal{U}^{\times} \rightarrow \mathcal{B}\), \( \nabla^{\mathcal{F}}\):
+    \begin{lem}
+    The splitting, equation (\ref{eqn:univsplit}), defines a connection \( \nabla^{\mathcal{F}}\) on \(\mathcal{U}^{\times} \rightarrow \mathcal{B}\).
+    \end{lem}
+    
+    The connection lifts a vector in \(T_{[\Sigma]}\mathcal{B}\), to a vector in \(T_z \mathcal{U}\), for \(z \in \mathcal{U}^{\times}\). The lifting is used to take a Lie derivative of any tensor defined on \( \mathcal{U}\), for example a relatively defined differential \(\eta\). Note \(\eta\) is allowed to be meromorphic.  
+    
+
+
+
+    \begin{ex}
+    We consider an algebraic analog of parallel transport in a family. Define a foliated surface by the family of curves parameterised by \(t\):
+    \[x=y^2+t.\]
+    Leaves of the foliation \(x=\mathrm{const}\) define a flat connection on the fibration defined by the family. 
+    
+    Consider parallel transport from a general fibre to the fibre over \(t=0\) given by \(x=y_0^2\).  
+    
+    Then
+    \[y(y_0)=\sqrt{y_0^2-t}=y_0\sqrt{1-\frac{t}{y_0^2}}=y_0\left(1-\frac{1}{2} \frac{t}{y_0^2}-\frac{1}{8}\frac{t^2}{y_0^4}-\dots \right)\]
+    exists analytically when \(|y_0|>|t|\) 
+    whereas it exists formally in \( \mathbb{C}\lBrack t \rBrack\), or in  \(\mathbb{C}[t]/t^n\) for any \(n\).  
+    
+    For example, in \(\mathbb{C}[t]/t^2\), \(y(y_0)=y_0-\dfrac{t}{2y_0}\) defines a path
+    \begin{align*}
+    \mathbb{C}-\{0\}&\longrightarrow \mathbb{C}\\
+    y_0&\longrightarrow y_0-\frac{t}{2y_0}
+    \end{align*}
+    which is parallel transport in the first formal neighbourhood.  
+    \end{ex}
+
+
+    \section{Relation between the formal series \texorpdfstring{\( \vartheta\)}{theta} and an analytic series}
+    \label{sec:formalandanalytic}
+    This section verifies the two following two lemmas.
+    \begin{lem}   \label{lem:phisec1}
+    The section \( \vartheta\in\Gamma(\widehat{\mathcal{B}}_{\Sigma},G_\Sigma)\) defines a map
+    \[ \vartheta:\widehat{\mathcal{B}}_{\Sigma}\to\cL_{KS} \]
+    where \(\cL_{KS}\) is the quadratic Lagrangian defined in equation (\ref{eqn:rescon1}) and (\ref{eqn:rescon2}).
+    \end{lem}
+    
+    \begin{lem}  \label{lem:phisec2}
+    The cohomology class of \(\vartheta\in\Gamma(\widehat{\mathcal{B}}_{\Sigma},G_\Sigma)\) defined in (\ref{defn:thetaTR}) is the local section  \([\vartheta]\in \Gamma(U_\Sigma, \mathcal{H})\) defined in (\ref{eqn:cohtheta}). 
+    \end{lem} 
+
+    
+    
+    \begin{proof}[Proof of lemma (\ref{lem:phisec1})]
+    The proof immediately follows from the fact that \( \vartheta\) satisfies the residue constraints \cite{chaimanowong2020airy}.
+    \end{proof}
+    
+    
+    \begin{proof}[Proof of lemma (\ref{lem:phisec2})]
+    %The symplectic form on \(X\)
+    %\[ \Omega_X=-d(v_\alpha du_\alpha),\]
+    Let  \( (v_\alpha, u_\alpha ) \) be foliation Darboux coordinates, definition (\ref{defn:specoord}) describing \( \Sigma\) in \(X\).
+    
+    Define a 1-form \(\varphi\), \( \varphi :T_{\Sigma}\mathcal{B}\rightarrow  H^0(\Sigma,K_\Sigma), \)
+    as 
+    \[\varphi =  \omega_i\otimes dz^i.\]
+    \( \varphi\) is a section of \(\Omega_{\mathcal{B}}^1\otimes \mathcal{H}\). Under the quotient map, \( \varphi\) restricts to \( \phi\),
+    \[ \phi\in\Gamma(\mathcal{B},\Omega_{\mathcal{B}}^1\otimes\mathcal{H} ),\]
+    where \( \phi\) is defined in equation (\ref{eqn:phi}), so \( [\varphi] = \phi \).
+    
+    Then 
+    \[ \nabla^{\mathcal{F}} (v_\alpha du_\alpha)=\omega_i\otimes dz^i\]
+    lives over 
+    \[ \nabla^{GM}s=\phi\] 
+    where \( s\in\Gamma(U_\Sigma,\mathcal{H})\) defines the cohomology class \( [\vartheta]\),
+    \[ [\vartheta]([\Sigma']):=s([\Sigma'])-s([\Sigma])\in\mathbb{C}^{2g}\cong \mathcal{H}_\Sigma .\]
+
+    As shown before in section (\ref{sec:connonfoliated}), \( \nabla^{\mathcal{F}} \) lives above \(\nabla^{GM}\), so higher covariant derivatives \(\nabla^\mathcal{F}_I(v_\alpha du_\alpha)\) live over higher covariant derivatives \(\nabla^{GM}_I[\vartheta]\).  
+    
+    
+    Therefore the series \(\vartheta\) lives above the series for \([\vartheta]\).
+    \end{proof}
+    
+    \section{Vector fields on \texorpdfstring{\(L_\Sigma\)}{L Sigma}, and the relation to the tensor \texorpdfstring{\(\overline{A}_{\Sigma}\)}{A Sigma}}
+    \label{sec:vectLsig}
+
+    We consider a specialisation of the vector fields in section (\ref{sec:vectorfields}) to the case of \( \cL_{KS} \cong \widehat{\cL}^R_{KW} \). The following two lemmas are equivalent to proposition (4.9) from \cite{ks_airy}:
+    \begin{lem}[\cite{chaimanowong2020airy}]  
+    \label{vfs}
+        There are vector fields \( \xi\) on \(\cL_{KS}\), given by definition (\ref{defn:vectfields}), where \(x^i,y_i\) in the definition are specialised to the Darboux coordinates \( x^{i,\alpha},y_{i,\alpha}\) on \(W_\Sigma\), and satisfy
+        \begin{align}
+        \xi_i&=\widehat{\omega}_i,\qquad i=1,...,g  \label{xiomega},
+        \end{align} 
+        where \( \widehat{\omega}_i\) are the vector fields from equation (\ref{eqn:hatomegavectfields}).
+    \end{lem} 
+    
+    \begin{lem}
+    Under symplectic reduction:
+    \begin{align} 
+        \nabla^{\mathcal{F}}_{\widehat{\omega}_i}\widehat{\omega}_j&\rightarrow \nabla^{GM}_{[\omega_i]}[\omega_j]  \label{covFGM}. \\
+        A_\Sigma& \rightarrow \overline{A}_\Sigma.  \label{AtoA}
+    \end{align}
+    \end{lem}
+
+
+    By \cite{chaimanowong2020airy}, the image of the tensor \(A_\Sigma\) under the quotient map is identified with the variation of a holomorphic differential by a holomorphic differential. The image of \(A_\Sigma\) is given by:
+    \[\overline{A}_{\Sigma} \cong \frac{\partial\tau_{ij}}{\partial z_k} z^i z^j z^k.\]
+    which is the Donagi-Markman cubic:
+    \begin{thm}  \label{thm:main}
+    The image of the tensor \(A_\Sigma\) under the symplectic reduction, which sends \(V_\Sigma  \rightarrow \overline{V}_\Sigma\),  is the tensor \(\overline{A}_\Sigma\), also known as the Donagi-Markman cubic,
+        \begin{align}  \label{eqn:tensquot}
+        V_\Sigma\otimes V_\Sigma\otimes V_\Sigma&\to\overline{V}_\Sigma\otimes\overline{V}_\Sigma\otimes\overline{V}_\Sigma\\
+        A_\Sigma&\mapsto \overline{A}_\Sigma.\nonumber
+    \end{align}
+    \end{thm}
+    
+    
+    
+    \section{Reduction, wavefunctions and the prepotential}
+    
+    One motivation of \cite{ks_airy}, is to study the deformation quantisation of \( \mathcal{B} \subset \mathcal{H}_\Sigma = H^1(\Sigma, \mathbb{C}) \) by the wavefunction
+    \[\psi_{\mathcal{B}}(z^1, \dots , z^g) = \exp\left(\frac{F_0}{\hbar}+F_1+\hbar F_2+\dots +\hbar^{g-1}F_g+\dots\right),
+    \]
+    where \(F_0(z^1, \dots , z^g)\) is the prepotential, and the \(F_g(z^1, \dots , z^g)\) are called \emph{symplectic invariants}, which are defined from topological recursion, \cite{chaimanowong2020airy}. 
+    \[  F_g(z^1, \dots , z^g) :=\frac{1}{2-2g}\int_{b_i}\omega_{g,1}(p) z^i. \]
+    Note a fixed choice of \(z^{\sbt}\) give the invariants from the introduction.
+    
+    Following \cite{ks_airy},  \(\psi_{\mathcal{B}}(z^1, \dots, z^g)\) is defined by an integral equation or from examining the deformation quantisation of an intersection.
+    
+    The wavefunction \( \psi_{\mathcal{B}}(z^1, \dots, z^g)\) is annihilated to order \( O(\hbar)\) by a quantisation of the local defining equations for \( \mathcal{B} \subset \mathcal{H}_\Sigma \):
+    \[ -\hbar\frac{\partial}{\partial z_i}+\w_i(z^1,...,z^g).\] 
+    %prepotential is obtained by
+    %formal expansion of prepotential
+    Using similar ideas to chapter (\ref{chapter:symplecticreduction}), the image of \(G_\Sigma\) under the natural map of the extension \(W_\Sigma \rightarrow X =  W_\Sigma \oplus G_\Sigma / G_\Sigma^{\perp}\), at the level of rings is defined by the ideal
+    \[    \langle x^{>g}, z^i - x^{i \leq g}, \w_i - y_{i\leq g}-\tau_{ij}x^{j \leq g} \rangle, \]
+    as shown in section (\ref{sec:Breduction}). We quantise these equations to determine \( \psi_G\). Similar to the example in section (\ref{sec:examplereduct4d}), the equations \(x^{>g}=0\) and \(z^i - x^i=0\) are not used to directly determine \( \psi_G\) in a differential equation. \(\psi_G(x^{\sbt},z^{\sbt})\) is only determined explicitly from the equations:
+    \[\left( \hslash \frac{\partial}{\partial z_i} - \hslash \frac{\partial}{\partial x_i } - \tau_{ij} x^j \right) \psi_G(x^{\sbt},z^{\sbt}) = 0, \]
+    where \( 1 \leq i, j \leq g\). This equation has a solution 
+,    \[ \psi_G(x^1, \dots ,x^g, z^1,\dots z^g ) = \mathrm{const} \, \exp\left( \frac{1}{2 \hslash}\, \tau_{ij} z^i z^j +  \frac{1}{\hslash} \, \tau_{ij} z^i x^j  \right). \]
+    Note that the graph of \( d \left( \frac{1}{2} \tau_{ij} z^i z^j +  \frac{1}{\hslash} \, \tau_{ij} z^i x^j \right)\) does determine \(G\) in \(X\). 
+
+    From chapter (\ref{chapter:symplecticreduction}), we see that reduction commutes with deformation quantisation. This means starting with the equations or the ideal describing \( \mathbb{L}\) and \(G_\Sigma\), then eliminating \(x^{\sbt}\) and \(y_{\sbt}\) terms, leaves a series in terms of \(\w_{\sbt}\) and \(z^{\sbt}\). This series is quantised, or turned into an operator, to write out a differential equation for \( \psi_{\mathcal{B}}\). Alternatively \( \psi_{\mathcal{B}}\) is found from the integral formula: \cite{ks_airy}:
+    \[ \psi_{\mathcal{B}}(z^1, \dots, z^g ) = \int \psi_G \, \psi_{\mathbb{L}} = \mathrm{const} \, \int Dx \exp\left( \frac{1}{2 \hslash}\, \tau_{ij} z^i z^j +  \frac{1}{\hslash} \, \tau_{ij} z^i x^j  \right) \psi_{\mathbb{L}}( S(x^{\sbt}) ),\]
+    where \( Dx \) means integration over all the \(x^{\sbt}\) variables, but note that \( \psi_G\) only contains fintiely many: \(x^1, \dots , x^g\).  \(\psi_{\mathbb{L}}( S(x^{\sbt}) )\) is similarly defined in chapter (\ref{chapter:airy}). Immediately we pull out the terms only dependent on \(z^{\sbt}\), so
+    \[ \psi_{\mathcal{B}}(z^1, \dots, z^g ) = \exp\left( \frac{1}{2 \hslash } \tau_{ij} z^i z^j + O\left(\frac{1}{\hslash}\right) \right). \]
+    Already this matches the quadratic term in the prepotential \(F_0\), equation (\ref{eqn:prepotential}).
+    Higher order terms in \(z^{\sbt}\) and \(\hslash\) are determined by the Fourier or Laplace like formal integral. Hence we conclude
+    \begin{prop}
+    \label{prop:fourierB}
+    \begin{align} \psi_{\mathcal{B}}(z^1, \dots, z^g ) =  \exp\left( \frac{1}{2 \hslash } \tau_{ij} z^i z^j \right) \int Dx \exp\left( \frac{1}{\hslash} \, \tau_{ij} z^i x^j  \right) \psi_{\mathbb{L}}( S(x^{\sbt}) ).
+    \end{align}
+    \end{prop}
+    This integral is annihilated by the quantisation of the defining equations for \( \mathcal{B}\) as an intersection, in a similar way to example (\ref{sec:examplereduct4d}).
+
+    Note \( S(x^{\sbt} ) = \frac{1}{\hslash }S_0(x^{\sbt}) + S_1(x^{\sbt}) + \dots\), as defined in chapter (\ref{chapter:airy}), and is chosen to solve the equations
+    \[ \widehat{H}_i \exp( S(x^{\sbt})) = 0\]
+    where the operators \( \widehat{H}_i \) correspond to a quantisation of the quadratic polynomials \(H_i\) defining the Lagrangian \( \mathbb{L}\).
+    
+    In the semi-classical limit treating \(S_0/\hslash\) as large, we expect the following:
+    \begin{prop}[Transformation of Lagrangian generating functions]
+    \label{prop:transgen}
+    \begin{align*} 
+    \exp\left( \frac{1}{2 \hslash } \tau_{ij} z^i z^j \right) \int Dx \exp\left( \frac{1}{\hslash} \, \tau_{ij} z^i x^j  \right) \exp\left( \frac{1}{\hslash} S_0(x^{\sbt}) \right) \simeq \exp\left( \frac{1}{\hslash} F_0(z^1, \dots,z^g ) \right) 
+    \end{align*}
+    where \(F_0\) is the prepotential, equation (\ref{eqn:prepotential}), and \(S_0\) is the generating function so \(y = \mathrm{graph}( dS_0)\), describing \( \mathbb{L}\).
+    \end{prop} 
+    
+    The alternative approach to verifying this proposition, and investigating the prepotential \(F_0\) is to take the ideal
+    \[  \mathcal{J}_{\mathcal{B}} = \langle x^{>g}, z^i - x^{i \leq g}, \w_i - y_{i\leq g}-\tau_{ij}x^{j \leq g} , H_i  \rangle,\]
+    describing \( \mathcal{B}\) as an intersection of \( \mathbb{L}\) and \(G_\Sigma\) in \(X\), and 
+    \[  H_i  = - y_i + a_{ijk}x^j x^k + 2 b_{ij}^k x^j y_k + c_{i}^{jk}y_j y_k\]
+
+    %
+    %Cleaning this up slightly, we obtain
+    %\begin{align*} \langle 
+    %& -y_i + a_{ijk}z^j z^k \\  
+    %&+ 2 b_{ij}^k z^j (\w_k - \tau_{ks}z^s) + 2 b_{ij}^k z^j y_k  \\  
+    %&+ c_{i}^{jk} (\w_j - \tau_{js} z^s)( \w_k - \tau_{kt} z^t) \\ 
+    %&+ c_{i}^{jk} (\w_j - \tau_{js} z^s)y_k \\ 
+    %&+ c_{i}^{jk} y_j ( \w_k - \tau_{k t} z^t) + c_{i}^{jk} y_j y_k \rangle  
+    %\end{align*}
+    %where contractions with \(z\) are sums from \(1\) to \(g\), \(i \in \{ 1, 2 , \dots \}\), and terms with \(y\) also sum over \( \{1, 2 , \dots \}\).
+    \begin{rem} Interestingly this defines \( \mathcal{B}\) inside the infinite dimensional space \(X\), as an intersection, algebraically. However, eliminating variables to write \( \mathcal{B}\) inside  \( \mathcal{H}_\Sigma\) as purely functions of \(z^{\sbt}\) and \(\w_i\) appears to at least be formal.
+    \end{rem}
+    
+    It is possible to eliminate \(x^{\sbt}\) and \(y_{\sbt}\) on a formal neighbourhood with the series expansion of \(y_i\). In particular \( \widehat{\mathcal{B}}\) is represented by the \(g\) formal equations:
+    \begin{align*}  
+    \bigg\{ &-\w_i + \tau_{ij} z^j +  \left(a_{ijk} - 2 \, b_{ij}^s \tau_{sk} + c_i^{st} \tau_{sj}\tau_{tk} \right) z^j z^k + \left(2 \,b_{ij}^k + 2 c_{i}^{sk} \tau_{sj}  \right) z^j  \w_k  + c_{i}^{jk} \w_j \w_k  \\
+    & +  2 b_{ij}^k z^j ( y_{k} \rightarrow u_{0,k}(x^{\sbt \leq g} \rightarrow z^{\sbt}, x^{>g} \rightarrow 0  ))_{|k > g}  \\
+    &+ c_{i}^{jk} (y_{j} \rightarrow u_{0,j}(x^{\sbt \leq g} \rightarrow z^{\sbt}, x^{>g} \rightarrow  0  )) (y_{k} \rightarrow u_{0,k}(x^{\sbt \leq g} \rightarrow z^{\sbt}, x^{>g} \rightarrow 0  ))_{|j,k > g}   \\
+    &+ 2 \, c_{i}^{jk} (y_{j} \rightarrow u_{0,j}(x^{\sbt \leq g} \rightarrow z^{\sbt}, x^{>g} \rightarrow 0  )) (\w_k -\tau_{kt}z^t ))_{|k\leq g, j>g} 
+    \bigg\},
+    \end{align*}
+    where \( 1 \leq i \leq g \), \( \rightarrow \) denotes substitution, and note indices of \( \w_{\sbt}\) and \(z^{\sbt}\) are restricted between \(1\) and \(g\). Also note \(u_{0,i}\) starts with strictly quadratic in \(x^{\sbt}\) (or after substitution, \( z^{\sbt}\)) terms. Simplifying the equations slightly gives: 
+     \begin{align*}  
+    \bigg\{ \mathcal{H}_i := &-\w_i + \tau_{ij} z^j +  \alpha_{ijk} z^j z^k + \beta_{ij}^k z^j  \w_k  + c_{i}^{jk} \w_j \w_k  + \Phi ( z^{\sbt} , \w_{\sbt} )
+    \bigg\},
+    \end{align*}    
+    where \( \Phi(z^{\sbt},\w_{\sbt}) \) starts with cubic in \(z^{\sbt}\) and \(\w_{\sbt}\) terms. Also set \( \alpha_{ijk} = \left(a_{ijk} - 2 \, b_{ij}^s \tau_{sk} + c_i^{st} \tau_{sj}\tau_{tk} \right)\) and \(\beta_{ij}^k= \left(2 \,b_{ij}^k + 2\, c_{i}^{sk} \tau_{sj}  \right)\).
+    
+    Equating the \( \mathcal{H}_i\) to zero, and solving for \(\w_i\), and looking at the \( O(z^2)\) terms would determine the cubic term in \(F_0\), in a similar way to the fixed point iteration for \(u_{0,i}\) in chapter (\ref{chapter:airy}). Doing two rounds of fixed point iteration starting with \(\w_i^{[0]} = 0 \), and using symmetry of \( \tau\) yields
+    \begin{align*}
+        \w_i^{[0]} &= 0\\
+        \w_i^{[1]} &= \tau_{ij} z^j + \alpha_{ijk} z^j z^k  + O(z^3)\\
+        \w_i^{[2]} &= \tau_{ij} z^j + \alpha_{ijk}z^j z^k +  \beta_{ij}^k  \tau_{ks} z^j z^s  + c_{i}^{jk}  \tau_{js} \tau_{k t} z^s z^t + O(z^3)
+    \end{align*}
+    This gives an \( O(z^2)\) coefficient of:
+    \begin{align*} \alpha_{ijk} + \beta_{ij}^{s} \tau_{s k} + c_{i}^{st} \tau_{s j} \tau_{t k} &=  a_{ijk} - 2 \, b_{ij}^s \tau_{sk} + c_i^{st} \tau_{sj}\tau_{tk} + 2 b_{ij}^s \tau_{sk} + 2 c_{i}^{st} \tau_{sj} \tau_{tk} + c_{i}^{st} \tau_{s j} \tau_{t k} \\
+    & = a_{ijk} + 3 c_i^{st}\tau_{sj} \tau_{tk}
+    \end{align*}
+    Then for a Lagrangian, \(\w_i \,dz^i =  d F_0\), so
+    \[ F_0 = \frac{1}{2} \tau_{ij} z^i z^j + \frac{1}{3} \left( a_{ijk} + 3 c_i^{st}\tau_{sj} \tau_{tk} \right) z^i z^j z^k  + O(z^4),  \]
+    where \( 1 \leq i,j,k,s,t \leq g\). So note that \(F_0\) in general is not simply found by setting \(x^{>g}\) terms in \(S_0\) to zero, although the first \(g\) terms of \(a_{ijk}\) do appear. Computing higher order terms would involve expanding out \( \Phi\) to the desired order, and performing fixed point iteration, which would be practical on a computer.
+    
+    Finally if we quantise the \( \mathcal{H}_i\) to obtain the formal operators:
+    \[ \widehat{\mathcal{H}}_i =   - \hslash \frac{\partial}{\partial z_i } + \tau_{ij} z^j +  \alpha_{ijk} z^j z^k + \hslash \, \beta_{ij}^k z^j  \frac{\partial}{\partial z_k } + \hslash^2 \, c_{i}^{jk} \frac{\partial}{\partial z_j } \frac{\partial}{\partial z_k } + \widehat{\Phi} \left( z^{\sbt} ,\hslash \frac{\partial}{\partial z_{\sbt} } \right),\] 
+    this will annihilate the integral for \( \psi_{\mathcal{B}}(z^1, \dots, z^g) \). Note \(\widehat{\mathcal{H}}_i \) has arbitrary orders of the operators \(\hslash  \frac{\partial}{\partial z_i}\) in  \( \Phi \), and starts with an order \( O(\hslash^3)\) term.

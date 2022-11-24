@@ -1,0 +1,935 @@
+\chapter{Symplectic vector and Tate spaces}
+    \label{chapter:tate}
+    
+    \emph{Tate spaces} \cite{lefschetz1942algebraic, drinfeld_tate} are a model for infinite dimensional symplectic vector spaces. The main property of a Tate space \(W\) is that taking the topological dual, is an involution \( (W^*)^* \cong W\), in the category of topological vector spaces over \( \mathbf{k}\). 
+    
+    In chapter (\ref{chapter:airy}), we see that an Airy structure is equivalent to a Lagrangian subvariety \( \cL\) in a Tate space \(W\), which is originally due to \cite{ks_airy}. However we have to think of this from an algebraic perspective.
+    
+    The Tate topology lets us define a ring \( \rS(W^{*})\), the symmetric algebra on \(W\). The motivation is to do algebraic geometry over \(W\). \( \rS(W^{*})\) acts like a coordinate ring of functions on \(W\), \( \mathcal{O}(W) = \rS(W^{*})\). Inside this ring we can define an ideal of quadratic polynomials, which is how we think of the Lagrangian subvariety \( \mathbb{L}\). Furthermore we will identify the spectrum of this ring, and \(W\). However in infinite dimensions the notion of points in \( \mathbb{L}\) will be more subtle.
+   
+    To produce the topological recursion invariants, \( \omega_{g,n}\), requires the deformation quantisation of \( \mathcal{O}(W)\) and finding a module supported on \(\cL\) (which is given by a quotient of a ring by an ideal and a completion). 
+    %finding a module \widehat{\mathcal{O}} 
+    
+    
+    This chapter we review Tate topology. We will see that the Tate topology is a combination of discrete and linearly compact topology.
+    
+    Another important aspect of this topology is that this forces finiteness into the objects considered in Airy structures. Kontsevich and Soibelman want to write down an infinite dimensional analog of the functions 
+    \[ H_i = a_{ijk} x^j x^k + 2 b_{ij}^k x^i y_k + c_{i}^{jk} y_j y_k, \]
+    where \(i \in \{ 1, \dots, N\}\), and a corresponding generating function 
+    \[ y_{i} dx^i = d S_0(x^{\sbt})\]
+    Instead of trying to define some convergent sums of \(x^i\), the solution is more algebraic. The discrete topology forces finiteness into sums of \(x^i\). 
+    
+    %This chapter we introduce Tate spaces and a richer algebraic object which is suitable for Airy structures.
+
+    \section{Topological vector spaces}
+    
+        There are several different ways to realise vector spaces in infinite dimensions. In a way it is possible to consider polynomials \( \mathbf{k}[x]\) as a vector space over \( \mathbf{k}\).
+        What this means is that there is a forgetful functor \( F : \Alg(\mathbf{k}) \rightarrow \Vect(\mathbf{k} )\), and \( F(\mathbf{k}[x])\) is a \(\mathbf{k}\)-vector space. \(F(\mathbf{k}[x])\) is countably infinite dimensional, but only allows for finite linear combinations of countable basis elements (powers of \(x^n\)). To extend to allowing infinite sums of vectors we need to equip the vector space with a topology or perhaps consider completions.
+        
+        \begin{defn}[Topological rings and fields] A topological ring \(R\), (respectively field, \(F\) ) is a ring equipped with a topology, such that multiplication \[ (\cdot)  : R \times R \rightarrow R\] and addition \[ (+) : R \times R \rightarrow R\] are continuous, where \( R \times R\) has the product topology. 
+        \end{defn}
+        
+        For example \( \mathbf{k} = \mathbb{C}\) with the usual Euclidean topology is a topological field.
+        
+        \begin{defn}[Topological vector space] 
+        \label{defn:topologicalvectspace}
+        A \emph{topological vector space} \(V\) is a vector space over a topological field \( \mathbf{k}\) equipped with a topology such that vector addition 
+        \[ (+) : V \rightarrow V \times V\] and
+        scalar multiplication
+        \[ (\cdot) : \mathbf{k} \times V \rightarrow V\]
+        are continuous, and where \( \times\) of objects is equipped with the product topology.
+        \end{defn}
+        
+        \begin{defn}[Topological algebra] A \emph{topological algebra} \(A\), is a topological vector space with the additional requirement that multiplication is a continuous map 
+        \( (\cdot) : A \times A \rightarrow A\), where \( A \times A\) has the product topology.
+        \end{defn}
+        
+        Topological vector spaces and algebras over a topological field form a category \( \TopVect(\mathbf{k})\). Morphisms are continuous maps.
+    
+        \subsection{The different notions of duals}
+        There are two possibly confounding notions of dual depending on which category one is working with.
+
+        \begin{defn}[Algebraic dual]
+        The \emph{algebraic dual}, is a contravariant functor
+        \( {}^{\vee} :  \Vect(\mathbf{k}) \rightarrow \Vect(\mathbf{k})\), given by
+        \( V^{\vee} =  \Hom_{\Vect(\mathbf{k})}(V, \mathbf{k})\).
+        \end{defn} 
+
+        Consider a forgetful (covariant) functor \(\mathrm{toVec}  : \Alg(\mathbf{k})  \rightarrow \Vect(\mathbf{k})\) from the category of \(\mathbf{k}\)-algebras to the category of \( \mathbf{k}\)-vector spaces. By the construction of \( \mathbf{k}[x]\), we have  \( \mathrm{toVec}(\mathbf{k}[x]) \cong \mathbf{k}^{\otimes \mathbb{N}} = \mathbf{k} \otimes \mathbf{k} \otimes \dots  \), which is a space of sequences which eventually terminate with a zero, or in \(\Vect(\mathbf{k})\) a co-product (which is a special case of a \emph{\hyperref[defn:colimit]{colimit}}). The algebraic dual of \( \mathrm{toVec}(\mathbf{k}[x]) \), is given by \( \mathrm{toVec}(\mathbf{k}[x]) ^{\vee} \cong \mathbf{k}^{\times \mathbb{N}} = \mathbf{k} \times \mathbf{k} \times \dots \), which are sequences with no restrictions, which is a product (correspondingly a special case of a \emph{\hyperref[defn:limit]{limit}}). This is because \( \Hom\) is contravariant, it sends a co-product to a product:
+        \[ \Hom(A \otimes B , C) =\Hom(A , C) \times \Hom(B,C),\]
+        so \(\mathrm{toVec}(\mathbf{k}[x])^{\vee} \cong \mathrm{toVec}( \mathbf{k} \lBrack x \rBrack)\). However \( (\mathrm{toVec}(\mathbf{k}[x])^{\vee})^{\vee}\) is not \( \mathrm{toVec}( \mathbf{k}[x] )\) again, as in general \( \Hom\) preserves products. This is why topological vector spaces were introduced in \cite{ks_airy}. We want a more restrictive notion of dual, or a subset of the algebraic dual, so there is an involution to be able to define a strong symplectic vector space. Ensuring the topological dual produces another topological vector space is one resolution.
+        Effectively an element of \( \mathrm{toVec}(\mathbf{k}[x])\) will pair with an element of \(\mathrm{toVec}(\mathbf{k}\lBrack x \rBrack)\) to produce an element of \( \mathbf{k}\).
+    
+        For a topological vector space \(V\) we have to restrict what it means to be a dual. 
+       % \( \mathrm{Hom}_{\mathbf{k}}(V,\mathbf{k})\) consists of continuous linear maps \( V \rightarrow \mathbf{k}\). 
+        \begin{defn}[Topological dual]
+        %The topological dual \(*\) is a functor \( * : \mathrm{TopVec}(\mathbf{k}) \rightarrow \mathrm{Vec}(\mathbf{k}) \).
+        Let \( \mathbf{k} \) be a topological field. The topological dual of \(V\) is the collection  \(V^*\) of \emph{continuous} linear maps \( V \rightarrow \mathbf{k} \), also equipped with the weakest topology such that \(V^*\) is also a topological vector space.  
+       % \( V^*\),  \subseteq \mathrm{Hom}(T(V), \mathbf{k})\) (with respect to the topology on \(V\)), equipped with the \emph{weakest} topology, such that \(V^*\) is also a topological vector space.
+        \end{defn}
+        Now consider the forgetful functor \( F :\TopVect(\mathbf{k}) \rightarrow \Vect(\mathbf{k}) \).
+        For infinite dimensional vector spaces in general \(F(V^*) \subseteq F(V)^{\vee}\). In finite dimensions however, where \(V\) has the \emph{discrete toplogy}, it will be the case that \(F(V^*) = F(V)^{\vee}\).  
+            
+        %Furthermore we equip the toplogical dual, \(V^*\), with the weakest topology such that \(V^*\) is a topological vector space. 
+        
+        
+        %\begin{defn}[products]
+        %Let \( \mathcal{C}\) be a category. We use the notation that \( \times \) is product, and \( \bigsqcup \) is coproduct.
+        
+        %In the category of rings \( \times\) is the product. The tensor product \( \otimes\) is the coproduct. This is useful in algebraic geometry for example
+        %\[ X \times Y \cong \Spec( A \otimes B ).\]
+        
+        %In the category of topological vector spaces finite products are isomorphic to the direct sum. 
+        %\end{defn} 
+        
+        %\begin{defn}[Category of topological vector spaces]
+        %\end{defn}
+        
+        %For finite direct sums the dual is again isomorphic to a direct sum. 
+        \subsection{Discrete topology}
+        A fundamental topology we  consider is the \emph{discrete topology}.  
+        
+        
+        \begin{defn}[Discrete topology]
+        Let \(X\) be a set. The \emph{discrete topology} on \(X\) is given by defining every subset as open, (and equivalently closed).
+        \end{defn}
+        Note that all the singleton subsets are open.
+        
+        The discrete topology is the topology that best captures the set theoretic structure of a space. Individual points in the discrete topology define open sets.
+    
+        The algebraic-geometric viewpoint is that to describe a space, we consider functions on a space. For a discrete topological space \(X\), and any other topological space \(Y\), all functions \(f : X \rightarrow Y\) are continuous. Further they are equivalent to maps between the underlying set:
+        
+        \begin{lem}
+        There is a bijection between continuous functions \(X \rightarrow Y\), and total functions on the sets: \( \mathrm{set}(X) \rightarrow \mathrm{set}(Y)\) 
+        \end{lem}
+        
+        \begin{proof} Briefly, this is because the pre-image of every set in \(Y\) under \(f\) is an open set.
+        \end{proof}
+        
+        So functions on a discrete topological space encode a lot of information. 
+
+        Consider the functor \(\mathrm{Discr} : \mathbf{Set} \rightarrow \mathbf{Top}\) which equips a set with the discrete topology. Then consider the natural extension to vector spaces and topological vector spaces,
+        \( \mathrm{Discr}:\Vect(\mathbf{k}) \rightarrow \TopVect(\mathbf{k}) \) which equips any vector space with the discrete topology. If \(V\) is a vector space over \(\mathbf{k}\), then naturally \(\mathrm{Discr}(V)\) is a topological vector space over \( \mathrm{Discr}(\mathbf{k})\). Recall a vector space over a field is a map (resp. continuous) \(  \mathbf{k} \times V \rightarrow V\).
+
+        
+        \begin{lem}
+        If \(V\) is a discrete topological \(\mathbf{k}\)-vector space, and \(\dim(V)>0\), then necessarily \( \mathbf{k}\) must have the discrete topology. 
+        
+        Alternatively if \(V = \{ 0\}\), then \(\mathbf{k}\) can have any topology. 
+        \end{lem} 
+        
+        This is because scalar multiplication will not be continuous unless the underlying field is discrete.
+        
+        \begin{proof}
+        Suppose \( \dim(V) > 0\).
+        Given the scalar multiplication map \( (\cdot) : \mathbf{k} \times V \rightarrow V\), construct a continuous map \( \phi : \mathbf{k} \rightarrow V \), by composing the multiplication map with a point \(v \neq 0 \in V\), \( \phi(\lambda) = \lambda v  \). 
+        
+        Further, \(\phi \) is a bijection between the set \(\mathbf{k}\) and the subspace of \(V\) generated by \(v\), for clarity denote as a pair \( \mathbf{k} \times \langle v\rangle \). Note by definition \( \phi\) must be continuous. 
+        
+        %so \( \phi\) must also be an open map. 
+        
+        In the pre-image \( (\lambda_1, v)\) and \((\lambda_2, v)\) must be open sets, so \( \phi\) is a homeomorphism onto its image. However these must be discrete open sets in \(V\), so \( \lambda_1 \) and \( \lambda_2\) must be discrete open sets.
+        
+        If \( V = \{ 0\} \) then there is no restriction on the topology. In the previous argument \( \lambda_1 \) and \( \lambda_2\) simply collapse to \(0\) so no information is gained about the topology on \( \mathbf{k}\).
+        \end{proof}
+        
+        %homeomorphism onto image
+        
+        
+        Alternatively \( \{0\}\) is a terminal and initial object in \( \Vect\) or \( \TopVect\). 
+
+        \begin{lem}[Properties of the discrete topology] 
+        Let \(V\) be a  discrete topological \( \mathbf{k}\)-vector space. 
+        \begin{itemize}
+            \item Convergent sequences of elements of \(V\) are eventually constant. 
+            \item \(V\) is Hausdorff.
+            \item If \( \dim(V) > 1\), then \(V\) is fully disconnected.
+        \end{itemize}
+        \end{lem}
+        
+        \begin{proof}
+        For the first item consider a sequence \( \{v_{[n]}\}\).  Convergence is defined as: \(v_{[n]} \rightarrow v\), if for any neighbourhood \(U\) of \(v\), there exists a \( N\) such that \( n \geq N\), so \(v_{[n]} \in U\). However \(\{v\}\) itself is an open neighbourhood of \(v\), so \( v_{[n]}\) must be in \(\{ v\}\), which is only possible if \( v_{[n]} = v\). So sequences in the discrete topology must eventually stabilise \(v_{[n]} = v_{[n+1]}\). The second item follows by the definition. For the third item, one point sets are the only connected component.
+        \end{proof}
+        %In a vector space this means convergent sequences are cofinite, a finite sum of basis elements.
+    
+        \begin{rem}[Finiteness in discrete topological vector spaces]
+        Elements of a discrete topological vector space are always composed of finite sums. 
+        
+        Defining \( v_{[n]}  = \sum_{k=0}^n e_k\), there is some \(n\) such that \(v_{[n]} = v_{[n+1]}\). 
+        \end{rem}
+        
+        Discrete topological vector spaces have a basis which is analogous to the definition of basis from finite dimensional vector spaces, called a \emph{Hamel basis}:
+        
+        \begin{defn}[Hamel basis]
+        \( \mathcal{B}\) is a \emph{Hamel basis} if every element of \(  V\) is a unique finite linear combination of elements of \( \mathcal{B}\).
+        \end{defn}
+        
+        This is the definition of a basis from finite dimensional vector spaces. However it is not possible to always constructively produce a Hamel basis for arbitrary infinite dimensional topolgical vector spaces  \cite{basis_vect}.
+
+
+        
+        
+        
+        \begin{rem}
+        This finiteness is going to be particularly important for the Airy structures considered in infinite dimensions. In that case \(V\) will be generated by an infinite collection \( \{x^i\}\) which act as coordinates on \(V^*\). Tensor products of \(x^i\) will be identified with polynomials. However these polynomials will only be allowed to contain a finite subset of the \(x^i\) in each degree.
+        \end{rem}
+        
+        \begin{ex}(Polynomials with discrete topology) We can equip the vector space \(\mathrm{toVec}(\mathbf{k}[x])\) with the discrete topology, and treat it as a topological vector space.
+        %Consider \( \mathbf{k}[x]\) as the discrete topological space 
+        \( \mathrm{toVec}(\mathbf{k}[x]) = \mathbf{k}^{\mathbb{N}} = \mathbf{k} \otimes \dots \),
+        where each copy of \( \mathbf{k}\) has the discrete topology, and \( \mathbf{k}^{\mathbb{N}}\) has the natural product topology. \(\mathbf{k}^{\mathbb{N}}\) is a topological vector space over \( \mathbf{k}\).
+        \end{ex}
+    
+    
+       % \begin{prop}
+    %    All discrete topological vector spaces are of the form \( \mathbf{k}^\alpha\), where \(\alpha\) is some ordinal.
+    %    \end{prop}
+    
+        %The double algebraic dual of a topological vector space is not necessarily an involution. For example consider \( \mathbf{k}[z]\) as a discrete topological vector space, then
+        %\( \mathbf{k}[z]^{\vee} \neq (\mathbf{k}[z]^{\vee})^{\vee}\).  
+        
+        Equipping the algebraic dual with a topology, and then defining the \emph{topological dual}, \( *\), as continous linear functionals on this space can make \(*\) an involution. Then the topological dual will recover the original topological vector space under involution. Essentially the topological dual is picking a subset of the algebraic dual to avoid points that are not involutive, or continuous.
+        
+        In the case of the discrete topology, the weakest topology to equip the dual with such that \( (V^*)^* \simeq V\) is the \hyperref[defn:lctop]{\emph{linearly compact topology}}, \cite{lefschetz1942algebraic, top_ent_local_lin_comp, finiteness_spaces_presheaves}.
+        
+        \begin{rem}
+        Let \(V\) be a finite dimensional vector space with a basis \(\{ e_i\}\), where \( i \in I\) for a finite index set \( I \subset \mathbb{N}\). Then the dual vectors \( \{e^i\}\) are basis of \(V^{\vee}\).
+        
+        In infinite dimensions, for a topological vector space, the dual vectors \(\{e^i \}\), where \(i \in \mathbb{N}\) form a \emph{Schauder basis}, \cite{basis_vect} of \(V^*\), not a Hamel basis, because finite linear combination of \( \{e^i\}\) do not span \(V^*\). However, we will still refer to the dual vectors \(\{e^i\}\) as a basis of \(V^*\). 
+        \end{rem}
+
+        
+        
+        \subsection{Linear compact topology}
+        
+        %A small aside, note that for a vector space \(V\) consider a topology on
+        %\(V\) given by the subspace topology.
+
+        \begin{defn}[Finite intersection property]\label{defn:finintprop}
+        Let \(X\) be a set and consider a family of subsets \( \mathcal{U} = \{U_i\}_{i \in I}\). \( \mathcal{U}\) has the \emph{finite intersection property} if for any finite \(J \subset I \), \( \bigcap_{j\in J} A_j \neq \emptyset \), is not empty.
+        \end{defn}
+    
+        
+        \begin{defn}[Neighbourhood basis]
+        Let \(X\) be a set, and consider for all \( p \in X\),  a collection \( \mathcal{F}(p)\) of subsets containing \(p\). \( \mathcal{F}(p)\) is a neighbourhood basis at \(p\) if
+        \begin{itemize}
+            \item \( \mathcal{F}(p)\) is non empty.
+            \item \( \mathcal{F}(p)\) is closed under finite intersections. For all \(U,V \in \mathcal{F}(p)\), there exists a \(W \in \mathcal{F}(p)\) such that \( W \subseteq U \cap W\).
+            \item \( \mathcal{F}(p)\) is closed downwards. For all \(U \in \mathcal{F}(p)\), there exists a \( V \in \mathcal{F}(p)\), such that for all \(q \in V\) there is a \(W \in \mathcal{F}(q)\) such that \(W \subseteq U\).
+        \end{itemize}
+        \end{defn}
+        The last point means every neighbourhood \(U\) of \(p\) contains an \emph{open set} \(V\), containing \(x\) which is contained in \(U\).
+            
+        Defining a neighbourhood basis at every point defines a topology on \(X\). Open sets are defined via the neighbourhood basis:
+        
+        \begin{defn}[Open] A set \(U \subset X\) is defined to be \emph{open} if for all \( p \in U\), there exists a \( F \in \mathcal{F}(p)\).
+        \end{defn}
+        This definition is motivated by the intuition from metric spaces.
+        An open set in a metric space is a collection of nearby points.
+        
+        \emph{Closed sets} are defined as usual. A subset \(A \subset X\) is \emph{defined} to be closed if it is equal to its closure, \( A = \mathrm{Cl}(A)\).
+        Recall \( p \in \mathrm{Cl}(A) \) iff for all open \(U \subset X\) such that \(p \in U\), then \( U \cap A \neq \emptyset \).
+            
+        \begin{defn}[Linearly topologised]
+        A topological vector space \(V\) is \emph{linearly topologised} at \(0\), if there exists a neighbourhood basis at \(0 \in V\) consisting of sub-vector spaces (in terms of linear algebra, closed under finite sums).
+        \end{defn}    
+            
+        Under translation this defines a topology everywhere in \(V\) called the linearly compact topology \cite{dieudonne, lefschetz1942algebraic,leinster}:
+        
+        \begin{defn}[Linearly compact topology]
+        \label{defn:lctop}
+        A topological vector space \(V\) has \emph{linearly compact topology}, \cite[p.~74]{lefschetz1942algebraic}, if it satisfies the following properties:
+        \begin{itemize} 
+            \item \emph{linearly topologised}: A basis for the topology is given by open affine subspaces. 
+            
+            An affine subspace \(A \subseteq V \) is a subset of the form \( A =  p + U \), where \(U\) is a sub-vector space. \(U\) and hence \(A\) is open, if \(U\) is an element of the neighbourhood basis at \(0\).
+            
+            %\(A\) is open if for all \( q \in A\), there exists an element of the neighbourhood basis at \(0\), \(U\), such that \( q + U \subseteq A\) (every point has a neighbourhood in \(A\)).
+            %\(A\) is defined to be open, if \( \forall a \in A\), there exists a neighbourhood basis at \(a\) of sub-vector spaces (in terms of linear algebra), which is a collection of \( U\), such that \(a + U \subseteq A \).
+            \(A\) is closed if \(U\) is closed.
+            
+            \item \emph{linearly compact}: Any collection of closed (as per the previous point) affine subspaces with the 
+            \hyperref[defn:finintprop]{finite intersection property} additionally has an overall non empty intersection.
+    
+            \item \(V\) is Hausdorff.
+        \end{itemize}
+        \end{defn}
+        If a topological vector space is equipped with the linearly compact topology, we say it is linearly compact.
+    
+        
+        \begin{lem} Open affine subspaces in a linearly compact topological vector space are also closed.
+        \end{lem}
+        \begin{proof}
+        %We show the complement is open.
+        %show A = V \cap cl(A) 
+        Let \(V\) be linearly compact. Consider an open affine subspace \(A  \subset V\).  The idea is to pick an element of the closure, and then show it translates via the vector space structure into \(A\).
+        
+        First, points in \(A\) satisfy the definition of closure, so \( A \subset \mathrm{Cl}(A)\). Now to show \( \mathrm{Cl}(A) \subset A\). For a contradiction, suppose \( p \in V \setminus A\), and pick open affine subspaces \(U = p + V\), such that \( U \cap A\) is non empty. If \( U \cap A = \emptyset\), then \( p \) is not in the closure of \(A\).  Now consider a \(q \in  U \cap A\), so \( q \in A \). Then we must have \( q - p \in A\), and even \( p= q-(q-p) \in A\). So \( \mathrm{Cl}(A)\) must be contained in \(A\).  
+        \end{proof}
+        
+        
+        \iffalse 
+        In finite dimensions, discrete topological vector spaces are also linearly compact. 
+    
+        \begin{lem} If \(V\) is linearly compact and \( \dim(V)\) is finite, then \(V\) is discrete.
+        \end{lem}
+        \begin{proof}
+        Necessarily have to show that the neighbourhood basis is given by just the points themselves \(p + \{0\} = p\).
+        
+        So we need to show the neighbourhood basis of \(0\) is simply the zero vector space \( \{0\}\).
+        
+    
+        %pick by ordering of basis
+        \end{proof}
+        \fi 
+    
+        For a discrete topological vector space, the natural choice of dual is a linearly compact topological vector space \cite{leinster}. While any map \(V \rightarrow \mathbf{k}\) may be continuous, we require \( V^*\) to have a vector space structure.
+
+        \begin{lem}[Topological dual of a discrete space]
+        \label{lem:compact}
+        If \(V\) is equipped with the discrete topology, then \(V^*\) is linearly compact.
+        \end{lem}
+
+        This result is due to Lefschetz, \cite{lefschetz1942algebraic, leinster}.
+
+        \begin{lem}\label{lem:dualofdiscrete}
+        Let \(V\) be equipped with the discrete topology, and \( \dim(V) = \infty\). Then \((V^*)^* \cong V\) 
+        %        For finite dimensional vector spaces, this can be proven using the finiteness.
+        \end{lem}        
+        
+        We give a brief sketch of the proof. In finite dimensions the proof follows immediately. We consider the infinite dimensional case.
+
+        \begin{proof}
+        Assume \(V\) has an ordered basis \( \{ e_i\}\). The overall goal is to find an isomorphism of vector spaces, which sends \(e_i \) to some \( f_i \in (V^*)^* \), so \((V^*)^* \cong V\). 
+        
+        Pick a sequence \( \{f_{[n]}\} \in V^*\), \( f_{[n]} = \beta_{n+1} e^{n+1} + \sum_{i=0}^n \alpha_i e^i \), converging to a \(f = \sum^{\infty}_{i=0} \alpha_i e^i\), where \(e^i\) is dual to \(e_i\), and a continuous linear functional \( \varphi \in (V^*)^*\), and \( \{\beta_{n+1}\}\) is an arbitrary sequence in \( \mathbf{k}\).
+        
+        The first objective is to show that \( \varphi\) must pair with only finitely many \(v^i\).
+    
+        By continuity of \(\varphi\)
+        \[ \varphi(v) = \varphi \left( \lim_{n\rightarrow \infty} v_{[n]} \right) = \lim_{n\rightarrow \infty} \varphi(v_{[n]}) = \lim_{n\rightarrow \infty} \left(  \beta_{n+1} \varphi( e^{n+1} ) + \sum_{i=0}^n \alpha_i \varphi(e^i) \right) . \]
+        However, since \( \beta\) is arbitrary, the only way this can converge is if \( \varphi(e^i)\) is non zero for finitely many \(i\). 
+
+        Now \((V^*)^*\) is equipped with the weakest topology so \( \varphi(v)\) is a continuous function for all \(v\). This has to be the discrete topology.
+        
+        Finally the isomorphism \( (V^*)^* \cong V\) is given by the assignment  \( e_i = \varphi_{e^i}\), where \( \varphi_{e^i}( e^j) = e^j(e_i) = \delta^j_i\).
+        \end{proof}
+        
+        Note that not all topological vector spaces necessarily have this property. The discrete topology is the coarsest topology that allows this duality.
+        
+        %\begin{lem}[Properties of linearly compact vector spaces]
+        
+        %\end{lem}
+        
+        
+        \begin{defn}[Codimension]
+        For a topological vector space \(V\), and a vector subspace \(U\), the \emph{codimension} of \(U\) is defined as the dimension of the quotient space \( \mathrm{codim}(U) = \dim(V/U) = \dim( \mathrm{coker}(U \rightarrow V))\).
+        \end{defn}
+        In finite dimensions this reduces to \( \dim(V)-\dim(U)\). 
+        \begin{rem}
+        There is a connection to algebraic geometry. This notion of codimension will also give the height of a defining ideal.
+        \end{rem}
+        
+        
+        \subsection{Locally linearly compact topology}
+        
+        \label{sec:loclincomp}
+        
+        Locally linearly compact topological vector spaces were considered by \cite{drinfeld_tate}, and are a specialisation of a Tate space.
+        
+        \begin{defn}[Locally linearly compact] \label{defn:llc} A topological \( \mathbf{k}\)-vector space \(V\) is \emph{locally linearly compact} if there exists a neighbourhood basis at \(0\) consisting of \hyperref[defn:lctop]{linearly compact} sub-vector spaces.
+        \end{defn}
+        
+        
+               
+        \begin{thm}[\cite{drinfeld_tate}]
+        If \(V\) is discrete, then \(V^*\) is linearly compact, and then the space
+        \(W \cong_{top} V \oplus V^*\) is a \hyperref[defn:llc]{locally linearly compact} topological vector space.
+        \end{thm}
+        
+        \begin{ex}
+        A fundamental example is the infinite dimensional vector space represented (with a slight abuse of notation), by
+        \[ z^{-1} \mathbf{k}[z^{-1}] \oplus \mathbf{k}\lBrack z \rBrack.\]
+        In particular we should think of these as sequences. \(z^k\) just represents a vector, and has \( \mathbf{k}\) coefficients. \( z^{-1} \mathbf{k}[z^{-1}] \) is the space of sequences that eventually terminate. \( \mathbf{k}\lBrack z \rBrack\) is the dual, and the pairing is defined by pairing sequences with the Cauchy product and looking at \(1/z\) coefficient. A finite sequence pairs with an infinite sequence to produce a finite number. An infinite sequence always pairs with a finite sequence to produce a finite number. 
+        \((z^{-1} \mathbf{k}[z^{-1}]\) has a Hamel basis represented by \(\mathcal{B}= \{ z^{-k}\; |\; k \in \mathbb{Z}_{+}\}\). \( \mathbf{k} \lBrack z \rBrack \) has a (Schauder) basis represented by \( \mathcal{B}' = \{ z^{k}\; | \; k \in \mathbb{Z}_{\geq 0}\}\).
+        \end{ex} 
+        
+
+        
+        %\begin{ex} 
+        %\label{ex:hamelandschaud}
+        %The discrete topological vector space (or module) \( \mathrm{toVec}(z^{-1} \mathbf{k}[z^{-1}])\), (leaving out the forgetful functor) has a Hamel basis represented by \(\mathcal{B}= \{ z^{-k}\; |\; k \in \mathbb{Z}_{+}\}\). The dual space \( \mathrm{toVec}(\mathbf{k} \lBrack z \rBrack )\) has a Schauder basis represented by \( \mathcal{B}' = \{ z^{k}\; | \; k \in \mathbb{Z}_{\geq 0}\}\).
+        
+        %\end{ex}
+
+        
+        
+        %\begin{proof}
+        %The product topology is locally linearly compact.
+        
+        %The pair \(\forall v \in V^*, (0,\mathcal{F}(v))\) is a neighbourhood basis at \(0\)
+        %\end{proof}
+        
+
+        \iffalse 
+        
+        \subsection{\texorpdfstring{\(I\)}{I}-adic topology is linearly compact}
+        
+        
+        Let \(R\) be a ring, \(I\) an ideal. The completion of \(R\) by \(I\) is a ring 
+        \[\widehat{R} = \lim_n R/I^n.\]
+        
+        \begin{defn}[Krull topology]
+        The \emph{Krull topology} is the topology generated by a neighbourhood basis of the form \(r + I^n\), for \(r\in R\). 
+        \end{defn}
+        This gives \( \widehat{R} \) the structure of a topological ring.
+    
+    
+        Now let \(M\) be an \(R\)-module, 
+        and consider the completion \[\widehat{M} = \lim_n M/I^n M.\]
+        \begin{defn}[\(I\)-adic topology]
+        The \(I\)-adic topology is the topology generated by a neighbourhood basis for \(\widehat{M}\) of the form \(m + I^n M\). 
+        \end{defn}    
+        This gives \(\widehat{M}\) the structure of a topological \(\widehat{R}\)-module.
+        
+        \begin{thm} The \(I \)-adic topology on \( \mathbf{k} \lBrack z \rBrack\) as a \(  \mathbf{k}\lBrack z \rBrack\)-module is linearly compact.
+        \end{thm}
+   
+        In this case the neighbourhood basis is given by finite codimension subvector spaces.
+        
+        \fi 
+   
+   
+        %\begin{ex}
+        %Consider \( z^{-1}\mathbf{k}[z^{-1}] \) as the dual of \( \mathbf{k} \lBrack z\rBrack\). Finite sequences compose with infinite sequences to produce a finite number. 
+        %\end{ex}     
+        
+        \iffalse 
+        
+        \subsection{Bases in topological vector spaces}
+        
+        There are several options for defining a basis for a topological vector space \(V\). Let \( \mathcal{B} \subset V\) be subset.
+        
+        \begin{defn}[Hamel basis]
+        \( \mathcal{B}\) is a \emph{Hamel basis} if every element of \(  V\) is a unique finite linear combination of elements of \( \mathcal{B}\).
+        \end{defn}
+        This is the definition of a basis from finite dimensional linear algebra. However it is not possible to always constructively produce a Hamel basis in infinite dimensions  \cite{basis_vect}.
+        
+        
+        \begin{defn}[Topological basis]
+        \( \mathcal{B}\) is a \emph{topological basis} if every element of \( V\) is a limit of a sequence of elements in \(\mathcal{B}\), and \( \mathcal{B}\) is minimal in the sense no element of \( \mathcal{B}\) is a limit of a sequence of other elements in \( \mathcal{B}\).
+        \end{defn}
+        
+        
+        \begin{defn}[Schauder basis]
+        \( \mathcal{B}\) is a \emph{Schauder basis} if every element of \(v \in V\) is a potentially infinite, unique sum of elements of \( \mathcal{B}\).
+        \end{defn}
+
+        Note an infinite sum is defined as a limit, \(\lim_n \sum_{n}\). 
+        
+        
+        \begin{rem}[Dual basis] Note that a \( \mathcal{B}\) does not automatically define a basis \( \mathcal{B}^*\) for the dual space \( V^*\). Usually extra structure is required to find a dual basis.
+        \end{rem}
+        
+        \begin{ex} 
+        \label{ex:hamelandschaud}
+        The discrete topological vector space (or module) \( \mathrm{toVec}(z^{-1} \mathbf{k}[z^{-1}])\), (leaving out the forgetful functor) has a Hamel basis represented by \(\mathcal{B}= \{ z^{-k}\; |\; k \in \mathbb{Z}_{+}\}\). The dual space \( \mathrm{toVec}(\mathbf{k} \lBrack z \rBrack )\) has a Schauder basis represented by \( \mathcal{B}' = \{ z^{k}\; | \; k \in \mathbb{Z}_{\geq 0}\}\).
+        \end{ex}
+        
+        \fi 
+        %For arbitrary direct sums we need to consider a coproduct. 
+    
+        \subsection{Tensor products}
+        \begin{defn}[Algebraic tensor product] 
+        \label{defn:algdual}
+        The \emph{algebraic tensor product} of two vector spaces \(V \otimes U \) consists of all finite sums of tensors \( u \otimes v\). 
+         \end{defn} 
+         
+        If \(V\) and \(U\) are infinite dimensional topological vector spaces, then the algebraic tensor \(V \otimes U\) product does not in general satisfy the properties universal properties of a tensor product.
+         
+    
+        
+        \begin{defn}[Universal property of tensor product]
+        A \emph{tensor product}, \( \otimes_{\mathcal{C}}\) of objects \(U,V\) and the associated bilinear map \( \varphi : U \times V \rightarrow U \otimes_{\mathcal{C}} V\), is characterised by the following universal property.
+        
+        The object \( U \otimes_{\mathcal{C}} V\) and \( \varphi\) must have the property that any bilinear map \( \vartheta : U \times V \rightarrow W\), factors through \( \varphi \) uniquely, so there is a unique map \( \vartheta' :  U \otimes_{\mathcal{C}} V \rightarrow W\), such that
+        \( \vartheta = \vartheta' \otimes_{\mathcal{C}} \varphi \).
+        \end{defn} 
+         
+        A topological tensor product, \( \widehat{\otimes}\) is constructed by a choice of completion of the algebraic product so it satisfies a universal property \cite{glock}.
+        
+        Given topological vector spaces \(U,V\):
+        \begin{defn}[Topological tensor product] The \emph{ topological tensor product} \(U \widehat{\otimes}V\) is a completion of the algebraic tensor product \(U \otimes V\), so \( \widehat{\otimes}\) satisfies the universal properties of tensor product in the category of topological vector spaces.
+        \end{defn}
+
+
+
+        This can depend on the underlying topology. 
+        
+        %\begin{lem}[Tensor product of discrete topological vector spaces]
+        %\end{lem}
+        
+        
+        
+        
+        \section{Symplectic vector and Tate spaces}
+        We review what it means for an infinite dimensional \hyperref[defn:topologicalvectspace]{topological vector space} to be \emph{symplectic}.
+        
+        
+        %chosen the discrete / locally linearly compact so we have various maps L -> W -> L^*, L -> W -> V 
+        
+        
+        %why was this stuff done
+        % Llc compact gives strong symplectic space, gives W = curly L \subset T^* V
+        % gives darboux coordinates
+        % gives an a tensor
+        % add in a tensor comments everywhere
+        
+        %if didnt use topology?
+        % justify why strong symplectic
+        %dealing with infinite sums, need to impose finiteness
+        
+        \begin{defn}[Presymplectic vector space]
+          \label{defn:symplectic}
+          A topological \(\mathbf{k}\)-vector space 
+          \(W\) is \emph{presymplectic}, if there exists a continuous map \(\omega\), called the \emph{symplectic form}, where \(\omega : W \rightarrow W \rightarrow  \mathbf{k}  \), which satisfies the following:
+          \begin{itemize}
+            \item \emph{alternating}: \( \omega(v,u) = -\omega(u,v)\), for all \( u,v \in W\),
+            \item \emph{bilinear}: \( \omega(\alpha \, u_1 + \beta \,  u_2 ,v) = \alpha \, \omega(u_1 ,v) + \beta \, \omega(u_2,v) \) for all \( u,v : W\), and \( \alpha, \beta :  \mathbf{k} \),
+            \item \emph{non-degenerate}: \( \omega(u,v) = 0\), for all \(u\) implies \(v = 0\).
+          \end{itemize}
+        \end{defn}
+        
+        Given a presymplectic space \((W,\omega)\), define a map \(\omega^{\flat} : W \rightarrow W^*\), via currying the symplectic form: \( v \rightarrow \omega(v,\sbt )\). In infinite dimensions this map can have two types of behaviour, and this determines what type of symplectic space \(W\) is.
+        
+        \begin{defn}[Strong symplectic]
+        \label{defn:strongsympl}
+        \(W\) is a \emph{strong} symplectic topological vector space if \( \omega^{\flat}\) is a bijection, so \(W = W^*\).  
+        \end{defn}
+        
+        \begin{defn}[Weak symplectic]
+        \label{defn:weaksympl}
+        \(W\) is a weak symplectic topological vector space if \(\omega^{\flat}\) is injective.  
+        \end{defn}
+        
+        \begin{rem} In finite dimensions, \( \omega^{\flat}\) is naturally a bijection, and there is no distinction, and so \(W\) is just termed symplectic.
+        \end{rem}
+
+        \begin{defn}[Polarisation] \label{defn:polarisation} A  \emph{polarisation}, is a choice of a \emph{Lagrangian}, \(L \subset W\), such that \(W = L \oplus L^*\) and \(L \cong (L^*)^*\).
+        \end{defn}
+        
+        \begin{lem}\label{lem:polarisation}
+        A strong symplectic structure is equivalent to a choice of polarisation.
+        \end{lem}
+        \begin{proof}
+        Take the dual of \(W\) equipped with a polarisation, and note that finite products/co-products are equivalent.
+        \end{proof}
+        
+        \begin{defn}[Tate space]
+            A \emph{Tate space}, \(T\), is a topological vector space (or more generally topological module) of the form
+            \(T= P \oplus Q^*\), where \(P\) and \(Q\) are topological vector spaces with the discrete topology.
+        \end{defn}
+        
+        A Tate space is therefore a slight generalisation of a symplectic topological vector space. By lemma (\ref{lem:compact}) \(Q^*\) is linearly compact. 
+
+        Let \(V\) be a topological \( \mathbf{k}\)-vector space where \(V\) and \( \mathbf{k}\) have the discrete topology. Then:
+        
+        \begin{lem}
+        The topological vector space given by \(W= V \oplus V^*\) is a Tate space.
+        \end{lem}
+        \begin{proof}
+        This follows from the definition of Tate space.
+        \end{proof}
+        
+        \(W= V \oplus V^*\) is the main type of Tate space we consider. 
+        
+        \begin{rem}
+        Alternatively the space  \(W= V \oplus V^*\) is known as a \emph{Lefschetz space}.
+        \end{rem}
+
+        %\begin{lem}
+        %The Tate space \(W = V \oplus V^*\) is a complete topological vector space.
+        %\end{lem}
+        
+        \begin{lem}    
+        The Tate space \(W= V \oplus V^*\) is a strong symplectic vector space.
+        \end{lem}    
+        \begin{proof}
+        If \(V\) is finite dimensional, then \(W\) is automatically a strong symplectic vector space.
+
+        In infinite dimensions, per definition (\ref{defn:polarisation}), and lemma (\ref{lem:polarisation}), pick \(L := V^*\), where \(V\) is a discrete topological vector space. Then as \( (V^*)^*\) by lemma (\ref{lem:dualofdiscrete}), it follows \( L \cong (L^*)^*\).
+        \end{proof}
+        
+        The purpose of introducing linearly compact topology in section (\ref{sec:loclincomp}), was to define the weakest topology for a strong symplectic structure in infinite dimensions.
+        
+        
+        \section{Tate space of differentials on a curve}
+        \label{sec:tatespaceofdiff}
+        Let \(\mathrm{toVec} : \Alg(k) \rightarrow \Vect(k)\) be a covariant, forgetful functor forgetting the product structure. The first example of a Tate space is the vector space of formal Laurent differentials:
+        \begin{ex}\label{ex:vecformallaurent}
+        Consider the vector space 
+        \[  W  =\mathrm{toVec} (z^{-1} \mathbf{k}[z^{-1}]  ) \oplus
+         \mathrm{toVec} (\mathbf{k}  \lBrack z \rBrack  )   \subset \mathrm{toVec} (\mathbf{k}  \lParen z \rParen )  .\] 
+         Set \(V = \mathrm{toVec} ( z^{-1} \mathbf{k}[z^{-1}]) \), and \(L = \mathrm{toVec} ( \mathbf{k}  \lBrack z \rBrack) \). Equip \(V\) with the discrete topology, and \(L\) with the linearly compact topology. Then \(W\) with the corresponding product topology is a Tate space.
+         
+        Further \(V, L,W\) considered as objects in the category of topological vector spaces, we now have \( L^* \cong V\) and \((W^*)^* \cong W\).
+        There is an exact sequence
+        \[ 0 \rightarrow L \rightarrow W \rightarrow V \rightarrow 0,\]
+        in \( \TopVect\),
+        defined by the natural pairing of series, (Cauchy product and looking at \(1/z\) coefficient). Then
+        \(L =\mathrm{toVec}(\mathbf{k} \lBrack z \rBrack)\) is a Lagrangian in \(W\).
+        \end{ex}        
+        %Note that it is common to refer to elements of \( \mathbf{k}\lBrack z \rBrack\) as \emph{holomorphic}, even though they are not holomorphic as usually seen in complex analysis.
+        
+        A variation of example (\ref{ex:vecformallaurent}) encountered in \cite{ks_airy} is the following (adapting the notation of Kontsevich and Soibelman):
+        \begin{defn} Let \(  W_{\mathrm{Airy}}\) be the space of formal Laurent residueless differentials
+        \[ W_{\mathrm{Airy}}=\left\{ J=\sum_{n\in\mathbb{Z}} J_n \, z^{-n} \, \frac{dz}{z}\mid J_k \in \mathbb{C}, J_0=0, \exists N \;\; \mathrm{s.t.}\;\;  J_n=0, \forall \ n>N\right\}. \]
+        \end{defn} 
+        Note \( W_{\mathrm{Airy}} \subset  \mathrm{toVec} (\mathbb{C}\lParen z \rParen ) dz\), but there are no \(z^{-1}\) terms in \(W_{\mathrm{Airy}}\).
+
+        %kernel of residue map
+        
+        When \( \mathbf{k} =\mathbb{C}\), note that while there is an isomorphism of vector spaces \(W_{\mathrm{Airy}} \cong W\). %this is not an isomorphism of symplectic vector spaces. The important thing to note is that 
+        However, Kontsevich and Soibelman want to allow some holomorphic terms in \(V\). So a different choice of polarisation than in example (\ref{ex:vecformallaurent}), which is a different choice of \(V\) and \(L\). Instead of the natural pairing of polynomials, this polarisation will come from a symplectic form.
+        
+        The corresponding \( V_{\mathrm{Airy}}\) will be realised as \(V\) with a submodule of \( \mathbf{C}\lBrack z \rBrack\), equipped with the discrete topology, adjoined.
+        
+        %note proof up to constant, primitive exits
+        
+        %and \(f_1\) is found by formal indefinite integration.
+        
+        \begin{prop} \( W_{\mathrm{Airy}}\) has a symplectic form:
+        \[ \omega_{\text{Airy}}(\eta_1,\eta_2)=\Res_{z=0}f_1\eta_2,\] 
+        where \(df_1=\eta_1\), and \( \eta_1, \eta_2: W_\text{Airy}\). \( \mathrm{Res}_{z=0} \) means the coefficient of \( 1/z\).
+        \end{prop}
+        
+        First note that \( \omega_{\mathrm{Airy}}\) is well defined, because there are only finitely many negative exponent terms \(z^{-k}\), which can pair with a holomorphic term to give a coefficient of \(1/z\). So the coefficient of \(1/z\) is always a finite sum. To see \( \omega_{\mathrm{Airy}}\) is skew-symmetric, first note \[ d(f_1 f_2)= f_1 \eta_2 + \eta_1 f_2, \] where the product of functions is given by the Cauchy product of power series. Then necessarily \(\mathrm{Res}_{z=0}\, d(f_1 f_2) = 0\), as there are no \(1/z\) terms in the differential. Therefore it follows 
+        \[ \mathrm{Res}_{z=0}\,f_1 \eta_2 = - \mathrm{Res}_{z=0}\,f_2 \eta_1.\] 
+        Further \( \omega_{\mathrm{Airy}}\) is bilinear as  \[ \omega_{\mathrm{Airy}}( \eta_1,a \, \eta_2 + b\, \eta_3 ) =   a\, \mathrm{Res}_{z=0}(f_1 \eta_2) + b\, \mathrm{Res}_{z=0}(f_1 \eta_3) = a \,\omega_{\mathrm{Airy}}( \eta_1, \eta_2 ) +  b\, \omega_{\mathrm{Airy}}( \eta_1, \eta_3). \]
+        Finally \(\omega_{\mathrm{Airy}} \) is non degenerate because for any \[ J=\sum_{n\geq k} J_nz^{-n}\frac{dz}{z}  : W_{\mathrm{Airy}},\] 
+        it follows that
+        \[ \omega_{\mathrm{Airy}} \left( J, \frac{ z^k \, dz}{z} \right) \neq 0. \]
+        
+
+        \begin{prop} The form \(\omega_{\mathrm{Airy}}\) is translation-invariant. 
+        \end{prop}
+        
+        
+        
+        \begin{prop} The form \(\omega_{\mathrm{Airy}}\) is closed. 
+        \end{prop}
+        \begin{proof} 
+         This follows from translation invariance.
+         \end{proof}
+         
+        \begin{defn} The space of \emph{locally holomorphic differentials} in \(W_{\mathrm{Airy}}\) is given by: 
+        \[ L_{\text{Airy}} =\{J\mid J_n=0,n>0\} \cong L = \mathrm{toVec} (\mathbf{k}\lBrack z \rBrack) dz. \]
+        \end{defn}
+        
+        Equipping \(L_{\text{Airy}}\) with the linearly compact topology, per section (\ref{sec:loclincomp}):
+    
+        \begin{prop}
+        \( W_{\mathrm{Airy}}\) is a Tate space.
+        \end{prop}
+        
+        \(W_{\mathrm{Airy}}\) follows from example (\ref{ex:vecformallaurent}).
+        Given the exact sequence as per example (\ref{ex:vecformallaurent}), it follows
+        \[ 0 \rightarrow L \rightarrow W \oplus M \rightarrow V \oplus M  \rightarrow 0 \]
+        is an exact sequence, where \( M \subseteq \mathrm{toVec}( \mathbf{k}\lBrack z \rBrack) dz\) has the discrete topology. Instead of the  dual pairing, we use the symplectic form. \( W_{\mathrm{Airy}} \cong W \oplus M\) is again a Tate space. \(M\) corresponds to a subset of formal holomorphic differentials.
+        
+        %Let \( \mathrm{Res}\) denote residue, which is simply the \( a_{-1}\) coefficient in a formal power series.
+            
+            
+        As per the introduction, consider an algebraic surface \( (X,\mathcal{O}_X)\) and  \( \Sigma \), a genus \(g\)  complex curve in \(X\). Let \(R\) be a divisor on \(\Sigma\). There is a Tate space associated to \( \Sigma\) equipped with the divisor \(R\). Around each point \( \alpha : R\), there are local holomorphic  coordinates \( z_\alpha\).
+        For each point \( \alpha : R\) define a copy of \(W_{\mathrm{Airy}}\) in coordinates \( z_\alpha\).
+        
+        \begin{prop}
+        \( W_\Sigma := (W_{\mathrm{Airy}})^{\oplus |R|}\) is a Tate space.
+        \end{prop}
+        
+        \( W_{\Sigma}\) can be viewed as a bundle over \(\Sigma\), with fibres \( W_{\mathrm{Airy}}\) at points in \(R\).
+    
+        \begin{defn}
+        Define \( L_\Sigma \), \( L_\Sigma := (L_{\mathrm{Airy}})^{\oplus|R|} \subset W_\Sigma \) as the space of locally holomorphic differentials.
+        \end{defn} 
+        
+        \begin{prop}
+        \( L_\Sigma\) is linearly compact.
+        \end{prop}
+
+        \begin{proof} Via \cite{lefschetz1942algebraic}, direct sums of linearly compact topological vector spaces are linearly compact.
+        \end{proof}
+
+        \begin{prop}
+        \( L_\Sigma\) is a Lagrangian.
+        \end{prop}
+        
+       
+        This follow from the fact direct sums of exact sequences are exact. Given
+        \[ 0 \rightarrow A \rightarrow B \rightarrow C \rightarrow 0,\]
+        and
+        \[ 0 \rightarrow P \rightarrow Q \rightarrow R \rightarrow 0,\]
+        it follows
+        \[  0 \rightarrow A \oplus P \rightarrow B \oplus Q \rightarrow C \oplus R \rightarrow 0 \]
+        is an exact sequence.
+
+
+        Rather than defining \( V_\Sigma \cong (V_{\mathrm{Airy}})^{\oplus |R|}\), immediately, \(V_\Sigma\) naturally arises from the space of residueless meromorphic differentials \(G_\Sigma\), which is in \(W_\Sigma\).
+        Showing \(V_\Sigma\) can be found via \(G_\Sigma\) will be important for \hyperref[chapter:symplecticreduction]{\emph{symplectic reduction}}.
+        %Let \(V_\Sigma \) be thetopological vector space of \(A\)-period normalised, global, meromorphic differentials at a point on a curve \(\Sigma\).    
+        \begin{defn}[Residueless meromorphic differentials]     
+        Define \(G_\Sigma\) to be the space of residueless, meromorphic differentials on \(\Sigma\);
+        \[ G_\Sigma=\{ \eta :  H^0(\Sigma,\Omega^1(\Sigma-R)) \mid \Res_{\alpha \in R}\eta=0 \}. \] 
+        \end{defn}    
+
+        Naturally there is an injective map \(\iota : G_\Sigma \rightarrow W_\Sigma\). A differential is representable by a formal differential. \(G_\Sigma\) is naturally identified with its imagine in \(W_\Sigma\), \( G_\Sigma \cong \iota(G_\Sigma)\), so \(G_\Sigma\) is considered a subset of \(W_\Sigma\). 
+        
+        Then given a Torelli marked basis on \(\Sigma\), \( \{ a_1, \dots a_g, b_1, \dots b_g\}\):
+            
+        \begin{defn}[Vector space of zero \(a\)-periods] Define \( V_\Sigma \), where \(V_\Sigma \subset G_\Sigma \), as 
+        \[ V_\Sigma := \{ \eta : G_\Sigma   | \forall i \in \{1,\dots g\} \; \oint_{a_i} \eta = 0\}. \]
+        \end{defn}
+        Likewise identify \(V_\Sigma\) with the image under the map \(\iota: G_\Sigma \rightarrow W_\Sigma\), \(V_\Sigma \cong \iota (V_\Sigma)\). Finally in \(W_\Sigma\), \(V_\Sigma\) has the discrete topology.
+        
+        We provide a proof of a result from \cite{ks_airy}, reproduced also in \cite{chaimanowong2020airy}, which is necessary to show \( G_\Sigma\) is coisotropic:
+        \begin{prop} \(G_\Sigma\) is transversal to \(L_\Sigma \) in \(W_\Sigma\), that is
+        \( G_\Sigma + L_\Sigma = W_\Sigma. \).
+        \end{prop}
+        
+        
+        %The proof has several stages. First, \(W_\Sigma \) is graded by the formal Laurent series with fixed negative degree, for example with \( |R| = 1\), \(W_\Sigma = \bigcup_d  W_d\),
+       % \[ W_d = \{J : W |\forall n \geq  d, J_n = 0 \}.\]
+        %The existence of meromorphic differentials over \( \Sigma\) with degree \(d\), is shown to be contained in \(G_\Sigma\) via Riemann-Roch. So while elements of \(G_\Sigma\) do not contain arbitrary formal holomorphic terms, they do contribute poles of order \(d\). Then finally intersecting \(G_\Sigma\) with \(W_d\) and adding a copy of \(L_\Sigma\) we must have:
+        %\( (W_d \cap G_\Sigma) + L_\Sigma = W_d \), (where \(+\) means the internal sum of all elements). Finally taking a union:
+        %\( \bigcup_d (W_d \cap G_\Sigma  + L )= G_\Sigma + L , \) gives 
+        %\( G_\Sigma + L = W_\Sigma\).
+        
+
+        
+        \begin{proof}
+        First note that \(W_\Sigma\) has a filtration by Laurent polynomials with a fixed negative degree \(-d\), or a pole of order \(d\) (a series starting with a \(c_{d} z^{-d}\) term). Define the subspace \(W_d\) of polynomials with poles of order \(d\):
+        \[ W_d = \{ J^{\alpha} \in  W_\Sigma | \forall  n \geq d, \alpha \in R, J^{\alpha}_n = 0\},\]
+        Then \( W_d\) is an ascending filtration,
+        \[ \dots \subset W_{d-1} \subset W_d \subset W_{d+1} \dots \subset W_\Sigma,\] with the extra property that:
+        \[ W_\Sigma = \bigcup_{d} W_d.\]
+        Also \(L_\Sigma = W_0 = W_1 \), are all the locally holomorphic terms, where \(W_0 = W_1 \) because \(W_\Sigma\) has zero residue. 
+        
+        Consider the sequence
+        \[ 0 \rightarrow W_{d-1} \rightarrow W_{d} \rightarrow Q \rightarrow 0,\]
+        Necessarily \(\dim(Q) = |R|\), where \(R\) is a positive divisor on \(\Sigma\). By Riemann-Roch, the quotient space \(Q = W_d/W_{d-1}\) is representable by elements of \(G_\Sigma\). For \(d \geq 2\):
+        \begin{align*}
+        \dim(W_d\cap G_\Sigma)-\dim(W_{d-1}\cap G_\Sigma)
+        &=\dim H^0(\Sigma,\mathcal{K}_\Sigma( d \, R))-\dim H^0(\Sigma,\mathcal{K}_\Sigma((d-1)\, R))\\
+        &=\left( d|R|+(g-1)\right)-\left((d-1)|R|+(g-1)\right)\\
+        &=|R|.
+        \end{align*}
+        So \(W_d\) differs from \(W_{d-1}\) by \(|R|\) degree \(d\) terms.
+        Note that \( W_d \cap G_\Sigma \subset H^0( \Sigma, \mathcal{K}_\Sigma(d R))\) is a codimension \(|R|\) subset. The terms with residue are accounted for in the difference.
+        
+        
+        Now consider the exact sequence:
+        \[ 0 \rightarrow \mathcal{H}_\Sigma \rightarrow W_d \cap G_\Sigma \overset{f}{\rightarrow} W_d/ W_0 \rightarrow 0 \]
+        where \(\mathcal{H}_\Sigma\) is the space of holomorphic differentials on \(\Sigma\). The map \(f\) is surjective because \( \dim(W_d \cap G_\Sigma) = g + (d-1) |R|\), the kernel of \(f\) has dimension \(g\), \( \dim(W_d/L_\Sigma) = (d-1) |R|\), and \( L_\Sigma = W_0\).
+        
+        Therefore:
+        \[ (W_d \cap G_\Sigma)  + L_\Sigma = W_d,\]
+        where \(+\) is internal sum. Taking the union over all \(d\):
+        \[ \bigcup_{d}( W_d \cap G_\Sigma ) = G_\Sigma,\]
+        gives the final result:
+        \[G_\Sigma  + L_{\Sigma} = W_\Sigma  .\]
+        
+        %injective + dimension for vector space => gives surjective
+        
+        % dim W_d \cap G_\Sigma = g + (d-1)|R|
+        
+        %surjectiving 
+        
+        
+        %\begin{align*} 
+        %W_\Sigma  &=  \left( \bigoplus_{d>0} L_d \oplus M\right)^{\oplus |R|} \oplus (\mathbb{k} \lBrack z \rBrack )^{\oplus |R|} \\
+        %&= \bigoplus_{d>0} (L_d)^{\oplus |R|} \oplus ( \dots )
+        %\end{align*}
+        %where \(L_d\) is a submodule of \( z^{-1} \mathbf{k}[z^{-1}] \) with exactly degree \(-d\) terms, and denote \(W_d = (L_d)^{\oplus |R|} \oplus ( \dots )\). 
+        
+        
+        %We want to show 
+        %\[ (W_d \cap G_\Sigma ) + L = W_d.\]
+        %Note \(W_d\) includes formal terms, while \(G_\Sigma\) comes from non formal meromorphic differentials. We need to show \(W_d \cap G_\Sigma \) exists, or there are degree \(d\) meromorphic differentials.
+        \end{proof}
+        
+        \begin{corollary}
+        \( V_\Sigma \oplus L_\Sigma = W_\Sigma. \) 
+        \end{corollary}
+        
+        \begin{proof}
+        The proof follows from the previous proposition with \(V_\Sigma\) in place of \(G_\Sigma\), and \(V_\Sigma\) and \(L_\Sigma\) have zero intersection.
+        \end{proof}
+
+
+        \begin{prop} \(W_\Sigma = V_\Sigma \oplus L_\Sigma \) is a Tate space 
+        \end{prop}
+        
+        \begin{prop} \(W_\Sigma\) has a symplectic form \( \omega_\Sigma\) given by 
+        \[ \omega_\Sigma ( \eta_1, \eta_2) := \sum_{\alpha \in R} \mathrm{Res}_{ \alpha } ( f_1 \eta_2),\]
+        where \(f_1\) is a locally defined function such that \(\eta_1 =df_1\). 
+        \end{prop}
+
+
+        While \( W_\Sigma\) was originally defined as an entirely formal object, it does contain interesting analytic information. The presence of the formal holomorphic terms are necessary to allow for duals. 
+
+        The following proposition also follows from \cite{ks_airy}, also reproduced from \cite{chaimanowong2020airy}: 
+        \begin{prop} \(G_\Sigma\) is coisotropic in \(W_\Sigma\), so \(G^{\perp}_\Sigma \subseteq G_\Sigma \).
+        \end{prop}
+        Where recall \(G_\Sigma^{\perp}\) is the \emph{symplectic complement}: 
+        \[ G_\Sigma^{\perp} = \{ \eta \in W_\Sigma \, | \,\omega_\Sigma(\eta,\nu), \text{ for all } \nu \in G_\Sigma \}.\]
+
+        With the symplectic form we show \(G_\Sigma^{\perp} \subseteq V_\Sigma\), hence as \(V_\Sigma \subset G_\Sigma\), the result follows:
+        \begin{proof}
+        Consider a \(\eta_1+\ell \in G_\Sigma^\perp \) where \(\eta_1 \in V_\Sigma \) and \(\ell \in  L_\Sigma\).  
+        Then for all \(\eta_2 \in V_\Sigma \subset G_\Sigma \),
+        \[ \omega_\Sigma(\eta_1+\ell,\eta_2)=0,\] 
+        as \( \eta_1+\ell\) annihilates all elements of \(G_\Sigma\). Then by linearity 
+        \[ \omega_\Sigma(\eta_1, \eta_2) + \omega_\Sigma(\ell, \eta_2) =0.\]
+        
+        By the \emph{Riemann bilinear relations}, \(\omega_\Sigma(\eta_1,\eta_2)=0\): 
+        \begin{equation}  
+        \label{eqn:RiemBilRel}
+        \omega_\Sigma( \eta_1, \eta_2) = \sum_{\alpha \in R}\Res_{\alpha} f_1\eta_2 = \frac{1}{2\pi i}\sum_{j=1}^g\oint_{b_j}\eta_1\oint_{a_j}\eta_2-\oint_{b_j}\eta_2\oint_{a_j}\eta_1=0,
+        \end{equation}
+        %\frac{1}{2\pi i}\int_\Sigma[\eta_1]\wedge[\eta_2]
+        as the integration over \(a\)-periods of elements in \(V_\Sigma\) is zero, by the definition of \(V_\Sigma\).
+        Also note \(f_1\) is the locally defined function so \(df_1=\eta_1\).
+        
+        Therefore it must be that \(\omega_\Sigma(\ell,\eta_2)=0\) for all \(\eta_2\in V_\Sigma\). But as  \(\omega_\Sigma\) is a symplectic form, and \(V_\Sigma\) and \(L_\Sigma\) are a polarisation, then for any non-zero \(\ell\in L_\Sigma\) there is \(\eta_2\in V\) such that \[\omega_\Sigma(\ell,\eta_2)\neq 0.\] Therefore it must be that \(\ell=0\), so \(\eta_1+\ell=\eta_1\in V_\Sigma \). So \( G_\Sigma^{\perp} \subseteq V\), and hence
+        \[G_\Sigma^\perp\subset V_\Sigma \subset G_\Sigma.\]
+        \end{proof}
+        
+        
+        There are \emph{Darboux coordinates}: on \(W_\Sigma\):
+        
+        \begin{defn}[Darboux coordinates]  \label{darbcoord}
+        \emph{Darboux coordinates} \(\{x^i,y_i\}\) on \(W_\Sigma\), are elements of \(W_\Sigma^* \), such that  \[\omega_{\Sigma} =dx^i\wedge dy_i,\]
+        where
+        \( x^i : V_\Sigma \) 
+        and \( y_i :  L_\Sigma \).
+        \end{defn}
+        Existence of Darboux coordinates uses the property that \(W_\Sigma\) is a Tate space which gives \(W_\Sigma^* \cong W_\Sigma\). Therefore \(W_\Sigma \) is a \hyperref[defn:strongsympl]{strong symplectic topological vector space}.  
+        
+        A convenient choice of Darboux coordinates has the following properties:
+        \begin{prop}
+        \label{prop:nice}
+        There exist Darboux coordinates \( \{x^i, y_i\}\) on \(W_\Sigma\) that satisfy:
+        \begin{enumerate}
+            \item \([x^{i} ]= 0\), for \( i > g\).
+            \item \(y_i=\omega_i\), the normalised holomorphic differential on \(\Sigma\), for \(i=1,...,g\).
+            \item \[ 
+            \frac{1}{2\pi i}\oint_{b_j}x^k=\delta_{jk},\quad j\in\{1,...,g\},\ k\in \mathbb{N} .\]
+        \end{enumerate}
+        \end{prop}
+        Property \((1)\), is particularly useful for \emph{\hyperref[chapter:symplecticreduction]{symplectic reduction}}. A finite dimensional analog is given in section (\ref{subsec:gdimG}). The proof is from our joint work \cite{chaimanowong2020airy}:
+ 
+        \begin{proof}
+        The proof of the first item starts the property that
+        \[ \oint_{a_j}x^i=0,\] 
+        for \(1 \leq j \leq g\), since \(x^i\in V_\Sigma\). Combining this with \[\oint_{b_j}x^i=0,\] 
+        all periods vanish, so does the cohomology class \([x^i]\).
+        
+        The second property uses \[ \omega_\Sigma=dx^i\wedge dy_i,\] 
+        and the Riemann bilinear relations to obtain that \(\omega_\Sigma(\omega_i,x^j)=\delta_{ij}\). Then \(y_i=\omega_i\), for \( 1 \leq i \leq g\) by the non-degeneracy of \(\omega_\Sigma\).
+
+        The final property uses fact that the map 
+        \[ G_\Sigma\to H^1(\Sigma, \mathbb{C})\] 
+        is surjective. So there exists \(x^i\), \(i=1,\dots,g\) satisfying 
+        \[\frac{1}{2\pi i}\oint_{b_j}x^i=\delta_{ij}.\] 
+        To obtain the rest of the coordinates when \(i>g\), satisfying the proposition, first complete \( \{x^i\mid i=1,\dots,g\}\) to a Hamel basis of meromorphic differentials for \(W_\Sigma\).
+        
+        Using the notation \(i=i(\alpha,n)\) where \(\alpha\in R\) and \( n\in \mathbb{N}\), let \[x_0^i=d(z_{\alpha}^{-n})+ \text{holo} \in V_\Sigma\] 
+        (by the Hodge decomposition theorem) and also let  
+        \[ x^i=x_0^i-\sum_{j=1}^g x^j \frac{1}{2\pi i}\oint_{b_j}x_0^i. \]  
+        
+        Then, in terms of the \(x^i\), we have \[y_i^0=\frac{1}{n}d(z_\alpha^n)+\sum_{j=1}^g\omega_j\frac{1}{2\pi i}
+        \oint_{b_j}x_0^i,\] 
+        where \(i>g\). Then define \[y_i=y^0_i-\sum_{j=1}^gy_j\omega_\Sigma(y^0_i,x^j).\]
+        \end{proof}
+
+        
+        %We now want to consider tensor products of Tate spaces of the form \(W  = V \oplus V^*\), and what does it mean to take a topological tensor product \( W \widehat{\otimes} W\).
+
+        
+
+        
+
+       % If \( \mathcal{O}_X\) is Poisson, \(X\) can be given symplectic structure.
+       
+        
+        %Later the Tate space \(W\) will be treated as an algebraic variety. Let \( \mathbf{k}\lBrack W \rBrack\) denote the formal coordinate ring on \(W\).
+        %In the case we are interested in, the Poisson bracket is defined on the formal coordinate ring of \(W\); \( \{ \bullet, \bullet\} : \mathbf{k}\lBrack W \rBrack \rightarrow \mathbf{k}\lBrack W \rBrack \rightarrow \mathbf{k}\lBrack W \rBrack \). Let \( f \in \mathbf{k}\lBrack W \rBrack \), define the \emph{derivation} \( X_f : \mathbf{k}\lBrack W \rBrack  \rightarrow \mathbf{k}\lBrack W \rBrack \) such that \( X_f = \{ f, \bullet \} \). A symplectic form on \(W\) is then chosen so there is an equivalence 
+        %\[ \{ f,g \} = \omega(X_f,X_g)\]
+    
+    
+    %\section{Sheaf of continuous functions on a Tate space}
+
+
+    \newpage
+    \section{Symmetric algebra in finite dimensions}
+    
+    %Recall for a finite dimensional vector space \(V\), the dual space can be identified with linear polynomial functions \(V \rightarrow \mathbf{k}\). The duals of basis elements of \(V\) correspond to coordinate functions.  
+    
+        The \emph{symmetric algebra functor}  \(\rS : \textbf{Vect} \rightarrow \textbf{CommAlg}\), is a functor from the category of modules or vector spaces to commutative rings.
+    Given a module \(M\), we can form a free commutative algebra denoted \(\rS(M)\).
+
+    
+    The symmetric algebra functor is characterised by the following universal property:
+    
+    \begin{defn}[Symmetric algebra functor universal property] 
+    Given a linear map between modules and algebras, \(f : M \rightarrow A\), there is a unique algebra homomorphism \(g : \rS ( M ) \rightarrow A \) such that \(f = g \cdot \iota\) , where \( \iota : M \rightarrow \rS(M) \) is an inclusion map.
+    \end{defn}
+    
+    
+    As a consequence of the unviversal property, given a module homorphism \( f : M \rightarrow N\), there is an algebra homorphism \( \rS(f) : \rS(M) \rightarrow \rS(N) \).
+    
+
+    If \( V \) is a finite dimensional \( \mathbf{k}\)-vector space, \( \rS(V)\) is a ring of polynomials in elements \emph{in} \(V\). Given a basis \( \mathcal{B}\) for \(V\), there is an isomorphism \( \rS (V) \cong \mathbf{k}[\mathcal{B}]\). Alternatively, the symmetric algebra \( \mathrm{S}(V^\vee) \cong \mathbf{k}[\mathcal{B}^\vee] \) is the ring of polynomial functions \emph{on} \(V\) (here we are using the algebraic dual \(V^\vee = \mathrm{Hom}(V,\mathbf{k})\)).  
+    
+    
+    \begin{lem} 
+    The \emph{symmetric algebra} is given by the coproduct:
+    \[ \mathrm{S}(V):= \coprod_k \rS^k(V), \]
+    where \( \rS^k(V)\) are identified as degree \(k\) polynomials. 
+    \end{lem}
+
+    There is also a connection to the vector space of \emph{symmetric tensors} denoted \( \mathrm{Sym}(V)\). A \emph{symmetric tensor} is an element of \(\mathrm{Sym}^n(V)\), which are tensors \(\mathrm{Sym}^n(V) \subset T^n(V)\), that are invariant under a permutation \( \sigma : \mathcal{S}_n\):
+    \[ v_1 \otimes \dots \otimes v_n \rightarrow v_{\sigma(1)} \otimes \dots \otimes v_{\sigma(n)}.\]
+
+    \begin{defn}[Vector space of symmetric tensors]
+    \( \mathrm{Sym}(V)\) is the graded sum: 
+    \[ \mathrm{Sym}(V):= \bigoplus_k \mathrm{Sym}^k(V) \]
+    \end{defn}
+    
+    If \(V\) is a vector space over a field of characteristic zero, there is an isomorphism of vector spaces \( \mathrm{Sym}^n(V) \cong \rS^k(V) \), given by the symmeterisation map
+    \[ v_1 \cdot \dots \cdot v_2 \rightarrow  \frac{1}{n!} \sum_{\sigma \in \mathcal{S}_n} v_{\sigma(1)} \otimes \dots \otimes v_{\sigma(n)}, \]
+    where \( \cdot \) is the product in \( \rS(V)\). Note that this is an isomorphism of vector spaces, not algebras.
+    
+    So for a finite dimensional vector space \(V\), \( \rS(V^\vee)\) serves as a coordinate ring for \(V\). This necessarily enables us to do algebraic geometry over \(V\), for example define a subvariety as a quotient of the polynomial ring.
+    
+    If \( V\) is infinite dimensional this situation becomes more subtle. By the axiom of choice, infinite dimensional vector spaces have a basis, but finding an explicit form is not always possible. Further \( \mathcal{B}^\vee\) does not in general form a basis for the dual space.
+
+    %There are also different ways to construct rings in infinite variables.
+    
+    %\include{coordinaterings}
+    
+    %\begin{lem}
+    %The symmetric algebra is a graded ring
+    %\end{lem}
+    
+
+    %This approach extends to Tate spaces -- this construction is one way to do algebraic geometry on a Tate space. Let \(V\) be a topological vector space with discrete topology (over some topological field \(\mathbf{k}\) also with discrete topology), such that \( (V^*)^* \cong V\). Define the Tate space \(W \cong V \oplus V^*\). 
+    
+    %Then the coordinate ring \( \mathbf{k}[W]\) is constructed via the symmetric algebra:
+    %\begin{align*}
+    %\mathrm{S}(W^*) = \bigoplus \mathrm{S}^k( V^* \oplus V) = \bigoplus_k  \bigoplus_{\lambda \vdash k} \mathrm{S}^{\lambda}(V) \otimes \mathrm{S}^{\lambda}(V^*)  \cong \mathbf{k}[V] \otimes \mathbf{k}[V^*] \cong \mathbf{k}[W],
+    %\end{align*} 
+    %Elements of \( \mathbf{k}[W]\) are formal combinations of variables \(x^{\sbt}\) and \( y_{\sbt}\), $x^k\neq 0$ only for a $k$ in a finite number of $k\in I$, \( x^{\sbt}\) terms are bounded in degree, and \( y_{\sbt}\) terms are bounded in degree. 
+    \newpage
+    
+    

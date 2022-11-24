@@ -1,0 +1,39 @@
+    \begin{tabular}{c c c } 
+    
+    \tikz [tree layout, baseline=(x0.base), grow'=up, significant sep=1em, sibling distance=7mm, level distance=7mm]
+     \graph {
+        [nodes={circle, draw, inner sep=0pt, minimum size=2mm, as =}]{ x0};
+        // [nodes={circle, inner sep=0pt, minimum size=2mm, fill, as=}]{ x0 -- x1 };
+        // [nodes={circle, fill={pink} }]{ x1 -- {x2,x3}};
+    };  
+    
+    &
+    \tikz [ baseline=(a.base), tree layout, significant sep=1em, grow'=up, sibling distance=7mm, level distance=7mm]
+    \graph {
+        [nodes={circle, draw, inner sep=0pt, minimum size=2mm, as =}]{ a};
+        // [nodes={circle, inner sep=0pt, minimum size=2mm, fill, as=}]{a -- {b--{c  }} };
+        // [nodes={circle, fill={pink} }]{b-- d};
+        // [nodes={circle, fill={pink} }]{c --{e,f}};
+        };
+    & 
+    
+    \tikz [ baseline=(a.base), tree layout, significant sep=1em, grow'=up, sibling distance=7mm, level distance=7mm]
+    \graph {
+        [nodes={circle, draw, inner sep=0pt, minimum size=2mm, as =}]{ a };
+        // [nodes={circle, inner sep=0pt, minimum size=2mm, fill, as=}]{ a -- { b-- {c,d}} };
+        // [nodes={circle, fill={pink} }]{ c -- {e,f}};
+        // [nodes={circle, fill={pink} }]{ d -- {g,h}};
+        };
+    
+    \tikz [ baseline=(a.base), binary tree layout, significant sep=1em, grow'=up, sibling distance=7mm, level distance=7mm]
+    \graph {
+        [nodes={circle, draw, inner sep=0pt, minimum size=2mm, as =}]{ a };
+        // [nodes={circle, inner sep=0pt, minimum size=2mm, fill, as=}]{ a -- b -- { d -- {e }} };
+        // [nodes={circle, fill={pink} }]{ b -- c};
+        // [nodes={circle, fill={pink} }]{ d -- f};
+        // [nodes={circle, fill={pink} }]{ e -- {g,h}};
+        };
+    \\
+    & &  \\ 
+    \(x^2\) & \( 2\, x^3\) &  \( 5 \,x^4 \)
+    \end{tabular}

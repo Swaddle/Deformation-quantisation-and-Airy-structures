@@ -1,0 +1,101 @@
+\documentclass[12pt]{book}[twoside,openright]
+
+%\documentclass{book}[twoside,openright]
+%\usepackage[fontsize=20pt]{scrextend}
+
+%\usepackage{fourier}
+%\usepackage[T1]{fontenc}
+
+\usepackage{thesis_pdf}
+
+%\setromanfont{ppl}
+%\newcommand*{\myfont}{\fontfamily{qbf}\selectfont}
+%\DeclareTextFontCommand{\textmyfont}{\myfont}
+
+%\newcommand{\lParen}{\text{\textmyfont{\char"2685}}}
+
+\newcommand{\starp}{\scalebox{0.8}{\(\star\)}} 
+
+
+\usepackage[backend=biber,
+style=alphabetic,maxbibnames=99]{biblatex}
+\bibliography{references}
+
+\newenvironment{contex}{
+   \addtocounter{ex}{-1} \begin{ex}[continued]}{
+   \end{ex}}
+
+\setcounter{chapter}{-1}
+
+
+
+
+
+\makeindex
+
+
+\begin{document}
+    \setlength\fboxsep{0pt}
+    
+    \include{titlepage}
+    %\newpage \ \thispagestyle{empty} \newpage 
+    
+    \include{declaration}  
+    \include{acknowledgements}
+    %\include{preface} 
+    %\newpage \ \thispagestyle{empty} 
+    
+    %\newpage     
+    
+    \setcounter{page}{1}
+    \tableofcontents 
+    
+    
+    
+    \include{chapters/preliminaries}
+
+    %\include{moduli}
+
+    %background 
+
+
+
+    %ks 
+
+    %\include{formal}
+
+    \include{chapters/deformation}
+    
+    %deformation space B
+    %give remarks
+    
+    \include{chapters/tate} 
+
+    \include{chapters/inf_alg_geo}
+    
+    \include{chapters/airy}
+    
+    \include{chapters/symplectic_reduc}
+    
+    \include{chapters/deformation_curves}
+    
+    \include{chapters/conclusion}
+    %\include{tate_over_surface} 
+    
+    %\include{poisson}
+    
+    %theta functions
+    %\include{theta}
+
+
+    \printbibliography
+    
+    \appendix 
+    \include{appendix_airy}
+    
+    %\include{appendix_algebra}
+    
+    \include{appendix_gaussian}
+    
+
+\end{document}

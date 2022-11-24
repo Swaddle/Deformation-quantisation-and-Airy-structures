@@ -1,0 +1,96 @@
+\section{Global deformations}
+    
+    Consider the case of a polynomial ring in \(2n\) variables, \(R = \mathbf{k}[x_1, \dots x_n, y_1, \dots y_n]\), \(X= \Spec(R)\). A natural Poisson bracket is given by \( \{x_i,y_j\} = \delta_{ij}\).
+    \begin{ex}
+    Let \(n=1\), \( \Gamma_X( \mathcal{O}_X) = \mathbf{k}[x,y]\). Then  \(\Gamma_X (\mathcal{O}_X \lBrack \hslash \rBrack) = \mathbf{k}[x,y]\lBrack \hslash \rBrack \). There is a \(\mathcal{O}_X\) isomorphism  \(0 \rightarrow \hslash\, \mathbf{k}[\hat{x},\hat{y}]\lBrack \hslash \rBrack \rightarrow \mathbf{k}[x,y]\lBrack \hslash \rBrack  \rightarrow \mathbf{k}[x,y] \rightarrow 0\). The star product is computed by the formal series.
+    \end{ex}
+    
+
+    Let \( (X,\mathcal{O}_X)\) be Poisson.
+    Let \(Y\) be a subscheme, so \( \mathcal{O}_X \rightarrow \mathcal{O}_Y\). The following is a sheaf theoretic version of the formal coisotropic theorem in \cite{dasilva}.
+    
+    \begin{thm}[Formal coisotropic neighbourhood theorem] 
+ 
+    \end{thm}
+    %Let M
+    %be a 2n-dimensional manifold, X a compact n-dimensional submanifold, i : X -> M the inclusion map, and ω0 and ω1 symplectic forms on M such that i∗ω0 = i∗ω1 = 0, i.e., X is a lagrangian submanifold of both (M,ω0) and (M,ω1). Then
+    %there exist neighborhoods U0 and U1 of X in M and a diffeomorphism \phi : U0 →U1
+    %such that the diagram commutes
+    
+    %   U0 -> \phi -> U1
+    %    \           /
+    %     i         i          
+    %       \     /            
+    %          X
+    %Moser relative theorem works in completion although not in ring
+    
+   %In the case of \( X=\Spec(R)\), and \(R\) is an even dimensional polynomial ring,  \( (\mathcal{A}_{\hslash}, \star)\), half of the variables can be identified with derivations.
+
+
+
+\section{Local system}
+    
+    Let \(X\) be a topological space.
+    \begin{defn}[constant sheaf]
+    A sheaf is constant if there exists an object \(A\) such that for all open sets \( \mathcal{F}(U) = A\).
+    \end{defn}
+    
+    \emph{Locally constant} is a constant sheaf on a restriction.
+    Let \(X\) be a topological space, and \( \mathcal{F}\) be a sheaf on \(X\).
+    
+    \begin{defn}[locally constant sheaf]
+    \( \mathcal{F}\) is \emph{locally constant} if the sheaf restriction to neighbourhoods \(U\) of points \( p \in X\)  is a constant sheaf,
+    \( \mathcal{F}_{|U}\).
+    \end{defn}
+
+    A \emph{local system} is determined by the data of a locally constant sheaf. Local system is actually short for \emph{local system of coefficients of cohomology}, which corresponds to taking the sheaf cohomology of the locally constant sheaf.
+    
+    Let \( \mathcal{F}\) be a locally constant sheaf.    
+    \begin{defn}[local system]
+    \( H^i(X,\mathcal{F})\)
+    \end{defn}
+    
+    A natural place that sheaf cohomology and locally constant sheaves appear is from a morphism of sheaves.
+    \begin{ex}
+    Consider \(\Sigma = \mathbb{C}\), a differential operator \( D: \mathcal{O}_\Sigma \rightarrow \mathcal{O}_\Sigma\) acting on holomorphic functions.  The kernel of \(D\) is a sheaf \( \mathcal{D}\).
+    
+   %\( 0 \rightarrow \mathcal{J} \rightarrow \mathcal{O}_\Sigma \rightarrow \{ D \mathcal{O}_\Sigma  \}\rightarrow 0\)
+    \end{ex}
+    
+    \section{Torsors}
+    A \emph{torsor} in a sense is a group that has forgotten the choice of identity element. For example an affine space modelled over a vector space. The purpose of a torsor is to keep track of the unnatural choice of picking something to be a new identity element.
+    
+    We give a sheaf theoretic definition of a torsor \cite{sheaves_logic} over a space \(X \):
+    \begin{defn}[Torsor] 
+    A \(G\)-torsor is a pair \((G,\mathcal{F})\), where \( \mathcal{F}\) is a sheaf on \(X\) with a left action of \(G\) on \( \mathcal{F}\) such that:
+    \begin{itemize}
+        \item Stalks \( \mathcal{F}_p\) are non empty.
+        \item The induced action on stalks are free and transitive.
+    \end{itemize}
+    \end{defn}
+    
+    \begin{ex} With the usual correspondence between bundles and sheaves, following the definition, a principal \(G\)-bundle over a scheme is a torsor.
+    \end{ex}
+
+
+    There are several elements in deformation quantisation that can be identified as a torsor.
+    
+    
+    \begin{ex}
+    \(D\)-modules and wavefunctions are torsors over \( \mathcal{O}_X \lBrack\hslash \rBrack\), with a corresponding gauge group. 
+    \end{ex}
+    
+    \section{Connections}
+    
+    
+    Let \(A\) be an algebra over a ring \(R\).
+    Let \(M,N\) be a \(A\)-modules. Let \( \mathrm{Der}_{R}(A)\) be \(R\)-derivations, which are \(R\)-linear maps \( A \rightarrow A\), satisfying Leibniz rule. Similarly, let \( \mathrm{Der}_R(M,N)\) denote \(R\)-linear maps \(M \rightarrow N\) satisfying Leibniz rule.
+
+    
+    \begin{defn}[Algebraic connection]
+    An \emph{algebraic connection} is an \(R\)-module homomorphism \[ \nabla : \mathrm{Der}_R(A) \rightarrow \mathrm{Der}_R(M,M),\] satisfying for \( u : \mathcal{D}\), 
+    
+    \end{defn}
+    
+    For an affine scheme \((X,\mathcal{O}_X)\)  the situation is similar, \(R\) is now the field \( \mathbf{k}\).  
+    

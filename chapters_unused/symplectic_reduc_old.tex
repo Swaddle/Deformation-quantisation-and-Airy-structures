@@ -1,0 +1,487 @@
+    \section{Hamiltonian reduction}
+    We now define the sheaf theoretic version of of symplectic reduction.  
+    
+    Let \((W,\mathcal{O}_W)\) be a Poisson scheme. Let \( \cL\) be a Lagrangian in \(W\). Consider \(G\), a codimension \(g\), linear, coisotropic subscheme in \(W\).
+    %Recall, for a vector space, the symplectic reduction of \(W\) by \(G\) is  given by the quotient \(  W\sslash G^{\perp} = G/G^{\perp}\). 
+    %We examine this situation from the sheaf perspective. 
+    The quotient \(W \sslash G^{\perp} \) is described sheaf theoretically as follows:
+    \begin{defn}[Poisson reduction]
+    The \emph{Poisson reduction} of \( \mathcal{O}_W\) by \(G^{\perp}\), is the sheaf \( \mathcal{O}_G^{G^{\perp}}\) of \( \mathcal{O}_W\)-modules. \( \mathcal{O}_G^{G^{\perp}}\) is the sheaf of invariants defined by \(G^{\perp}\) action on \( \mathcal{O}_G\).
+    \end{defn}
+    
+    The next question is how to obtain \( \mathbb{L}\) in \( \mathcal{H} = G/G^{\perp}\).
+    
+    \begin{defn}
+    The reduction of \( \mathcal{O}_{\cL} \), by \( G^{\perp}\), (when it exists) is the sheaf \( \mathcal{O}_\mathcal{B}\) of \( \mathcal{O}_X\)-modules that makes the following diagram commute:
+    \begin{center}
+        \begin{tikzcd}
+        \mathcal{O}_X \arrow[r] \arrow[d] & \mathcal{O}_G \arrow[d]\\
+        \mathcal{O}_{\cL} \arrow[r] &  \mathcal{O}_{G \cap {\cL}}   \cong \mathcal{O}_{\mathcal{B}}
+        \end{tikzcd}
+    \end{center}
+    \end{defn}
+    
+    \begin{lem} \( \mathcal{O}_{\mathcal{B}}\) exists when \( \mathbb{L}\) and \(G\) intersect transversally. 
+    \end{lem}
+    
+    \begin{rem}Intersections in general may not be defined.
+    \end{rem}
+    
+    %\subsection{Affine case} 
+    %In the affine case, suppose \(G \) is defined by an ideal \(I(G)\). 
+    %Then \(\mathcal{O}(\mathcal{B}) =  \mathcal{O}(G \cap \mathcal{L})\) corresponds to 
+    %\[ \mathcal{O}(\mathcal{B}) = \mathcal{O}(W)/\left( I(G) +  I(\cL) \right).\]
+
+    %\begin{ex}
+    %Let \(W = \Spec(R)\), where \(R= \mathbf{k}[x^{\sbt},y_{\sbt} ]\) is a ring in %\(2n\) variables.  \(I(G)\) can be defined by \(n-g\) linear equations:
+    %\[ I(G) = \{ \alpha_i^k y_k + \beta_{ik} x^k \} .\]
+    %\end{ex}
+
+    \section{Poisson reduction of the wavefunction}
+    \label{section:wavefunction_reduction}
+    
+    Now we examine how Hamiltonian reduction interacts with deformation quantisation.  Let \( (W,\mathcal{O}_W)\) be a Poisson scheme, \(G\) and \( \mathbb{L}\) a coisotropic and Lagrangian subscheme in \(W\) respectively. Suppose the Poisson reduction of \( \mathcal{O}_W\) by \(G^{\perp}\) exists, and denote it \( \mathcal{O}_{\mathcal{H}}\). Likewise denote the reduction of \( \mathcal{O}_{\mathbb{L}}\) by \( \mathcal{O}_{\mathcal{B}}\).
+    
+    %Suppose there is a deformation quantisation of \( \mathcal{O}_W\), given by \( \mathcal{O}_W\lBrack \hslash \rBrack\). Further there sheaves \( \mathcal{O}_\mathcal{B}\lBrack \hslash \rBrack\), and \( \mathcal{O}_\mathcal{H}\lBrack \hslash \rBrack\) of  \( \mathcal{O}_W \lBrack \hslash \rBrack\)-modules.
+    
+    There appears to be two interesting wavefunctions on \( \cB\). The first is a wavefunction \( \psi_{\overset{\sim}{\mathcal{B}}}\), from the deformation quantisation of  \(\mathcal{O}_{\cB}\) inside \( \mathcal{O}_\mathcal{H}\). This means quantising \( \mathcal{O}_X\), and looking for a deformation quantisation module supported on \( G \cap L\).
+    
+    The second defined by Kontsevich and Soibelman is the formal Gaussian integral: 
+    \[ \psi_{\widehat{\cB}} = \frac{1}{Z_0} \int_{W} \psi_G^{\text{Ext}}  \,  \psi_{\mathbb{L}} . \]
+    In \cite[page 53]{ks_airy}, this is understood as an integral with \(\psi_G^{\text{Ext}}\) as a Gaussian measure and \(Z_0\) is some normalisation. 
+
+    \begin{rem}
+    We use \( \psi_G^{\mathrm{Ext}}\) to denote the wavefunction \(  \psi_{G_\Sigma} =\exp(Q_2(q,q')) \) as written in \cite[page 53]{ks_airy}. Importantly we show that \( \psi_{G}^{\mathrm{Ext}} = P \psi_G\), where \(P\) is a function depending on the choice of extension, and \( \psi_G\) is a function possibly satisfying the equations for \(G\) in \(W\). The extension, given by \(P\), using the Kontsevich and Soibelman notation, contributes terms of \( \mathcal{O}( q q')\), defining a Fourier or Laplace like integral kernel. \( \psi_G\) contributes \(\mathcal{O}(q^2)\) terms. So while \( \psi_G^{\mathrm{Ext}}\) is quadratic in terms of the coordinates on the extension, we want to emphasise the important part is the result of the extension. It is important that \(G\) is linear, or defined by linear equations for this to occur, and \(Q_2\) exists.
+    \end{rem}
+    
+    
+    We are effectively trying verify a proposition:
+    \begin{prop}
+    Symmplectic reduction commutes with quantisation (perhaps with some conditions).
+    \end{prop}
+    
+    \begin{prop}
+    \[ \psi_{\overset{\sim}{\mathcal{B}\,}} = \psi_{\widehat{\cB}} =\frac{1}{Z_0} \int_{W} \psi_G^{\mathrm{Ext}} \,  \psi_{\mathbb{L}}\]
+    \end{prop}
+
+
+    One way to define the integral is to treat 
+    \[ \frac{1}{Z_0} \int_{W} \psi_G^{\text{Ext}}\]
+    as a linear functional and define the action on coordinates and then extend to arbitrary functions via Wick's theorem. 
+    
+    Geometrically the integral can be thought of as a convolution. We want to pick out the components of the function \( \psi_{\mathbb{L}}\) where \(G\) and \( \mathbb{L}\) intersect, to get a function \( \psi_{\widehat{\mathcal{B}}}\). A more basic example of this situation is from linear algebra. Given a pair of linear operators \(L_1\), \(L_2\), we want to find an element in the intersection of the kernels of \(L_1\) and \(L_2\). If the intersection is non trivial, and given \( v : \mathrm{ker}(L_1)\), and \( w :\mathrm{ker}(L_2)\), the projection of \(v\) onto \(w\) would lie in the intersection. We then want to project or reduce this down onto a smaller space.
+    
+    %In \( W\), as \(G\) is only coisotropic, there is not a unique cyclic module, corresponding to a quantisation of \( \mathcal{O}_G\). Extending \(W\) so \(G\) is a Lagrangian however gives a cyclic module, so there is a single choice of generator.
+    
+    \( \psi_G^{\text{Ext}} \) is found as taking an extension \(X \cong W \oplus G/G^{\perp}\) of \(W\), and embedding \(G\) as a linear Lagrangian. Note \(X\) has opposite symplectic form. Recall in finite dimensions \(G\) is defined by \(n-g\) equations, then for \(X\) to be a \(2\,g\) dimensional extension, requires an extra \(2
+    \,g\) equations, so \(G\) is sent to a Lagrangian defined by \(n+g\) equations.
+    
+    On the level of rings this given by a map
+    \[ \mathcal{O}_{X} \rightarrow \mathcal{O}_W. \]
+
+    For example, in the affine case, introduce the \(2g\) coordinates \(z_1, \dots z_g, w_1, \dots w_g\).
+
+    
+
+    
+    \subsection{Wavefunctions on linear Lagrangian and coisotropic subspaces}
+    
+    Let \(W\) be an \(2n\)-dimensional symplectic space, with Darboux coordinates \((x_i,y_i)\).
+
+    \subsubsection{Linear Lagrangian}
+    
+    There is a unique wavefunction associated to a linear Lagrangian subvariety in the symplectic space \(W\). From the deformation quantisation perspective, there is a cyclic module, supported on a formal neighbourhood of a point.
+    
+    Consider the case where \(\mathbb{L}\) is a codimension \(n\) linear Lagrangian subvariety, which locally is written in vector form as:
+    \begin{equation}
+        \label{eqn:linearlag}
+        y + Q \cdot x = 0,
+    \end{equation}
+    where \(Q\) is a \((n,n)\)-dimensional symmetric tensor. More generally, given \(n\) equations defining a Lagrangian \( \mathbb{L}\), we solve them for \(y_i(x^{\sbt})\). For quadratic and higher order Lagrangians, this requires completing at a maximal ideal, so \( \mathbb{L}\) is locally written as a generating function \(y_i dx_i =  dS_0(x^{\sbt})\), or \(y\) can be written as a formal series in \(x\) at a point. But in the linear Lagrangian case, we already have a form for \(y\), so \(S_0\) is found directly from equation (\ref{eqn:linearlag}): 
+    \[S_0 = -\frac{1}{2} x \cdot Q \cdot x. \]
+    If the equations are not full rank for \(y\), it is sufficient to set \(y_i=0\) at the point defined by the maximal ideal. It will also be possibile to eliminate the corresponding \(x_i\) variables.
+    
+    Now, quantisation can locally be represented by 
+    \[ x_i \rightarrow x_i, y_i \rightarrow \hslash \hslash \partial_i = \frac{\partial}{\partial x_i}.\]
+    As per section (\ref{}), a wavefunction \( \psi(x^{\sbt})\), is a formal series, in general defined on a formal neighbourhood, that is the annihilator of the quantisation of the equations defining the Lagrangian subvariety. In the linear case it is equivalent to consider the quantisation of (\ref{eqn:linearlag}):
+    \[ \hslash \frac{\partial}{\partial x} \psi + Q \cdot x\, \psi = 0. \]
+    In the linear case any annihilator \( \psi\) is represented by the formal expression:
+    \[ \psi = \mathrm{const} \; \exp \left( \frac{1}{\hslash} S_0 \right) = \mathrm{const} \; \exp \left( -\frac{1}{2\hslash} x \cdot Q \cdot x \right), \]
+    where \(\exp(f) = 1 + f + \frac{1}{2} f^2 + \dots \), and \( \mathrm{const}\) is some constant. Note \(  d (S_0 ) = -(Q \cdot x) dx\), so \( y=\mathrm{graph}(dS_0)\). 
+    
+    More generally consider if the equations for \( \mathbb{L}\) can be written as
+    \[ M \cdot y + N \cdot x = 0\]
+    where either only one of \(M\) or \(N\) is not full rank. These equations must Poisson commute, as \(\mathbb{L}\) is a linear Lagrangian:
+    \[ \{ M_{ij} y_j + N_{ij}x_j , M_{ks}y_s + N_{ks}x_s \} = 0.\]
+    This gives the constraint \(- M_{ij} N_{kj}+N_{ij} M_{kj} = 0\). For \( \mathbb{L}\) to be Lagrangian, only one of \(M\) or \(N\) is allowed to not be full rank. 
+    
+    Consider the case where \(N\) is not full rank, then \(M\) is still invertible so
+    \[ y + (M^{-1} N) \cdot x = 0,\]
+    and the previous analysis follows where \( Q = (M^{-1} N)\). 
+    
+    Now consider the cases where \(M\) is not full rank. First consider the case where a single \(y_i\) does not appear in any equations. So \(M\) has a zero column and row. Multiple missing \(y_i\) will follow inductively. As \(N\) still has full rank, it is still possible to solve for the corresponding \(x_i\), so \(x_i = f_i(x_1, \dots x_{i-1}, x_{i+1}, \dots x_n)\), where \(f\) is a linear function. We then consider a reduced system of equations:
+    \begin{equation} \label{eqn:reduced} \widetilde{M}\cdot \widetilde{y} + \widetilde{N} \cdot \widetilde{x} = 0,\end{equation}
+    where \(\widetilde{M}, \widetilde{N} \) are the reduced tensors so there are no \(x_i\) or \(y_i\) terms. Now the the previous analysis follows.  While quantisation of \(W\) still includes \( \hslash \partial_i \), we only need to consider annihilators of the quantisation of equation (\ref{eqn:reduced}) in \( \mathbf{k} \lBrack x_1, \dots x_{i-1}, x_{i+1}, \dots x_n\rBrack\).
+    
+    
+    \subsubsection{Linear Coisotropic}
+    It is possible to write down wavefunctions on a more general coisotropic subvariety. Unlike the Lagrangian case however, there are not unique wavefunctions supported on a coisotropic space. However a choice of Lagrangian extension of the coisotropic space will give a unique choice of wavefunction.
+    
+    Let \(G\) be a codimension \(n-g \) coisotropic subspace in \(W\), defined by \(n-g\) linear equations. An extension of \(G\) to a Lagrangian, is picking a map into a larger symplectic space \(X\), so \(G\) is Lagrangian in \(X\). If \(G\) is codimension \(n-g\), then 
+    \(X\) must have dimension \(2n+2g\). So the extension is defined as  an additional \(2g\), Poissoin commuting, linear equations. Let \((x,z,y,w)\) be coordinates on \(X\), where there are \(g\) \(z\)- coordinates, \(g\) \(w\)-coordinates, and \((x,z)\) are conjugate to \((y,w)\). Using the additional \(2g\) equations for \(z\) and \(w\), consider the case where it is possible to solve for \((y,w)\), in the following form:
+    \begin{equation}
+    \label{eqn:solveforext}
+    (y,w) = - (K \cdot x + P \cdot z  , R \cdot x + S \cdot z)
+    \end{equation}
+    where necessarily \(K\), \(P\), \(R\) \(S\) are, \((n,n)\), \( (n,g)\), \((g,n)\) and \((g,g)\)-dimensional tensors, \(K\) and \(S\) are symmetric, and \(P=R^T\). This is analogous to solving for \(y\) in the Lagrangian case.
+    
+    Quantising, the wavefunction associated to \(G\) in \(X\), \(\psi_G^{\text{Ext}}\) satisfies:
+    \[  \hslash \left(\frac{\partial}{\partial x}, \frac{\partial }{\partial z} \right) \psi_G^{\text{Ext}} = - \left(K \cdot x + P \cdot z  , R \cdot x + S \cdot z\right) \psi_G^{\text{Ext}}.\]
+    So \(\psi_G^{\text{Ext}}\) takes the form:
+    \[ \psi_G^{\text{Ext}} = \mathrm{const} \; \exp\left( \frac{1}{\hslash} \left( -\frac{1}{2}  x \cdot K \cdot x + x \cdot P \cdot z + z \cdot R \cdot x  - \frac{1}{2} z \cdot S \cdot z \right) \right). \]
+    The term \( \exp\left( \frac{1}{\hslash} J \cdot x \right) \).
+    
+    %written in vector form as:
+    %\[ M_{ij}y_j + N_{ij}x_{j} = 0,\]
+    %where \( M_{ij} \) and \( N_{ij}\) are \( (n-g , n) \)-dimensional non-zero tensors (we will consider the case where \(M\) is zero later). Consider the case where there exists a pseudo-inverse, so
+    %\[ \delta_{ij} y_j = (M_{ij})^{-1} N_{jk} x_{k} \]
+    %where \((M_{ij})^{-1} N_{jk} \) defines an \((n, n)\)-dimensional %tensor  \(K_{ik}:= (M_{ij})^{-1} N_{jk} \). So:
+    %\[1 \cdot y = 1 \cdot K \cdot x.\]
+    %Then, quantisation of \(W\) is given by \( y_i \rightarrow \hslash \frac{\partial}{\partial x_i}\). We then need to find a scalar wavefunction \(\psi_G\) so
+    %\[ \hslash \frac{\partial}{\partial x} \psi_G = K \cdot x \,\psi_G. \]
+    %This has a particular solution
+    %\[ \psi_G = \mathrm{const} \, \exp\left( -\frac{1}{2} x \cdot K \cdot x \right), \]
+    %where \( x \cdot K \cdot x = \frac{1}{\hslash}K_{ij} x_i x_j\).
+    
+
+
+    Setting \((P \cdot z)^T  + z \cdot R = J\), \(\psi_G^{\text{Ext}}\) takes the form:
+    \begin{equation}
+        \label{eqn:psiextg}
+        \psi_G^{\text{Ext}} = \mathrm{const} \; \exp\left( -\frac{1}{2\hslash}  x \cdot K \cdot x + \frac{1}{\hslash}\, J \cdot x \right)  \exp\left( -\frac{1}{2\hslash} z \cdot S \cdot z\right).
+    \end{equation} 
+    Setting \(z=0\), we obtain a wavefunction on \(G\) in \(W\):
+    \[ \psi_G= \exp \left( -\frac{1}{2\hslash}  x \cdot K \cdot x \right)\]
+    Necessarily \(y+K\cdot x = 0\) will satisfy the equations for \(G\) in \(W\).
+    
+    \subsection{A formula for Gaussian integrals}
+
+    Let \(W\) a symplectic space with coordinates \( (x^i,y_i)\).
+    Recall the objective is to compare the wavefunctions, first from the scheme theoretic quotient, the second from the Gaussian integral:
+    \[ \psi_{\widehat{\mathcal{B}}} = \frac{1}{Z_0} \int_{W} \,  \psi_{\mathbb{L}} \, \psi_G^{\text{Ext}}  . \]
+    Note that \( \psi_{\mathbb{L}} \) depends on \(x\) coordinates, \( \psi_G^{\text{Ext}}\) will depend on the \(x\) and a choice of extension. A general form of \( \psi_G^{\text{Ext}}\) is given in equation (\ref{eqn:psiextg}).
+    %Recall in general, a linear coisotropic space \(G\) is described by a collection of  equations of the form 
+    %\[ y_j + M_{ij} x^j = 0.\] 
+    
+    
+    The \emph{central identity of quantum field theory} \cite{zee}, is a useful formula for evaluating Gaussian integrals:
+    \begin{lem}[Central identity of quantum field theory]
+        \begin{equation} 
+        \label{eqn:centralid}
+        \frac{1}{Z_0}\int Dx \exp\left(-\frac12 x \cdot K' \cdot x - V + J \cdot x\right) = \exp\left(-V\left(\frac{\partial}{\partial J}\right)\right) \exp\left( \frac12 \, J \cdot (K')^{-1} \cdot J\right) 
+    \end{equation}
+    \end{lem} 
+    Note \(\exp\left(-V\left(\frac{\partial}{\partial J}\right)\right)\) is an operator, computed by expanding the exponential as a series. 
+    \begin{rem}
+    In the central identity, equation (\ref{eqn:centralid}), \(J\) is called a \emph{source} term.
+    \end{rem}
+    
+    Now when \( \psi_G^{\text{Ext}}\) is given per equation (\ref{eqn:psiextg}), (for simplicity set \(S=0\), in general it will always factor out of the integral, and rescale by \(K\) and \(J\) by \(\hslash\)):
+    \[ \psi_G^{\text{Ext}} = \exp\left( -\frac{1}{2}  x \cdot K \cdot x + J \cdot x \right),\]
+    equation (\ref{eqn:centralid}) is useful for computing \( \psi_{\widehat{\mathcal{B}}}\). \(J\), from the extension of \(G\) in \(X\), is treated as the source term, so:
+    \[ \psi_{\widehat{\mathcal{B}}} = \frac{1}{Z_0} \int Dx \exp\left( -\frac{1}{2}  x\cdot K \cdot x + J \cdot x \right) \psi_{\mathbb{L}}. \]
+
+    
+    
+    
+    
+    \subsection{Reduction of wavefunctions and quadratic Lagrangians}
+    
+    Now let \( \cL\) be determined by a collection of quadratic functions per section \ref{}. Then there is a wavefunction of the form \(\psi_{\cL} = \exp(S)\), where \(S= \sum_{g\geq 0} h^{g-1} S_g\). \(S\) contains quadratic and linear terms in \(x\), so the integral for \( \psi_{\widehat{\mathcal{B}}}\) becomes:
+    \[\psi_{\widehat{\mathcal{B}}} = \frac{1}{Z_0}\int Dx \exp\left(-\frac12 x \cdot \left(K - \sum_{g>0} \hslash^{g-1} S_{g,2;\bullet,\bullet} \right) \cdot x - V' + \left(J-\sum_{g>0} \hslash^{g-1} S_{g,1;\bullet}\right) \cdot x\right) 
+    \]
+    where \(V'\) are the remaining terms of \(S\) cubic and greater order in \(x\).
+    
+    Using the \hyperref[]{central identity of quantum field theory}, we let \(J\) be a source term giving a formula for \( \psi_{\widehat{\mathcal{B}}}\):
+    \[ \psi_{\widehat{\mathcal{B}}}  =  \exp\left(V'\left(\frac{\delta}{\delta J} \right) \right) \exp\left( \frac{1}{2}\, (J-\sum_{g>0} \hslash^{g-1} S_{g,1;\bullet}) \cdot (K-\sum_{g>0} \hslash^{g-1} S_{g,2;\bullet,\bullet})^{-1}\cdot (J-\sum_{g>0} \hslash^{g-1} S_{g,1;\bullet}) \right).  \]
+    In general this could be impractical to evaluate explicitly.
+    %We use a braiding identity to evaluate this product in general. For \(X,Y\) in a Lie algebra, recall
+    %\[ \exp(X) \exp(Y)=\exp\left(Y+[X,Y] + \frac{1}{2}[X,[X,Y]] + \dots \right) \exp(X) \]
+
+
+    
+    
+    %Consider the case we can see what happens when there exists \( \hslash\) torsion.
+    \section{Finite dimensional examples of the reduction of wavefunctions}
+
+    \subsection{A 2-dimensional linear Lagrangian example}
+    
+    \label{subsec:2dimredex}
+    %setting y->x (so the opposite form W) fixes it
+    
+    \begin{ex}    
+    Consider the finite, \(n=2\), dimensional example \( \mathcal{O}(W) =   \mathbf{k}[x_1,x_2,y_1,y_2]\), \( \{x_i,y_i\}=1\), and a linear Lagrangian \( \cL\) defined by the ideal \(I = \langle H_1, H_2\rangle\), where:
+    \begin{align*}
+        H_1 = y_1 + A x_1 +  B x_2,    \\
+        H_2 = y_2 +  C x_1 + D x_2. 
+    \end{align*}
+    Recall \( I\) is required to be closed under the Poisson bracket, so \(B=C\).
+    
+    Introduce \(G\), a linear coisotropic subspace defined by \(n-g=1\) equations
+    \[ I(G) = \langle H_G :=a x_1 + b x_2 + c y_1 + d y_2 \rangle.\]
+    \end{ex}
+    Note in this example, \( G\) and \( \mathbb{L}\) intersect at the origin. 
+    %and ensuring transversality
+    
+    
+    %As there are \(3\) equations in \(4\) variables, we can potentially eliminate two leaving the equation for a line, which is a representation of \(\mathbb{B}\).
+    Further \(G\) and \( \mathbb{L}\) must intersect transversally, so \( \mathcal{T}_0 G+ \mathcal{T}_0{\mathbb{L}} \cong \mathcal{T}_0W\). In terms of the coefficients, transversality is given by requiring at least one of following terms to be non zero:
+    \begin{align}
+    \label{eqn:transcons2dmin}
+    a - cA - dB, \\ 
+    b - cB-dD.
+    \end{align}
+    If both are zero, then \(G\) and \( \mathbb{L}\) do not intersect transversally. Equation (\ref{eqn:transcons2dmin}) can be found by row reducing the coefficient of the equations defining \(G\) and \( \mathbb{L}\) together. Alternatively equation (\ref{eqn:transcons2dmin}) can be found by requiring the wedge product of the differentials of the equations for \(G\) and \( \mathbb{L}\) being non zero. 
+    %
+    
+    Now note \(G\) is codimension \(n-g=1\). The extension \(X = W\oplus G/G^{\perp}\) necessarily has dimension \(6\). So we are looking for a map \(\mathbf{k}[x_1,x_2,z_1,y_1,y_2,w_1] \rightarrow \mathbf{k}[x_1,x_2,y_1,y_2]\), such that the preimage of \(G\) in \(X\) is a linear Lagrangian (linear is the simplest Lagrangian, and later quantisation will yield a Gaussian function). 
+    Note we use \( \{z_1,w_1\} = 1\). With \(x\rightarrow x, y \rightarrow y\), finding \(G\) as a Lagrangian in \(X\), requires finding two additional linear functions \(z_1 = \zeta_1(x_{\sbt},y_{\sbt})\), and \(w_1 = \xi_1(x_{\sbt},y_{\sbt})\), such that taking the equations \( z_1 - \zeta_1 = 0, w_1 - \xi_1 = 0\), and \(H_G = 0\) defines a Lagrangian in \(X\). This means 
+    \( \langle z_1 - \zeta_1,  w_1 - \xi_1, H_G \rangle \) 
+    %looks like opposite form
+    is a Poisson ideal in \(X\).  Using the Poisson bracket on \(X\), as they are all linear, we require \( \{H_G,z_1 -\zeta_1\} = \{ H_G,w_1 - \xi_1\} =   \{z_1 - \zeta_1,w_1 - \xi_1\} = 0\). 
+    
+    %where the \(1\) is from \(\{ z_1,w_1\} = 1\), (note that there could be a factor of \(-1\) depending on ordering).
+    
+    One choice is 
+    \[\zeta_1 = a x_1 + c y_1, \quad  \text{and} \quad  \xi_1 = \frac{1}{cd} \left( d x_1 - c x_2 \right) .\]
+    %Note \( \zeta\) must necessarily contain \(y\) terms to produce a wavefunction on \(G\).
+    %Further \(G \cap \cL\) is required to be transversal.  For transversality the function \(f_1\) must vanish when restricted to \( \cL\). 
+    %So \(f_1(x_1,x_2,-A x_1 - B x_2 , -B x_1 - D x_2) = 0\), which gives
+    %\[ a x_1 + b x_2 - c( A x_1 + B x_2) - d( B x_1 + D x_2) = 0\]
+    Now we can quantise to find \( \psi_G^{\text{Ext}}\) and \( \psi_{\mathbb{L}}\), supported on formal completions \( \widehat{\mathbb{L}}\) and \( \widehat{G}\) at \(0\). With this choice of \(G\) in \(X\), we construct a unique solution for \(\psi_G^{\text{Ext}}\).
+    A quantisation of \(\mathcal{O}(X)\) is represented by \(y_i \rightarrow \hslash \frac{\partial}{\partial x_i}\), \( w_1 \rightarrow \hslash \frac{\partial}{\partial x_i}\). Then \( \psi_G^{\text{Ext}}(x_1,x_2,z_1)\) satisfies: 
+    \begin{align*}
+       (a x_1 + b x_2) \psi_G^{\text{Ext}} + \hslash \left( c \frac{\partial}{\partial x_1 } +  d \frac{\partial}{\partial x_2} \right) \psi_G^{\text{Ext}} & = 0, \\
+       ( z_1 - a x_1 ) \psi_G^{\text{Ext}}  - c \hslash \frac{\partial}{\partial x_i} \psi_G^{\text{Ext}} &= 0, \\ 
+       \hslash \frac{\partial}{\partial z_i} \psi_G^{\text{Ext}} - \frac{1}{c d} ( d x_1 - c x_2) \psi_G^{\text{Ext}} &= 0.
+    \end{align*}
+    Then looking for a solution of the form:
+    \[ \psi_G^{\text{Ext}} = \exp\left( -\frac{1}{2} x \cdot K \cdot x  + J  \cdot x\right),\]
+    we find: 
+    \begin{align*}
+        K = \frac{1}{\hslash} \left(\begin{array}{cc}
+            a/c & 0 \\
+            0 & b/d
+        \end{array}\right), \quad J = \frac{1}{\hslash} \,  z_1 \left( \begin{array}{c}
+            1/c \\
+            -1/d
+        \end{array}\right).
+    \end{align*}
+    where \( c , d \neq 0\).
+    
+    %If \(G\) was considered to be in \(W\), the equation for \(G\) would not give a unique solution. Solutions would only be unique up to a factor of a scalar function \( \varphi(x_2 - x_1)\).
+
+    Similarly in \(W\), there is a unique solution for \( \psi_{\cL}\):
+    \begin{align*}
+        \psi_{\cL} =  \exp \left( -\frac{1}{2}   x \cdot Q \cdot  x \right),
+    \end{align*}
+    where 
+    \[ Q = - \frac{1}{\hslash} \left( \begin{array}{cc}
+        A  &  B \\
+        B & D  
+    \end{array}\right).\]
+    Now to finally perform the integration, \( \psi_{\cL}\) is a Gaussian, and via the central identity, equation (\ref{}):
+    \begin{align*} \psi_{\widehat{\mathcal{B}}} &= \int D x \, \psi_{G}^{\text{Ext}} \,  \psi_{\mathbb{L}}  \\ 
+    &= \int Dx \exp \left( -\frac{1}{2} x \cdot (K+Q) \cdot x + J \cdot x \right) 
+    \end{align*}
+    which gives
+    \[ \psi_{\widehat{\mathcal{B}}} = \exp \left( \frac12\, J\cdot (K+Q)^{-1} \cdot J \right) = \exp\left( -\frac{1}{2 \hslash}\, c_0\, z_1^2\right),\]
+    where 
+    %\[ c_0  = \frac{ \left(d \left(d^2 (a+A c)+2 B c^2 d+c^3 D\right)+b c^3\right)}{ c^2 d^2  \left(d D (a+A c)+a b+A b c - B^2 c  d\right)}.\]
+    \[ c_0 = \frac{\left(a c-A c^2+d (b-2 B c-d D)\right)}{ c d  \left(a (b-d D)-c \left(A (b-d D)+B^2 d\right)\right)}.\]
+    Note that this integral fails to exist when \(Q+K\) does not have an inverse.  Checking for where \( \det(Q+K) = 0\), this is equivalent to when
+    \[ B^2 c d = (a -  c A) ( b - d D), \]
+    which is equivalent to the fact \( \mathbb{L}\) and \(G\) must intersect transversally.
+    %Checking an example case where this holds, setting \(A \rightarrow 0, D \rightarrow 0, a\rightarrow 1, b\rightarrow 1\):
+    %\[ \psi_{\widehat{\mathcal{B}}} \rightarrow \exp\left( -\frac{1}{2 \hslash} \frac{(c-d)}{c\, d (B^2 \, c \, d - 1)} z_1^2\right).\]
+    %Note the blow up at \( B^2 c d = 1\). 
+    %which is true when \(G\) and \(\cL\) intersect. 
+    
+    
+    %checking the classical intersection, to compare psi_B 
+    %
+    As a first check on this formula, taking the equations for \(G\), \(\cL\) in \(X\) and eliminating \(x_{\sbt}\) and \( y_{\sbt}\), gives an equation
+    \begin{equation}
+        \label{eqn:check1}
+        w_1 = c_1 z_1,
+    \end{equation}
+    where
+    \[ c_1 = \frac{   \left(-a c+A c^2+d (-b+2 B c+d D)\right)}{c d \left(d D (a-A c)-a b+A b c+B^2 c d\right)}. \]
+    Quantisation of \(X\) is represented by 
+    \[ x_i \rightarrow x_i, \, z_1 \rightarrow z_1, \, y_i \rightarrow \hslash \frac{\partial}{\partial x_i}, \, w_1 \rightarrow \hslash \frac{\partial}{\partial z_1}. \] 
+    Quantising equation (\ref{eqn:check1}), gives a differential equation, 
+    \[ \hslash \frac{\partial}{\partial z_1} \psi = c_1 z_1 \psi. \]
+    This equation has a solution:
+    \[ \psi =  \exp\left( \frac{1}{2 \hslash} c_1 z_1^2 \right).\]
+    %Although not obvious here, there are conditions on the coefficients. The integral and this solution may not exist for arbitrary \(G\) and \( \mathbb{L}\). In case where \(A \rightarrow 0, D \rightarrow 0, a\rightarrow 1, b\rightarrow 1\):
+    %\[ \psi \rightarrow \exp\left( -\frac{1}{2 \hslash} \frac{(c-d)}{c\, d (B^2 \,c \, d - 1)} z_1^2\right) =  \exp \left(  \frac{1}{2} \, J \cdot R^{-1} \cdot J \right), \]
+    %where \(R \) = %\(\mathrm{offdiag}(Q+K)\). So the two agree when \(A\rightarrow 0,D \rightarrow 0, a\rightarrow 1, b\rightarrow 1\). This is a case where the intersection between \(G\) and \(\mathcal{L}\) is not a point.
+    Now as \(c_1 = -c_0\), \( \psi_{\widehat{\mathcal{B}}} = \psi\), so quantising on the quotient agrees with the integral formula.
+    Both wavefunctions \( \psi\) and \(\psi_{\widehat{\mathcal{B}}}\) are undefined in the case where \(G\) and \( \mathbb{L}\) fail to intersect transversally.
+    
+    As an example, set \( \{ a,b,c,d\} \rightarrow 1\). In this case both \(\psi_{\widehat{\mathcal{B}}}\), and \( \psi\) reduce to
+    \[ \psi \rightarrow \exp \left( -\frac{1}{2 \hslash } \frac{ (2-A-2 B-D)}{ \left(B^2-(1-A)(1-D)\right)} z_1^2 \right),\]
+    as long as \( B^2 \neq (1-A)(1-D)\). 
+    
+    The other question is why not take the equations for \(G\) and \( \mathbb{L}\), and then try to find a wavefunction without an extension to \(X\). There are enough equations to eliminate all but \(g\)-variables, but the resulting wavefunction is not supported on the correct space. \( \mathcal{B}\) is required to be contained in \(G/G^{\perp}\), which is represented by the extension.
+    
+    
+    
+    %The other case we need to consider is taking the equations for \(G\) and \(L\) and eliminating pairs \(x_1,y_1\) or \(x_2,y_2\).
+    
+    
+    %\[ \psi_{B} = \exp \left(  \frac{1}{2} \, J \cdot R^{-1} \cdot J \right) \]
+    %where \(R \) = \(\mathrm{offdiag}(Q+K)\)
+    
+    
+    %Imposing the transversality constraints -> Intersection is zero so no wavefunction but we can look at like a 1/0 expansion via the Gaussian integral?
+
+    
+    \subsection{An analog of \texorpdfstring{\( G_\Sigma\)}{G_Sigma}}
+    \label{subsec:gdimG}
+    
+    %Classical limit \( \hslash \rightarrow 0\) is understood as producing an object that is a formal power series only on \( \mathcal{L}\).
+    
+    Consider a finite dimensional analog of 
+    \(G_\Sigma\) in the Tate space of differentials associated to a curve \( \Sigma\), per section \ref{}. 
+    
+    \begin{ex}
+    Let \( \mathcal{O}(W) = \mathbf{k}[x_1, \dots x_n, y_1, \dots y_n]\), \( \{x_i,y_j\}=\delta_{ij}\).
+    Let \(G\) be codimension \(n-g\), so defined by \(n-g\) equations:
+    \(I(G) = \langle x_{g+1}, \dots x_n  \rangle\), and 
+    \( \mathbb{L}\) is defined by \(n\) quadratics 
+    \( I(\mathbb{L}) =  \langle H_i := -y_i + a_{ijk}x_jx_k + b_{ijk}x_jy_k+c_{ijk}y_jy_k \rangle \). 
+    \end{ex}
+    \(W\) has dimension \(\dim(W)=2n\). The extension \(X\) will have dimension \(\dim(X)=2n+2g\), so \(G\) in \(X\) is codimension \(n-g+2g=n+g\).
+    
+    The extension is given by a map
+    \[\mathbf{k}[x_1, \dots x_n,z_1, \dots z_g, y_1, \dots y_n,w_1,\dots w_g]\rightarrow \mathbf{k}[x_1, \dots x_n ,y_1, \dots y_n], \]
+    where the extra coordinates on \(X\) have Poisson bracket \( \{z_i,w_j\}= \delta_{ij}\), and all other combinations vanishing. This map needs to define \(G\) as a Lagrangian in \(X\).
+    
+    The map between rings is necessarily given by \(x\rightarrow x\), \(y\rightarrow y\) and an extra \(g+g\) linear equations of the form:
+    \[ z_i = \zeta_i(x_{\sbt},y_{\sbt}) = a_{ij} x_j + b_{ij} y_j, \; w_i = \xi_i(x_{\sbt},y_{\sbt}) = c_{ij} x_j+ d_{ij} y_j.\]
+    The requirement that this map defines \(G\) as a linear Lagrangian in \(X\) places constraints on these equations. As \(G\) is required to be a linear Lagrangian, the Poisson brackets defining \(G\) must vanish:
+    \[  \{ z_i - a_{ij} x_j - b_{ij} y_j,w_k -c_{kl}  x_l- d_{kl} y_l\}=0,\;  \{x_{>g},a_{ij} x_j + b_{ij} y_j\}=0,\] and 
+    \[\{x_{>g}, c_{ij} x_j+ d_{ij} y_j\}=0. \]
+    The brackets with \(x_{>g}\) terms give \(b_{i,>g} = d_{i,>g} = 0\).
+    %Then 
+    %\[ \right) \]
+    Further 
+    \begin{align*}
+         \{ z_i - a_{ij} x_j - b_{ij} y_j,w_k -c_{kl} x_l- d_{kl} y_l\} &= \{z_i,w_k\} + a_{ij}d_{kl}\{x_j,y_l\}+b_{ij}c_{kl}\{y_j,x_l\} \\
+         \implies 0 &= \delta_{ik}+a_{ij}d_{kj} -b_{ij}c_{kj}. 
+    \end{align*}
+    %Given the previous constraints on \(b\) and \(d\), we set \(a_{i,>g} = c_{i,>g}=0\).
+    A solution is given by 
+    \begin{equation} 
+    \label{eqn:GinX}
+    \zeta_k= y_{k}, \quad \xi_k= x_{k}
+    \end{equation} 
+    where \(k \in \{1,\dots ,g\}\). Also note \( G\) and \(\mathbb{L}\) intersect transversally. 
+    
+    As per the example from equation (\ref{eqn:solveforext}), solving for \((y,w)\) as a linear function of \(x\) and \(z\), would encode \(G\) locally as a generating function. But as \(I(G) = \langle x_{>g}\rangle \), along with equations (\ref{eqn:GinX}), this would  leave \(y_{>g}\) undefined. However it is sufficient to set \( y_{>g} = 0\). This defines \(G\) at the point \(0\) in \(X\). 
+    
+    Quantisation of \(X\) is represetned by:
+    \[ x_k \rightarrow x_k, z_k \rightarrow z_k, y_k \rightarrow \hslash \frac{\partial}{\partial x_i},  w_k \rightarrow \hslash \frac{\partial}{\partial z_i}.\] 
+    Taking the equations for \(G\) in \(X\),  quantising them gives a collection of differential operators. The equations of the form \( x_{> g} \psi = 0\), so the \(x_{>g}\) acting as torsion elements, are not considered. These equations do not give a well defined \( \psi\). Setting \( x^{>g} =0\) first, which means look for a module over \( \mathbf{k} \lBrack x_1 , \dots x_g, z_1, \dots z_g\rBrack \lBrack \hslash \rBrack\), gives an interesting wavefunction.
+    
+    %and \(y_{\leq g}=x_{\leq g}\) (which swaps the symplectic structure).
+    The wavefunction \( \psi_G^{\text{Ext}}\) satisfies:
+    \begin{align*}
+        \left( \hslash \frac{\partial}{\partial x_i } -z_i \right)\psi_G^{\text{Ext}} &= 0,\\
+        \left( \hslash \frac{\partial}{\partial z_i } - x_i \right)  \psi_G^{\text{Ext}} &= 0.
+    \end{align*}
+    Which has a solution:
+    \begin{equation} 
+    \label{eqn:psigextgdim}
+    \psi_G^{\text{Ext}} = \exp\left(\frac{1}{\hslash} \sum_{k=1}^g x_k z_k \right).
+    \end{equation}
+    Then the wavefunction \(\psi_{\widehat{\mathcal{B}}}\) is given by the Fourier like integral:
+    \[ \psi_{\widehat{\mathcal{B}}} = \int Dx  \exp\left(\frac{1}{\hslash} \sum_{k=1}^g x_k z_k \right) \exp(S(x)). \]
+    Now to compare this integral to taking the equations for \(G\) and \( \mathbb{L}\) and quantising. Recall that \( x_{>g} = 0\), \( z_k = y_{k\leq g } \), \( w_k = x_{k\leq g} \). Taking the equations for \( \mathbb{L}\) and substituting, gives \(g\) equations of the form
+    \[ a_{ijk}w_j w_k + 2 b_{ijk}z_k w_j + c_{ijk}z_j z_k - z_i   +  \Phi_i(y_{\sbt},z_{\sbt},w_{\sbt})   =0, \]
+    where summation in the \(z\) and \(w\) terms are over the indices labelled by \( \{1,\dots g\}\). The \(g\) terms \( \Phi_i\), take the form
+    \[\Phi_i(y_{\sbt},z_{\sbt},w_{\sbt}) = 2 b_{ijk}w_k y_k  + c_{ijk} z_j y_k + c_{ijk} y_j y_k ,\]
+    where the indices of \(y_{i}\) are in \(\{g+1,g+2,\dots \}\), while the indices of \(z\) and \(w\) are in \( \{1,\dots \}\). 
+    However, on a formal neighbhourhood, making the substitution \(y_i =  S_{0,i}(x)\), for \(i >g\), and replacing all the \(x_{>g}\) terms with \(0\), and \( x_{k \leq g} = w_{k}\) gives \(g\) formal, equations describing \( \widehat{\mathcal{B}}\), purely in terms of \(z\) and \(w\):
+    \begin{equation} a_{ijk}w_j w_k + 2 b_{ijk}z_k w_j + c_{ijk}z_j z_k - z_i   +  \Phi_i\left(y_{i>g}=S_{0,i}(x_{k\leq g}=w_{k},x_{k>g} =0),z_{\sbt},w_{\sbt}\right) =0. 
+    \end{equation}
+    Quantisation gives differential equations which begin with \( \mathcal{O}(\hslash^2)\) terms:
+    \[ a_{ijk}\hslash^2 \frac{\partial^2}{\partial z_j \partial z_k} + 2 b_{ijk} \hslash z_k \frac{\partial}{\partial z_j} + c_{ijk}z_j z_k - z_i + \widehat{\Phi}_i =0,  \]
+    but there are higher order derivatives starting with \( \mathcal{O}(\hslash^3)\) in \( \widehat{\Phi}\).
+    
+    Applying this operator to \( \psi_{\widehat{\mathcal{B}}}\) gives
+    \begin{align*}
+    &\left(\hslash^2 a_{ijk} \frac{\partial^2}{\partial z_j \partial z_k} +  2 \hslash b_{ijk}  z_k \frac{\partial}{\partial z_j} + c_{ijk}z_j z_k - z_i  + \widehat{\Phi}_i \right) \psi_{\widehat{\mathcal{B}}}\\ 
+    &= \int Dx  \exp\left( \frac{1}{\hslash} z \cdot x\right) \bigg(  a_{ijk}  x_j x_k + 2  b_{ijk} z_j x_k   + c_{ijk} z_j z_k   - z_i  \\
+    & + 2 b_{ijk} x_j S_{0,k}(x_{\sbt}) + c_{ijk} z_j S_{0,k}(x_{\sbt}) + c_{ijk} S_{0,j}(x_{\sbt}) S_{0,k}(x_{\sbt})\bigg)  \exp(S(x_{\sbt}))\\
+    &= \int Dx \exp\left( \frac{1}{\hslash} z \cdot x\right) (  a_{ijk}w_j w_k + 2 b_{ijk}z_k w_j+ c_{ijk}z_j z_k - z_i   +  \Phi_i(z_{\sbt},w_{\sbt})  ) \exp(S(x_{\sbt})), \\
+    &= 0,
+    \end{align*}
+    as on the intersection (noting \(w\) is a function of \(x\)): 
+    \[  a_{ijk}w_j w_k + 2 b_{ijk}z_k w_j+ c_{ijk}z_j z_k - z_i   +  \Phi_i(z_{\sbt},w_{\sbt})  ) = 0\]
+    
+    
+    \subsection{\texorpdfstring{\(G=W\)}{G=W}}
+
+    Again let \(W\) be \(2n\) dimensional. 
+    \begin{ex}
+    Consider the extreme case where \(G= W\).
+    \end{ex}
+    
+    
+    \section{Reduction of wavefunctions as a Fourier transform}
+    
+    For linear \(G\), the extension of \(W\) to  \( X\) is producing a kernel, \[P(\,J,x) = \exp(J\cdot x) =  \exp\left( \frac{1}{\hslash }J'_{ki}z_k x_i  \right) ,\] where in finite dimensions \(J\) is an \( n\)-dimensional vector, dependent on \(z_i\), \(J'\) is \((n,g)\)-dimensional tensor, \(\cdot\) denotes contraction. Then:
+    \[  \psi_{\widehat{\mathcal{B}}}\,(z) \cong \psi_{\widehat{\mathcal{B}}}\,(\,J) =\int Dx\,P(\,J,x) \psi_G(x) \psi_{\mathbb{L}}(x),\]
+    such that \( \psi_{G}^{\mathrm{Ext}} = P\, \psi_G\). \(P\) is a component of the wavefunction on the extension, as found in equation (\ref{eqn:psiextg}). \( \psi_G\) satisfies the quantisation of the equations determining \(G\), as shown in equation (\ref{eqn:psiextg}). Note however \( \psi_G\) can be trivial, for example equation (\ref{eqn:psigextgdim}) in section (\ref{subsec:gdimG}).
+    
+    Denote integration with \(P\) as a transform \( \mathcal{F}\), so
+    \[ \psi_{\widehat{\mathcal{B}}}\,(\,J) =  \mathcal{F} ( \psi_G  \psi_{\mathbb{L}}).\]
+    \( \mathcal{F}\) can be thought of as a generalisation of a Fourier transform, but note that there is a difference in dimensions. There are several useful properties:
+    
+    \begin{prop}[Shift theorem]
+    \[ \mathcal{F}(\psi(x-u)) = \exp(J \cdot u) \mathcal{F} (\psi(x)).\]
+    \end{prop}
+    
+    \begin{prop}[Scaling theorem]
+    \[ \mathcal{F}(\psi(\alpha x)) = ...\]
+    \end{prop}
+    
+    There is a corresponding convolution theorem, but it is in terms of the source \(J\). Keeping the transform in terms of the source \(J\), instead of writing explicitly in \(z\) coordinates, gives a convolution theorem.
+    \begin{prop}[Convolution theorem]
+    \[ \mathcal{F}(\psi_G) * \mathcal{F}(\psi_{\mathbb{L}})\, (\, J) =   \mathcal{F}(\psi_G  \psi_{\mathbb{L}}),\]
+    where \(*\) is function convolution.
+    \end{prop}
+    
+    
+    
+    Note the convolution must be in terms of \(J\), so \(\widehat{\psi_G} * \widehat{\psi_{\mathbb{L}}}(\, J) \neq \widehat{\psi_G} * \widehat{\psi_{\mathbb{L}}}(z)\), and equality is up to a scalar constant. 
+    %The next question is can this be expressed as a convolution:
+    %\[ \mathcal{F}(\psi_G) \,*\, \mathcal{F}(\psi_{\mathbb{L}}) =  \mathcal{F}(\psi_{G} \cdot \psi_{\mathbb{L}}).\]
+    
+    To start, the proposition is true in the finite dimensional case where \(\mathbb{L}\) and \( \mathbb{G}\) correspond to linear coisotropic and Lagrangian subspaces. Using similar notation to the example in \hyperref[subsec:2dimredex]{subsection} (\ref{subsec:2dimredex}), the transforms of the wavefunctions are given by:
+    \[ \mathcal{F}(\psi_G) = \exp\left( \frac{1}{2} J \cdot K^{-1} \cdot J \right) , \quad  \mathcal{F}(\psi_{\mathbb{L}}) = \exp \left( \frac{1}{2} J \cdot Q^{-1} \cdot J \right). \] 
+    where \(Q\), and \(K\) are \(2\)-tensors, \(J\) is a \(1\)-tensor, \((\cdot)\) denotes contraction.
+    
+    Further, using the central identity, equation (\ref{eqn:centralid}), the transform of the product is given by:
+    \[\mathcal{F}(\psi_G  \psi_{\mathbb{L}}) = \exp\left( \frac{1}{2} J \cdot (K+Q)^{-1} \cdot J\right).\]
+    Finally using the central identity again, equation (\ref{eqn:centralid}), the convolution becomes:
+    \begin{align*}  \mathcal{F}(\psi_{G}) * \mathcal{F}(\psi_{\mathbb{L}}) (\, J) &=   \int D J' \exp \left( \frac{1}{2}(J-J') \cdot K^{-1} \cdot       (J-J')\right) \exp\left( \frac{1}{2} J' \cdot Q^{-1} \cdot J' \right),\\ 
+    &=    \exp\left( \frac{1}{2} \left( J \cdot K^{-1} \cdot J -J \cdot K^{-1}\cdot(K^{-1} + Q^{-1})^{-1}\cdot K^{-1}\cdot J \right) \right).
+    \end{align*}
+    Then use the identity \( (K+Q)^{-1} = K^{-1} - K^{-1}\cdot(K^{-1} + Q^{-1})^{-1}\cdot K^{-1}\) to get the result. A similar strategy will work for quadratic \( \mathbb{L}\), except the inclusion of potential terms in \( \psi_{\mathbb{L}}\).
+    
+    \newpage 
+    \vfill
+    \newpage 
