@@ -143,7 +143,7 @@
         \begin{itemize}
             \item Convergent sequences of elements of \(V\) are eventually constant. 
             \item \(V\) is Hausdorff.
-            \item If \( \dim(V) > 1\), then \(V\) is fully disconnected.
+            \item If \( \dim(V) > 0\), then \(V\) is fully disconnected.
         \end{itemize}
         \end{lem}
         
@@ -188,7 +188,7 @@
         %The double algebraic dual of a topological vector space is not necessarily an involution. For example consider \( \mathbf{k}[z]\) as a discrete topological vector space, then
         %\( \mathbf{k}[z]^{\vee} \neq (\mathbf{k}[z]^{\vee})^{\vee}\).  
         
-        Equipping the algebraic dual with a topology, and then defining the \emph{topological dual}, \( *\), as continous linear functionals on this space can make \(*\) an involution. Then the topological dual will recover the original topological vector space under involution. Essentially the topological dual is picking a subset of the algebraic dual to avoid points that are not involutive, or continuous.
+        Equipping the algebraic dual with a topology, and then defining the \emph{topological dual}, \( *\), as continuous linear functionals on this space can make \(*\) an involution. Then the topological dual will recover the original topological vector space under involution. Essentially the topological dual is picking a subset of the algebraic dual to avoid points that are not involutive, or continuous.
         
         In the case of the discrete topology, the weakest topology to equip the dual with such that \( (V^*)^* \simeq V\) is the \hyperref[defn:lctop]{\emph{linearly compact topology}}, \cite{lefschetz1942algebraic, top_ent_local_lin_comp, finiteness_spaces_presheaves}.
         
@@ -350,7 +350,7 @@
         \begin{ex}
         A fundamental example is the infinite dimensional vector space represented (with a slight abuse of notation), by
         \[ z^{-1} \mathbf{k}[z^{-1}] \oplus \mathbf{k}\lBrack z \rBrack.\]
-        In particular we should think of these as sequences. \(z^k\) just represents a vector, and has \( \mathbf{k}\) coefficients. \( z^{-1} \mathbf{k}[z^{-1}] \) is the space of sequences that eventually terminate. \( \mathbf{k}\lBrack z \rBrack\) is the dual, and the pairing is defined by pairing sequences with the Cauchy product and looking at \(1/z\) coefficient. A finite sequence pairs with an infinite sequence to produce a finite number. An infinite sequence always pairs with a finite sequence to produce a finite number. 
+        In particular we should think of these as sequences. \(z^k\) just represents a vector, and has \( \mathbf{k}\) coefficients. \( z^{-1} \mathbf{k}[z^{-1}] \) is the space of sequences that eventually terminate. \( \mathbf{k}\lBrack z \rBrack\) is the dual, and the pairing is defined by pairing sequences with the Cauchy product and looking at \(1/z\) coefficient. A sequence with only finitely many non zero terms, pairs with an infinite sequence to produce a finite number. 
         \((z^{-1} \mathbf{k}[z^{-1}]\) has a Hamel basis represented by \(\mathcal{B}= \{ z^{-k}\; |\; k \in \mathbb{Z}_{+}\}\). \( \mathbf{k} \lBrack z \rBrack \) has a (Schauder) basis represented by \( \mathcal{B}' = \{ z^{k}\; | \; k \in \mathbb{Z}_{\geq 0}\}\).
         \end{ex} 
         
@@ -445,7 +445,7 @@
         The \emph{algebraic tensor product} of two vector spaces \(V \otimes U \) consists of all finite sums of tensors \( u \otimes v\). 
          \end{defn} 
          
-        If \(V\) and \(U\) are infinite dimensional topological vector spaces, then the algebraic tensor \(V \otimes U\) product does not in general satisfy the properties universal properties of a tensor product.
+        If \(V\) and \(U\) are infinite dimensional topological vector spaces, then the algebraic tensor \(V \otimes U\) product does not in general satisfy the universal properties of a tensor product.
          
     
         
@@ -589,7 +589,7 @@
 
         %kernel of residue map
         
-        When \( \mathbf{k} =\mathbb{C}\), note that while there is an isomorphism of vector spaces \(W_{\mathrm{Airy}} \cong W\). %this is not an isomorphism of symplectic vector spaces. The important thing to note is that 
+        When \( \mathbf{k} =\mathbb{C}\), note that there is an isomorphism of vector spaces \(W_{\mathrm{Airy}} \cong W\). %this is not an isomorphism of symplectic vector spaces. The important thing to note is that 
         However, Kontsevich and Soibelman want to allow some holomorphic terms in \(V\). So a different choice of polarisation than in example (\ref{ex:vecformallaurent}), which is a different choice of \(V\) and \(L\). Instead of the natural pairing of polynomials, this polarisation will come from a symplectic form.
         
         The corresponding \( V_{\mathrm{Airy}}\) will be realised as \(V\) with a submodule of \( \mathbf{C}\lBrack z \rBrack\), equipped with the discrete topology, adjoined.
@@ -682,7 +682,7 @@
         \[ G_\Sigma=\{ \eta :  H^0(\Sigma,\Omega^1(\Sigma-R)) \mid \Res_{\alpha \in R}\eta=0 \}. \] 
         \end{defn}    
 
-        Naturally there is an injective map \(\iota : G_\Sigma \rightarrow W_\Sigma\). A differential is representable by a formal differential. \(G_\Sigma\) is naturally identified with its imagine in \(W_\Sigma\), \( G_\Sigma \cong \iota(G_\Sigma)\), so \(G_\Sigma\) is considered a subset of \(W_\Sigma\). 
+        Naturally there is an injective map \(\iota : G_\Sigma \rightarrow W_\Sigma\). A differential is representable by a formal differential. \(G_\Sigma\) is naturally identified with its image in \(W_\Sigma\), \( G_\Sigma \cong \iota(G_\Sigma)\), so \(G_\Sigma\) is considered a subset of \(W_\Sigma\). 
         
         Then given a Torelli marked basis on \(\Sigma\), \( \{ a_1, \dots a_g, b_1, \dots b_g\}\):
             

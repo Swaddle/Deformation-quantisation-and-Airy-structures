@@ -52,7 +52,7 @@
     
     
     \section{Symplectic reduction of schemes}
-    We now define a sheaf theoretic version of of symplectic reduction. We call this \emph{Poisson reduction}, because it is on the level of algebras. 
+    We now define a sheaf theoretic version of symplectic reduction. We call this \emph{Poisson reduction}, because it is on the level of algebras. 
     
     Let \((W,\mathcal{O}_W)\) be a Poisson scheme over \( \mathrm{Spec}(\mathbf{k})\), where \( \mathbf{k}\) is a field of characteristic zero. Let \( \cL\) be a Lagrangian in \(W\). Consider \(G\), a codimension \(g\), linear, coisotropic subscheme in \(W\).
     %Recall, for a vector space, the symplectic reduction of \(W\) by \(G\) is  given by the quotient \(  W\sslash G^{\perp} = G/G^{\perp}\). 
@@ -83,7 +83,7 @@
     
     When \(G\) and \( \mathbb{L}\) are defined by ideal sheaves \( \mathcal{J}_G\) and \(\mathcal{J}_{\cL}\) then necessarily \( \mathcal{O}_B\) is defined as the sum of the ideals \( \mathcal{J}_G + \mathcal{J}_{\cL}\). However this is as a \( \mathcal{O}_X\)-module.
     
-    As before, define \( \mathcal{H} = G/G^{\perp}\). We want to relate \( \mathcal{O}_\mathcal{B}\) as a \( \mathcal{O}_X\) to a \( \mathcal{O}_{\mathcal{H}}\)-module. To do this we look for a map \( \mathcal{O}_X \rightarrow \mathcal{O}_{\mathcal{H}} \). In finite dimensions, for example (\ref{sec:examplereduct4d}), this it is even possible for this map to be algebraic. However in the case examined in \cite{chaimanowong2020airy}, \( W\) is replaced by an infinite dimensional space. This map no longer is algebraic, and must necessarily be formal.
+    As before, define \( \mathcal{H} = G/G^{\perp}\). We want to relate \( \mathcal{O}_\mathcal{B}\) as a \( \mathcal{O}_X\) to a \( \mathcal{O}_{\mathcal{H}}\)-module. To do this we look for a map \( \mathcal{O}_X \rightarrow \mathcal{O}_{\mathcal{H}} \). In finite dimensions, for example (\ref{sec:examplereduct4d}), it is even possible for this map to be algebraic. However in the case examined in \cite{chaimanowong2020airy}, \( W\) is replaced by an infinite dimensional space. This map no longer is algebraic, and must necessarily be formal.
     
     
     %\subsection{Affine case} 
@@ -140,15 +140,15 @@
     We use \( \psi_G\) to denote the wavefunction \(  \psi_{G_\Sigma} =\exp(Q_2(q,q')) \) as written in \cite[p. 53]{ks_airy}. We show that 
     \begin{equation} 
     \label{eqn:psiextg}
-    \psi_G = P \psi_G,
+    \psi_G = P \psi,
     \end{equation} 
-    where \(P\) is a function depending on the choice of extension, and \( \psi_G\) is a function satisfying the equations for \(G\) in \(W\). The function depending on the extension, \(P\), using the Kontsevich and Soibelman notation, contributes terms of \( \mathcal{O}( q q')\). We claim \(P\) defines a Fourier or Laplace like integral kernel. While \( \psi_G\) at most contributes \(\mathcal{O}(q^2)\) terms. So while \( \psi_G\) is quadratic in terms of the coordinates on the extension, we want to emphasise the important part is the \(P\). It is necessary that \(G\) is linear and coisotropic, or defined by a collection of linear equations. 
+    where \(P\) is a function depending on the choice of extension, and \( \psi\) is a function satisfying the equations for \(G\) in \(W\). The function depending on the extension, \(P\), using the Kontsevich and Soibelman notation, contributes terms of \( \mathcal{O}( q q')\). We claim \(P\) defines a Fourier or Laplace like integral kernel. While \( \psi_G\) at most contributes \(\mathcal{O}(q^2)\) terms. So while \( \psi_G\) is quadratic in terms of the coordinates on the extension, we want to emphasise the important part is the \(P\). It is necessary that \(G\) is linear and coisotropic, or defined by a collection of linear equations. 
     \end{rem}
     
     
-    We are effectively trying verify two propositions:
+    We are effectively trying to verify two propositions:
     \begin{prop}
-    Symmplectic reduction commutes with deformation quantisation.
+    Symplectic reduction commutes with deformation quantisation.
     \end{prop}
     Further:
     \begin{prop}
@@ -193,7 +193,7 @@
     In the linear case any annihilator \( \psi\) is represented by the formal expression:
     \[ \psi = \mathrm{const} \, \exp \left( \frac{1}{\hslash} S_0 \right) = \mathrm{const} \, \exp \left( -\frac{1}{2\hslash} x \cdot Q \cdot x \right), \]
     where \( \mathrm{const}\) is an arbitrary constant.
-    Note \(\exp(f) \) is a formal object which is a way to store information the module homomorphism from section (\ref{sec:wavefunctions}). Functions can be extracted from \(\exp\) via actions of \(\hslash \frac{\partial}{\partial x_i }\). Also \( \mathrm{const}\) is some constant. Note \(  d (S_0 ) = -(Q \cdot x) dx\), so \( y=\mathrm{graph}(dS_0)\). 
+    Note \(\exp(f) \) is a formal object which is a way to store information about the module homomorphism from section (\ref{sec:wavefunctions}). Functions can be extracted from \(\exp\) via actions of \(\hslash \frac{\partial}{\partial x_i }\). Also \( \mathrm{const}\) is some constant. Note \(  d (S_0 ) = -(Q \cdot x) dx\), so \( y=\mathrm{graph}(dS_0)\). 
     
     More generally consider if the equations for \( \mathbb{L}\) can be written as
     \[ M \cdot y + N \cdot x = 0\]
@@ -207,7 +207,7 @@
     
     Now consider the cases where \(M\) is not full rank. First consider the case where a single \(y_i\) does not appear in any equations. So \(M\) has a zero column and row. Multiple missing \(y_i\) will follow inductively. As \(N\) still has full rank, it is still possible to solve for the corresponding \(x_i\), so \(x_i = f_i(x_1, \dots x_{i-1}, x_{i+1}, \dots x_n)\), where \(f\) is a linear function. We then consider a reduced system of equations:
     \begin{equation} \label{eqn:reduced} \widetilde{M}\cdot \widetilde{y} + \widetilde{N} \cdot \widetilde{x} = 0,\end{equation}
-    where \(\widetilde{M}, \widetilde{N} \) are the reduced tensors so there are no \(x_i\) or \(y_i\) terms. Now the the previous analysis follows.  While quantisation of \(W\) still includes \( \hslash \partial_i \), we only need to consider annihilators of the quantisation of equation (\ref{eqn:reduced}) in \( \mathbf{k} \lBrack x_1, \dots x_{i-1}, x_{i+1}, \dots x_n\rBrack\).
+    where \(\widetilde{M}, \widetilde{N} \) are the reduced tensors so there are no \(x_i\) or \(y_i\) terms. Now the previous analysis follows.  While quantisation of \(W\) still includes \( \hslash \partial_i \), we only need to consider annihilators of the quantisation of equation (\ref{eqn:reduced}) in \( \mathbf{k} \lBrack x_1, \dots x_{i-1}, x_{i+1}, \dots x_n\rBrack\).
 
     
     \subsection{A formula for Gaussian integrals}
@@ -492,7 +492,7 @@
     \label{eqn:psigextgdim}
     \psi_G(x_{\sbt}, z_{\sbt}) = \exp\left(\frac{1}{\hslash} \sum_{k=1}^g x_k z_k \right) = \exp\left( \frac{1}{\hslash} Q(x_{\sbt},z_{\sbt})  \right).
     \end{equation}
-    Note the classical limit, or \(Q\) gives \(G_X\) as a graph, \( \mathrm{graph} d (x_k z_k)\).
+    Note the classical limit, or \(Q\) gives \(G_X\) as a graph, \( \mathrm{graph} d Q(x_k z_k)\).
     
     Then the wavefunction \(\psi_{\widehat{\mathcal{B}}}\) is given by the Fourier like integral:
     \[ \psi_{\widehat{\mathcal{B}}}(z_1, \dots, z_g) = \int Dx  \exp\left(\frac{1}{\hslash} \sum_{k=1}^g x_k z_k \right) \exp(S(x)). \]
@@ -523,7 +523,7 @@
     \[  a_{ijk}\, w_j w_k + 2 b_{ijk}\, z_k w_j+ c_{ijk}\, z_j z_k - z_i   +  \Phi_i(z_{\sbt},w_{\sbt})   = 0.\]
     
     \begin{rem}
-    Note that although the integral is in all the \(x^{\sbt}\) variables, only the directions in the intersection contribute. In this case this occurs for  \(g\) of the \(x\). 
+    Note that although the integral is in all the \(x^{\sbt}\) variables, only the directions in the intersection contribute. In this case this occurs for \(g\) of the \(x^{\sbt}\). 
     \end{rem}
     %\subsection{\texorpdfstring{\(G=W\)}{G=W}}
 

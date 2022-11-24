@@ -112,7 +112,7 @@
     This section is mostly from chapter (\ref{chapter:tate}), section (\ref{sec:tatespaceofdiff}), reproduced here as a reminder. Consider an algebraic curve \(\Sigma \subset X\), a divisor \(R\), and local coordinates \(z_\alpha\) defined on \( \Sigma - R\) around each point \(\alpha \in R\). Define \( \dim(R)\) copies of \(W_{\mathrm{Airy}}\): 
     \[ W_\Sigma =(W_{\text{Airy}})^R.\]  
     Each copy of \(W_{\text{Airy}}\) uses the local coordinate \(z_\alpha\) around points in \(R\). The subspace 
-    \[L_\Sigma =(L_{\mathrm{Airy}})^R \subset W_\Sigma \] consists of locally holomorphic differentials, and satisfies the property \( L_\Sigma, \mathcal{T}_0 \mathbb{L}^R_{\mathrm{Airy}}\). 
+    \[L_\Sigma =(L_{\mathrm{Airy}})^R \subset W_\Sigma \] consists of locally holomorphic differentials, and satisfies the property \( L_\Sigma =\mathcal{T}_0 \mathbb{L}^R_{\mathrm{Airy}}\). 
     
     As per chapter (\ref{chapter:tate}), define \(G_\Sigma\) as the space of meromorphic differentials with zero residue:
     \begin{defn}[\(G_\Sigma\)]
@@ -305,7 +305,7 @@
     \Res\left(\frac{\eta}{du_\alpha}-v_\alpha\right)^2u_\alpha^mdu_\alpha &= \Res_\alpha\frac{\eta\cdot\eta }{du_\alpha}u_\alpha^m-2 \Res_\alpha \eta\, z_\alpha u_\alpha^m,\\
     &=\Res_\alpha\frac{\eta\cdot\eta }{du_\alpha}u_\alpha^m-2\langle y_{2m,\alpha},\eta\rangle,
     \end{align*} 
-    which is linear in \(y_{2m,\alpha}\) with plus a quadratic term
+    which is linear in \(y_{2m,\alpha}\), plus a quadratic term.
     \begin{equation}
     \label{eqn:ff}
     \Res_\alpha\frac{\eta\cdot\eta }{dx}x^m=a_{ijk,\alpha\beta\gamma} \, x^{j,\beta} x^{k,\gamma}+b_{ij,\alpha \beta}^{k,\gamma }\, x^{j,\beta} y_{k,\gamma}+c_{i ,\alpha}^{jk ,\beta \gamma}\, y_{j,\beta} y_{k,\gamma}.
@@ -404,7 +404,7 @@
     \( [\vartheta ]\) is a well-defined map from  the open set \(U_{[\Sigma]}\subset\mathcal{B}\) to \(\mathbb{C}^{2g}\). Note that the isomorphism of the cohomology group \(H^1(\Sigma, \mathbb{C})\) with \( \mathbb{C}^{2g}\) uses a choice of Torelli basis. 
     
     Note in equation (\ref{eqn:cohtheta}), \(s([\Sigma'])\) has been parallel transported from a nearby fibre \(\mathcal{H}_{\Sigma'}\) to \(  \mathcal{H}_\Sigma\) via the Gauss-Manin connection \( \nabla^{GM}\). By definition, the covariant derivative of \( [\vartheta]\) is given by
-    \[ \nabla^{\text GM}_\eta[\theta]=\eta, \]
+    \[ \nabla^{\text GM}_\eta[\vartheta]=\eta, \]
     for any \(\eta\in H^0(\Sigma, K_{\Sigma})\cong T_{[\Sigma]}\mathcal{B}\).  The linearisation 
     \[ \nabla^{GM}[\vartheta] : T_{[\Sigma']}\mathcal{B} \rightarrow \mathcal{H}_{\Sigma'}, \] 
     has image given by the parallel transport of the Lagrangian subspace \[ H^0(\Sigma, K_{\Sigma'})\subset \mathcal{H}_{\Sigma'},\] 
@@ -419,10 +419,10 @@
     
     In section (\ref{sec:formaltheta}) there is a meromorphic differential \(\vartheta\) which is defined only in a formal neighbourhood of \([\Sigma]\in\mathcal{B}\) with cohomology class given by an analytic expansion of the class \( [\vartheta]\) defined here.
     
-    Using a choice of \(a\)-cycles on each \(\Sigma'\), the class \([\theta]\) defines holomorphic coordinates on \( U_{[\Sigma]}\subset\mathcal{B}\) by:
+    Using a choice of \(a\)-cycles on each \(\Sigma'\), the class \([\vartheta]\) defines holomorphic coordinates on \( U_{[\Sigma]}\subset\mathcal{B}\) by:
     \begin{defn}[Holomorphic coordinates]  Define \(g\) coordinates \( {z^1, \dots z^g}\) on \(U_{[\Sigma]} \subset \mathcal{B}\) by: 
     \begin{equation}  \label{eqn:zcoords}
-        z^i([\Sigma'])=\oint_{a_i}[\theta]([\Sigma']),\quad i=1,\dots,g.
+        z^i([\Sigma'])=\oint_{a_i}[\vartheta]([\Sigma']),\quad i=1,\dots,g.
     \end{equation}
     \end{defn}
     These coordinates satisfy \(z^i([\Sigma])=0\), and coordinates defined with respect to any nearby point are related via shift \(z^i\rightarrow z^i+z^i_0\). From these coordinates we consider an affine space modelled on \( \mathcal{B}\) with coordinate ring \( \mathbb{C}[z^1, \dots , z^g]\), and the point \(\Sigma\) corresponds to the maximal ideal \( \langle z^1, \dots , z^g\rangle\). 
@@ -430,10 +430,10 @@
     A choice of \(b\)-cycles on each \(\Sigma'\) give rise to functions \(\w_i(z^1,...,z^g)\) defined by 
     \begin{equation} 
     \label{eqn:wcoords}
-    \w_i=\oint_{b_i}[\theta]([\Sigma']), \quad i = 1, \dots g.
+    \w_i=\oint_{b_i}[\vartheta]([\Sigma']), \quad i = 1, \dots g.
     \end{equation}
     The derivatives of \(\w_i\) satisfy
-    \[ \frac{\partial \w_i}{\partial z_j}=\frac{\partial}{\partial z_j}\oint_{b_i}[\theta]=\oint_{b_i}\nabla^{GM}_{\hspace{-1mm}\frac{\partial}{\partial z_j}}[\theta]=\oint_{b_i}\omega_j=\tau_{ij},\]
+    \[ \frac{\partial \w_i}{\partial z_j}=\frac{\partial}{\partial z_j}\oint_{b_i}[\vartheta]=\oint_{b_i}\nabla^{GM}_{\hspace{-1mm}\frac{\partial}{\partial z_j}}[\vartheta]=\oint_{b_i}\omega_j=\tau_{ij},\]
     where the second equality uses the definition of the Gauss-Manin connection, where \(\tau_{ij}\) is a symmetric tensor called the \emph{period matrix}. The period matrix is defined in definition (\ref{defn:periodmat}).
     
     Now \( \mathcal{H}\) is treated as a variety with coordinate ring \( \mathbb{C}[z^1, \dots , z^g, \w_1, \dots \w_g]\). Later we investigate how \( \mathcal{B}\) lives inside \( \mathcal{H}\) from this algebraic perspective.  It is not obvious if \( \mathcal{B}\) is algebraic inside \( \mathcal{H}\), which means writing algebraic equations in terms of \(z^{\sbt}\) and \(\w_{\sbt}\), which defines a map \[ \mathbb{C}[z^1, \dots , z^g, \w_1, \dots w_g] \rightarrow \mathbb{C} [ z^1, \dots , z^g ], \]
@@ -544,7 +544,7 @@
     \end{lem}
     Note the integral over \([b_j]\) refers to a normalised period integral, definition (\ref{defn:normalint}).
     
-    For example, in the the case of \(n=1\), 
+    For example, in the case of \(n=1\), 
     \[ \frac{\partial\tau_{ij}}{\partial z_k}= -2\pi i \oint_{[b_i]}\oint_{[b_j]}\oint_{[b_k]}\omega_{0,3}.\]
     When \(X=T^*C\), for a compact curve \(C\), lemma (\ref{lem:om3cor}) was proven by Baraglia and Huang in \cite{bhuespe}, and also by Bertola and Korotkin in \cite{bkospa}. 
 
@@ -634,7 +634,7 @@
     
     \( \vartheta\) is going to be a tool to associate vector fields on \( \mathcal{B}\) to vector fields on \( \cL_{KS}\). In particular this will relate the tensor \(A_\Sigma = a_{ijk}x^i x^j x^k\), from the Airy structure on \(W_\Sigma\), \(A_\Sigma \in V_\Sigma \otimes V_\Sigma \otimes V_\Sigma\), to a tensor \( \overline{A}_\Sigma \in \overline{V}_\Sigma \otimes \overline{V}_\Sigma \otimes  \overline{V}_\Sigma\) representing the Donagi-Markman cubic.
     
-    The formal cohomology class \([\vartheta]\) is the restriction of an analytic section \( \iota^* [ \vartheta]\) to a formal neighbourhood of \([\Sigma] \) in \( \mathcal{B}\). Recall that a cohomology class is characterised by its periods along a Torelli marked basi. We integrate \( \vartheta \in \mathbb{C}\lBrack z^1, \dots, z^g \rBrack \) term by term, to get formal expression \([\vartheta]\)
+    The formal cohomology class \([\vartheta]\) is the restriction of an analytic section \( \iota^* [ \vartheta]\) to a formal neighbourhood of \([\Sigma] \) in \( \mathcal{B}\). Recall that a cohomology class is characterised by its periods along a Torelli marked basis. We integrate \( \vartheta \in \mathbb{C}\lBrack z^1, \dots, z^g \rBrack \) term by term, to get formal expression \([\vartheta]\)
     \[[\vartheta]= \left( \oint_{a_i}\vartheta, \oint_{b_i}\vartheta \mid i=1,\dots,g\right) \in \mathbb{C}^{2g}\lBrack z^1, \dots, z^g \rBrack,\]
     where the periods are given by:
     \[\oint_{a_i}\vartheta=z^i,\quad\oint_{b_i}\vartheta= \w_i(z^1,...,z^g). \]
@@ -748,7 +748,7 @@
     \mathcal{O}(\cL_{KS}\cap G_\Sigma )=\ \mathcal{O}(W) / \langle y_i-u_{0,i} , x^{m>g} \rangle \cong \mathbf{k} \lBrack x^1,...,x^g \rBrack.
     \] 
     Composing the arrow from \[ \mathcal{O}(\mathcal{H}_\Sigma) \rightarrow  \mathcal{O} (G_\Sigma) \]
-    with the right vertical arrow in the commutative square, equation (\ref{eqn:commsquare}), to get:
+    with the right vertical arrow in the commutative square, equation (\ref{eqn:commsquare}), to get
     a map 
     \begin{equation}            
     \label{eqn:BLcorr}
@@ -852,7 +852,7 @@
     \frac{\partial H_i}{\partial y^j} &= - \delta_{i}^j +  b_{im}^j x^m + 2 c_{i}^{j m} y_m, \\
     -\frac{\partial H_i}{\partial x_j} &= -2 a_{ijm}x^m -  b_{ij}^m y_m.
     \end{align*}
-    Then the the corresponding Lie bracket of vector fields is given by:
+    Then the corresponding Lie bracket of vector fields is given by:
     \[ [X_{H_i}, X_{H_j} ]_{\mathfrak{g}} = X_{\{H_i,H_j\}} = X_{g_{ij}^k H_k}. \]
     Furthermore, these are dual to the differentials \(dx^i\) on \( \cL\). 
 
@@ -1005,7 +1005,7 @@
 
     \section{Relation between the formal series \texorpdfstring{\( \vartheta\)}{theta} and an analytic series}
     \label{sec:formalandanalytic}
-    This section verifies the two following two lemmas.
+    This section verifies the following two lemmas.
     \begin{lem}   \label{lem:phisec1}
     The section \( \vartheta\in\Gamma(\widehat{\mathcal{B}}_{\Sigma},G_\Sigma)\) defines a map
     \[ \vartheta:\widehat{\mathcal{B}}_{\Sigma}\to\cL_{KS} \]
@@ -1090,7 +1090,7 @@
     \]
     where \(F_0(z^1, \dots , z^g)\) is the prepotential, and the \(F_g(z^1, \dots , z^g)\) are called \emph{symplectic invariants}, which are defined from topological recursion, \cite{chaimanowong2020airy}. 
     \[  F_g(z^1, \dots , z^g) :=\frac{1}{2-2g}\int_{b_i}\omega_{g,1}(p) z^i. \]
-    Note a fixed choice of \(z^{\sbt}\) give the invariants from the introduction.
+    Note a fixed choice of \(z^{\sbt}\) gives the invariants from the introduction.
     
     Following \cite{ks_airy},  \(\psi_{\mathcal{B}}(z^1, \dots, z^g)\) is defined by an integral equation or from examining the deformation quantisation of an intersection.
     

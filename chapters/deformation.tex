@@ -343,7 +343,15 @@
     
     This result can be found in \cite{yekutieli}. Note that this does not necessarily correspond to quantisation from physics. Deformation quantisation has simply produced a non-commutative space of operators. In physics, quantisation also seeks to construct a Hilbert space of functions. Correspondingly we need to look for duals of \( \mathcal{A}_{\hslash}\)-modules, which is analogous to a Hilbert space. We give an example of the entire process in example (\ref{ex:the_conic}). The conditions on the existence of these extra modules is also an interesting question \cite[section 2.4, page 15]{abpolyquant}. 
 
-    \emph{Flatness} is a technical condition, required to exclude the classical objects \( \mathcal{O}_X\) counting as a deformation quantisation of itself. For a definition of flatness see \cite{lang}. \(\mathcal{O}_X\) is not sheaf of flat \( \mathbf{k}\lBrack \hslash \rBrack\)-modules.
+    \emph{Flatness} is a technical condition, required to exclude the classical objects \( \mathcal{O}_X\) counting as a deformation quantisation of itself. A good reference for flatness can be found in \cite{lang}. We reproduce a definition here for modules over a ring \(R\). Recall a functor is exact if it preserves exact sequences.
+    Let \[ 0 \rightarrow K \rightarrow  L \rightarrow S \rightarrow 0, \] be an exact sequence of \(R\)-modules. Let  M be an \(R\)-module.
+    \begin{defn}[Flatness]
+     \(M\) is a \emph{flat} \(R\)-module if the functor given by \(F(S) = S \otimes_R M\) is exact, for any \(R\)-module \(N\). This means
+     \[ 0 \rightarrow K \otimes_R M \rightarrow L \otimes_R M \rightarrow S \otimes_R M \rightarrow 0 \] is also exact.
+    \end{defn}
+    
+    
+    \(\mathcal{O}_X\) is not sheaf of flat \( \mathbf{k}\lBrack \hslash \rBrack\)-modules.
 
     \begin{lem} \( \mathcal{O}_X\) is not a sheaf of flat \( \mathbf{k}\lBrack \hslash \rBrack\)-modules.
     \end{lem}
@@ -388,7 +396,7 @@
     
     There is a natural gauge transform for Poisson and formal Poisson structures. 
     Let \( \starp_{\pi}\) be a star product associated to Poisson bi-vector \( \Pi\).
-    Let \( \Pi \rightarrow \Pi + \Gamma \) be a Gauge transform of a Poisson bi-vectors, where \( \Gamma \in H^0(X,\wedge^2 \mathcal{T}_X)\), 
+    Let \( \Pi \rightarrow \Pi + \Gamma \) be a gauge transform of a Poisson bi-vectors, where \( \Gamma \in H^0(X,\wedge^2 \mathcal{T}_X)\), 
     \( \Gamma = \frac{1}{2} \gamma^{ij} \frac{\partial}{\partial x_i } \wedge \frac{\partial}{\partial x_j}\), and \( \gamma^{ij} = \gamma^{ji}\). Define a bi-map \( \gamma : \mathcal{O}_X \otimes \mathcal{O}_X \rightarrow \mathcal{O}_X \otimes \mathcal{O}_X\) associated to \( \Gamma \) as before. Then \( \Pi + \Gamma \) defines a corresponding star product \( \starp_{\pi + \gamma}\) as follows:
     
     \begin{lem}
@@ -454,7 +462,7 @@
     
 
     
-    \subsection{Coisotripic subschemes and an obstructions to existence}
+    \subsection{Coisotropic subschemes and an obstructions to existence}
     
     Let \((X,\mathcal{O}_X)\) be a Poisson scheme. Let the deformation quantisation of \(\mathcal{O}_X\) be given by \(\mathcal{A}_{\hslash} = \mathcal{O}_X\lBrack \hslash \rBrack\) as sheaf of \( \mathbf{k} \lBrack \hslash \rBrack\)-algebras. Let \( \mathcal{A}_{\hslash}\) be equipped with the star product per definition (\ref{defn:star_prod_pois}).  An important question is what obstructions are there for the existence of a sheaf \(\mathcal{F}_\hslash\) of \( \mathcal{A}_{\hslash}\) modules. 
     
@@ -511,7 +519,7 @@
     
     
     Finally consider the action by
-    \( \frac{1}{\hslash} [ \mathcal{J}_\hslash, \mathcal{J}_\hslash ] \) on \( \mathcal{F}_{\hslash}\). Similary to above, this action has an image \( \hslash \mathcal{F}_{\hslash}\).
+    \( \frac{1}{\hslash} [ \mathcal{J}_\hslash, \mathcal{J}_\hslash ] \) on \( \mathcal{F}_{\hslash}\). Similarly to above, this action has an image \( \hslash \mathcal{F}_{\hslash}\).
     
     Then under the quotient map by \( \hslash \mathcal{F}_{\hslash}\),  \(\hslash \mathcal{F}_\hslash \rightarrow 0\), \( [\mathcal{J}_{\hslash} ,\mathcal{J}_{\hslash}]\) acting on \( \mathcal{F}_{\hslash}\), maps to \( \{\mathcal{J},\mathcal{J}\} \) acting on \( \mathcal{F}\). 
     
@@ -584,7 +592,7 @@
     \subsection{Weyl-algebras and D-modules}
     \label{sec:weyl_algebra}
     
-    In physics, a operators on a Hilbert space represent the quantisation of some classical theory. For a scheme \( (X,\mathcal{O}_X)\), the algebraic analog of operators on a Hilbert space is a ring of differential operators \cite{k_holonomic}, as a \( \mathcal{O}_X\) module. These rings of differential operators arise from deformation quantisation.
+    In physics, operators on a Hilbert space represent the quantisation of some classical theory. For a scheme \( (X,\mathcal{O}_X)\), the algebraic analog of operators on a Hilbert space is a ring of differential operators \cite{k_holonomic}, as a \( \mathcal{O}_X\) module. These rings of differential operators arise from deformation quantisation.
 
     Let \(X= T^* C\) be a symplectic variety with local Darboux coordinates \( (x_i,y_i)\). Consider the deformation quantisation of \( \mathcal{O}_X\), given by \( \mathcal{A}_{\hslash} = (\mathcal{O}_X\lBrack \hslash \rBrack , \starp_{\pi}) \), and the localisation at \(\hslash\), \( \mathcal{A}_{\hslash}^{\text{loc}} \). \( \mathcal{A}_{\hslash}\) is isomorphic to a sheaf of rings of differential operators on \(X\). These rings are representable as a Weyl-algebra over \( \mathbf{k} \lBrack \hslash \rBrack\). Further the localisation \( \mathcal{A}_{\hslash}^{\text{loc}}\) identifies differential operators with vector fields. 
     
@@ -852,7 +860,7 @@
     
     Consider a coisotropic subscheme, \(Y\) in \(X\), with the map \( \iota : Y \rightarrow X\) giving a sequence:
     \[ 0 \rightarrow \mathcal{J} \rightarrow \mathcal{O}_X \rightarrow \iota_{*}\mathcal{O}_Y \rightarrow 0. \]
-    Locally the ideal sheaf is given by a minimal collection of generaors \(\{H_i\}\), \( \mathcal{J}(U) = \langle H_i \rangle \). In finite dimensions if \(X\) is \(2n\) dimensional there will be \(n\) generators or fewer. In the infinite dimensional case, where \(Y\) is a quadratic Lagrangian, for Airy structures there will be a special choice of \(H_i\).
+    Locally the ideal sheaf is given by a minimal collection of generators \(\{H_i\}\), \( \mathcal{J}(U) = \langle H_i \rangle \). In finite dimensions if \(X\) is \(2n\) dimensional there will be \(n\) generators or fewer. In the infinite dimensional case, where \(Y\) is a quadratic Lagrangian, for Airy structures there will be a special choice of \(H_i\).
     
     Consider a sheaf \( \mathcal{E}_{\hslash}\) of \( \mathcal{A}_{\hslash}\)-modules corresponding to the deformation quantisation of the coisotropic subscheme \( \iota_{*} \mathcal{O}_Y\), so
     \[ 0 \rightarrow \hslash \mathcal{E}_{\hslash} \rightarrow \mathcal{E}_{\hslash} \rightarrow \iota_{*} \mathcal{O}_Y \rightarrow 0.\]
@@ -872,7 +880,7 @@
     Consider an isomorphism  \( \varphi : \mathcal{A}_{\hslash} \rightarrow \mathcal{W}_{\hslash}\) where \( \mathcal{W}_{\hslash}\) is a Weyl-algebra. \( \varphi\) sends the non-commutative star product of functions to the non-commutative composition of operators.
     \begin{ex} 
     For example let \(A=\mathbf{k}[x_1,\dots,x_n,y_1,\dots y_n]\), be equipped with the Poisson bracket:  \[\{y_i,x_j\} = \delta_{ij}, \quad  \{x_i,x_j \} = \{ y_i,y_j\} = 0,\] and consider the deformation quantisation \( \mathcal{A}_{\hslash} = (\mathbf{k}[x_1,\dots,x_n,y_1,\dots y_n]\lBrack\hslash \rBrack, \star )\).
-    Then there is an ismorphism, \( \varphi\), between \( \mathcal{A}_{\hslash}\) and the Weyl-algebra \( \mathcal{W}_{\hslash} = \mathbf{k} [x_1, \dots, x_n , \hslash \partial_1 , \dots \hslash \partial_n ] \lBrack \hslash \rBrack\). The map \( \varphi\) is defined on the generators by:
+    Then there is an isomorphism, \( \varphi\), between \( \mathcal{A}_{\hslash}\) and the Weyl-algebra \( \mathcal{W}_{\hslash} = \mathbf{k} [x_1, \dots, x_n , \hslash \partial_1 , \dots \hslash \partial_n ] \lBrack \hslash \rBrack\). The map \( \varphi\) is defined on the generators by:
     \[ \varphi(x_i \star x_j) = x_i \cdot  x_j, \quad \varphi( y_i \star y_j) = \partial_i \cdot \partial_j, \quad \varphi(x_i \star y_j ) = x_i \cdot \hslash \partial_j. \]
     \end{ex}
     
@@ -958,7 +966,7 @@
     \begin{figure}[htbp]
         \centering
         \input{tikz/catalan_tree}
-        \caption{Trees drawn up to \( \cong\). The unfilled vertex is the root. The number of pink edges correspond to the power of \(x\). The coefficient of \(x\) counts the total number of trees with \(n\)-edges.}
+        \caption{Trees drawn up to \( \cong\). The unfilled vertex is the root. The number of pink vertices correspond to the power of \(x\). The coefficient of \(x\) counts the total number of trees with \(n\)-edges.}
         \label{fig:catalantrees}
     \end{figure}
     
@@ -1014,7 +1022,7 @@
     
     \begin{rem}
     \label{rem:constraints}
-    There are possible constraints on the \(J\). Consider a higher dimensional example, where  \( \mathcal{A}_{\hslash}= \mathbf{k}[x_{\sbt},y_{\sbt}] \lBrack \hslash \rBrack\) with the star-bracket \( [f,g] = f \star g - g \star f \). Let \( \mathcal{J} = \{H_i(x_{\sbt},y_{\sbt})\} \) be an ideal closed under the Poisson bracket. Consider the deformation \(\mathcal{J}_{\hslash} = \{ H_i + \hslash J_i \}\). To satisfy theorem (\ref{thm:torsionfree}), \(\mathcal{J}_{\hslash}\) is also required to be closed, \( [\mathcal{J}_{\hslash}, \mathcal{J}_{\hslash} ] \subseteq \mathcal{J}_{\hslash}\). In the case where \(H_i\) are degree two in \(x_{\sbt}\) and \( y_{\sbt}\), one possibility is  find \( J_i\) as a function of only \(\hslash\), for example the quantisation of an Airy structure in \cite{ks_airy}.
+    There are possible constraints on the \(J\). Consider a higher dimensional example, where  \( \mathcal{A}_{\hslash}= \mathbf{k}[x_{\sbt},y_{\sbt}] \lBrack \hslash \rBrack\) with the star-bracket \( [f,g] = f \star g - g \star f \). Let \( \mathcal{J} = \{H_i(x_{\sbt},y_{\sbt})\} \) be an ideal closed under the Poisson bracket. Consider the deformation \(\mathcal{J}_{\hslash} = \{ H_i + \hslash J_i \}\). To satisfy theorem (\ref{thm:torsionfree}), \(\mathcal{J}_{\hslash}\) is also required to be closed, \( [\mathcal{J}_{\hslash}, \mathcal{J}_{\hslash} ] \subseteq \mathcal{J}_{\hslash}\). In the case where \(H_i\) are degree two in \(x_{\sbt}\) and \( y_{\sbt}\), one possibility is to find \( J_i\) as a function of only \(\hslash\), for example the quantisation of an Airy structure in \cite{ks_airy}.
     \end{rem}
     
     \begin{rem}
@@ -1117,7 +1125,7 @@
     
     %references 
     
-    The purpose of the formal completion of \( \mathcal{A}_{\hslash}\), in \(x,y\), \( \widehat{\mathcal{A}}_{\hslash} = \mathbf{k}\lBrack x, y\rBrack \lBrack \hslash \rBrack\),  is to write down a formal power series solution to the differential equation in a series of \(x\) and \(\hslash\). Further this solution is chosen at a single point.
+    The purpose of the formal completion of \( \mathcal{A}_{\hslash}\), in \(x,y\), \( \widehat{\mathcal{A}}_{\hslash} = \mathbf{k}\lBrack x, y\rBrack \lBrack \hslash \rBrack\),  is to write down a formal power series solution to the differential equation, in a series of \(x\) and \(\hslash\). Further this solution is chosen at a single point.
     
     However we can investigate the star-product equation \( H \star w =0 \), and hope to find a function for \(w\) as a series in \(\hslash\), where 
     \[ H = -y + x^2 + 2 x y + y^2.\]
@@ -1164,7 +1172,7 @@
 
     
     \begin{rem}
-    Naively, the equations defining the wavefunction \( \psi_{\mathbb{L}}\), are a collection of second order PDEs. In an analytic setting, we would expect there to two dimensional vector space of solutions, but this is a global statement. Investigating the wavefunction at a point has restricted us to a single solution.
+    Naively, the equations defining the wavefunction \( \psi_{\mathbb{L}}\), are a collection of second order PDEs. In an analytic setting, we would expect there to be a two dimensional vector space of solutions, but this is a global statement. Investigating the wavefunction at a point has restricted us to a single solution.
     \end{rem}
     
     %
